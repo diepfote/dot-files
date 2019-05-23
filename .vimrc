@@ -27,6 +27,7 @@ autocmd BufRead,BufNewFile *.bib set ft=tex
 autocmd BufRead,BufNewFile *.local set ft=sh
 autocmd BufRead,BufNewFile *.rc set ft=sh
 autocmd BufRead,BufNewFile *.service set ft=sh
+autocmd BufRead,BufNewFile *.conf set ft=sh
 
 
 "colorscheme seti "https://www.archlinux.org/packages/community/any/vim-seti/  or   https://github.com/trusktr/seti.vim
