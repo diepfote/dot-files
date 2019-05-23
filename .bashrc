@@ -20,4 +20,6 @@ source <(kubectl completion bash)
 # kubernetes aliases
 alias kb=kubectl
 alias kbg="kubectl get"
+alias kc=kubectl
+alias kcg="kubectl get"
 
