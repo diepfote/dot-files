@@ -22,4 +22,5 @@ alias kb=kubectl
 alias kbg="kubectl get"
 alias kc=kubectl
 alias kcg="kubectl get"
+alias kn="kubens"
 
