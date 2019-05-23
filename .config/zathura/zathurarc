@@ -1,0 +1,14 @@
+# enable clipboard
+set selection-clipboard clipboard
+
+# window size and document sizing
+set window-height 1000
+set window-width 1000
+set adjust-open "best-fit"
+
+# scrollbars
+set show-scrollbars true
+#set first-page-column 1
+#set window-title-basename true
+
+

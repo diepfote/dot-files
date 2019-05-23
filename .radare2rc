@@ -1,0 +1,65 @@
+# 16 basic ANSI colors
+e scr.color=1
+
+e scr.utf8=true
+#e io.cache=true
+
+# Disable fortune startup messages
+e cfg.fortunes=false
+
+e bin.demangle = true
+e asm.demangle = true
+e asm.relsub = true
+e asm.syntax = intel
+e asm.flags = true
+e asm.trace = true
+
+# Save the target binary inside the project directory
+#e prj.files = true
+
+# Display stack and register values on top of disasembly view (visual mode)
+e cmd.stack = true
+
+# Show comments at right of disassembly if they fit in screen
+#e asm.cmt.right=true
+
+# Show explanations for assembly instructions
+#e asm.describe=true
+
+# Shows pseudocode in disassembly. Eg mov eax, str.ok = > eax = str.ok
+#e asm.pseudo = true
+
+# Solarized theme
+# ayu
+# basic
+# behelit
+# bold
+# cga
+# consonance
+# cutter
+# dark
+# darkda
+# defragger
+# focus
+# lima
+# matrix
+# monokai
+# ogray
+# onedark
+# pink
+# rasta
+# sepia
+# smyck
+# solarized
+# tango
+# twilight
+# white
+# white2
+# xvilka
+# zenburn
+#
+#eco matrix
+#eco cutter
+#eco tango
+eco white
+#eco white2

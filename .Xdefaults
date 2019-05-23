@@ -1,0 +1,81 @@
+!! put the following in ~/.Xdefaults (then run: $ xrdb ~/.Xdefaults):
+!!
+xterm.termName:       xterm-256color
+! normal term session
+xterm.vt100.geometry: 122x61
+! tmux two panes
+!xterm.vt100.geometry: 151x73
+
+xterm*saveLines: 30000
+
+!XTerm*metaSendsEscape: true
+!XTerm*altIsNotMeta: true
+
+! fix C-h not working
+! https://www.emacswiki.org/emacs/BackspaceKey
+xterm*ttyModes: erase ^?
+xterm*VT100*translations:       #override \
+   <Key>BackSpace: string(0x7f)
+xterm*backarrowKeyIsErase:      true
+
+
+! select entire urls
+xterm*charClass: 33:48,37-38:48,45-47:48,64:48,58:48,126:48,61:48,63:48,43:48,35:48
+
+!===================
+! scrollbar start
+!xterm*scrollBar:      true
+!xterm*rightScrollBar: true
+! scrollbar end
+!=====================
+
+! stop output from moving scroll down to the bottom (scroll position relative to the bottom is kept)
+!xterm*scrollTtyOutput: false
+
+! Enable mouse scrolling in applications like vim
+xterm*vt100*alternateScroll: true
+
+xterm*vt100*translations:   #override                       \n \
+  Shift Ctrl <KeyPress>C: copy-selection(CLIPBOARD)       \n \
+  Shift Ctrl <KeyPress>V: insert-selection(CLIPBOARD)     \n
+
+xterm*faceName: DejaVu Sans Mono
+!xterm*faceName: Droid Sans Mono
+xterm*faceSize: 9.5
+
+!!xterm*background:#ffffff
+!xterm*background:#0e3d4d
+!!xterm*background:#0c303d
+!xterm*foreground:rgb:cb/cc/ca
+!!xterm*foreground:#000000
+
+!! Blacks
+!xterm*color0:           #2E3436
+!xterm*color8:           #555753
+!! Reds
+!xterm*color1:           #CC0000
+!xterm*color9:           #EF2929
+!! Greens
+!!xterm*color2:           #4E9A06
+!xterm*color2:           #55a806
+!xterm*color10:          #8AE234
+!! Yellows
+!xterm*color3:           #C4A000
+!xterm*color11:          #FCE94F
+!!xterm*color3:           #B58900
+!!xterm*color11:          #657B83
+xterm*color3:           #b28000
+xterm*color11:          #687b83
+!! Blues
+!xterm*color4:           #3465A4
+!xterm*color12:          #729FCF
+!! Purples
+!xterm*color5:           #875490
+!xterm*color13:          #AD7FA8
+!! Cyans
+!xterm*color6:           #06989A
+!xterm*color14:          #34E2E2
+!! Whites
+!xterm*color7:           #D3D7CF
+!xterm*color15:          #EEEEEC
+
