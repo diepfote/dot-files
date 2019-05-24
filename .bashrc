@@ -24,3 +24,12 @@ alias kc=kubectl
 alias kcg="kubectl get"
 alias kn="kubens"
 
+# make bash history saving immediate and shared between sessions
+# taken from https://askubuntu.com/a/115625
+# 
+# history -c clears the history of the running session. This will reduce the history counter by the amount of $HISTSIZE. 
+# history -r read the contents of $HISTFILE and insert them in to the current running session history.
+# This will raise the history counter by the amount of lines in $HISTFILE
+shopt -s histappend                      # append to history, don't overwrite it
+export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
+
