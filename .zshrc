@@ -1,3 +1,5 @@
+[[ ! -o login ]] && echo 'Interactive' || return
+
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 ## Jump to start or end of line
@@ -55,4 +57,7 @@ setopt COMPLETE_ALIASES
 #zstyle ':completion:*' rehash true
 # autocompletion with arrow keys
 zstyle ':completion:*' menu select
+
+# kubectl autocompletion
+source <(kubectl completion zsh)
 
