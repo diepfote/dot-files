@@ -4,7 +4,8 @@
 alias ls='ls --color=auto'
 PS1='[\u@\h \W]\$ '
 
-alias hex_little_endian='nvim -c ":%!xxd -e" $@'
+alias hex_little_endian='vim -c ":%!xxd -e" $@'
+alias edit_bash_history='vim -c ":$" ~/.bash_history'
 
 export RED='\033[1;31m'
 export YELLOW='\033[1;33m'
