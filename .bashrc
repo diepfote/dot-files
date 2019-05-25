@@ -6,6 +6,7 @@ PS1='[\u@\h \W]\$ '
 
 alias hex_little_endian='vim -c ":%!xxd -e" $@'
 alias edit_bash_history='vim -c ":$" ~/.bash_history'
+alias git_log_custom='~/Documents/scripts/git_log_custom.sh'
 
 export RED='\033[1;31m'
 export YELLOW='\033[1;33m'
