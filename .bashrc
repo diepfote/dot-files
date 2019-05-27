@@ -25,6 +25,8 @@ alias kbg="kubectl get"
 alias kc=kubectl
 alias kcg="kubectl get"
 alias kn="kubens"
+alias kbD="kubectl delete"
+alias kba="kubectl apply"
 
 # make bash history saving immediate and shared between sessions
 # taken from https://askubuntu.com/a/115625
