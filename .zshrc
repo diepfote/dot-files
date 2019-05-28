@@ -1,4 +1,4 @@
-[[ ! -o login ]] && echo 'Interactive' || return
+[[ ! -o login ]] || return
 
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
