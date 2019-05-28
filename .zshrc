@@ -61,6 +61,25 @@ zstyle ':completion:*' menu select
 # kubectl autocompletion
 source <(kubectl completion zsh)
 
+# kubernetes aliases
+alias kb=kubectl
+alias kbg="kubectl get"
+alias kc=kubectl
+alias kcg="kubectl get"
+alias kn="kubens"
+alias kbD="kubectl delete"
+alias kba="kubectl apply"
+
+# minikube config
+export KUBECONFIG=$HOME/.kube/minikube
+
+# aliases
+alias hex_little_endian='vim -c ":%!xxd -e" $@'
+alias edit_bash_history='vim -c ":$" ~/.bash_history'
+alias git_log_custom='~/Documents/scripts/git_log_custom.sh'
+
+
+
 
 #######
 # OH MY ZSH CONFIG
