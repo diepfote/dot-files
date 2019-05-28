@@ -75,7 +75,7 @@ export KUBECONFIG=$HOME/.kube/minikube
 
 # aliases
 alias hex_little_endian='vim -c ":%!xxd -e" $@'
-alias edit_bash_history='vim -c ":$" ~/.bash_history'
+alias edit_zsh_history='vim -c ":$" ~/.zsh_history'
 alias git_log_custom='~/Documents/scripts/git_log_custom.sh'
 
 
