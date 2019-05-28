@@ -73,8 +73,8 @@ xterm*color11:          #687b83
 !xterm*color5:           #875490
 !xterm*color13:          #AD7FA8
 !! Cyans
-!xterm*color6:           #06989A
-!xterm*color14:          #34E2E2
+xterm*color6:           #06989A
+xterm*color14:          #34E2E2
 !! Whites
 !xterm*color7:           #D3D7CF
 !xterm*color15:          #EEEEEC
