@@ -1,6 +1,7 @@
 !! put the following in ~/.Xdefaults (then run: $ xrdb ~/.Xdefaults):
 !!
-xterm.termName:       xterm-256color
+!xterm.termName:       xterm-256color
+xterm.termName:       tmux-256color
 ! normal term session
 xterm.vt100.geometry: 122x61
 ! tmux two panes
