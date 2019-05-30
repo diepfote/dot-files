@@ -8,6 +8,11 @@ alias hex_little_endian='vim -c ":%!xxd -e" $@'
 alias edit_bash_history='vim -c ":$" ~/.bash_history'
 alias git_log_custom='~/Documents/scripts/git_log_custom.sh'
 
+
+sh_functions_file=~/.sh_functions 
+[[ ! -f "$sh_functions_file" ]] && ~/Documents/scripts/generate_sh_functions_based_on_fish_shell_functions.sh
+source "$sh_functions_file"
+
 export RED='\033[1;31m'
 export YELLOW='\033[1;33m'
 export GREEN='\033[1;32m'
