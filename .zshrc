@@ -66,6 +66,7 @@ export KUBECONFIG=$HOME/.kube/minikube
 alias hex_little_endian='vim -c ":%!xxd -e" $@'
 alias edit_zsh_history='vim -c ":$" ~/.zsh_history'
 alias git_log_custom='~/Documents/scripts/git_log_custom.sh'
+alias fr='fish -c '"$1"''
 
 # enable pos1/home, end and other keys
 #bindkey "${terminfo[khome]}" beginning-of-line
