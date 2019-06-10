@@ -59,6 +59,6 @@ filetype plugin on
 call plug#begin('~/.vim/plugged')
 "    'github_user/repo_name'
 Plug 'dag/vim-fish'
-Plug 'mattn/emmet-vim'
+"Plug 'mattn/emmet-vim'
 
 call plug#end()
