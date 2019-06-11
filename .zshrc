@@ -65,6 +65,9 @@ export KUBECONFIG=$HOME/.kube/minikube
 # PATH
 export PATH="$PATH":$HOME/.krew/bin
 
+# configure to use direnv
+eval "$(direnv hook zsh)" || echo 'No direnv!'
+
 # aliases
 alias hex_little_endian='vim -c ":%!xxd -e" $@'
 alias edit_zsh_history='vim -c ":$" ~/.zsh_history'
