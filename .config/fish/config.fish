@@ -17,7 +17,10 @@ set -x FZF_DEFAULT_OPTS '--height 40% --layout=reverse --border'
 set -gx KUBECONFIG $HOME/.kube/minikube
 
 # configure to use direnv
-#direnv hook fish | source 2>/dev/null || echo 'No direnv!'
+set direnv_present (which direnv 2>/dev/null)
+if [ "$direnv_present" = "/usr/bin/direnv" ]
+  direnv hook fish | source 2>/dev/null
+end
 
 # set colors
 # refer to https://fishshell.com/docs/current/index.html#variables-color

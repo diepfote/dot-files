@@ -37,7 +37,7 @@ alias kba="kubectl apply"
 export PATH="$PATH":$HOME/.krew/bin
 
 # configure to use direnv
-eval "$(direnv hook bash)" || echo 'No direnv!'
+eval "$(direnv hook bash 2>/dev/null || true)"
 
 # make bash history saving immediate and shared between sessions
 # taken from https://askubuntu.com/a/115625
