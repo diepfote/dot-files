@@ -62,6 +62,9 @@ alias kba="kubectl apply"
 # minikube config
 export KUBECONFIG=$HOME/.kube/minikube
 
+# PATH
+export PATH="$PATH":$HOME/.krew/bin
+
 # aliases
 alias hex_little_endian='vim -c ":%!xxd -e" $@'
 alias edit_zsh_history='vim -c ":$" ~/.zsh_history'
