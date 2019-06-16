@@ -25,6 +25,7 @@ autocmd BufRead,BufNewFile *.tex setlocal spell spelllang=de_at
 " set ft
 autocmd BufRead,BufNewFile *.bib set ft=tex
 autocmd BufRead,BufNewFile *.local set ft=sh
+autocmd BufRead,BufNewFile *.profile set ft=sh
 autocmd BufRead,BufNewFile *.rc set ft=sh
 autocmd BufRead,BufNewFile *.service set ft=sh
 autocmd BufRead,BufNewFile *.conf set ft=sh
