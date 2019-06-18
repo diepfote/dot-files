@@ -4,6 +4,11 @@ set number
 syntax on
 filetype plugin indent on
 
+" security fixes
+"
+set modelines=0
+set nomodeline
+
 
 " start custom tab settings
 autocmd filetype py set tabstop=4 softtabstop=0 expandtab shiftwidth=4 smarttab
