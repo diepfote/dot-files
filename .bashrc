@@ -47,5 +47,5 @@ eval "$(direnv hook bash 2>/dev/null || true)"
 # This will raise the history counter by the amount of lines in $HISTFILE
 shopt -s histappend                      # append to history, don't overwrite it
 export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
-export PS1="\$?\$ "
+export PS1="\$(tmux list-pane | grep active | cut -d ']' -f3 | cut -d ' ' -f2);$?\$ "
 
