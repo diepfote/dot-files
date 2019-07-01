@@ -47,5 +47,15 @@ eval "$(direnv hook bash 2>/dev/null || true)"
 # This will raise the history counter by the amount of lines in $HISTFILE
 shopt -s histappend                      # append to history, don't overwrite it
 export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
-export PS1="\$(tmux list-pane | grep active | cut -d ']' -f3 | cut -d ' ' -f2);$?\$ "
 
+# prompt style start
+tmux_id () {
+  tmux list-pane | grep active | cut -d ']' -f3 | cut -d ' ' -f2
+}
+
+parse_git_branch() {
+      git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ \1/'
+}
+export PS1="[ $(tmux_id) | \u@\h \W\[\033[32m\] \$(parse_git_branch)\[\033[00m\]] $ "
+
+# prompt style end
