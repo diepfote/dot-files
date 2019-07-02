@@ -48,14 +48,27 @@ eval "$(direnv hook bash 2>/dev/null || true)"
 shopt -s histappend                      # append to history, don't overwrite it
 export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 
+# ---------------------------
 # prompt style start
-tmux_id () {
+tmux_id ()
+{
   tmux list-pane | grep active | cut -d ']' -f3 | cut -d ' ' -f2
 }
 
-parse_git_branch() {
-      git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ \1/'
+# kubernetes context
+show_kubernetes_context ()
+{
+  cat $KUBECONFIG | grep current\-context | cut -d ' ' -f2
 }
-export PS1="[ $(tmux_id) | \u@\h \W\[\033[32m\] \$(parse_git_branch)\[\033[00m\] >$(env | grep KUBECONFIG | cut -d '/' -f5)< ] $ "
+
+parse_git_branch() 
+{
+  git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ \1/'
+}
+
+# !! remember to ecaspe dollar sign, otherwise PS1 caches the output !!
+export PS1="[ \$(tmux_id) | \u@\h \W\[\033[32m\] \$(parse_git_branch)\[\033[00m\] >\$(show_kubernetes_context)< ] $ "
 
 # prompt style end
+# --------------------------
+
