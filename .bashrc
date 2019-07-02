@@ -46,6 +46,7 @@ eval "$(direnv hook bash 2>/dev/null || true)"
 # history -r read the contents of $HISTFILE and insert them in to the current running session history.
 # This will raise the history counter by the amount of lines in $HISTFILE
 shopt -s histappend                      # append to history, don't overwrite it
+export HISTFILESIZE=300000
 export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 
 # ---------------------------
