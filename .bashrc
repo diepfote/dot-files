@@ -71,7 +71,7 @@ parse_git_branch()
 }
 
 # !! remember to ecaspe dollar sign, otherwise PS1 caches the output !!
-export PS1="[ \$(tmux_id) | \u@\h \W\[\033[32m\] \$(parse_git_branch)\[\033[00m\] \
+export PS1="[ \$(tmux_id) |  \W\[\033[32m\] \$(parse_git_branch)\[\033[00m\] \
   >\$(show_kubernetes_context)<  \033[1;33m(\$(show_kubernetes_namespace))\033[0m ]\n$ "
 
 # prompt style end
