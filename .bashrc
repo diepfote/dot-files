@@ -1,3 +1,5 @@
+#set -x
+
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
@@ -58,12 +60,35 @@ tmux_id ()
 
 show_kubernetes_context ()
 {
-  cat $KUBECONFIG | grep current\-context | cut -d ' ' -f2
+  minikube_running="$(ps -ef | grep -v grep | grep minikube)"
+  minikube_configured="$(cat $KUBECONFIG | grep current\-context | cut -d ' ' -f2 | grep minikube)"
+
+  output="($(cat $KUBECONFIG | grep current\-context | cut -d ' ' -f2))  "
+
+  if [ -z "$minikube_configured" ]; then
+    echo -n "$output"
+  else
+    if [ ! -z "$minikube_running" ]; then
+      echo -n "$output"
+    fi
+  fi
+  
 }
 
 show_kubernetes_namespace ()
 {
-  kubectl config view | grep namespace | cut -d ':' -f2 | cut -d ' ' -f2
+  minikube_running="$(ps -ef | grep -v grep | grep minikube)"
+  minikube_configured="$(cat $KUBECONFIG | grep current\-context | cut -d ' ' -f2 | grep minikube)"
+
+  output=">$(kubectl config view | grep namespace | cut -d ':' -f2 | cut -d ' ' -f2)< "
+
+  if [ -z "$minikube_configured" ]; then
+    echo -n "$output"
+  else
+    if [ ! -z "$minikube_running" ]; then
+      echo -n "$output"
+    fi
+  fi
 }
 
 parse_git_branch() 
@@ -73,7 +98,7 @@ parse_git_branch()
 
 # !! remember to ecaspe dollar sign, otherwise PS1 caches the output !!
 export PS1="[ \$(tmux_id) |  \W\[\033[32m\] \$(parse_git_branch)\[\033[00m\] \
-  >\$(show_kubernetes_context)<  \033[1;33m(\$(show_kubernetes_namespace))\033[0m ]\n$ "
+\$(show_kubernetes_context)\033[1;33m\$(show_kubernetes_namespace)\033[0m]\n$ "
 
 # prompt style end
 # --------------------------
