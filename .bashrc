@@ -20,9 +20,6 @@ export YELLOW='\033[1;33m'
 export GREEN='\033[1;32m'
 export NC='\033[0m'
 
-# minikube config
-export KUBECONFIG=$HOME/.kube/minikube
-
 # kubernetes autocompletion
 source <(kubectl completion bash)
 
@@ -34,6 +31,18 @@ alias kcg="kubectl get"
 alias kn="kubens"
 alias kbD="kubectl delete"
 alias kba="kubectl apply"
+
+
+# auotmatically add all config files as a colon delimited string in KUBECONFIG
+unset KUBECONFIG
+for file in ~/.kube/* ; do
+  if [ "$(basename $file)" == "kubectx" ]; then
+    echo 1>/dev/null
+  elif [ -f $file ]; then
+    export KUBECONFIG=$KUBECONFIG:$file
+  fi
+done
+
 
 # PATH
 export PATH="$PATH":$HOME/.krew/bin
@@ -58,13 +67,18 @@ tmux_id ()
   tmux list-pane | grep active | cut -d ']' -f3 | cut -d ' ' -f2
 }
 
+set_kubernetes_vars ()
+{
+   context="$(kubectl config current-context 2>/dev/null || true )"
+   namespace="$(kubectl config view | grep -A 100 "$(kubectl config current-context 2>/dev/null || true  | sed 's#.*@##')" | grep namespace | sed 's#.*namespace: ##')"
+
+   minikube_running="$(ps -ef | grep -v grep | grep minikube)"
+   minikube_configured="$(kubectl config current-context 2>/dev/null || true | grep minikube)"
+}
+
 show_kubernetes_context ()
 {
-  local context="$(kubectl config current-context)"
-  local namespace="$(kubectl config view | grep -A 100 $(kubectl config current-context | sed 's#.*@##') | grep namespace | sed 's#.*namespace: ##')"
-
-  local minikube_running="$(ps -ef | grep -v grep | grep minikube)"
-  local minikube_configured="$(kubectl config current-context | grep minikube)"
+  set_kubernetes_vars
 
   local output="($context)  "
 
@@ -80,11 +94,7 @@ show_kubernetes_context ()
 
 show_kubernetes_namespace ()
 {
-  local context="$(kubectl config current-context)"
-  local namespace="$(kubectl config view | grep -A 100 $(kubectl config current-context | sed 's#.*@##') | grep namespace | sed 's#.*namespace: ##')"
-
-  local minikube_running="$(ps -ef | grep -v grep | grep minikube)"
-  local minikube_configured="$(kubectl config current-context | grep minikube)"
+  set_kubernetes_vars
 
   local output=">$namespace< "
 
