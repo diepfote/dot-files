@@ -60,10 +60,13 @@ tmux_id ()
 
 show_kubernetes_context ()
 {
-  minikube_running="$(ps -ef | grep -v grep | grep minikube)"
-  minikube_configured="$(cat $KUBECONFIG | grep current\-context | cut -d ' ' -f2 | grep minikube)"
+  local context="$(kubectl config current-context)"
+  local namespace="$(kubectl config view | grep -A 100 $(kubectl config current-context | sed 's#.*@##') | grep namespace | sed 's#.*namespace: ##')"
 
-  output="($(cat $KUBECONFIG | grep current\-context | cut -d ' ' -f2))  "
+  local minikube_running="$(ps -ef | grep -v grep | grep minikube)"
+  local minikube_configured="$(kubectl config current-context | grep minikube)"
+
+  local output="($context)  "
 
   if [ -z "$minikube_configured" ]; then
     echo -n "$output"
@@ -77,10 +80,13 @@ show_kubernetes_context ()
 
 show_kubernetes_namespace ()
 {
-  minikube_running="$(ps -ef | grep -v grep | grep minikube)"
-  minikube_configured="$(cat $KUBECONFIG | grep current\-context | cut -d ' ' -f2 | grep minikube)"
+  local context="$(kubectl config current-context)"
+  local namespace="$(kubectl config view | grep -A 100 $(kubectl config current-context | sed 's#.*@##') | grep namespace | sed 's#.*namespace: ##')"
 
-  output=">$(kubectl config view | grep namespace | cut -d ':' -f2 | cut -d ' ' -f2)< "
+  local minikube_running="$(ps -ef | grep -v grep | grep minikube)"
+  local minikube_configured="$(kubectl config current-context | grep minikube)"
+
+  local output=">$namespace< "
 
   if [ -z "$minikube_configured" ]; then
     echo -n "$output"
