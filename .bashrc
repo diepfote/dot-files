@@ -69,11 +69,11 @@ tmux_id ()
 
 set_kubernetes_vars ()
 {
-   context="$(kubectl config current-context 2>/dev/null || true )"
-   namespace="$(kubectl config view | grep -A 100 "$(kubectl config current-context 2>/dev/null || true  | sed 's#.*@##')" | grep namespace | sed 's#.*namespace: ##')"
+   context="$(kubectl config current-context)"
+   namespace="$(kubectl config view | grep -A 100 "$(kubectl config current-context | sed 's#.*@##')" | grep namespace | head -n1 |  sed 's#.*namespace: ##')"
 
    minikube_running="$(ps -ef | grep -v grep | grep minikube)"
-   minikube_configured="$(kubectl config current-context 2>/dev/null || true | grep minikube)"
+   minikube_configured="$(kubectl config current-context | grep minikube)"
 }
 
 show_kubernetes_context ()
