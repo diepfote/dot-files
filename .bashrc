@@ -15,9 +15,13 @@ sh_functions_file=~/.sh_functions
 [[ ! -f "$sh_functions_file" ]] && ~/Documents/scripts/generate_sh_functions_based_on_fish_shell_functions.sh
 source "$sh_functions_file"
 
+export PURPLE='\033[1;35m'
+export ORANGE='\033[0;33m'
+export CYAN='\033[1;36m'
 export RED='\033[1;31m'
 export YELLOW='\033[1;33m'
 export GREEN='\033[1;32m'
+export LIGHT_GREEN='\033[0;32m'
 export NC='\033[0m'
 
 # kubernetes autocompletion
@@ -113,9 +117,16 @@ parse_git_branch()
   git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ \1/'
 }
 
+# enable __git_ps1 command
+source /usr/share/git/completion/git-prompt.sh  # installed with git
+# settings for __git_ps1
+export GIT_PS1_SHOWDIRTYSTATE=1  # + for staged, * if unstaged.
+export GIT_PS1_SHOWUNTRACKEDFILES=1  #  % if there are untracked files.
+export GIT_PS1_SHOWUPSTREAM='verbose'  # 'u='=no difference, 'u+1'=ahead by 1 commit 
+
 # !! remember to ecaspe dollar sign, otherwise PS1 caches the output !!
-export PS1="[ \$(tmux_id) |  \W\[\033[32m\] \$(parse_git_branch)\[\033[00m\] \
-\$(show_kubernetes_context)\033[1;33m\$(show_kubernetes_namespace)\033[0m]\n$ "
+export PS1="[ \$(tmux_id) |  $LIGHT_GREEN\w$NC$PURPLE\$(__git_ps1)$NC \
+\$(show_kubernetes_context)$YELLOW\$(show_kubernetes_namespace)$NC]\n$ "
 
 # prompt style end
 # --------------------------
