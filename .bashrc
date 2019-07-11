@@ -36,6 +36,7 @@ alias kn="kubens"
 alias kbD="kubectl delete"
 alias kba="kubectl apply"
 alias kctx="kubectx"
+alias kx="kubectx"
 
 
 # auotmatically add all config files as a colon delimited string in KUBECONFIG

@@ -58,6 +58,8 @@ alias kcg="kubectl get"
 alias kn="kubens"
 alias kbD="kubectl delete"
 alias kba="kubectl apply"
+alias kctx="kubectx"
+alias kx="kubectx"
 
 # minikube config
 export KUBECONFIG=$HOME/.kube/minikube
