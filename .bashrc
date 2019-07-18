@@ -42,7 +42,8 @@ export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 #export PS1="[ \$(tmux_id) |  $LIGHT_GREEN\w$NC$PURPLE\$(__git_ps1)$NC \
 #\$(show_kubernetes_context)$YELLOW\$(show_kubernetes_namespace)$NC]\n$ "
 
-export PS1="[ $LIGHT_GREEN\w$NC$PURPLE\$(__git_ps1)$NC ]\n$ " 
+
+export PS1="[ $LIGHT_GREEN\w$NC$PURPLE\$(__git_ps1)$NC $RED\$?$NC ]\n$ " 
 
 #
 # prompt style end
