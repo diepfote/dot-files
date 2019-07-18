@@ -10,6 +10,10 @@ source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 #bindkey '\e[F' end-of-line
 #bindkey '\e[1~' beginning-of-line
 #bindkey '\e[4~' end-of-line
+#
+#bindkey "${terminfo[khome]}" beginning-of-line
+#bindkey "${terminfo[kend]}" end-of-line
+#bindkey "${terminfo[kdch1]}" delete-char
 
 ## Do not delete characters on CTRL+ARROW; jump words
 bindkey "^[[1;5C" forward-word
@@ -47,43 +51,24 @@ setopt COMPLETE_ALIASES
 # autocompletion with arrow keys
 zstyle ':completion:*' menu select
 
-# kubectl autocompletion
-source <(kubectl completion zsh)
 
-# kubernetes aliases
-alias kb=kubectl
-alias kbg="kubectl get"
-alias kc=kubectl
-alias kcg="kubectl get"
-alias kn="kubens"
-alias kbD="kubectl delete"
-alias kba="kubectl apply"
-alias kctx="kubectx"
-alias kx="kubectx"
-alias ktx="kubectx"
 
-# minikube config
-export KUBECONFIG=$HOME/.kube/minikube
 
-# PATH
-export PATH="$PATH":$HOME/.krew/bin
 
 # configure to use direnv
-eval "$(direnv hook zsh 2>/dev/null || true)"
+#eval "$(direnv hook zsh 2>/dev/null || true)"
 
-# aliases
-alias hex_little_endian='vim -c ":%!xxd -e" $@'
-alias edit_zsh_history='vim -c ":$" ~/.zsh_history'
-alias git_log_custom='~/Documents/scripts/git_log_custom.sh'
+source ~/Documents/scripts/source-me_posix-compliant-shells.sh
 
-sh_functions_file=~/.sh_functions 
-[[ ! -f "$sh_functions_file" ]] && ~/Documents/scripts/generate_sh_functions_based_on_fish_shell_functions.sh
-source "$sh_functions_file"
+# kubectl autocompletion
+source <(kubectl completion zsh
 
-# enable pos1/home, end and other keys
-#bindkey "${terminfo[khome]}" beginning-of-line
-#bindkey "${terminfo[kend]}" end-of-line
-#bindkey "${terminfo[kdch1]}" delete-char
+
+
+
+
+
+
 
 #######
 # OH MY ZSH CONFIG

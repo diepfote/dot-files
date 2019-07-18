@@ -6,56 +6,19 @@
 alias ls='ls --color=auto'
 PS1='[\u@\h \W]\$ '
 
-alias hex_little_endian='vim -c ":%!xxd -e" $@'
-alias edit_bash_history='vim -c ":$" ~/.bash_history'
-alias git_log_custom='~/Documents/scripts/git_log_custom.sh'
 
 
-sh_functions_file=~/.sh_functions 
-[[ ! -f "$sh_functions_file" ]] && ~/Documents/scripts/generate_sh_functions_based_on_fish_shell_functions.sh
-source "$sh_functions_file"
 
-export PURPLE='\033[1;35m'
-export ORANGE='\033[0;33m'
-export CYAN='\033[1;36m'
-export RED='\033[1;31m'
-export YELLOW='\033[1;33m'
-export GREEN='\033[1;32m'
-export LIGHT_GREEN='\033[0;32m'
-export NC='\033[0m'
+# configure to use direnv
+#eval "$(direnv hook bash 2>/dev/null || true)"
+
+source ~/Documents/scripts/source-me_posix-compliant-shells.sh
 
 # kubernetes autocompletion
 source <(kubectl completion bash)
 
-# kubernetes aliases
-alias kb=kubectl
-alias kbg="kubectl get"
-alias kc=kubectl
-alias kcg="kubectl get"
-alias kn="kubens"
-alias kbD="kubectl delete"
-alias kba="kubectl apply"
-alias kctx="kubectx"
-alias kx="kubectx"
-alias ktx="kubectx"
 
 
-# auotmatically add all config files as a colon delimited string in KUBECONFIG
-unset KUBECONFIG
-for file in ~/.kube/* ; do
-  if [ "$(basename $file)" == "kubectx" ]; then
-    echo 1>/dev/null
-  elif [ -f $file ]; then
-    export KUBECONFIG=$KUBECONFIG:$file
-  fi
-done
-
-
-# PATH
-export PATH="$PATH":$HOME/.krew/bin
-
-# configure to use direnv
-eval "$(direnv hook bash 2>/dev/null || true)"
 
 # make bash history saving immediate and shared between sessions
 # taken from https://askubuntu.com/a/115625
@@ -67,69 +30,21 @@ shopt -s histappend                      # append to history, don't overwrite it
 export HISTFILESIZE=300000
 export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 
-# ---------------------------
+
+# --------------------------
 # prompt style start
-tmux_id ()
-{
-  tmux list-pane | grep active | cut -d ']' -f3 | cut -d ' ' -f2
-}
+#
 
-set_kubernetes_vars ()
-{
-   context="$(kubectl config current-context)"
-   namespace="$(kubectl config get-contexts | grep \* | tr -s ' ' | cut -d ' ' -f5)"
+# !! remember to ecaspe dollar signs, otherwise PS1 caches the output !!
+#source ~/Documents/scripts/source-me_prompt-style.sh
+#source ~/Documents/scripts/tmux_info.sh
 
-   minikube_running="$(ps -ef | grep -v grep | grep minikube)"
-   minikube_configured="$(kubectl config current-context | grep minikube)"
-}
+#export PS1="[ \$(tmux_id) |  $LIGHT_GREEN\w$NC$PURPLE\$(__git_ps1)$NC \
+#\$(show_kubernetes_context)$YELLOW\$(show_kubernetes_namespace)$NC]\n$ "
 
-show_kubernetes_context ()
-{
-  set_kubernetes_vars
+export PS1="[ $LIGHT_GREEN\w$NC$PURPLE\$(__git_ps1)$NC ]\n$ " 
 
-  local output="($context)  "
-
-  if [ -z "$minikube_configured" ]; then
-    echo -n "$output"
-  else
-    if [ ! -z "$minikube_running" ]; then
-      echo -n "$output"
-    fi
-  fi
-  
-}
-
-show_kubernetes_namespace ()
-{
-  set_kubernetes_vars
-
-  local output=">$namespace< "
-
-  if [ -z "$minikube_configured" ]; then
-    echo -n "$output"
-  else
-    if [ ! -z "$minikube_running" ]; then
-      echo -n "$output"
-    fi
-  fi
-}
-
-parse_git_branch() 
-{
-  git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ \1/'
-}
-
-# enable __git_ps1 command
-source /usr/share/git/completion/git-prompt.sh  # installed with git
-# settings for __git_ps1
-export GIT_PS1_SHOWDIRTYSTATE=1  # + for staged, * if unstaged.
-export GIT_PS1_SHOWUNTRACKEDFILES=1  #  % if there are untracked files.
-export GIT_PS1_SHOWUPSTREAM='verbose'  # 'u='=no difference, 'u+1'=ahead by 1 commit 
-
-# !! remember to ecaspe dollar sign, otherwise PS1 caches the output !!
-export PS1="[ \$(tmux_id) |  $LIGHT_GREEN\w$NC$PURPLE\$(__git_ps1)$NC \
-\$(show_kubernetes_context)$YELLOW\$(show_kubernetes_namespace)$NC]\n$ "
-
+#
 # prompt style end
 # --------------------------
 
