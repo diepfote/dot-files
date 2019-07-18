@@ -61,7 +61,7 @@ zstyle ':completion:*' menu select
 source ~/Documents/scripts/source-me_posix-compliant-shells.sh
 
 # kubectl autocompletion
-source <(kubectl completion zsh
+source <(kubectl completion zsh)
 
 
 
