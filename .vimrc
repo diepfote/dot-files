@@ -1,6 +1,10 @@
 set tabstop=2 softtabstop=0 expandtab shiftwidth=2 smarttab
 set number
 
+" display filename for current file
+"
+set ls=2
+
 syntax on
 filetype plugin indent on
 
