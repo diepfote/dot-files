@@ -13,9 +13,6 @@ set -x PYTHONSTARTUP "$user_dir/.python_startup"
 set -x FZF_DEFAULT_COMMAND 'find ~'
 set -x FZF_DEFAULT_OPTS '--height 40% --layout=reverse --border'
 
-# minikube config file
-set -gx KUBECONFIG $HOME/.kube/minikube
-
 # configure to use direnv
 set direnv_present (which direnv 2>/dev/null)
 if [ "$direnv_present" = "/usr/bin/direnv" ]
