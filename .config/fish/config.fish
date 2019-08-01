@@ -78,7 +78,7 @@ and not set -q TMUX
   #
   # when C-d is hit the session is closed
   # accidentally closing the window does not end the session
-  tmux
+  tmux -u new
 end
 #
 #
