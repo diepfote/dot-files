@@ -8,7 +8,7 @@ alias grep='grep --color'
 
 
 # configure to use direnv
-#eval "$(direnv hook bash 2>/dev/null || true)"
+eval "$(direnv hook bash 2>/dev/null || true)"
 
 source ~/Documents/scripts/source-me_posix-compliant-shells.sh
 
@@ -42,7 +42,7 @@ export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 #\$(show_kubernetes_context)$YELLOW\$(show_kubernetes_namespace)$NC]\n$ "
 
 
-export PS1="[ $LIGHT_GREEN\w$NC$PURPLE\$(__git_ps1)$NC ${YELLOW} \$(show_openstack_project)  $RED\$?$NC ]\n$ " 
+export PS1="[ $LIGHT_GREEN\w$NC$PURPLE\$(__git_ps1)$NC${YELLOW} \$(show_openstack_project)$RED\$?$NC ]\n$ " 
 
 #
 # prompt style end
