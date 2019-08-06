@@ -2,6 +2,7 @@
 
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
+[[ -z "$TMUX" ]] && tmux
 
 alias ls='ls --color=auto'
 alias grep='grep --color'
