@@ -83,7 +83,7 @@ autocmd FileType fish compiler fish
     " IMPORTANT: :help Ncm2PopupOpen for more information
     set completeopt=noinsert,menuone,noselect
 
-    colorscheme delek
+  colorscheme desert
     
   endif
 " ####
