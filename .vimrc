@@ -144,12 +144,10 @@ if has('nvim')
     "connection to vlime server)
   "Plug 'l04m33/vlime'  "https://github.com/l04m33/vlime#quickstart
 
-  "Plug 'wellle/tmux-complete'  "vim completions from other tmux panes
+  Plug 'wellle/tmux-complete.vim' "vim completions from other tmux panes
 endif
-
-
 
   
 
-
 call plug#end()
+
