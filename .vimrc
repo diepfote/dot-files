@@ -59,6 +59,8 @@ autocmd BufRead,BufNewFile *.conf set ft=sh
 "-- solarized themes end --
 "colorscheme elflord  " used in the artofexploitation vm
 "colorscheme luna  " curl -L 'https://raw.githubusercontent.com/notpratheek/vim-luna/master/colors/luna-term.vim' -o ~/.vim/colors/luna.vim
+"colorscheme breve  " curl -L 'https://raw.githubusercontent.com/AlessandroYorba/Breve/master/colors/breve.vim' -o ~/.vim/colors/breve.vim
+
 
 
 " -----------------
@@ -83,7 +85,8 @@ autocmd FileType fish compiler fish
     " IMPORTANT: :help Ncm2PopupOpen for more information
     set completeopt=noinsert,menuone,noselect
 
-  colorscheme desert
+    set termguicolors
+    colorscheme breve
     
   endif
 " ####
@@ -135,13 +138,13 @@ if has('nvim')
   " our wiki page for a list of sources: https://github.com/ncm2/ncm2/wiki
   Plug 'ncm2/ncm2-bufword'
   Plug 'ncm2/ncm2-path'
-  
-  
-  " ----------
+  Plug 'ncm2/ncm2-jedi'  " python completions
 
-  " colorscheme
-  "Plug 'rakr/vim-one'
-  
+  "Plug 'HiPhish/ncm2-vlime'  "  completions taken from vlime (requires
+    "connection to vlime server)
+  "Plug 'l04m33/vlime'  "https://github.com/l04m33/vlime#quickstart
+
+  "Plug 'wellle/tmux-complete'  "vim completions from other tmux panes
 endif
 
 
