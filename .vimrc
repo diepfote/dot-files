@@ -111,6 +111,24 @@ autocmd FileType fish compiler fish
 "
 " -----------------------
 
+" -----------------------
+" tmux-complete settings
+"
+" to enable fuzzy matching disable filter_prefix -> set to 0
+let g:tmuxcomplete#asyncomplete_source_options = {
+            \ 'name':      'tmuxcomplete',
+            \ 'whitelist': ['*'],
+            \ 'config': {
+            \     'splitmode':      'words',
+            \     'filter_prefix':   0,
+            \     'show_incomplete': 1,
+            \     'sort_candidates': 0,
+            \     'scrollback':      0,
+            \     'truncate':        0
+            \     }
+            \ }
+
+" -----------------------
 
 
 
