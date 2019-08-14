@@ -86,7 +86,7 @@ autocmd FileType fish compiler fish
     set completeopt=noinsert,menuone,noselect
 
     set termguicolors
-    colorscheme breve
+    colorscheme white  "-> 'flazz/vim-colorschemes'
     
   endif
 " ####
@@ -163,6 +163,8 @@ if has('nvim')
   "Plug 'l04m33/vlime'  "https://github.com/l04m33/vlime#quickstart
 
   Plug 'wellle/tmux-complete.vim' "vim completions from other tmux panes
+
+  Plug 'flazz/vim-colorschemes'
 endif
 
   
