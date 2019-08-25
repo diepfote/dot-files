@@ -86,7 +86,7 @@ autocmd FileType fish compiler fish
     set completeopt=noinsert,menuone,noselect
 
     set termguicolors
-    colorscheme white  "-> 'flazz/vim-colorschemes'
+    colorscheme lingodirector  "-> 'flazz/vim-colorschemes'
     
   endif
 " ####
