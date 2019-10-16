@@ -23,9 +23,9 @@ au bufenter *.c set tabstop=4 softtabstop=0 expandtab shiftwidth=4 smarttab
 au bufenter *.hs set tabstop=4 softtabstop=0 expandtab shiftwidth=4 smarttab
 
   " assembly  
-  au bufenter *.asm set tabstop=4 softtabstop=0 expandtab! shiftwidth=4 smarttab
-  au bufenter *.S set tabstop=4 softtabstop=0 expandtab! shiftwidth=4 smarttab
-  au bufenter *.s set tabstop=4 softtabstop=0 expandtab! shiftwidth=4 smarttab
+  au bufenter *.asm set tabstop=4 softtabstop=0 expandtab shiftwidth=4 smarttab
+  au bufenter *.S set tabstop=4 softtabstop=0 expandtab shiftwidth=4 smarttab
+  au bufenter *.s set tabstop=4 softtabstop=0 expandtab shiftwidth=4 smarttab
 
   " do not expand tabs
   au bufenter *.cfg set tabstop=2 softtabstop=0 expandtab! shiftwidth=2 smarttab
