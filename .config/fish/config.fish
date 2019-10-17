@@ -4,8 +4,8 @@ if [ "$is_ubuntu" != "" ]
   set LANGUAGE en_GB:en
 end
 
-set -gx EDITOR vi
-set -gx VISUAL vi
+set -gx EDITOR nvim
+set -gx VISUAL nvim
 
 set -x user_dir (eval echo ~$USER) 
 set -x PYTHONSTARTUP "$user_dir/.python_startup"
