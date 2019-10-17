@@ -72,6 +72,10 @@ if test "$any_inactive_keybase" = "inactive"
   systemctl --user restart keybase kbfs
 end
 
+# source self-written completions
+source ~/.config/fish/completions/*
+
+
 if status is-interactive 
 and not set -q TMUX
   #exec tmux
