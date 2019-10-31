@@ -73,7 +73,7 @@ if test "$any_inactive_keybase" = "inactive"
 end
 
 # source self-written completions
-source ~/.config/fish/completions/*
+source ~/.config/fish/completions/*.fish
 
 
 if status is-interactive 
