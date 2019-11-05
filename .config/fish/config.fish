@@ -82,7 +82,8 @@ and not set -q TMUX
   #
   # when C-d is hit the session is closed
   # accidentally closing the window does not end the session
-  tmux -u new
+  #
+  tmux -2 -u new  # -u -> utf-8; -2 -> force 256 colors
 end
 #
 #

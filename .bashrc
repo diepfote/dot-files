@@ -2,7 +2,7 @@
 
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
-[[ -z "$TMUX" ]] && tmux -u new
+[[ -z "$TMUX" ]] && tmux -2 -u new  # -u -> utf-8; -2 -> force 256 colors
 
 alias ls='ls --color=auto'
 alias grep='grep --color'
