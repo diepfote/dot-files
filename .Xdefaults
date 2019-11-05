@@ -4,7 +4,7 @@
 !xterm.termName:       xterm-256color
 
 ! normal term session
-xterm.vt100.geometry: 122x61
+xterm.vt100.geometry: 88x38
 ! tmux two panes
 !xterm.vt100.geometry: 151x73
 
