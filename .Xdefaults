@@ -59,8 +59,9 @@ xterm*faceSize: 10
 !xterm*color9:           #EF2929
 !! Greens
 !!xterm*color2:           #4E9A06
-!xterm*color2:           #55a806
-!xterm*color10:          #8AE234
+!!xterm*color2:           #55a806
+!xterm*color2:           #69c726
+xterm*color10:          #8AE234
 !! Yellows
 !xterm*color3:           #C4A000
 !xterm*color11:          #FCE94F
