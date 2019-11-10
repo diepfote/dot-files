@@ -14,9 +14,11 @@ eval "$(direnv hook bash 2>/dev/null || true)"
 source ~/Documents/scripts/source-me_posix-compliant-shells.sh
 source ~/Documents/scripts/source-me_bash_passwd_script_autocompletion.sh
 
-# kubernetes autocompletion
-source <(kubectl completion bash)
 
+# kubernetes autocompletion
+if type kubectl 2>/dev/null; then
+  source <(kubectl completion bash)
+fi
 
 
 
