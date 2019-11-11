@@ -4,6 +4,18 @@
 [[ $- != *i* ]] && return
 [[ -z "$TMUX" ]] && tmux -2 -u new  # -u -> utf-8; -2 -> force 256 colors
 
+
+# ----
+# keybindings | bind settings | binding settings
+
+# set fish <CTRL+W> behavior; pressing <CTRL+W> deletes until next '/' for filenames
+stty werase undef
+bind '\C-w:unix-filename-rubout'
+
+#
+# ----
+
+
 alias ls='ls --color=auto'
 alias grep='grep --color'
 
