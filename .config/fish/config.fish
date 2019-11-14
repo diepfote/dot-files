@@ -80,10 +80,11 @@ if status is-interactive
 and not set -q TMUX
   #exec tmux
   #
-  # when C-d is hit the session is closed
-  # accidentally closing the window does not end the session
-  #
-  tmux -2 -u new  # -u -> utf-8; -2 -> force 256 colors
+  if tmux list-sessions 2>/dev/null
+    tmux -2 -u new  # -u -> utf-8; -2 -> force 256 colors
+  else
+    tmux -2 -u new 'sleep 4; tmux detach'
+  end
 end
 #
 #
