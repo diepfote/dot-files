@@ -176,11 +176,31 @@ if has('nvim')
 
   Plug 'wellle/tmux-complete.vim' " vim completions from other tmux panes (used by ncm2)
 
+  
+  " -----------------------------------
+  " language client start
   Plug 'autozimu/LanguageClient-neovim', {
       \ 'branch': 'next',
       \ 'do': 'bash install.sh',
       \ }
+  
+  "--------
+  " language client settings
+  "
+  " Required for operations modifying multiple buffers like rename.
+  set hidden
 
+  let g:LanguageClient_serverCommands = {
+      \ 'python': ['/usr/bin/pyls'],
+      "\ 'sh': ['bash-language-server', 'start'],
+      "\ 'yaml' : ['/usr/bin/yaml-language-server'],
+      \ }
+
+  nnoremap <F5> :call LanguageClient_contextMenu()<CR>
+
+  "
+  " language server end
+  " -----------------------------------
 
   Plug 'flazz/vim-colorschemes'
 endif
