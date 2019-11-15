@@ -149,21 +149,38 @@ Plug 'dag/vim-fish'
 
 
 if has('nvim')
+
+  " --------------
+  "  ncm2
+  "
+  Plug 'roxma/nvim-yarp', { 'do': ':UpdateRemotePlugins' } " dependency for ncm2
   Plug 'ncm2/ncm2', { 'do': ':UpdateRemotePlugins' }
-  Plug 'roxma/nvim-yarp', { 'do': ':UpdateRemotePlugins' }
 
 
+  
   " NOTE: you need to install completion sources to get completions. Check
   " our wiki page for a list of sources: https://github.com/ncm2/ncm2/wiki
   Plug 'ncm2/ncm2-bufword'
   Plug 'ncm2/ncm2-path'
-  Plug 'ncm2/ncm2-jedi'  " python completions
+  Plug 'ncm2/ncm2-jedi' " python completions
 
+
+  " common lisp
   "Plug 'HiPhish/ncm2-vlime'  "  completions taken from vlime (requires
     "connection to vlime server)
   "Plug 'l04m33/vlime'  "https://github.com/l04m33/vlime#quickstart
 
-  Plug 'wellle/tmux-complete.vim' "vim completions from other tmux panes
+  "
+  " ncm2 end
+  " --------------
+
+  Plug 'wellle/tmux-complete.vim' " vim completions from other tmux panes (used by ncm2)
+
+  Plug 'autozimu/LanguageClient-neovim', {
+      \ 'branch': 'next',
+      \ 'do': 'bash install.sh',
+      \ }
+
 
   Plug 'flazz/vim-colorschemes'
 endif
