@@ -3,7 +3,7 @@ set history save on
 # gef - gdb enhanced features
 # AUR pkg "gef-git"
 #
-#source /usr/share/gef/gef.py
+source /usr/share/gef/gef.py
 
 # pwndbg
 #source /usr/share/pwndbg/gdbinit.py
@@ -11,7 +11,7 @@ set history save on
 # peda
 # Python Exploit Development Assistance for GDB
 #
-source /usr/share/peda/peda.py
+#source /usr/share/peda/peda.py
 
 #set disassembly-flavor att
 set disassembly-flavor intel
