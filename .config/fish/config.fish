@@ -1,11 +1,11 @@
 set is_ubuntu (uname -a | grep Ubuntu)
 if [ "$is_ubuntu" != "" ]
-  set LANG en_GB.UTF-8
-  set LANGUAGE en_GB:en
+  set -x LANG en_GB.UTF-8
+  set -x LANGUAGE en_GB:en
 end
 
-set -gx EDITOR nvim
-set -gx VISUAL nvim
+set -x EDITOR nvim
+set -x VISUAL nvim
 
 set -x user_dir (eval echo ~$USER) 
 set -x PYTHONSTARTUP "$user_dir/.python_startup"
@@ -19,6 +19,13 @@ if [ "$direnv_present" = "/usr/bin/direnv" ]
   direnv hook fish | source 2>/dev/null
 end
 
+
+# colorize man pages using 'bat'
+set -x MANPAGER "sh -c 'col -bx | bat -l man -p'"
+
+
+
+#
 # set colors
 # refer to https://fishshell.com/docs/current/index.html#variables-color
 #
@@ -52,14 +59,14 @@ end
 #
 #set custom_green 13d400
 #set custom_yellow fcbd0f
-#set -gx fish_color_command c399f8
-#set -gx fish_color_param "$custom_green"
-#set -gx fish_color_end normal
-#set -gx fish_color_escape "$custom_green"
-#set -gx fish_pager_color_description "$custom_yellow"
-#set -gx fish_color_quote "$custom_yellow"
-#set -gx fish_color_autosuggestion 848484
-set -gx fish_color_operator fa5bd0
+#set -x fish_color_command c399f8
+#set -x fish_color_param "$custom_green"
+#set -x fish_color_end normal
+#set -x fish_color_escape "$custom_green"
+#set -x fish_pager_color_description "$custom_yellow"
+#set -x fish_color_quote "$custom_yellow"
+#set -x fish_color_autosuggestion 848484
+set -x fish_color_operator fa5bd0
 
 # due to https://phoenhex.re/2018-03-25/not-a-vagrant-bug
 set -x VAGRANT_DISABLE_VBOXSYMLINKCREATE 1
