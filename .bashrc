@@ -31,9 +31,16 @@ eval "$(direnv hook bash 2>/dev/null || true)"
 source ~/Documents/scripts/source-me_posix-compliant-shells.sh
 source ~/Documents/scripts/source-me_bash_passwd_script_autocompletion.sh
 
+# -----
+# kubectl | kubernetes  just bash
+#
 
-# kubernetes autocompletion
+# kubernetes autocompletion | kubectl autocompletion
 [[ -x kubectl ]] && tsource <(kubectl completion bash)
+
+# helper functions such as 'get_pod' for kubernetes
+source ~/Documents/scripts/kubernetes/source-me_common_functions.sh
+#------------
 
 
 
