@@ -1,5 +1,13 @@
+" do not write backup files and disable viminfo
+set nobackup
+set nowritebackup
+set viminfo=
+
+
+" default file settings
 set tabstop=2 softtabstop=0 expandtab shiftwidth=2 smarttab
 set number
+
 
 " display filename for current file
 "
