@@ -73,12 +73,6 @@ set -x VAGRANT_DISABLE_VBOXSYMLINKCREATE 1
 
 xrdb -merge ~/.Xdefaults
 
-# start keybase services
-set any_inactive_keybase (systemctl --user status keybase kbfs | grep inactive | head -n1 | cut -d ' ' -f5)
-if test "$any_inactive_keybase" = "inactive"
-  systemctl --user restart keybase kbfs
-end
-
 # source self-written completions
 source ~/.config/fish/completions/*.fish
 
