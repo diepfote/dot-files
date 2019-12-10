@@ -6,8 +6,12 @@ set viminfo=
 
 " default file settings
 set tabstop=2 softtabstop=0 expandtab shiftwidth=2 smarttab
-set number
 
+if exists("loaded_less")
+  set nonumber
+else
+  set number
+endif
 
 " display filename for current file
 "
@@ -23,6 +27,8 @@ set modelines=0
 set nomodeline
 " --------------
 
+" enable mouse pointer clicks!
+set mouse=a
 
 " ------------------------
 " start custom tab settings
