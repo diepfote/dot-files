@@ -30,6 +30,11 @@ set nomodeline
 " enable mouse pointer clicks!
 set mouse=a
 
+
+" ------------------------
+"  reload file on external change
+au FocusGained,BufEnter * :silent! !  " trigger file reload when buffer gets focus
+
 " ------------------------
 " start custom tab settings
 autocmd filetype py set tabstop=4 softtabstop=0 expandtab shiftwidth=4 smarttab
