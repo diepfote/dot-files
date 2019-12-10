@@ -74,3 +74,5 @@ export PS1="[ $LIGHT_GREEN\w$NC$PURPLE\$(__git_ps1)$NC${YELLOW} \$(show_openstac
 # prompt style end
 # --------------------------
 
+xrdb -merge ~/.Xdefaults
+
