@@ -13,11 +13,7 @@ set -x PYTHONSTARTUP "$user_dir/.python_startup"
 set -x FZF_DEFAULT_COMMAND 'find ~'
 set -x FZF_DEFAULT_OPTS '--height 40% --layout=reverse --border'
 
-# configure to use direnv
-set direnv_present (which direnv 2>/dev/null)
-if [ "$direnv_present" = "/usr/bin/direnv" ]
-  direnv hook fish | source 2>/dev/null
-end
+eval (direnv hook fish || true)
 
 
 # colorize man pages using 'bat'
