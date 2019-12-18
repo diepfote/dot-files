@@ -1,4 +1,4 @@
-!! put the following in ~/.Xdefaults (then run: $ xrdb ~/.Xdefaults):
+!! put the following in ~/.Xdefaults (then run: $ xrdb -merge ~/.Xdefaults):
 !!
 ! do set this in .tmux.conf
 !xterm.termName:       xterm-256color
