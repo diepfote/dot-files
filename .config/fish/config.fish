@@ -70,7 +70,7 @@ set -x VAGRANT_DISABLE_VBOXSYMLINKCREATE 1
 xrdb -merge ~/.Xdefaults
 
 # source self-written completions
-source ~/.config/fish/completions/*.fish
+source ~/.config/fish/completions
 
 
 if status is-interactive 
