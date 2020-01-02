@@ -65,6 +65,7 @@ autocmd BufRead,BufNewFile *.rc set ft=sh
 autocmd BufRead,BufNewFile *.service set ft=sh
 autocmd BufRead,BufNewFile *.conf set ft=sh
 autocmd BufRead,BufNewFile *.hook set ft=sh
+autocmd BufRead,BufNewFile *.inc set ft=sh
 " -----------------
 
 
