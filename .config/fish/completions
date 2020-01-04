@@ -1,0 +1,30 @@
+
+# ---------
+# complete dictd
+set command "(dict --help | tail -n +8 | tr -s ' ' | cut -d ' ' -f2)"
+#set description "dict --help | tail -n +8 | tr -s ' ' | sed -r 's#[a-zA-Z-]+ [A-Za-z<>-]+ ##' | sed -r 's#<.*>##' | sed 's#^ ##'"
+
+complete -c dict -a $command
+# ---------
+
+
+# ---------
+# password files
+set command '(for file in (ls ~/Documents/passwds/); basename "$file"; end)'
+
+complete -c pass_find -a $command
+complete -c view_pass_file -a $command
+complete -c view_pass_files -a $command
+complete -c rm_pass_files -a $command
+complete -c mv_pass_file -a $command
+# ---------
+
+
+
+# ---------
+# autocomplete user-level systemd unit files
+set command "(find ~/.config/systemd/user -maxdepth 1 -type f | sed 's#.*/##g'; find /usr/lib/systemd/user/ -maxdepth 1 -type f | sed 's#.*/##g')"
+
+complete -c "systemctl --user" -a $command
+# ---------
+
