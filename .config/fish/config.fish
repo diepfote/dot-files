@@ -7,7 +7,7 @@ end
 set -x EDITOR nvim
 set -x VISUAL nvim
 
-set -x user_dir (eval echo ~$USER) 
+set -x user_dir (eval echo ~$USER)
 set -x PYTHONSTARTUP "$user_dir/.python_startup"
 
 set -x FZF_DEFAULT_COMMAND 'find ~'
@@ -19,6 +19,7 @@ eval (direnv hook fish || true)
 # colorize man pages using 'bat'
 set -x MANPAGER "sh -c 'col -bx | bat -l man -p'"
 
+set -x GIT_PAGER 'less'
 
 
 #
@@ -73,7 +74,7 @@ xrdb -merge ~/.Xdefaults
 source ~/.config/fish/completions
 
 
-if status is-interactive 
+if status is-interactive
 and not set -q TMUX
   #exec tmux
   #
