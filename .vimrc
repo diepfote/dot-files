@@ -68,6 +68,12 @@ autocmd BufRead,BufNewFile *.hook set ft=sh
 autocmd BufRead,BufNewFile *.inc set ft=sh
 " -----------------
 
+" -----------------
+" remove trailing whitespace in lines on save for every filetype
+autocmd BufWritePre * %s/\s\+$//e
+" -----------------
+
+
 
 "colorscheme seti "https://www.archlinux.org/packages/community/any/vim-seti/  or   https://github.com/trusktr/seti.vim
 "colorscheme PaperColor "curl -L 'https://raw.githubusercontent.com/NLKNguyen/papercolor-theme/master/colors/PaperColor.vim' -o ~/.vim/colors/PaperColor.vim
