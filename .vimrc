@@ -41,7 +41,7 @@ autocmd filetype py set tabstop=4 softtabstop=0 expandtab shiftwidth=4 smarttab
 au bufenter *.c set tabstop=4 softtabstop=0 expandtab shiftwidth=4 smarttab
 au bufenter *.hs set tabstop=4 softtabstop=0 expandtab shiftwidth=4 smarttab
 
-  " assembly  
+  " assembly
   au bufenter *.asm set tabstop=4 softtabstop=0 expandtab shiftwidth=4 smarttab
   au bufenter *.S set tabstop=4 softtabstop=0 expandtab shiftwidth=4 smarttab
   au bufenter *.s set tabstop=4 softtabstop=0 expandtab shiftwidth=4 smarttab
@@ -59,13 +59,24 @@ autocmd BufRead,BufNewFile *.tex setlocal spell spelllang=de_at
 " -----------------
 " set ft
 autocmd BufRead,BufNewFile *.bib set ft=tex
-autocmd BufRead,BufNewFile *.local set ft=sh
-autocmd BufRead,BufNewFile *.profile set ft=sh
 autocmd BufRead,BufNewFile *.rc set ft=sh
 autocmd BufRead,BufNewFile *.service set ft=sh
 autocmd BufRead,BufNewFile *.conf set ft=sh
 autocmd BufRead,BufNewFile *.hook set ft=sh
-autocmd BufRead,BufNewFile *.inc set ft=sh
+
+
+
+autocmd BufNewFile,BufRead /etc/firejail/*.profile      set filetype=firejail
+autocmd BufNewFile,BufRead /etc/firejail/*.local        set filetype=firejail
+autocmd BufNewFile,BufRead /etc/firejail/*.inc          set filetype=firejail
+autocmd BufNewFile,BufRead ~/.config/firejail/*.profile set filetype=firejail
+autocmd BufNewFile,BufRead ~/.config/firejail/*.local   set filetype=firejail
+autocmd BufNewFile,BufRead ~/.config/firejail/*.inc     set filetype=firejail
+
+autocmd BufNewFile,BufRead ~/Documents/firejail/etc/*.profile set filetype=firejail
+autocmd BufNewFile,BufRead ~/Documents/firejail/etc/*.local   set filetype=firejail
+autocmd BufNewFile,BufRead ~/Documents/firejail/etc/*.inc     set filetype=firejail
+
 " -----------------
 
 " -----------------
@@ -114,7 +125,7 @@ autocmd FileType fish compiler fish
 
     set termguicolors
     colorscheme lingodirector  "-> 'flazz/vim-colorschemes'
-    
+
   endif
 " ####
 
@@ -183,7 +194,7 @@ if has('nvim')
   Plug 'ncm2/ncm2', { 'do': ':UpdateRemotePlugins' }
 
 
-  
+
   " NOTE: you need to install completion sources to get completions. Check
   " our wiki page for a list of sources: https://github.com/ncm2/ncm2/wiki
   Plug 'ncm2/ncm2-bufword'
@@ -202,14 +213,14 @@ if has('nvim')
 
   Plug 'wellle/tmux-complete.vim' " vim completions from other tmux panes (used by ncm2)
 
-  
+
   " -----------------------------------
   " language client start
   Plug 'autozimu/LanguageClient-neovim', {
       \ 'branch': 'next',
       \ 'do': 'bash install.sh',
       \ }
-  
+
   "--------
   " language client settings
   "
@@ -231,7 +242,7 @@ if has('nvim')
   Plug 'flazz/vim-colorschemes'
 endif
 
-  
+
 
 call plug#end()
 
