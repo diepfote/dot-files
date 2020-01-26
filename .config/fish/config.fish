@@ -13,7 +13,9 @@ set -x PYTHONSTARTUP "$user_dir/.python_startup"
 set -x FZF_DEFAULT_COMMAND 'find ~'
 set -x FZF_DEFAULT_OPTS '--height 40% --layout=reverse --border'
 
-eval (direnv hook fish || true)
+if [ -x direnv ]
+  eval (direnv hook fish)
+end
 
 
 # colorize man pages using 'bat'
