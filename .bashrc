@@ -7,7 +7,7 @@ if [[ -z "$TMUX" ]]; then
     tmux -2 -u new 'sleep 4; tmux detach'
   else
     tmux -2 -u new  # -u -> utf-8; -2 -> force 256 colors
-  fi 
+  fi
 fi
 
 # ----
@@ -46,8 +46,8 @@ source ~/Documents/scripts/kubernetes/source-me_common_functions.sh
 
 # make bash history saving immediate and shared between sessions
 # taken from https://askubuntu.com/a/115625
-# 
-# history -c clears the history of the running session. This will reduce the history counter by the amount of $HISTSIZE. 
+#
+# history -c clears the history of the running session. This will reduce the history counter by the amount of $HISTSIZE.
 # history -r read the contents of $HISTFILE and insert them in to the current running session history.
 # This will raise the history counter by the amount of lines in $HISTFILE
 shopt -s histappend                      # append to history, don't overwrite it
@@ -68,11 +68,11 @@ export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 #\$(show_kubernetes_context)$YELLOW\$(show_kubernetes_namespace)$NC]\n$ "
 
 
-export PS1="[ $LIGHT_GREEN\w$NC$PURPLE\$(__git_ps1)$NC${YELLOW} \$(show_openstack_project)$RED\$?$NC ]\n$ " 
+export PS1="[ $LIGHT_GREEN\w$NC$PURPLE\$(__git_ps1)$NC${YELLOW} \$(show_openstack_project)$RED\$?$NC ]\n$ "
 
 #
 # prompt style end
 # --------------------------
 
-xrdb -merge ~/.Xdefaults
+[[ ! -x "$(which xrdb)" ]] || xrdb -merge ~/.Xdefaults
 

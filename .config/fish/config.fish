@@ -70,7 +70,9 @@ set -x fish_color_operator fa5bd0
 # due to https://phoenhex.re/2018-03-25/not-a-vagrant-bug
 set -x VAGRANT_DISABLE_VBOXSYMLINKCREATE 1
 
-xrdb -merge ~/.Xdefaults
+if [ -x xrdb ]
+  xrdb -merge ~/.Xdefaults
+end
 
 # source self-written completions
 source ~/.config/fish/completions
