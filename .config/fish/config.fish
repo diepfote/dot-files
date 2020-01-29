@@ -13,7 +13,8 @@ set -x PYTHONSTARTUP "$user_dir/.python_startup"
 set -x FZF_DEFAULT_COMMAND 'find ~'
 set -x FZF_DEFAULT_OPTS '--height 40% --layout=reverse --border'
 
-if [ -x direnv ]
+set direnv_location (which direnv 2>/dev/null)
+if [ -n "$direnv_location" ]
   eval (direnv hook fish)
 end
 
@@ -70,7 +71,8 @@ set -x fish_color_operator fa5bd0
 # due to https://phoenhex.re/2018-03-25/not-a-vagrant-bug
 set -x VAGRANT_DISABLE_VBOXSYMLINKCREATE 1
 
-if [ -x xrdb ]
+set xrdb_location (which xrdb 2>/dev/null)
+if [ -n "$xrdb_location" ]
   xrdb -merge ~/.Xdefaults
 end
 
