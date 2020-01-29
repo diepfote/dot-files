@@ -38,12 +38,28 @@ source ~/Documents/scripts/source-me_bash_passwd_script_autocompletion.sh
 # kubernetes autocompletion | kubectl autocompletion
 [[ -x kubectl ]] && tsource <(kubectl completion bash)
 
-[[ "$(uname)" = Darwin ]] && dir=/usr/local/etc/bash_completion.d; for name in $(ls "$dir"); do  source "$dir"/"$name"; done; unset dir
+# Darwin
+if [ "$(uname)" = Darwin ]; then
+  dir=/usr/local/etc/bash_completion.d
+  for name in $(ls "$dir"); do
+    source "$dir"/"$name"
+  done
+  unset dir
+fi
 
 # helper functions such as 'get_pod' for kubernetes
 source ~/Documents/scripts/kubernetes/source-me_common_functions.sh
 #------------
 
+
+#------------
+# Darwin misc
+
+if [ "$(uname)" = Darwin ]; then
+  :
+fi
+
+#------------
 
 
 # make bash history saving immediate and shared between sessions
