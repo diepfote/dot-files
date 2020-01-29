@@ -21,7 +21,7 @@ bind '\C-w:unix-filename-rubout'
 # ----
 
 
-alias ls='ls --color=auto'
+[[ "$(uname)" = Darwin ]] && alias ls='ls -G' || alias ls='ls --color=auto'
 alias grep='grep --color'
 
 
@@ -37,6 +37,8 @@ source ~/Documents/scripts/source-me_bash_passwd_script_autocompletion.sh
 
 # kubernetes autocompletion | kubectl autocompletion
 [[ -x kubectl ]] && tsource <(kubectl completion bash)
+
+[[ "$(uname)" = Darwin ]] && dir=/usr/local/etc/bash_completion.d; for name in $(ls "$dir"); do  source "$dir"/"$name"; done; unset dir
 
 # helper functions such as 'get_pod' for kubernetes
 source ~/Documents/scripts/kubernetes/source-me_common_functions.sh
