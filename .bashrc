@@ -69,8 +69,8 @@ fi
 # history -r read the contents of $HISTFILE and insert them in to the current running session history.
 # This will raise the history counter by the amount of lines in $HISTFILE
 shopt -s histappend                      # append to history, don't overwrite it
-export HISTSIZE=300000
-export HISTFILESIZE=300000
+export HISTSIZE=10000000
+export HISTFILESIZE=10000000
 export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 
 
