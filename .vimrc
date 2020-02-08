@@ -179,6 +179,8 @@ set tags=.git/tags
 filetype plugin on
 call plug#begin('~/.vim/plugged')
 "    'github_user/repo_name'
+Plug 'scrooloose/nerdcommenter'  " removed from pacman
+Plug 'majutsushi/tagbar'  " removed from pacman
 Plug 'dag/vim-fish'
 "Plug 'mattn/emmet-vim'
 
