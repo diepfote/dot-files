@@ -20,6 +20,14 @@ complete -c mv_pass_file -a $command
 # ---------
 
 
+# ---------
+# autocomplete for functions
+set command '(for file in (ls ~/.config/fish/functions); basename "$file"; end)'
+
+complete -c new-function -a $command
+complete -c edit-function -a $command
+# ---------
+
 
 # ---------
 # autocomplete user-level systemd unit files
