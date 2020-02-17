@@ -26,6 +26,7 @@ set command '(for file in (ls ~/.config/fish/functions); basename "$file"; end)'
 
 complete -c new-function -a $command
 complete -c edit-function -a $command
+complete -c duplicate-function -a $command
 # ---------
 
 
