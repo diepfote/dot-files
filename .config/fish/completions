@@ -26,7 +26,19 @@ set command '(for file in (ls ~/.config/fish/functions); basename "$file"; end)'
 
 complete -c new-function -a $command
 complete -c edit-function -a $command
+complete -c mv-function -a $command
 complete -c duplicate-function -a $command
+# ---------
+
+
+# ---------
+# autocomplete for functions
+set command '(for file in (ls ~/Documents/scripts); basename "$file"; end)'
+
+complete -c new-script -a $command
+complete -c edit-script -a $command
+complete -c mv-script -a $command
+complete -c duplicate-script -a $command
 # ---------
 
 
