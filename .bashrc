@@ -21,10 +21,6 @@ bind '\C-w:unix-filename-rubout'
 # ----
 
 
-[[ "$(uname)" = Darwin ]] && alias ls='ls -G' || alias ls='ls --color=auto'
-alias grep='grep --color'
-
-
 # configure to use direnv
 eval "$(direnv hook bash 2>/dev/null || true)"
 
