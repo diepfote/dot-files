@@ -28,6 +28,7 @@ complete -c new-function -a $command
 complete -c edit-function -a $command
 complete -c mv-function -a $command
 complete -c duplicate-function -a $command
+complete -c rm-function -a $command
 # ---------
 
 
@@ -39,6 +40,7 @@ complete -c new-script -a $command
 complete -c edit-script -a $command
 complete -c mv-script -a $command
 complete -c duplicate-script -a $command
+complete -c rm-script -a $command
 # ---------
 
 
