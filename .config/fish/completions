@@ -45,6 +45,13 @@ complete -c rm-script -a $command
 
 
 # ---------
+# Mac native applications
+set command '(ls /Applications/)'
+complete -c open_mac-os_app -a $command
+# ---------
+
+
+# ---------
 # autocomplete user-level systemd unit files
 set command "(find ~/.config/systemd/user -maxdepth 1 -type f | sed 's#.*/##g'; find /usr/lib/systemd/user/ -maxdepth 1 -type f | sed 's#.*/##g')"
 
