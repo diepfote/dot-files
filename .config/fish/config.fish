@@ -1,9 +1,3 @@
-set is_ubuntu (uname -a | grep Ubuntu)
-if [ "$is_ubuntu" != "" ]
-  set -x LANG en_GB.UTF-8
-  set -x LANGUAGE en_GB:en
-end
-
 set -x EDITOR nvim
 set -x VISUAL nvim
 
@@ -24,6 +18,7 @@ set -x MANPAGER "sh -c 'col -bx | bat -l man -p'"
 
 set -x GIT_PAGER 'less'
 
+[ (uname) = Darwin ] && alias grep='ggrep --color'
 
 #
 # set colors
