@@ -21,7 +21,7 @@ complete -c mv_pass_file -a $command
 
 
 # ---------
-# autocomplete for functions
+# complete for functions
 set command '(for file in (ls ~/.config/fish/functions); basename "$file"; end)'
 
 complete -c new-function -a $command
@@ -33,7 +33,7 @@ complete -c rm-function -a $command
 
 
 # ---------
-# autocomplete for functions
+# complete for functions
 set command '(for file in (ls ~/Documents/scripts); basename "$file"; end)'
 
 complete -c new-script -a $command
@@ -45,6 +45,13 @@ complete -c rm-script -a $command
 
 
 # ---------
+# append_syscall
+set command '(for file in (ls /etc/firejail); basename "$file"; end)'
+complete -c append_syscall -a $command
+# ---------
+
+
+# ---------
 # Mac native applications
 set command '(ls /Applications/)'
 complete -c open_mac-os_app -a $command
@@ -52,7 +59,7 @@ complete -c open_mac-os_app -a $command
 
 
 # ---------
-# autocomplete user-level systemd unit files
+# complete user-level systemd unit files
 set command "(find ~/.config/systemd/user -maxdepth 1 -type f | sed 's#.*/##g'; find /usr/lib/systemd/user/ -maxdepth 1 -type f | sed 's#.*/##g')"
 
 complete -c "systemctl --user" -a $command
