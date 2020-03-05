@@ -2,6 +2,11 @@
 
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
+
+# If on podman-remote, return immediately
+[ "$(uname)" = podman-remote ] && return
+
+
 if [[ -z "$TMUX" ]]; then
   if ! tmux list-sessions 2>/dev/null; then
     tmux -2 -u new 'sleep 4; tmux detach'
