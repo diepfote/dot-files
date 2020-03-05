@@ -66,7 +66,7 @@ fi
 shopt -s histappend                      # append to history, don't overwrite it
 export HISTSIZE=10000000
 export HISTFILESIZE=10000000
-export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
+export PROMPT_COMMAND="history -a; history -c; history -r;  source ~/.sh_functions; $PROMPT_COMMAND"
 
 
 # --------------------------
