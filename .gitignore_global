@@ -1,2 +1,9 @@
+.vaultfile
+*.swp
+.DS_Store
+
 .idea/
+venv/
+.venv/
+
 
