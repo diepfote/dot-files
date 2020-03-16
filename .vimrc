@@ -80,6 +80,14 @@ autocmd BufNewFile,BufRead ~/Documents/firejail/etc/*.inc     set filetype=firej
 " -----------------
 
 " -----------------
+" nerdcommenter delimiter settings for custom file types
+let g:NERDCustomDelimiters = {
+    \ 'firejail': { 'left': '#'}
+\ }
+
+"-----------------
+
+" -----------------
 " remove trailing whitespace in lines on save for every filetype
 autocmd BufWritePre * %s/\s\+$//e
 " -----------------
