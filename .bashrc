@@ -75,6 +75,10 @@ export HISTFILESIZE=10000000
 export PROMPT_COMMAND="history -a; history -c; history -r;  source ~/.sh_functions; $PROMPT_COMMAND"
 
 
+
+#
+# fzf reverse search
+#
 __fzf_history ()
 {
     builtin history -a;
@@ -107,6 +111,9 @@ __fzf_history ()
         fi
 }
 
+#
+# enable fzf reverse search
+#
 builtin set -o histexpand;
 builtin bind -x '"\C-x1": __fzf_history';
 builtin bind '"\C-r": "\C-x1\e^\er"'
