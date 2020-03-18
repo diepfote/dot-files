@@ -18,7 +18,8 @@ set -x MANPAGER "sh -c 'col -bx | bat -l man -p'"
 
 set -x GIT_PAGER 'less'
 
-[ (uname) = Darwin ] && alias grep='ggrep --color' && alias find=gfind
+[ (uname) = Darwin ] && alias grep='ggrep --exclude-dir=.git --color' && alias find=gfind || alias grep='grep --exclude-dir=.git --color'
+
 
 #
 # set colors
