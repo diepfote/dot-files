@@ -35,6 +35,7 @@ bind '"\C-w":backward-kill-word'
 eval "$(direnv hook bash 2>/dev/null || true)"
 
 source ~/Documents/scripts/source-me_posix-compliant-shells.sh
+alias cd=pushd
 
 # -----
 # kubectl | kubernetes  just bash
