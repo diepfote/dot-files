@@ -18,9 +18,14 @@ fi
 # ----
 # keybindings | bind settings | binding settings
 
-# set fish <CTRL+W> behavior; pressing <CTRL+W> deletes until next '/' for filenames
+# undefine previous assignment!
 stty werase undef
-bind '\C-w:unix-filename-rubout'
+
+# set '/' as word delmiter
+#bind '\C-w:unix-filename-rubout'
+
+# set '-', '/' etc. as word delmiters
+bind '"\C-w":backward-kill-word'
 
 #
 # ----
