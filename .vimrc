@@ -1,3 +1,17 @@
+" differntiate between OSes
+" --------------
+
+"let os=substitute(system('uname'), '\n', '', '')
+"if os == 'Darwin' || os == 'Mac'
+    "" whatever...
+"elseif os == 'Linux'
+    "" whatever...
+"endif
+
+" --------------
+
+
+
 " do not write backup files and disable viminfo
 set nobackup
 set nowritebackup
