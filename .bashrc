@@ -7,14 +7,10 @@
 if [[ -z "$TMUX" ]]; then
   default_tmux_cmd="tmux -2 -u new"  # -u -> utf-8; -2 -> force 256 colors
 
-  if [ "$(uname)" = Darwin ]; then
-    $default_tmux_cmd
+  if ! tmux list-sessions 2>/dev/null; then
+    $default_tmux_cmd 'sleep 4; tmux detach'
   else
-    if ! tmux list-sessions 2>/dev/null; then
-      $default_tmux_cmd 'sleep 4; tmux detach'
-    else
-      $default_tmux_cmd
-    fi
+    $default_tmux_cmd
   fi
 fi
 

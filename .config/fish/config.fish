@@ -82,14 +82,10 @@ if status is-interactive
 and not set -q TMUX
   set default_tmux_cmd "tmux -2 -u new"  # -u -> utf-8; -2 -> force 256 colors
 
-  if [ (uname) = Darwin ]
-    eval $default_tmux_cmd
+  if ! tmux list-sessions 2>/dev/null
+    eval $default_tmux_cmd 'sleep 4; tmux detach'
   else
-    if ! tmux list-sessions 2>/dev/null
-      eval $default_tmux_cmd 'sleep 4; tmux detach'
-    else
-      eval $default_tmux_cmd
-    end
+    eval $default_tmux_cmd
   end
 end
 #
