@@ -1,17 +1,3 @@
-" differntiate between OSes
-" --------------
-
-"let os=substitute(system('uname'), '\n', '', '')
-"if os == 'Darwin' || os == 'Mac'
-    "" whatever...
-"elseif os == 'Linux'
-    "" whatever...
-"endif
-
-" --------------
-
-
-
 " do not write backup files and disable viminfo
 set nobackup
 set nowritebackup
@@ -252,10 +238,25 @@ if has('nvim')
   set hidden
 
   let g:LanguageClient_serverCommands = {
-      \ 'python': ['/usr/bin/pyls'],
-      "\ 'sh': ['bash-language-server', 'start'],
-      "\ 'yaml' : ['/usr/bin/yaml-language-server'],
+      \ 'python': ['pyls'],
+      \ 'sh': ['bash-language-server', 'start'],
+      \ 'yaml' : ['yaml-language-server'],
       \ }
+
+  "let os=substitute(system('uname'), '\n', '', '')
+  "if os == 'Darwin' || os == 'Mac'
+
+  "elseif os == 'Linux'
+    "let g:LanguageClient_serverCommands = {
+        "\ 'python': ['/usr/bin/pyls'],
+        ""\ 'sh': ['bash-language-server', 'start'],
+        ""\ 'yaml' : ['/usr/bin/yaml-language-server'],
+        "\ }
+
+  "endif
+
+
+
 
   nnoremap <F5> :call LanguageClient_contextMenu()<CR>
 
