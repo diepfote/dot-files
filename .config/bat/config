@@ -1,2 +1,3 @@
 --theme='Monokai Extended Light'
---style='numbers,changes'
+--style='changes'
+#--style='numbers,changes'
