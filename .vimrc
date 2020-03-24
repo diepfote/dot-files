@@ -60,6 +60,8 @@ autocmd BufRead,BufNewFile *.tex setlocal spell spelllang=de_at
 " set ft
 autocmd BufRead,BufNewFile *.bib set ft=tex
 autocmd BufRead,BufNewFile *.rc set ft=sh
+autocmd BufRead,BufNewFile *.envrc set ft=sh
+autocmd BufRead,BufNewFile *.custom-envrc set ft=sh
 autocmd BufRead,BufNewFile *.service set ft=sh
 autocmd BufRead,BufNewFile *.conf set ft=sh
 autocmd BufRead,BufNewFile *.hook set ft=sh
