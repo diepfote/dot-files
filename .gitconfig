@@ -1,0 +1,32 @@
+[core]
+  editor = nvim
+  excludesfile = ~/.gitignore_global
+  pager = bat
+[pull]
+  rebase = true
+[rebase]
+  autoStash = true
+
+[alias]
+  l = "!f() { git log --graph --pretty=format:'%C(bold cyan)%h%Creset%C(bold magenta)%d%Creset %C(bold green)<%ae>%Creset %C(bold red)(%cd)%Creset %s' $@ ; }; f"  # show author name but commit date
+  le = "!f() { git log --pretty=format:'%C(bold cyan)%h%Creset%C(bold magenta)%d%Creset %C(bold green)<%ae>%Creset %C(bold red)(%cd)%Creset %s' $@ ; }; f"  # show author name but commit date
+
+  lauthor-and-committer = "!f() { git log --graph --pretty=format:'%C(bold cyan)%h%Creset%C(bold magenta)%d%Creset %C(bold green)<a:%ae | c:%ce>%Creset %C(bold red)(a:%ad |  c:%cd)%Creset %s' $@ ; }; f"
+
+  ;change committer email
+  ;
+  ;taken from https://github.com/brauliobo/gitconfig/blob/master/configs/.gitconfig
+  ;change-commits = "!f() { VAR=$1; OLD=$2; NEW=$3; shift 3; git filter-branch --env-filter \"if [[ \\\"$`echo $VAR`\\\" = '$OLD' ]]; then export $VAR='$NEW'; fi\" $@; }; f "
+  ;; forcefully
+  change-commits = "!f() { VAR=$1; OLD=$2; NEW=$3; shift 3; git filter-branch -f --env-filter \"if [[ \\\"$`echo $VAR`\\\" = '$OLD' ]]; then export $VAR='$NEW'; fi\" $@; }; f "
+
+  # taken from https://github.com/nedbat/dot/blob/master/.gitconfig
+  #
+  # Get a plain-text diff, for making patches.
+  patch = "!f() { git --no-pager diff --no-color $@; }; f"
+
+  # taken from https://github.com/nedbat/dot/blob/master/.gitconfig
+  #
+  # Show branches, verbosely, sorted by last touch, with commit messages.
+  brv = "!f() { git branch --sort=-creatordate --color=always --format='%(color:reset)%(creatordate:short) %(color:bold white)%(align:2,right)%(upstream:trackshort)%(end)%(color:nobold) %(align:40,left)%(color:yellow)%(refname:short)%(end) %(color:reset)%(contents:subject)'; }; f"
+
