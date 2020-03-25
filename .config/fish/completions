@@ -4,7 +4,9 @@
 set command "(dict --help | tail -n +8 | tr -s ' ' | cut -d ' ' -f2)"
 #set description "dict --help | tail -n +8 | tr -s ' ' | sed -r 's#[a-zA-Z-]+ [A-Za-z<>-]+ ##' | sed -r 's#<.*>##' | sed 's#^ ##'"
 
-complete -c dict -a $command
+# -f --> no file completion
+#
+complete -f -c dict -a $command
 # ---------
 
 
@@ -12,11 +14,13 @@ complete -c dict -a $command
 # password files
 set command '(for file in (ls ~/Documents/passwds/); basename "$file"; end)'
 
-complete -c pass_find -a $command
-complete -c view_pass_file -a $command
-complete -c view-pass-files -a $command
-complete -c rm_pass_files -a $command
-complete -c mv_pass_file -a $command
+# -f --> no file completion
+#
+complete -f -c pass_find -a $command
+complete -f -c view_pass_file -a $command
+complete -f -c view-pass-files -a $command
+complete -f -c rm_pass_files -a $command
+complete -f -c mv_pass_file -a $command
 # ---------
 
 
@@ -24,44 +28,59 @@ complete -c mv_pass_file -a $command
 # complete for functions
 set command '(for file in (ls ~/.config/fish/functions); basename "$file"; end)'
 
-complete -c new-function -a $command
-complete -c edit-function -a $command
-complete -c mv-function -a $command
-complete -c duplicate-function -a $command
-complete -c rm-function -a $command
+# -f --> no file completion
+#
+complete -f -c new-function -a $command
+complete -f -c edit-function -a $command
+complete -f -c mv-function -a $command
+complete -f -c cp-function -a $command
+complete -f -c rm-function -a $command
 # ---------
 
 
 # ---------
-# complete for functions
+# complete for scripts
 set command '(for file in (ls ~/Documents/scripts); basename "$file"; end)'
 
-complete -c new-script -a $command
-complete -c edit-script -a $command
-complete -c mv-script -a $command
-complete -c duplicate-script -a $command
-complete -c rm-script -a $command
+# -f --> no file completion
+#
+complete -f -c new-script -a $command
+complete -f -c edit-script -a $command
+complete -f -c mv-script -a $command
+complete -f -c cp-script -a $command
+complete -f -c rm-script -a $command
+# ---------
+
+# ---------
+# complete for python
+set command '(for file in (ls ~/Documents/python); basename "$file"; end)'
+
+# -f --> no file completion
+#
+complete -f -c new-python -a $command
+complete -f -c edit-python -a $command
+complete -f -c mv-python -a $command
+complete -f -c cp-python -a $command
+complete -f -c rm-python -a $command
 # ---------
 
 
 # ---------
 # append_syscall
 set command '(for file in (ls /etc/firejail); basename "$file"; end)'
-complete -c append_syscall -a $command
+
+# -f --> no file completion
+#
+complete -f -c append_syscall -a $command
 # ---------
 
 
 # ---------
 # Mac native applications
 set command '(ls /Applications/)'
-complete -c open_mac-os_app -a $command
-# ---------
 
-
-# ---------
-# complete user-level systemd unit files
-set command "(find ~/.config/systemd/user -maxdepth 1 -type f | sed 's#.*/##g'; find /usr/lib/systemd/user/ -maxdepth 1 -type f | sed 's#.*/##g')"
-
-complete -c "systemctl --user" -a $command
+# -f --> no file completion
+#
+complete -f -c open_mac-os_app -a $command
 # ---------
 
