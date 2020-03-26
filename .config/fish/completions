@@ -35,6 +35,7 @@ complete -f -c edit-function -a $command
 complete -f -c mv-function -a $command
 complete -f -c cp-function -a $command
 complete -f -c rm-function -a $command
+complete -f -c checkout-function -a $command
 # ---------
 
 
@@ -49,6 +50,7 @@ complete -f -c edit-script -a $command
 complete -f -c mv-script -a $command
 complete -f -c cp-script -a $command
 complete -f -c rm-script -a $command
+complete -f -c checkout-script -a $command
 # ---------
 
 # ---------
@@ -62,6 +64,7 @@ complete -f -c edit-python -a $command
 complete -f -c mv-python -a $command
 complete -f -c cp-python -a $command
 complete -f -c rm-python -a $command
+complete -f -c checkout-python -a $command
 # ---------
 
 
