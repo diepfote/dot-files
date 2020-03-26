@@ -1,5 +1,6 @@
 set -x EDITOR nvim
 set -x VISUAL nvim
+set -x LESSSECURE 1
 
 set -x user_dir (eval echo ~$USER)
 set -x PYTHONSTARTUP "$user_dir/.python_startup"
