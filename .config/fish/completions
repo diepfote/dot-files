@@ -4,8 +4,8 @@
 set command "(dict --help | tail -n +8 | tr -s ' ' | cut -d ' ' -f2)"
 #set description "dict --help | tail -n +8 | tr -s ' ' | sed -r 's#[a-zA-Z-]+ [A-Za-z<>-]+ ##' | sed -r 's#<.*>##' | sed 's#^ ##'"
 
-# -f --> no file completion
-#
+  # -f --> no file completion
+  #
 complete -f -c dict -a $command
 # ---------
 
@@ -14,8 +14,8 @@ complete -f -c dict -a $command
 # password files
 set command '(for file in (ls ~/Documents/passwds/); basename "$file"; end)'
 
-# -f --> no file completion
-#
+  # -f --> no file completion
+  #
 complete -f -c pass_find -a $command
 complete -f -c view_pass_file -a $command
 complete -f -c view-pass-files -a $command
@@ -28,8 +28,8 @@ complete -f -c mv_pass_file -a $command
 # complete for functions
 set command '(for file in (ls ~/.config/fish/functions); basename "$file"; end)'
 
-# -f --> no file completion
-#
+  # -f --> no file completion
+  #
 complete -f -c new-function -a $command
 complete -f -c edit-function -a $command
 complete -f -c mv-function -a $command
@@ -43,8 +43,8 @@ complete -f -c checkout-function -a $command
 # complete for scripts
 set command '(for file in (ls ~/Documents/scripts); basename "$file"; end)'
 
-# -f --> no file completion
-#
+  # -f --> no file completion
+  #
 complete -f -c new-script -a $command
 complete -f -c edit-script -a $command
 complete -f -c mv-script -a $command
@@ -57,8 +57,8 @@ complete -f -c checkout-script -a $command
 # complete for python
 set command '(for file in (ls ~/Documents/python); basename "$file"; end)'
 
-# -f --> no file completion
-#
+  # -f --> no file completion
+  #
 complete -f -c new-python -a $command
 complete -f -c edit-python -a $command
 complete -f -c mv-python -a $command
@@ -72,18 +72,32 @@ complete -f -c checkout-python -a $command
 # append_syscall
 set command '(for file in (ls /etc/firejail); basename "$file"; end)'
 
-# -f --> no file completion
-#
+  # -f --> no file completion
+  #
 complete -f -c append_syscall -a $command
 # ---------
+
+# ---------
+# PKGBUILD AUR completion
+set command '(yay -Qqm)'
+
+complete -f -c pkgbuild_for_pkg -a $command
+complete -f -c pkgbuild_for_pkgl -a $command
+complete -f -c pkgbuild_for_pkgv -a $command
+
+# ---------
+
 
 
 # ---------
 # Mac native applications
 set command '(ls /Applications/)'
 
-# -f --> no file completion
-#
+  # -f --> no file completion
+  #
 complete -f -c open_mac-os_app -a $command
 # ---------
+
+
+
 
