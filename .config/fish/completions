@@ -82,7 +82,6 @@ complete -f -c append_syscall -a $command
 set command '(yay -Qqm)'
 
 complete -f -c pkgbuild_for_pkg -a $command
-complete -f -c pkgbuild_for_pkgl -a $command
 complete -f -c pkgbuild_for_pkgv -a $command
 
 # ---------
