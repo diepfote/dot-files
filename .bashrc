@@ -78,8 +78,7 @@ fi
 shopt -s histappend                      # append to history, don't overwrite it
 export HISTSIZE=10000000
 export HISTFILESIZE=10000000
-export PROMPT_COMMAND="history -a; history -c; history -r;  source ~/.sh_functions; $PROMPT_COMMAND"
-
+export PROMPT_COMMAND="history -a; history -c; history -r; remove_non-ascii_characters ~/.bash_history ~/.bash_history 1>/dev/null 2>/dev/null; $PROMPT_COMMAND"
 
 
 #
@@ -146,4 +145,21 @@ export PS1="\$(refresh_tmux_kubecontext)[ $LIGHT_GREEN\w$NC$PURPLE\$(__git_ps1)$
 # --------------------------
 
 [[ -x "$(which xrdb)" ]] && xrdb -merge ~/.Xdefaults
+
+
+
+# --------------------------
+# preexec hook
+#
+# preexec and precmd hook functions for Bash in the style of Zsh. They aim to emulate the behavior as described for Zsh.
+# https://superuser.com/questions/175799/does-bash-have-a-hook-that-is-run-before-executing-a-command/175802#175802
+# http://zsh.sourceforge.net/Doc/Release/Functions.html#Hook-Functions
+# https://github.com/rcaloras/bash-preexec
+#
+file=~/.bash-preexec.sh
+[ ! -f "$file" ] && curl -s https://raw.githubusercontent.com/rcaloras/bash-preexec/master/bash-preexec.sh -o "$file"
+source "$file"
+preexec() { source ~/.sh_functions; }
+
+# --------------------------
 
