@@ -138,7 +138,7 @@ builtin bind '"\C-r": "\C-x1\e^\er"'
 #\$(show_kubernetes_context)$YELLOW\$(show_kubernetes_namespace)$NC]\n$ "
 
 
-export PS1="\$(refresh_tmux_kubecontext)[ $LIGHT_GREEN\w$NC$PURPLE\$(__git_ps1)$NC${YELLOW}\$(show_openstack_project)${BLUE} $RED\$?$NC ]\n$ "
+export PS1="\$(refresh_tmux_kubecontext)[ $LIGHT_GREEN\w$NC$PURPLE\$(__git_ps1)$NC${YELLOW}\$(show_openstack_project)$NC ]\n$ "
 
 #
 # prompt style end
@@ -156,10 +156,29 @@ export PS1="\$(refresh_tmux_kubecontext)[ $LIGHT_GREEN\w$NC$PURPLE\$(__git_ps1)$
 # http://zsh.sourceforge.net/Doc/Release/Functions.html#Hook-Functions
 # https://github.com/rcaloras/bash-preexec
 #
-file=~/.bash-preexec.sh
-[ ! -f "$file" ] && curl -s https://raw.githubusercontent.com/rcaloras/bash-preexec/master/bash-preexec.sh -o "$file"
-source "$file"
-preexec() { source ~/.sh_functions; }
+#file=~/.bash-preexec.sh
+#[ ! -f "$file" ] && curl -s https://raw.githubusercontent.com/rcaloras/bash-preexec/master/bash-preexec.sh -o "$file"
+#source "$file"
+#preexec() { source ~/.sh_functions; }
+
+## check which functions will be run before executing a line ->
+## $ echo ${preexec_functions[@]}
+
+## Define some function to use preexec
+#preexec_hello_world() { echo "You just entered $1"; }
+#preexec_set_test() { set -- asdf 2143; }
+## Add it to the array of functions to be invoked each time.
+#preexec_functions+=(preexec_hello_world)
+#preexec_functions+=(preexec_set_test)
+
+
+# do not run command if it contains a non-ascii character
+# remove it first, then run the command in a subshell
+#
+#
+is_ascii() { python3 -c 'import sys; (sys.argv[1]).encode("utf-8").decode("ascii")' "$*" 2>/dev/null || return 1;  }
+trap 'source ~/.sh_functions && is_ascii "$BASH_COMMAND"  || $(remove_non-ascii_characters "$BASH_COMMAND")' DEBUG
+shopt -s extdebug  # prevent command from running if not ascii --> do else
 
 # --------------------------
 
