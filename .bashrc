@@ -9,7 +9,7 @@ if [[ -z "$TMUX" ]]; then
   default_tmux_cmd="tmux -2 -u new"  # -u -> utf-8; -2 -> force 256 colors
 
   if ! tmux list-sessions 2>/dev/null; then
-    $default_tmux_cmd 'sleep 4; tmux detach'
+    $default_tmux_cmd 'sleep 2; tmux source ~/.tmux.conf; tmux detach'
   else
     $default_tmux_cmd
   fi
