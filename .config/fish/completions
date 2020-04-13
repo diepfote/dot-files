@@ -41,7 +41,7 @@ complete -f -c checkout-function -a $command
 
 # ---------
 # complete for scripts
-set command '(for file in (ls ~/Documents/scripts); basename "$file"; end)'
+set command '(find ~/Documents/scripts/ -path ~/Documents/scripts/.git -prune -o -print | sed "s#.*Documents/scripts/##")'
 
   # -f --> no file completion
   #
@@ -55,7 +55,7 @@ complete -f -c checkout-script -a $command
 
 # ---------
 # complete for python
-set command '(for file in (ls ~/Documents/python); basename "$file"; end)'
+set command '(find ~/Documents/python/ -path ~/Documents/python/.git -prune -o -print | sed "s#.*Documents/python/##")'
 
   # -f --> no file completion
   #
@@ -96,7 +96,4 @@ set command '(ls /Applications/)'
   #
 complete -f -c open_mac-os_app -a $command
 # ---------
-
-
-
 
