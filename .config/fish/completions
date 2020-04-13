@@ -69,6 +69,16 @@ complete -f -c checkout-python -a $command
 
 
 # ---------
+# complete for cheatsheets
+set command '(find ~/Documents/cheatsheets/ -path ~/Documents/cheatsheets/.git -prune -o -print | sed "s#.*Documents/cheatsheets/##")'
+
+  # -f --> no file completion
+  #
+complete -f -c cheat -a $command
+# ---------
+
+
+# ---------
 # append_syscall
 set command '(for file in (ls /etc/firejail); basename "$file"; end)'
 
