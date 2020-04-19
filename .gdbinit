@@ -12,12 +12,12 @@ Initializes GEF (GDB Enhanced Features)
 end
 
 ## pwndbg
-#define init-pwndbg
-#source /usr/share/pwndbg/gdbinit.py
-#end
-#document init-pwndbg
-#Initializes PwnDBG
-#end
+define pwndbg
+source /usr/share/pwndbg/gdbinit.py
+end
+document pwndbg
+Initializes PwnDBG
+end
 
 # peda
 # Python Exploit Development Assistance for GDB
