@@ -205,8 +205,6 @@ if has('nvim')
   Plug 'roxma/nvim-yarp', { 'do': ':UpdateRemotePlugins' } " dependency for ncm2
   Plug 'ncm2/ncm2', { 'do': ':UpdateRemotePlugins' }
 
-
-
   " NOTE: you need to install completion sources to get completions. Check
   " our wiki page for a list of sources: https://github.com/ncm2/ncm2/wiki
   Plug 'ncm2/ncm2-bufword'
@@ -222,8 +220,6 @@ if has('nvim')
   "
   " ncm2 end
   " --------------
-
-  Plug 'wellle/tmux-complete.vim' " vim completions from other tmux panes (used by ncm2)
 
 
   " -----------------------------------
@@ -258,18 +254,16 @@ if has('nvim')
   "endif
 
 
-
-
   nnoremap <F5> :call LanguageClient_contextMenu()<CR>
 
   "
   " language server end
   " -----------------------------------
 
+  Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
   Plug 'flazz/vim-colorschemes'
+  Plug 'wellle/tmux-complete.vim' " vim completions from other tmux panes (used by ncm2)
 endif
-
-
 
 call plug#end()
 
