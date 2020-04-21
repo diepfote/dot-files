@@ -1,17 +1,14 @@
 set -x EDITOR nvim
 set -x VISUAL nvim
-set -x LESSSECURE 1
 
-set -x user_dir (eval echo ~$USER)
-set -x PYTHONSTARTUP "$user_dir/.python_startup"
+set -x LESSSECURE 1
+# due to https://phoenhex.re/2018-03-25/not-a-vagrant-bug
+set -x VAGRANT_DISABLE_VBOXSYMLINKCREATE 1
+
+set -x PYTHONSTARTUP ~/.python_startup
 
 set -x FZF_DEFAULT_COMMAND 'find ~'
 set -x FZF_DEFAULT_OPTS '--height 40% --layout=reverse --border'
-
-set direnv_location (which direnv 2>/dev/null)
-if [ -n "$direnv_location" ]
-  eval (direnv hook fish)
-end
 
 
 # colorize man pages using 'bat'
@@ -19,6 +16,25 @@ set -x MANPAGER "sh -c 'col -bx | bat -l man -p'"
 
 
 [ (uname) = Darwin ] && alias grep='ggrep --exclude-dir=.git --color' && alias find=gfind || alias grep='grep --exclude-dir=.git --color'
+
+
+
+
+set xrdb_location (which xrdb 2>/dev/null)
+if [ -n "$xrdb_location" ]
+  xrdb -merge ~/.Xdefaults
+end
+
+set direnv_location (which direnv 2>/dev/null)
+if [ -n "$direnv_location" ]
+  eval (direnv hook fish)
+end
+
+# source self-written completions
+source ~/.config/fish/completions
+
+
+
 
 #
 # set colors
@@ -52,27 +68,19 @@ set -x MANPAGER "sh -c 'col -bx | bat -l man -p'"
     #fish_pager_color_progress, the color of the progress bar at the bottom left corner
     #fish_pager_color_secondary, the background color of the every second completion
 #
-#set custom_green 13d400
-#set custom_yellow fcbd0f
-#set -x fish_color_command c399f8
-#set -x fish_color_param "$custom_green"
-#set -x fish_color_end normal
-#set -x fish_color_escape "$custom_green"
-#set -x fish_pager_color_description "$custom_yellow"
-#set -x fish_color_quote "$custom_yellow"
-#set -x fish_color_autosuggestion 848484
+set custom_green 13d400
+set custom_yellow fcbd0f
+set -x fish_color_command c399f8
+set -x fish_color_param "$custom_green"
+set -x fish_color_end normal
+set -x fish_color_escape "$custom_green"
+set -x fish_pager_color_description "$custom_yellow"
+set -x fish_color_quote "$custom_yellow"
+set -x fish_color_autosuggestion 848484
 set -x fish_color_operator fa5bd0
 
-# due to https://phoenhex.re/2018-03-25/not-a-vagrant-bug
-set -x VAGRANT_DISABLE_VBOXSYMLINKCREATE 1
 
-set xrdb_location (which xrdb 2>/dev/null)
-if [ -n "$xrdb_location" ]
-  xrdb -merge ~/.Xdefaults
-end
 
-# source self-written completions
-source ~/.config/fish/completions
 
 
 if status is-interactive
