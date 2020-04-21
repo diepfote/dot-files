@@ -70,14 +70,12 @@ source ~/.config/fish/completions
     #fish_pager_color_progress, the color of the progress bar at the bottom left corner
     #fish_pager_color_secondary, the background color of the every second completion
 #
-set custom_green 13d400
-set custom_yellow fcbd0f
-set -x fish_color_command c399f8
-set -x fish_color_param "$custom_green"
+set -x fish_color_command purple
+set -x fish_color_param green
 set -x fish_color_end normal
-set -x fish_color_escape "$custom_green"
-set -x fish_pager_color_description "$custom_yellow"
-set -x fish_color_quote "$custom_yellow"
+set -x fish_color_escape green
+set -x fish_pager_color_description yellow
+set -x fish_color_quote yellow
 set -x fish_color_autosuggestion 848484
 set -x fish_color_operator fa5bd0
 
