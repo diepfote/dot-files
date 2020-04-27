@@ -290,6 +290,7 @@ if has('nvim')
 
   Plug 'flazz/vim-colorschemes'
   Plug 'wellle/tmux-complete.vim' " vim completions from other tmux panes (used by ncm2)
+  Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 endif
 
 call plug#end()
