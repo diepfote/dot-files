@@ -266,20 +266,20 @@ if has('nvim')
   Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
 
   function CustomSemshiHighlightingColor()
-    hi semshiLocal           ctermfg=209 guifg=#ff875f
+    hi semshiLocal           ctermfg=209 guifg=#55c186
     hi semshiGlobal          ctermfg=214 guifg=#ffaf00
-    hi semshiImported        ctermfg=214 guifg=#ffaf00 cterm=bold gui=bold
-    hi semshiParameter       ctermfg=75  guifg=#5fafff
-    hi semshiParameterUnused ctermfg=117 guifg=#87d7ff cterm=underline gui=underline
+    hi semshiImported        ctermfg=214 guifg=#eaac27 cterm=bold gui=bold
+    hi semshiParameter       ctermfg=75  guifg=#55c186
+    hi semshiParameterUnused ctermfg=117 guifg=#15d3b3 cterm=underline gui=underline
     hi semshiFree            ctermfg=218 guifg=#ffafd7
-    hi semshiBuiltin         ctermfg=207 guifg=#ff5fff
+    hi semshiBuiltin         ctermfg=207 guifg=#ba16ba
     hi semshiAttribute       ctermfg=49  guifg=#00ffaf
     hi semshiSelf            ctermfg=249 guifg=#b2b2b2
-    hi semshiUnresolved      ctermfg=226 guifg=#ffff00 cterm=underline gui=underline
+    hi semshiUnresolved      ctermfg=226 guifg=#000000 guibg=#f94d75 cterm=underline gui=underline
     hi semshiSelected        ctermfg=231 guifg=#000000 ctermbg=161 guibg=#f0e8a5
 
-    hi semshiErrorSign       ctermfg=231 guifg=#ffffff ctermbg=160 guibg=#d70000
-    hi semshiErrorChar       ctermfg=231 guifg=#ffffff ctermbg=160 guibg=#d70000
+    hi semshiErrorSign       ctermfg=231 guifg=#000000 ctermbg=160 guibg=#d70000
+    hi semshiErrorChar       ctermfg=231 guifg=#000000 ctermbg=160 guibg=#d70000
     sign define semshiError text=E> texthl=semshiErrorSign
   endfunction
   autocmd FileType python call CustomSemshiHighlightingColor()
