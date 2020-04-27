@@ -12,7 +12,12 @@ complete -f -c dict -a $command
 
 # ---------
 # pass extensions
-source /usr/share/fish/vendor_completions.d/pass.fish
+
+[ (uname) = Darwin ] && \
+  set file /usr/local/share/fish/vendor_completions.d/pass.fish ||
+  set file /usr/share/fish/vendor_completions.d/pass.fish
+
+source "$file"
 complete -c pass -f -A -n '__fish_pass_uses_command update' -a "(__fish_pass_print_entry_dirs)"
 
 # ---------
