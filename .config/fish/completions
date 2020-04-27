@@ -11,6 +11,14 @@ complete -f -c dict -a $command
 
 
 # ---------
+# pass extensions
+source /usr/share/fish/vendor_completions.d/pass.fish
+complete -c pass -f -A -n '__fish_pass_uses_command update' -a "(__fish_pass_print_entry_dirs)"
+
+# ---------
+
+
+# ---------
 # password files
 set command '(for file in (ls ~/Documents/passwds/); basename "$file"; end)'
 
