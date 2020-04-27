@@ -260,7 +260,34 @@ if has('nvim')
   " language server end
   " -----------------------------------
 
+
+  " -----------------------------------
+  "  semshi - semantic python highlighting start
   Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
+
+  function CustomSemshiHighlightingColor()
+    hi semshiLocal           ctermfg=209 guifg=#ff875f
+    hi semshiGlobal          ctermfg=214 guifg=#ffaf00
+    hi semshiImported        ctermfg=214 guifg=#ffaf00 cterm=bold gui=bold
+    hi semshiParameter       ctermfg=75  guifg=#5fafff
+    hi semshiParameterUnused ctermfg=117 guifg=#87d7ff cterm=underline gui=underline
+    hi semshiFree            ctermfg=218 guifg=#ffafd7
+    hi semshiBuiltin         ctermfg=207 guifg=#ff5fff
+    hi semshiAttribute       ctermfg=49  guifg=#00ffaf
+    hi semshiSelf            ctermfg=249 guifg=#b2b2b2
+    hi semshiUnresolved      ctermfg=226 guifg=#ffff00 cterm=underline gui=underline
+    hi semshiSelected        ctermfg=231 guifg=#000000 ctermbg=161 guibg=#f0e8a5
+
+    hi semshiErrorSign       ctermfg=231 guifg=#ffffff ctermbg=160 guibg=#d70000
+    hi semshiErrorChar       ctermfg=231 guifg=#ffffff ctermbg=160 guibg=#d70000
+    sign define semshiError text=E> texthl=semshiErrorSign
+  endfunction
+  autocmd FileType python call CustomSemshiHighlightingColor()
+
+
+  "  semshi - semantic python highlighting end
+  " -----------------------------------
+
   Plug 'flazz/vim-colorschemes'
   Plug 'wellle/tmux-complete.vim' " vim completions from other tmux panes (used by ncm2)
 endif
