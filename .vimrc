@@ -135,6 +135,9 @@ autocmd FileType fish compiler fish
 
     set termguicolors
     colorscheme lingodirector  "-> 'flazz/vim-colorschemes'
+    " set search highlight color
+    highlight Search guibg='LightBlue' guifg='NONE'
+
 
   endif
 " ####
