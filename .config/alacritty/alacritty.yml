@@ -59,7 +59,7 @@ font:
     #style: Italic
 
   # Point size
-  size: 14
+  size: 15
 
 # Colors (Tomorrow Night Bright)
 colors:
