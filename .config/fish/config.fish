@@ -9,7 +9,6 @@ set -x VAGRANT_DISABLE_VBOXSYMLINKCREATE 1
 
 set -x PYTHONSTARTUP ~/.python_startup
 
-set -x FZF_DEFAULT_COMMAND 'find ~'
 set -x FZF_DEFAULT_OPTS '--height 40% --layout=reverse --border'
 
 
