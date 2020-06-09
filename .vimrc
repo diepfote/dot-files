@@ -90,8 +90,21 @@ let g:NERDCustomDelimiters = {
 "-----------------
 
 " -----------------
-" remove trailing whitespace in lines on save for every filetype
-autocmd BufWritePre * %s/\s\+$//e
+" remove trailing whitespace
+
+fun! StripTrailingWhitespace()
+    " Don't strip on these filetypes
+    " pattern to use:
+    "
+    "if &ft =~ 'markdown\|somethingelse'
+
+    if &ft =~ 'markdown'
+        return
+    endif
+    %s/\s\+$//e
+endfun
+
+autocmd BufWritePre * call StripTrailingWhitespace()
 " -----------------
 
 
