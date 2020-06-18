@@ -32,6 +32,10 @@
   # Show branches, verbosely, sorted by last touch, with commit messages.
   brv = "!f() { git branch --sort=-creatordate --color=always --format='%(color:reset)%(creatordate:short) %(color:bold white)%(align:2,right)%(upstream:trackshort)%(end)%(color:nobold) %(align:40,left)%(color:yellow)%(refname:short)%(end) %(color:reset)%(contents:subject)'; }; f"
 
+  update = "!f() { git checkout master; git pull --prune; git checkout -; }; f"
+
+  delete-gone-branches = "!f() {   for branch in $(git branch -vv | grep gone | awk '{print $1}'); do echo \"Deleting $branch\";  git branch -d \"$branch\"; done }; f"
+
 [filter "lfs"]
 	required = true
 	clean = git-lfs clean -- %f
