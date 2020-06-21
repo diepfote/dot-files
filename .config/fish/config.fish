@@ -1,5 +1,7 @@
 set fish_greeting ''
 
+set PATH "$HOME/go/bin" $PATH  # add go/bin to PATH
+
 set -x EDITOR nvim
 set -x VISUAL nvim
 
