@@ -1,9 +1,13 @@
 set fish_greeting ''
 
-set PATH "$HOME/go/bin" $PATH  # add go/bin to PATH
+set -x PATH "$HOME/go/bin" $PATH  # add go/bin to PATH
 
 set -x EDITOR nvim
 set -x VISUAL nvim
+
+set -x NNN_TRASH 1
+set -x NNN_BMS 'd:~/Documents;h:~;D:~/Downloads;f:~/.config/fish/functions;s:~/Documents/scripts;L:~/Library/LaunchAgents;l:~/Documents/systemd-user;S:~/.config/systemd/user;E:/etc/'  # jump locations for nnn
+
 
 set -x LESSSECURE 1
 # due to https://phoenhex.re/2018-03-25/not-a-vagrant-bug
