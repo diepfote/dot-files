@@ -105,6 +105,7 @@ alias cd=pushd
 # kubernetes autocompletion | kubectl autocompletion
 [[ -x kubectl ]] && tsource <(kubectl completion bash)
 
+# ----
 # Darwin
 if [ "$(uname)" = Darwin ]; then
   dir=/usr/local/etc/bash_completion.d
@@ -113,6 +114,10 @@ if [ "$(uname)" = Darwin ]; then
   done
   unset dir
 fi
+
+bash_completion_file=/usr/local/etc/profile.d/bash_completion.sh
+[[ -f "$bash_completion_file" ]] && source "$bash_completion_file"
+# ----
 
 # helper functions such as 'get_pod' for kubernetes
 source ~/Documents/scripts/kubernetes/source-me_common_functions.sh
