@@ -32,11 +32,6 @@ set -x MANPAGER "sh -c 'col -bx | bat -l man -p'"
 #
 if status is-interactive
 
-  set xrdb_location (which xrdb 2>/dev/null)
-  if [ -n "$xrdb_location" ]
-    xrdb -merge ~/.Xdefaults
-  end
-
   set direnv_location (which direnv 2>/dev/null)
   if [ -n "$direnv_location" ]
     eval (direnv hook fish)

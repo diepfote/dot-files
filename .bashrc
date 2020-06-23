@@ -210,9 +210,6 @@ export PS1="\$(refresh_tmux_kubecontext)[ $LIGHT_GREEN\w$NC$PURPLE\$(__git_ps1)$
 # prompt style end
 # --------------------------
 
-[[ -x "$(which xrdb)" ]] && xrdb -merge ~/.Xdefaults
-
-
 
 # --------------------------
 # preexec hook
