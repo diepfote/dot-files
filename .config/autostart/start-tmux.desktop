@@ -1,0 +1,5 @@
+[Desktop Entry]
+Name=tmux-starter
+Comment=Start tmux on login
+Type=Application
+Exec=tmux start-server
