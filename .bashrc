@@ -33,7 +33,7 @@ bind '"\C-w":backward-kill-word'
 # ----
 # nnn
 #
-source ~/Documents/scripts/source-me_bash-nnn.sh
+source ~/Documents/scripts/source-me/bash-nnn.sh
 # ----
 
 
@@ -42,7 +42,7 @@ source ~/Documents/scripts/source-me_bash-nnn.sh
 # configure to use direnv
 eval "$(direnv hook bash 2>/dev/null || true)"
 
-source ~/Documents/scripts/source-me_posix-compliant-shells.sh
+source ~/Documents/scripts/source-me/posix-compliant-shells.sh
 alias cd=pushd
 
 # -----
@@ -67,7 +67,7 @@ bash_completion_file=/usr/local/etc/profile.d/bash_completion.sh
 # ----
 
 # helper functions such as 'get_pod' for kubernetes
-source ~/Documents/scripts/kubernetes/source-me_common_functions.sh
+source ~/Documents/scripts/kubernetes/source-me/common_functions.sh
 #------------
 
 
@@ -144,7 +144,7 @@ builtin bind '"\C-r": "\C-x1\e^\er"'
 #
 
 # !! remember to ecaspe dollar signs, otherwise PS1 caches the output !!
-#source ~/Documents/scripts/source-me_prompt-style.sh
+#source ~/Documents/scripts/source-me/prompt-style.sh
 #source ~/Documents/scripts/tmux_info.sh
 
 #export PS1="[ \$(tmux_id) |  $LIGHT_GREEN\w$NC$PURPLE\$(__git_ps1)$NC \
