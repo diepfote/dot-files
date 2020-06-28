@@ -1,0 +1,5 @@
+[Desktop Entry]
+Name=Source tmux config
+Comment=Source tmux config
+Type=Application
+Exec=sh -c 'sleep 10; tmux source ~/.tmux.conf'
