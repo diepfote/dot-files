@@ -30,11 +30,6 @@ bind '"\C-w":backward-kill-word'
 #
 # ----
 
-# ----
-# nnn
-#
-source ~/Documents/scripts/source-me/bash-nnn.sh
-# ----
 
 
 
