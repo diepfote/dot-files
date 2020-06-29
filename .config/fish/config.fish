@@ -1,5 +1,9 @@
 set fish_greeting ''
 
+if [ (tty) = /dev/tty1 ]
+  startxfce4
+end
+
 set -x PATH "$HOME/go/bin" $PATH  # add go/bin to PATH
 
 set -x EDITOR nvim
