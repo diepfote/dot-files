@@ -43,7 +43,7 @@ xterm*vt100*translations:   #override                       \n \
 
 xterm*faceName: DejaVu Sans Mono
 !xterm*faceName: Droid Sans Mono
-xterm*faceSize: 12.5
+xterm*faceSize: 11.5
 
 !!xterm*background:#ffffff
 !xterm*background:#0e3d4d
