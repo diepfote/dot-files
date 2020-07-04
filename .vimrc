@@ -1,3 +1,13 @@
+"Vim needs a more POSIX compatible shell than fish for certain functionality to
+"work, such as `:%!`, compressed help pages and many third-party addons.  If you
+"use fish as your login shell or launch Vim from fish, you need to set `shell`
+"to something else in your `~/.vimrc`, for example:
+if &shell =~# 'fish$'
+    set shell=sh
+endif
+
+
+
 " do not write backup files and disable viminfo
 set nobackup
 set nowritebackup
@@ -207,9 +217,11 @@ call plug#begin('~/.vim/plugged')
 "    'github_user/repo_name'
 Plug 'scrooloose/nerdcommenter'  " removed from pacman
 Plug 'majutsushi/tagbar'  " removed from pacman
-Plug 'dag/vim-fish'
-"Plug 'mattn/emmet-vim'
 
+
+Plug 'dag/vim-fish'
+Plug 'vim-syntastic/syntastic'
+Plug 'tpope/vim-endwise'
 
 
 
