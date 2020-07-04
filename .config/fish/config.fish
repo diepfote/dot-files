@@ -12,7 +12,7 @@ else
 
   set -x NNN_COLORS 2136  # use a different color for each context -> version >= 3.2
   set -x NNN_TRASH 1
-  set -x NNN_BMS 'd:~/Documents;h:~;D:~/Downloads;f:~/.config/fish/functions;s:~/Documents/scripts;L:~/Library/LaunchAgents;l:~/Documents/systemd-user;S:~/.config/systemd/user;E:/etc/;V:~/Videos'  # jump locations for nnn
+  set -x NNN_BMS "d:~/Documents;h:~;D:~/Downloads;f:~/.config/fish/functions;s:~/Documents/scripts;L:~/Library/LaunchAgents;l:~/Documents/systemd-user;S:~/.config/systemd/user;E:/etc/;v:~/Videos;V:/run/media/$USER/large_drive/Media/Video-Files/Videos;m:~/Movies"  # jump locations for nnn
   set -x NNN_FIFO /tmp/nnn.fifo
   set -x NNN_PLUG 'p:preview-tui'  # curl -Ls https://raw.githubusercontent.com/jarun/nnn/master/plugins/getplugs | sh
 
