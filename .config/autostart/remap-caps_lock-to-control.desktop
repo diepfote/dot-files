@@ -1,0 +1,5 @@
+[Desktop Entry]
+Name=Caps Lock remapper
+Comment=Remaps Caps Lock to Control
+Type=Application
+Exec=setxkbmap -option "ctrl:nocaps"
