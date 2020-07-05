@@ -1,3 +1,11 @@
+"disable compatibility
+set nocompatible
+" 'faster' backspace behavior I guess?
+set backspace=indent,eol,start
+" don't bell or blink
+set noerrorbells
+set vb t_vb=
+
 "Vim needs a more POSIX compatible shell than fish for certain functionality to
 "work, such as `:%!`, compressed help pages and many third-party addons.  If you
 "use fish as your login shell or launch Vim from fish, you need to set `shell`
@@ -7,11 +15,26 @@ if &shell =~# 'fish$'
 endif
 
 
-" do not jump to next line when lines are wrapped
-nnoremap j gj
-nnoremap k gk
-nnoremap <down> gj
-nnoremap <up> gk
+" customize the wildmenu
+set wildignore+=*.dll,*.o,*.pyc,*.bak,*.exe,*.jpg,*.jpeg,*.png,*.gif,*$py.class,*.class,*/*.dSYM/*,*.dylib,*.so,*.PNG,*.JPG
+" for sidebars?
+let g:netrw_list_hide='^\.,.\(pyc\|pyo\)$'
+
+
+" sudo write this, no use with firejail obviously
+cmap W! w !sudo tee % >/dev/null
+
+
+" Small helper that inserts a random uuid4 on ^U
+" ----------------------------------------------
+fun! InsertUUID4()
+python3 << endpython
+if 1:
+    import uuid, vim
+    vim.command('return "%s"' % str(uuid.uuid4()))
+endpython
+endfun
+inoremap <c-u> <C-R>=InsertUUID4()
 
 
 
@@ -25,6 +48,11 @@ set noswapfile
 
 " default file settings
 set tabstop=2 softtabstop=0 expandtab shiftwidth=2 smarttab
+
+" keep 5 lines at the top or bottom,
+" depends on the scroll direction
+set scrolloff=5
+
 
 "
 set list
@@ -228,6 +256,13 @@ let g:tmuxcomplete#asyncomplete_source_options = {
 
 " set lead key to space
 let mapleader = "\<space>"
+
+" do not jump to next line when lines are wrapped
+nnoremap j gj
+nnoremap k gk
+nnoremap <down> gj
+nnoremap <up> gk
+
 " set shorcut for tagbar plugin
 nmap <f8> :TagbarToggle<cr>
 " set path to tags file
