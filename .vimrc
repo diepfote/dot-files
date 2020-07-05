@@ -12,10 +12,23 @@ endif
 set nobackup
 set nowritebackup
 set viminfo=
+" disable swapfile
+set noswapfile
 
 
 " default file settings
 set tabstop=2 softtabstop=0 expandtab shiftwidth=2 smarttab
+
+"
+set list
+"
+" show trailing spaces with a dot
+" tabs with '>.'
+" line extends screen (if no word-wrap), add a '#'
+" non-breaking space, add a dot
+"
+set listchars=tab:>.,trail:.,extends:#,nbsp:.
+
 
 if exists("loaded_less")
   set nonumber
