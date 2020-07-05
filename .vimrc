@@ -10,9 +10,6 @@ endif
 set nocompatible
 " 'faster' backspace behavior I guess?
 set backspace=indent,eol,start
-" don't bell or blink
-set noerrorbells
-set vb t_vb=
 
 set fsync  " flush file to disk
 set cursorline
