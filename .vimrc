@@ -7,6 +7,13 @@ if &shell =~# 'fish$'
 endif
 
 
+" do not jump to next line when lines are wrapped
+nnoremap j gj
+nnoremap k gk
+nnoremap <down> gj
+nnoremap <up> gk
+
+
 
 " do not write backup files and disable viminfo
 set nobackup
