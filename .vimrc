@@ -6,10 +6,12 @@ if &shell =~# 'fish$'
     set shell=sh
 endif
 
+
 "disable compatibility
 set nocompatible
 " 'faster' backspace behavior I guess?
 set backspace=indent,eol,start
+
 
 set fsync  " flush file to disk
 set cursorline
@@ -67,8 +69,12 @@ set list
 " line extends screen (if no word-wrap), add a '#'
 " non-breaking space, add a dot
 "
-set listchars=tab:>.,trail:.,extends:#,nbsp:.
+"set listchars=tab:▸,trail:.,extends:#,nbsp:.
+set listchars=tab:▸\ ,extends:#,nbsp:⍽
 
+" wrapping settings
+set formatoptions=qrn1  " refer to https://neovim.io/doc/user/change.html#fo-table
+set colorcolumn=85 " display vertical line to show 85 character limit
 
 if exists("loaded_less")  " make vim behave like less
   set nonumber
@@ -97,8 +103,10 @@ set mouse=a
 
 
 " ------------------------
-"  reload file on external change
+"  focus related
 au FocusGained,BufEnter * :silent! !  " trigger file reload when buffer gets focus
+au FocusLost * :wa " save on focus loss
+
 
 " ------------------------
 " start custom tab settings
@@ -228,8 +236,10 @@ autocmd FileType fish compiler fish
   " found' messages
   set shortmess+=c
 
-  " CTRL-C doesn't trigger the InsertLeave autocmd . map to <ESC> instead.
+  " CTRL-C -> ESC
   inoremap <c-c> <ESC>
+  " jj -> ESC
+  inoremap jj <ESC>
 
 
   if has("nvim")
@@ -262,14 +272,32 @@ let g:tmuxcomplete#asyncomplete_source_options = {
 
 
 
-" set lead key to space
-let mapleader = "\<space>"
-
 " do not jump to next line when lines are wrapped
 nnoremap j gj
 nnoremap k gk
 nnoremap <down> gj
 nnoremap <up> gk
+" disable help
+inoremap <F1> <ESC>
+nnoremap <F1> <ESC>
+vnoremap <F1> <ESC>
+
+
+" window management
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+
+" set lead key to space
+let mapleader = "\<space>"
+
+" vertical split
+nnoremap <leader>w <C-w>v<C-w>l
+" horizontal split
+nnoremap <leader>s <C-w>s<C-w>l
+
+
 
 " set shorcut for tagbar plugin
 nmap <f8> :TagbarToggle<cr>
@@ -278,8 +306,14 @@ set tags=.git/tags
 filetype plugin on
 call plug#begin('~/.vim/plugged')
 "    'github_user/repo_name'
-Plug 'scrooloose/nerdcommenter'  " removed from pacman
-Plug 'majutsushi/tagbar'  " removed from pacman
+Plug 'scrooloose/nerdcommenter'
+Plug 'majutsushi/tagbar'
+
+Plug 'mileszs/ack.vim'
+
+Plug 'luochen1990/rainbow'
+" :RainbowToggle
+let g:rainbow_active = 0
 
 
 Plug 'dag/vim-fish'
