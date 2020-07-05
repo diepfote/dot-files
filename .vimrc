@@ -1,11 +1,3 @@
-"disable compatibility
-set nocompatible
-" 'faster' backspace behavior I guess?
-set backspace=indent,eol,start
-" don't bell or blink
-set noerrorbells
-set vb t_vb=
-
 "Vim needs a more POSIX compatible shell than fish for certain functionality to
 "work, such as `:%!`, compressed help pages and many third-party addons.  If you
 "use fish as your login shell or launch Vim from fish, you need to set `shell`
@@ -13,6 +5,14 @@ set vb t_vb=
 if &shell =~# 'fish$'
     set shell=sh
 endif
+
+"disable compatibility
+set nocompatible
+" 'faster' backspace behavior I guess?
+set backspace=indent,eol,start
+" don't bell or blink
+set noerrorbells
+set vb t_vb=
 
 set fsync  " flush file to disk
 set cursorline
@@ -47,6 +47,9 @@ set nowritebackup
 set viminfo=
 " disable swapfile
 set noswapfile
+" -> undo edits even after closing a file
+set undofile
+
 
 
 " default file settings
