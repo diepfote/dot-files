@@ -62,7 +62,7 @@ bash_completion_file=/usr/local/etc/profile.d/bash_completion.sh
 # ----
 
 # helper functions such as 'get_pod' for kubernetes
-source ~/Documents/scripts/kubernetes/source-me/common_functions.sh
+source ~/Documents/scripts/kubernetes/source-me/common-functions.sh
 #------------
 
 
