@@ -310,6 +310,19 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'majutsushi/tagbar'
 
 Plug 'mileszs/ack.vim'
+" replace ack by ag
+let g:ackprg = 'ag --vimgrep'
+
+let os=substitute(system('uname'), '\n', '', '')
+if os == 'Darwin' || os == 'Mac'
+  " If installed using Homebrew
+  set rtp+=/usr/local/opt/fzf
+elseif os == 'Linux'
+  " to use :FZF
+  set rtp+=/usr/bin/fzf
+endif
+
+
 
 Plug 'luochen1990/rainbow'
 " :RainbowToggle
@@ -365,19 +378,6 @@ if has('nvim')
       \ 'sh': ['bash-language-server', 'start'],
       \ 'yaml' : ['yaml-language-server'],
       \ }
-
-  "let os=substitute(system('uname'), '\n', '', '')
-  "if os == 'Darwin' || os == 'Mac'
-
-  "elseif os == 'Linux'
-    "let g:LanguageClient_serverCommands = {
-        "\ 'python': ['/usr/bin/pyls'],
-        ""\ 'sh': ['bash-language-server', 'start'],
-        ""\ 'yaml' : ['/usr/bin/yaml-language-server'],
-        "\ }
-
-  "endif
-
 
   nnoremap <F5> :call LanguageClient_contextMenu()<CR>
 
