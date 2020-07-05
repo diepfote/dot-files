@@ -6,6 +6,7 @@ set backspace=indent,eol,start
 set noerrorbells
 set vb t_vb=
 
+
 "Vim needs a more POSIX compatible shell than fish for certain functionality to
 "work, such as `:%!`, compressed help pages and many third-party addons.  If you
 "use fish as your login shell or launch Vim from fish, you need to set `shell`
@@ -53,6 +54,8 @@ set tabstop=2 softtabstop=0 expandtab shiftwidth=2 smarttab
 " depends on the scroll direction
 set scrolloff=5
 
+" do not show titles in bold print etc.
+let html_no_rendering=1
 
 "
 set list
@@ -138,6 +141,7 @@ autocmd BufNewFile,BufRead ~/Documents/firejail/etc/*.local   set filetype=firej
 autocmd BufNewFile,BufRead ~/Documents/firejail/etc/*.inc     set filetype=firejail
 
 " -----------------
+
 
 " -----------------
 " nerdcommenter delimiter settings for custom file types
