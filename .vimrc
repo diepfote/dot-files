@@ -6,7 +6,6 @@ set backspace=indent,eol,start
 set noerrorbells
 set vb t_vb=
 
-
 "Vim needs a more POSIX compatible shell than fish for certain functionality to
 "work, such as `:%!`, compressed help pages and many third-party addons.  If you
 "use fish as your login shell or launch Vim from fish, you need to set `shell`
@@ -14,6 +13,9 @@ set vb t_vb=
 if &shell =~# 'fish$'
     set shell=sh
 endif
+
+set fsync  " flush file to disk
+set cursorline
 
 
 " customize the wildmenu
@@ -68,10 +70,12 @@ set list
 set listchars=tab:>.,trail:.,extends:#,nbsp:.
 
 
-if exists("loaded_less")
+if exists("loaded_less")  " make vim behave like less
   set nonumber
 else
-  set number
+  " useful for motion commands
+  set relativenumber
+  "set number
 endif
 
 " display filename for current file
