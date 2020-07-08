@@ -34,7 +34,7 @@
 
   update = "!f() { git checkout master; git pull --prune; git checkout -; }; f"
 
-  delete-gone-branches = "!f() {   for branch in $(git branch -vv | grep gone | awk '{print $1}'); do echo \"Deleting $branch\";  git branch -d \"$branch\"; done }; f"
+  delete-gone-branches = "!f() {   for branch in $(git branch -vv | grep gone | sed -r 's#\\s+##;s#^\\*##' | cut -d ' ' -f1); do echo \"Deleting $branch\";  git branch -d \"$branch\"; done }; f"
 
   re-submit = "!f() { git add .; git commit --amend -C HEAD; git push-force-with-lease; }; f"
   re-submit-force = "!f() { git add .; git commit --amend -C HEAD; git push -f; }; f"
