@@ -37,6 +37,7 @@ bind '"\C-w":backward-kill-word'
 # configure to use direnv
 eval "$(direnv hook bash 2>/dev/null || true)"
 
+source ~/Documents/scripts/source-me/bash-nnn.sh
 source ~/Documents/scripts/source-me/posix-compliant-shells.sh
 alias cd=pushd
 
