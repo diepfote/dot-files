@@ -6,6 +6,7 @@ if &shell =~# 'fish$'
     set shell=sh
 endif
 
+map <F4> :execute "vimgrep /" . expand("<cword>") . "/j **" <Bar> cw<CR>
 
 "disable compatibility
 set nocompatible
@@ -308,6 +309,9 @@ call plug#begin('~/.vim/plugged')
 "    'github_user/repo_name'
 Plug 'scrooloose/nerdcommenter'
 Plug 'majutsushi/tagbar'
+
+" tmux-resurrect dependency (do :mksession automatically...)
+Plug 'tpope/vim-obsession'
 
 Plug 'mileszs/ack.vim'
 " replace ack by ag
