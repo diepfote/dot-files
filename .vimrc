@@ -81,7 +81,7 @@ if exists("loaded_less")  " make vim behave like less
 else
   " useful for motion commands
   set relativenumber
-  "set number
+  set number
 endif
 
 " display filename for current file
