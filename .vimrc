@@ -286,6 +286,22 @@ inoremap <F1> <ESC>
 nnoremap <F1> <ESC>
 vnoremap <F1> <ESC>
 
+" disable arrow keys in all modes
+nnoremap <up> <NOP>
+nnoremap <down> <NOP>
+nnoremap <left> <NOP>
+nnoremap <right> <NOP>
+
+inoremap <up> <NOP>
+inoremap <down> <NOP>
+inoremap <left> <NOP>
+inoremap <right> <NOP>
+
+vnoremap <up> <NOP>
+vnoremap <down> <NOP>
+vnoremap <left> <NOP>
+vnoremap <right> <NOP>
+
 
 " window management
 nnoremap <C-h> <C-w>h
