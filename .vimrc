@@ -14,10 +14,6 @@ set nocompatible
 set backspace=indent,eol,start
 
 
-set fsync  " flush file to disk
-set cursorline
-
-
 " customize the wildmenu
 set wildignore+=*.dll,*.o,*.pyc,*.bak,*.exe,*.jpg,*.jpeg,*.png,*.gif,*$py.class,*.class,*/*.dSYM/*,*.dylib,*.so,*.PNG,*.JPG
 " for sidebars?
@@ -41,14 +37,19 @@ inoremap <c-u> <C-R>=InsertUUID4()
 
 
 
-" do not write backup files and disable viminfo
+" do not write backup files
 set nobackup
 set nowritebackup
+
+"disable viminfo
 set viminfo=
 " disable swapfile
 set noswapfile
 " -> undo edits even after closing a file
 set undofile
+
+set fsync  " flush file to disk
+
 
 
 
@@ -58,6 +59,8 @@ set tabstop=2 softtabstop=0 expandtab shiftwidth=2 smarttab
 " keep 5 lines at the top or bottom,
 " depends on the scroll direction
 set scrolloff=5
+
+set cursorline
 
 " do not show titles in bold print etc.
 let html_no_rendering=1
