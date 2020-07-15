@@ -109,7 +109,7 @@ set mouse=a
 " ------------------------
 "  focus related
 au FocusGained,BufEnter * :silent! !  " trigger file reload when buffer gets focus
-au FocusLost * :wa " save on focus loss
+"au FocusLost * :wa " save on focus loss
 
 
 " ------------------------
