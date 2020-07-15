@@ -301,7 +301,7 @@ let g:tmuxcomplete#asyncomplete_source_options = {
 " -----------------------
 
 " remap PageUp to C-a
-nnoremap <C-a>  <C-b>
+"nnoremap <C-a>  <C-b>
 
 " do not jump to next line when lines are wrapped
 nnoremap j gj
