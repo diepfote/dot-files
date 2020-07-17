@@ -10,24 +10,12 @@ else
   set -x VISUAL nvim
 
 
-  set -x NNN_COLORS 2136  # use a different color for each context -> version >= 3.2
-  set -x NNN_TRASH 1
-  set -x NNN_BMS "d:~/Documents;h:~;D:~/Downloads;f:~/.config/fish/functions;s:~/Documents/scripts;L:~/Library/LaunchAgents;l:~/Documents/systemd-user;S:~/.config/systemd/user;E:/etc/;v:~/Videos;V:/run/media/$USER/large_drive/Media/Video-Files/Videos;m:~/Movies;b:~/Documents/wir/bauen_haus;p:~/Documents/wir/bauen_haus/pläne"  # jump locations for nnn
-  set -x NNN_FIFO /tmp/nnn.fifo
-  set -x NNN_PLUG 'p:preview-tui'  # curl -Ls https://raw.githubusercontent.com/jarun/nnn/master/plugins/getplugs | sh
-
-
   set -x LESSSECURE 1
   # due to https://phoenhex.re/2018-03-25/not-a-vagrant-bug
   set -x VAGRANT_DISABLE_VBOXSYMLINKCREATE 1
 
   set -x PYTHONSTARTUP ~/.python_startup
 
-  set -x FZF_DEFAULT_OPTS '--height 40% --layout=reverse --border'
-
-
-  # colorize man pages using 'bat'
-  set -x MANPAGER "sh -c 'col -bx | bat -l man -p'"
 
 
   [ (uname) = Darwin ] && alias grep='ggrep --exclude-dir=.git --color' && alias find=gfind || alias grep='grep --exclude-dir=.git --color'
@@ -37,6 +25,23 @@ else
   #
   #
   if status is-interactive
+
+    # Fix CTRL+W behavior (kill words not whole paths/path components
+    bind \cw backward-kill-word
+
+
+    set -x NNN_COLORS 2136  # use a different color for each context -> version >= 3.2
+    set -x NNN_TRASH 1
+    set -x NNN_BMS "d:~/Documents;h:~;D:~/Downloads;f:~/.config/fish/functions;s:~/Documents/scripts;L:~/Library/LaunchAgents;l:~/Documents/systemd-user;S:~/.config/systemd/user;E:/etc/;v:~/Videos;V:/run/media/$USER/large_drive/Media/Video-Files/Videos;m:~/Movies;b:~/Documents/wir/bauen_haus;p:~/Documents/wir/bauen_haus/pläne"  # jump locations for nnn
+    set -x NNN_FIFO /tmp/nnn.fifo
+    set -x NNN_PLUG 'p:preview-tui'  # curl -Ls https://raw.githubusercontent.com/jarun/nnn/master/plugins/getplugs | sh
+
+
+    set -x FZF_DEFAULT_OPTS '--height 40% --layout=reverse --border'
+
+    # colorize man pages using 'bat'
+    set -x MANPAGER "sh -c 'col -bx | bat -l man -p'"
+
 
     set direnv_location (which direnv 2>/dev/null)
     if [ -n "$direnv_location" ]
