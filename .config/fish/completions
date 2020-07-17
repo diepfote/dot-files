@@ -90,6 +90,14 @@ set command '(find ~/Documents/cheatsheets/ -path ~/Documents/cheatsheets/.git -
 complete -f -c cheat -a $command
 # ---------
 
+# ---------
+# complete for book
+set command '(find ~/Documents/books\&documentation/ -path ~/Documents/books\&documentation/.git -prune -o -print | sed "s#.*Documents/books&documentation/##")'
+
+  # -f --> no file completion
+  #
+complete -f -c book -a $command
+# ---------
 
 # ---------
 # append_syscall
