@@ -54,7 +54,7 @@ complete -f -c checkout-function -a $command
 
 # ---------
 # complete for scripts
-set command '(find ~/Documents/scripts/ -path ~/Documents/scripts/.git -prune -o -print | sed "s#.*Documents/scripts/##")'
+set command '(find ~/Documents/scripts/ -path "**/.git" -prune -o -print | sed "s#.*Documents/scripts/##")'
 
   # -f --> no file completion
   #
@@ -68,7 +68,7 @@ complete -f -c checkout-script -a $command
 
 # ---------
 # complete for python
-set command '(find ~/Documents/python/ -path ~/Documents/python/.git -prune -o -print | sed "s#.*Documents/python/##")'
+set command '(find ~/Documents/python/ -path "**/.git" -prune -o -print | sed "s#.*Documents/python/##")'
 
   # -f --> no file completion
   #
@@ -83,7 +83,7 @@ complete -f -c checkout-python -a $command
 
 # ---------
 # complete for cheatsheets
-set command '(find ~/Documents/cheatsheets/ -path ~/Documents/cheatsheets/.git -prune -o -print | sed "s#.*Documents/cheatsheets/##")'
+set command '(find ~/Documents/cheatsheets/ -path "**/.git" -prune -o -print | sed "s#.*Documents/cheatsheets/##")'
 
   # -f --> no file completion
   #
@@ -92,12 +92,23 @@ complete -f -c cheat -a $command
 
 # ---------
 # complete for book
-set command '(find ~/Documents/books\&documentation/ -path ~/Documents/books\&documentation/.git -prune -o -print | sed "s#.*Documents/books&documentation/##")'
+set command '(find ~/Documents/books\&documentation/ -path "**/.git" -prune -o -print | sed "s#.*Documents/books&documentation/##")'
 
   # -f --> no file completion
   #
 complete -f -c book -a $command
 # ---------
+
+
+# ---------
+# complete for view_dirs
+set command '(find ~/Documents -maxdepth 3 -path "**/.git" -prune -o -print 2>/dev/null | sed "s#.*Documents/##")'
+
+  # -f --> no file completion
+  #
+complete -f -c view_dirs -a $command
+# ---------
+
 
 # ---------
 # append_syscall
