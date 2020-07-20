@@ -139,6 +139,10 @@ au FocusGained,BufEnter * :silent! !  " trigger file reload when buffer gets foc
 
 
 " ------------------------
+" change to directory of current file automatically
+autocmd BufEnter * lcd %:p:h
+
+" ------------------------
 " start custom tab settings
 autocmd filetype py set tabstop=4 softtabstop=0 expandtab shiftwidth=4 smarttab
 au bufenter *.c set tabstop=4 softtabstop=0 expandtab shiftwidth=4 smarttab
