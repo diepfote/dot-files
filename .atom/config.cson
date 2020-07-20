@@ -1,0 +1,58 @@
+"*":
+  core:
+    audioBeep: false
+    automaticallyUpdate: false
+    destroyEmptyPanes: false
+    disabledPackages: [
+      "github"
+      "ex-mode"
+      "vim-mode-plus"
+      "emmet"
+      "graphviz-preview-plus"
+      "language-dot"
+      "language-latex"
+    ]
+    telemetryConsent: "no"
+    themes: [
+      "one-light-ui"
+      "github-atom-light-syntax"
+    ]
+  editor:
+    invisibles: {}
+    showIndentGuide: true
+    softWrap: true
+    zoomFontWhenCtrlScrolling: true
+  "exception-reporting":
+    userId: "<INSERT ID HERE>"
+  "git-diff": {}
+  "isotope-ui": {}
+  "light-bint-ui":
+    fontSize: 14
+  "markdown-preview":
+    useGitHubStyle: true
+  "markdown-writer":
+    fileExtension: ".md"
+  "one-light-ui":
+    fontSize: 17
+  "spell-check":
+    grammars: [
+      "text.restructuredtext"
+      "source.asciidoc"
+      "source.gfm"
+      "text.git-commit"
+      "text.plain"
+      "text.plain.null-grammar"
+      "text.tex.latex"
+    ]
+  welcome:
+    showOnStartup: false
+".bibtex.text":
+  editor:
+    preferredLineLength: 100
+"vim-mode-plus":
+  groupChangesWhenLeavingInsertMode: false
+  setCursorToStartOfChangeOnUndoRedoStrategy: "simple"
+welcome:
+  showOnStartup: false
+whitespace:
+  ensureSingleTrailingNewline: false
