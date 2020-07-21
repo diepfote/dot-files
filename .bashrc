@@ -39,7 +39,6 @@ eval "$(direnv hook bash 2>/dev/null || true)"
 
 source ~/Documents/scripts/source-me/bash-nnn.sh
 source ~/Documents/scripts/source-me/posix-compliant-shells.sh
-alias cd=pushd
 
 # -----
 # kubectl | kubernetes  just bash
