@@ -66,6 +66,10 @@ bash_completion_file=/usr/local/etc/profile.d/bash_completion.sh
 source ~/Documents/scripts/kubernetes/source-me/common-functions.sh
 #------------
 
+# --------------------------
+shopt -s autocd   # assume one wants to cd given a directory
+# --------------------------
+
 
 #------------
 # Darwin misc
