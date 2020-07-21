@@ -67,6 +67,8 @@ source ~/Documents/scripts/kubernetes/source-me/common-functions.sh
 
 # --------------------------
 shopt -s autocd   # assume one wants to cd given a directory
+shopt -s cdspell  # autocorrect spelling errors for cd
+shopt -s nocaseglob  # case-insensitive-globbing in pathname expansion
 # --------------------------
 
 
