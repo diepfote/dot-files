@@ -216,6 +216,12 @@ autocmd BufWritePre * call StripTrailingWhitespace()
 " -----------------
 
 
+" -----------------
+" case insensitive search
+set ignorecase
+set smartcase    " but become case sensitive if you type uppercase characters
+" -----------------
+
 
 "colorscheme seti "https://www.archlinux.org/packages/community/any/vim-seti/  or   https://github.com/trusktr/seti.vim
 "colorscheme PaperColor "curl -L 'https://raw.githubusercontent.com/NLKNguyen/papercolor-theme/master/colors/PaperColor.vim' -o ~/.vim/colors/PaperColor.vim
