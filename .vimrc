@@ -144,6 +144,7 @@ autocmd BufEnter * lcd %:p:h
 
 " ------------------------
 " start custom tab settings
+autocmd filetype groovy set tabstop=4 softtabstop=0 expandtab shiftwidth=4 smarttab
 autocmd filetype py set tabstop=4 softtabstop=0 expandtab shiftwidth=4 smarttab
 au bufenter *.c set tabstop=4 softtabstop=0 expandtab shiftwidth=4 smarttab
 au bufenter *.hs set tabstop=4 softtabstop=0 expandtab shiftwidth=4 smarttab
