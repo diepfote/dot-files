@@ -103,8 +103,21 @@ set list
 set listchars=tab:▸\ ,extends:#,nbsp:⍽
 
 " wrapping settings
-set formatoptions=qrn1  " refer to https://neovim.io/doc/user/change.html#fo-table
 set colorcolumn=85 " display vertical line to show 85 character limit
+
+
+" ---------
+"  formatting start
+set formatoptions=qrn1  " refer to https://neovim.io/doc/user/change.html#fo-table
+
+
+com! FormatXML :%!python3 -c "import xml.dom.minidom, sys; print(xml.dom.minidom.parse(sys.stdin).toprettyxml())"
+nnoremap = :FormatXML<Cr>
+
+"  formatting start
+" ---------
+
+
 
 if exists("loaded_less")  " make vim behave like less
   set nonumber
@@ -219,8 +232,8 @@ autocmd BufWritePre * call StripTrailingWhitespace()
 
 " -----------------
 " case insensitive search
-set ignorecase
-set smartcase    " but become case sensitive if you type uppercase characters
+"set ignorecase
+"set smartcase    " but become case sensitive if you type uppercase characters
 " -----------------
 
 
