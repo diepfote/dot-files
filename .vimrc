@@ -111,6 +111,11 @@ set colorcolumn=85 " display vertical line to show 85 character limit
 set formatoptions=qrn1  " refer to https://neovim.io/doc/user/change.html#fo-table
 
 
+
+set statusline=%F\ %=ft=%y\ %{ObsessionStatus()}%=char-val:\ %b\ 0x%B%=[%c]%r%m
+
+
+
 com! FormatXML :%!python3 -c "import xml.dom.minidom, sys; print(xml.dom.minidom.parse(sys.stdin).toprettyxml())"
 nnoremap = :FormatXML<Cr>
 
@@ -126,10 +131,6 @@ else
   set relativenumber
   set number
 endif
-
-" display filename for current file
-"
-set ls=2
 
 syntax on
 filetype plugin indent on
