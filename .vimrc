@@ -106,14 +106,24 @@ set listchars=tab:▸\ ,extends:#,nbsp:⍽
 set colorcolumn=85 " display vertical line to show 85 character limit
 
 
+" -----------
+" statusline start
+
+set statusline =%F\ %r%m%{ObsessionStatus()}
+
+set statusline +=%=%c
+" display character value for the character the cursor is hovering over
+"set statusline +=%=%c%=cv:%b,0x%B
+
+set statusline +=%=ft=%y
+
+" statusline end
+" -----------
+
+
 " ---------
 "  formatting start
 set formatoptions=qrn1  " refer to https://neovim.io/doc/user/change.html#fo-table
-
-
-" display character value for the character the cursor is hovering over
-"set statusline=%F\ %=ft=%y,vo:%{ObsessionStatus()}%=cv:%b,0x%B%=[c:%c]%r%m
-set statusline=%F\ %=ft=%y,vo:%{ObsessionStatus()}%=[c:%c]%r%m
 
 
 
