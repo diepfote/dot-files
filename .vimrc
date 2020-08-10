@@ -111,8 +111,9 @@ set colorcolumn=85 " display vertical line to show 85 character limit
 set formatoptions=qrn1  " refer to https://neovim.io/doc/user/change.html#fo-table
 
 
-
-set statusline=%F\ %=ft=%y\ %{ObsessionStatus()}%=char-val:\ %b\ 0x%B%=[%c]%r%m
+" display character value for the character the cursor is hovering over
+"set statusline=%F\ %=ft=%y,vo:%{ObsessionStatus()}%=cv:%b,0x%B%=[c:%c]%r%m
+set statusline=%F\ %=ft=%y,vo:%{ObsessionStatus()}%=[c:%c]%r%m
 
 
 
