@@ -4,7 +4,6 @@
     automaticallyUpdate: false
     destroyEmptyPanes: false
     disabledPackages: [
-      "github"
       "ex-mode"
       "vim-mode-plus"
       "emmet"
