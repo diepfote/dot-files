@@ -90,8 +90,8 @@ fi
 # history -r read the contents of $HISTFILE and insert them in to the current running session history.
 # This will raise the history counter by the amount of lines in $HISTFILE
 shopt -s histappend                      # append to history, don't overwrite it
-export HISTSIZE=10000000
-export HISTFILESIZE=10000000
+export HISTSIZE=-1
+export HISTFILESIZE=-1
 export PROMPT_COMMAND="source ~/.sh_functions; history -a; history -c; history -r; remove_non-ascii_characters ~/.bash_history ~/.bash_history 1>/dev/null 2>/dev/null; $PROMPT_COMMAND"
 
 
