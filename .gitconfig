@@ -41,8 +41,11 @@
   re-submit = "!f() { [ -z "$@" ] && git add . || git add $@; git commit --amend -C HEAD; git push-force-with-lease; }; f"
   re-submit-force = "!f() { [ -z "$@" ] && git add . || git add $@; git commit --amend -C HEAD; git push -f; }; f"
 
+  files-in-commit = "!f() { git diff-tree --no-commit-id --name-only -r $@; }; f"
+
+
 [filter "lfs"]
-	required = true
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
+  required = true
+  clean = git-lfs clean -- %f
+  smudge = git-lfs smudge -- %f
+  process = git-lfs filter-process
