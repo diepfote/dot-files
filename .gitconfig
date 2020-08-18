@@ -41,7 +41,7 @@
   resubmit = "!f() { [ -z "$@" ] && git add . || git add $@; git commit --amend -C HEAD; git push-force-with-lease; }; f"
   resubmit-force = "!f() { [ -z "$@" ] && git add . || git add $@; git commit --amend -C HEAD; git push -f; }; f"
 
-  files-in-commit = "!f() { git diff-tree --no-commit-id --name-only -r $@; }; f"
+  files-in-commit = "!f() { [ -z "$@" ] && set -- HEAD;git diff-tree --no-commit-id --name-only -r $@; }; f"
 
 
 [filter "lfs"]
