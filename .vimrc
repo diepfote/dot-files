@@ -418,7 +418,11 @@ let g:rainbow_active = 0
 Plug 'dag/vim-fish'
 Plug 'vim-syntastic/syntastic'
 Plug 'tpope/vim-endwise'
+
 Plug 'christoomey/vim-sort-motion'  " type gs then the rest of your text objects & motions
+
+Plug 'tpope/vim-surround'  " e.g. ds" to delete surrounding quotes
+Plug 'tpope/vim-repeat'  " support native repeat operation '.' for plugins that implement tpope/vim-repeat
 
 
 if has('nvim')
