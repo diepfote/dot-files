@@ -435,6 +435,16 @@ Plug 'tpope/vim-surround'  " e.g. ds" to delete surrounding quotes
 Plug 'tpope/vim-repeat'  " support native repeat operation '.' for plugins that implement tpope/vim-repeat
 
 
+Plug 'inkarkat/vim-ingo-library'  " dependency for vim-mark and vim-ReplaceWithRegister
+Plug 'inkarkat/vim-visualrepeat'  " dependency for vim-ReplaceWithRegister
+" -----------------
+" vim-mark
+Plug 'inkarkat/vim-mark'
+let g:mwDefaultHighlightingPalette = 'extended'
+" -----------------
+Plug 'inkarkat/vim-ReplaceWithRegister'
+
+
 if has('nvim')
 
   " --------------
