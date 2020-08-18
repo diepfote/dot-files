@@ -216,14 +216,6 @@ autocmd BufNewFile,BufRead ~/Documents/firejail/etc/*.inc     set filetype=firej
 
 
 " -----------------
-" nerdcommenter delimiter settings for custom file types
-let g:NERDCustomDelimiters = {
-    \ 'firejail': { 'left': '#'}
-\ }
-
-"-----------------
-
-" -----------------
 " remove trailing whitespace
 
 fun! StripTrailingWhitespace()
@@ -389,7 +381,25 @@ set tags=.git/tags
 filetype plugin on
 call plug#begin('~/.vim/plugged')
 "    'github_user/repo_name'
-Plug 'scrooloose/nerdcommenter'
+
+" -----------------
+" nerdcommenter
+
+"Plug 'scrooloose/nerdcommenter'
+
+"let g:NERDCustomDelimiters = {
+    "\ 'firejail': { 'left': '#'}
+"\ }
+"-----------------
+
+" -----------------
+" vim-commentary
+Plug 'tpope/vim-commentary'
+
+" custom comment strings
+autocmd FileType firejail setlocal commentstring=#\ %s
+" -----------------
+
 Plug 'majutsushi/tagbar'
 
 " tmux-resurrect dependency (do :mksession automatically...)
