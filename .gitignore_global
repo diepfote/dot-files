@@ -1,8 +1,11 @@
 .vaultfile
 *.swp
+Session.vim
+
 .DS_Store
 
 .idea/
+*.iml
 venv/
 .venv/
 .vscode/
