@@ -418,7 +418,7 @@ let g:rainbow_active = 0
 Plug 'dag/vim-fish'
 Plug 'vim-syntastic/syntastic'
 Plug 'tpope/vim-endwise'
-
+Plug 'christoomey/vim-sort-motion'  " type gs then the rest of your text objects & motions
 
 
 if has('nvim')
