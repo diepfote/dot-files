@@ -4,7 +4,6 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-
 if [[ -z "$TMUX" ]]; then
   default_tmux_cmd="tmux -2 -u new"  # -u -> utf-8; -2 -> force 256 colors
 
@@ -39,6 +38,9 @@ eval "$(direnv hook bash 2>/dev/null || true)"
 
 source ~/Documents/scripts/source-me/bash-nnn.sh
 source ~/Documents/scripts/source-me/posix-compliant-shells.sh
+for name in $(find ~/Documents/scripts/source-me -name 'completions*'); do
+  source "$name"
+done
 
 # -----
 # kubectl | kubernetes  just bash

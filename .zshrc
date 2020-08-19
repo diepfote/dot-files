@@ -1,7 +1,13 @@
 [[ ! -o login ]] || return
 
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+if [ "$(uname)" = Darwin ]; then
+  source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+else
+  source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+fi
 
+export PS1=''
+PROMPT='%~ %# '
 ### Jump to start or end of line
 #bindkey "^[[H" beginning-of-line
 #bindkey "^[[F" end-of-line
@@ -58,7 +64,7 @@ zstyle ':completion:*' menu select
 # configure to use direnv
 #eval "$(direnv hook zsh 2>/dev/null || true)"
 
-source ~/Documents/scripts/source-me_posix-compliant-shells.sh
+source ~/Documents/scripts/source-me/posix-compliant-shells.sh
 
 
 # kubectl autocompletion
@@ -147,7 +153,7 @@ plugins=(
   git
 )
 
-source $ZSH/oh-my-zsh.sh
+# source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
