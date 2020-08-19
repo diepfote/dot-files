@@ -372,12 +372,18 @@ nnoremap <leader>w <C-w>v<C-w>l
 " horizontal split
 nnoremap <leader>s <C-w>s<C-w>l
 
+" base64 encoding and decoding
+vnoremap <leader>d64 y:let @"=system('base64 -d', @")<cr>gvP
+vnoremap <leader>e64 y:let @"=system('base64 -w0', @")<cr>gvP
+
 
 
 " set shorcut for tagbar plugin
 nmap <f8> :TagbarToggle<cr>
 " set path to tags file
 set tags=.git/tags
+
+
 filetype plugin on
 call plug#begin('~/.vim/plugged')
 "    'github_user/repo_name'
