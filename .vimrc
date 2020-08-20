@@ -492,7 +492,7 @@ if has('nvim')
   let g:LanguageClient_serverCommands = {
       \ 'python': ['pyls'],
       \ 'sh': ['bash-language-server', 'start'],
-      \ 'yaml' : ['yaml-language-server'],
+      \ 'yaml' : ['yaml-language-server', '--stdio'],
       \ }
 
   nnoremap <F5> :call LanguageClient_contextMenu()<CR>
