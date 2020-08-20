@@ -6,6 +6,8 @@ if &shell =~# 'fish$'
     set shell=sh
 endif
 
+set hidden  " do not require buffer writes before switching buffers
+
 map <F4> :execute "vimgrep /" . expand("<cword>") . "/j **" <Bar> cw<CR>
 
 "disable compatibility
@@ -419,6 +421,19 @@ let os=substitute(system('uname'), '\n', '', '')
 if os == 'Darwin' || os == 'Mac'
   " If installed using Homebrew
   set rtp+=/usr/local/opt/fzf
+
+  " -----------------------------------
+  " coc language server
+  Plug 'neoclide/coc.nvim'
+
+  " Use <c-space> to trigger completion.
+  if has('nvim')
+    inoremap <silent><expr> <c-space> coc#refresh()
+  else
+    inoremap <silent><expr> <c-@> coc#refresh()
+  endif
+  " -----------------------------------
+
 elseif os == 'Linux'
   " to use :FZF
   set rtp+=/usr/bin/fzf
@@ -474,7 +489,6 @@ if has('nvim')
   "
   " ncm2 end
   " --------------
-
 
 
   " -----------------------------------

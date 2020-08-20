@@ -1,0 +1,9 @@
+{
+  "languageserver": {
+  },
+
+  "yaml.schemas": {
+      "kubernetes": "/*.yaml"
+  }
+
+}
