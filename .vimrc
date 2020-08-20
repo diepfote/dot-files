@@ -476,31 +476,6 @@ if has('nvim')
   " --------------
 
 
-  " -----------------------------------
-  " language client start
-  Plug 'autozimu/LanguageClient-neovim', {
-      \ 'branch': 'next',
-      \ 'do': 'bash install.sh',
-      \ }
-
-  "--------
-  " language client settings
-  "
-  " Required for operations modifying multiple buffers like rename.
-  set hidden
-
-  let g:LanguageClient_serverCommands = {
-      \ 'python': ['pyls'],
-      \ 'sh': ['bash-language-server', 'start'],
-      \ 'yaml' : ['yaml-language-server', '--stdio'],
-      \ }
-
-  nnoremap <F5> :call LanguageClient_contextMenu()<CR>
-
-  "
-  " language server end
-  " -----------------------------------
-
 
   " -----------------------------------
   "  semshi - semantic python highlighting start
