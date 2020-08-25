@@ -6,6 +6,11 @@ if &shell =~# 'fish$'
     set shell=sh
 endif
 
+" set lead key to space
+" leave this at the top!!!
+"
+let mapleader = "\<space>"
+
 set hidden  " do not require buffer writes before switching buffers
 
 map <F4> :execute "vimgrep /" . expand("<cword>") . "/j **" <Bar> cw<CR>
@@ -130,7 +135,11 @@ set formatoptions=qrn1  " refer to https://neovim.io/doc/user/change.html#fo-tab
 
 
 com! FormatXML :%!python3 -c "import xml.dom.minidom, sys; print(xml.dom.minidom.parse(sys.stdin).toprettyxml())"
-nnoremap = :FormatXML<Cr>
+nmap <leader>f :FormatXML<Cr>
+
+com! FormatJSON :%!python3 -m json.tool
+nmap <leader>F :FormatJSON<Cr>
+
 
 "  formatting start
 " ---------
@@ -365,9 +374,6 @@ nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
-
-" set lead key to space
-let mapleader = "\<space>"
 
 
 " base64 encoding and decoding
