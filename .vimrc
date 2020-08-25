@@ -59,6 +59,7 @@ set nowritebackup
 "  %    :  saves and restores the buffer list
 "  n... :  where to save the viminfo files
 set viminfo='10,\"100,:20,%,n~/.viminfo
+" ----------
 
 
 " jump to last location
@@ -74,7 +75,6 @@ augroup resCur
   autocmd BufWinEnter * call ResCur()
 augroup END
 
-" ----------
 
 " disable swapfile
 set noswapfile
@@ -244,6 +244,14 @@ endfun
 autocmd BufWritePre * call StripTrailingWhitespace()
 " -----------------
 
+
+" -------------------------
+" create directory if it does not exist
+augroup Mkdir
+  autocmd!
+  autocmd BufWritePre * call mkdir(expand("<afile>:p:h"), "p")
+augroup END
+" -------------------------
 
 " -----------------
 " case insensitive search
