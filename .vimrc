@@ -369,10 +369,6 @@ nnoremap <C-l> <C-w>l
 " set lead key to space
 let mapleader = "\<space>"
 
-" vertical split
-nnoremap <leader>w <C-w>v<C-w>l
-" horizontal split
-nnoremap <leader>s <C-w>s<C-w>l
 
 " base64 encoding and decoding
 vnoremap <leader>d64 y:let @"=system('base64 -d', @")<cr>gvP
