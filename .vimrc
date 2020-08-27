@@ -400,15 +400,6 @@ filetype plugin on
 call plug#begin('~/.vim/plugged')
 "    'github_user/repo_name'
 
-" -----------------
-" nerdcommenter
-
-"Plug 'scrooloose/nerdcommenter'
-
-"let g:NERDCustomDelimiters = {
-    "\ 'firejail': { 'left': '#'}
-"\ }
-"-----------------
 
 " -----------------
 " vim-commentary
@@ -519,8 +510,12 @@ function! PrependSeparator()
   normal yyPVr-xxgcl
 endfunction
 
-nmap <leader>a  :call AppendSeparator()<cr>
-nnoremap <leader>p  :call PrependSeparator()<cr>
+nmap <leader>sa  :call AppendSeparator()<cr>
+nmap <leader>sp  :call PrependSeparator()<cr>
+
+" remap jump to line of mark to jump to pos
+nnoremap ' :normal! `
+
 " -------------------------
 
 
