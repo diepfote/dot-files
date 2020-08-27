@@ -462,7 +462,15 @@ Plug 'tpope/vim-endwise'
 
 Plug 'christoomey/vim-sort-motion'  " type gs then the rest of your text objects & motions
 
+" --------------------------------
+" vim tmux runner settings
 Plug 'christoomey/vim-tmux-runner'
+
+" for Python and other languages with syntactic whitespace
+let g:VtrStripLeadingWhitespace = 0
+let g:VtrClearEmptyLines = 0
+let g:VtrAppendNewline = 0
+" --------------------------------
 
 Plug 'tpope/vim-surround'  " e.g. ds" to delete surrounding quotes
 Plug 'tpope/vim-repeat'  " support native repeat operation '.' for plugins that implement tpope/vim-repeat
