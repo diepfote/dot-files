@@ -10,4 +10,5 @@ venv/
 .venv/
 .vscode/
 .envrc
+.custom-envrc
 
