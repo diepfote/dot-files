@@ -202,6 +202,7 @@ autocmd BufRead,BufNewFile *.tex setlocal spell spelllang=de_at
 
 " -----------------
 " set ft
+autocmd BufRead,BufNewFile config-* set ft=sshconfig
 autocmd BufRead,BufNewFile *.bib set ft=tex
 autocmd BufRead,BufNewFile *.rc set ft=sh
 autocmd BufRead,BufNewFile *.envrc set ft=sh
