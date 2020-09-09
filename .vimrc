@@ -85,10 +85,6 @@ set fsync  " flush file to disk
 
 
 
-
-" default file settings
-" set tabstop=2 softtabstop=0 expandtab shiftwidth=2 smarttab
-
 " keep 5 lines at the top or bottom,
 " depends on the scroll direction
 set scrolloff=5
@@ -180,7 +176,23 @@ autocmd BufEnter * lcd %:p:h
 
 " ------------------------
 " start custom tab settings
-autocmd filetype py,*.c,*.hs,groovy set tabstop=4 softtabstop=0 expandtab shiftwidth=4 smarttab
+
+" default
+function! DefaultTabSettings()
+    " Don't set custom tab settings
+    " for these filetypes:
+    "
+    "if &ft =~ 'markdown\|somethingelse'
+    if &ft =~ 'go'
+        return
+    endif
+
+  set tabstop=2 softtabstop=0 expandtab shiftwidth=2 smarttab
+endfunction
+au bufenter * call DefaultTabSettings()
+
+" misc
+autocmd filetype py,c,haskell,groovy set tabstop=4 softtabstop=0 expandtab shiftwidth=4 smarttab
 
 " assembly
 au bufenter *.asm,*.S,*.s set tabstop=4 softtabstop=0 expandtab shiftwidth=4 smarttab
@@ -539,6 +551,12 @@ nnoremap 'x :normal! `x<cr>
 nnoremap 'y :normal! `y<cr>
 nnoremap 'z :normal! `z<cr>
 
+
+function! JumpToPos()
+normal! `z<cr>
+
+endfunction
+nnoremap ' :call JumpToPos()
 
 Plug 'inkarkat/vim-ingo-library'  " dependency for vim-mark and vim-ReplaceWithRegister
 Plug 'inkarkat/vim-visualrepeat'  " dependency for vim-ReplaceWithRegister
