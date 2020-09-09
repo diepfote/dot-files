@@ -524,39 +524,12 @@ nmap <leader>sp  :call PrependSeparator()<cr>
 " -------------------------
 
 " remap jump to line of mark to jump to pos
-nnoremap 'a :normal! `a<cr>
-nnoremap 'b :normal! `b<cr>
-nnoremap 'c :normal! `c<cr>
-nnoremap 'd :normal! `d<cr>
-nnoremap 'e :normal! `e<cr>
-nnoremap 'f :normal! `f<cr>
-nnoremap 'g :normal! `g<cr>
-nnoremap 'h :normal! `h<cr>
-nnoremap 'i :normal! `i<cr>
-nnoremap 'j :normal! `j<cr>
-nnoremap 'k :normal! `k<cr>
-nnoremap 'l :normal! `l<cr>
-nnoremap 'm :normal! `m<cr>
-nnoremap 'n :normal! `n<cr>
-nnoremap 'o :normal! `o<cr>
-nnoremap 'p :normal! `p<cr>
-nnoremap 'q :normal! `q<cr>
-nnoremap 'r :normal! `r<cr>
-nnoremap 's :normal! `s<cr>
-nnoremap 't :normal! `t<cr>
-nnoremap 'u :normal! `u<cr>
-nnoremap 'v :normal! `v<cr>
-nnoremap 'w :normal! `w<cr>
-nnoremap 'x :normal! `x<cr>
-nnoremap 'y :normal! `y<cr>
-nnoremap 'z :normal! `z<cr>
-
-
 function! JumpToPos()
-normal! `z<cr>
-
+  set mark = getchar()
+  execute 'normal! `' . mark<cr>
 endfunction
-nnoremap ' :call JumpToPos()
+nnoremap ' :call JumpToPos()<cr>
+
 
 Plug 'inkarkat/vim-ingo-library'  " dependency for vim-mark and vim-ReplaceWithRegister
 Plug 'inkarkat/vim-visualrepeat'  " dependency for vim-ReplaceWithRegister
