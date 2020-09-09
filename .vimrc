@@ -87,7 +87,7 @@ set fsync  " flush file to disk
 
 
 " default file settings
-set tabstop=2 softtabstop=0 expandtab shiftwidth=2 smarttab
+" set tabstop=2 softtabstop=0 expandtab shiftwidth=2 smarttab
 
 " keep 5 lines at the top or bottom,
 " depends on the scroll direction
@@ -180,18 +180,14 @@ autocmd BufEnter * lcd %:p:h
 
 " ------------------------
 " start custom tab settings
-autocmd filetype groovy set tabstop=4 softtabstop=0 expandtab shiftwidth=4 smarttab
-autocmd filetype py set tabstop=4 softtabstop=0 expandtab shiftwidth=4 smarttab
-au bufenter *.c set tabstop=4 softtabstop=0 expandtab shiftwidth=4 smarttab
-au bufenter *.hs set tabstop=4 softtabstop=0 expandtab shiftwidth=4 smarttab
+autocmd filetype py,*.c,*.hs,groovy set tabstop=4 softtabstop=0 expandtab shiftwidth=4 smarttab
 
-  " assembly
-  au bufenter *.asm set tabstop=4 softtabstop=0 expandtab shiftwidth=4 smarttab
-  au bufenter *.S set tabstop=4 softtabstop=0 expandtab shiftwidth=4 smarttab
-  au bufenter *.s set tabstop=4 softtabstop=0 expandtab shiftwidth=4 smarttab
+" assembly
+au bufenter *.asm,*.S,*.s set tabstop=4 softtabstop=0 expandtab shiftwidth=4 smarttab
 
-  " do not expand tabs
-  au bufenter *.cfg set tabstop=2 softtabstop=0 expandtab! shiftwidth=2 smarttab
+" do not expand tabs
+au bufenter *.cfg set tabstop=2 softtabstop=0 expandtab! shiftwidth=2 smarttab
+
 " end custom tab settings
 " ------------------------
 
