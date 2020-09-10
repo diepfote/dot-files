@@ -455,7 +455,9 @@ Plug 'luochen1990/rainbow'
 " :RainbowToggle
 let g:rainbow_active = 0
 
-
+" TODO: vim-endwise or vim-fish causes end statements to outdent all the way
+" if ft=fish
+"
 Plug 'dag/vim-fish'
 Plug 'vim-syntastic/syntastic'
 Plug 'tpope/vim-endwise'
