@@ -513,10 +513,10 @@ endfunction
 " prepend and append separating lines
 
 function! AppendSeparator()
-  normal yypVr-xxgcl
+  normal yyp^v$r-xxgclk
 endfunction
 function! PrependSeparator()
-  normal yyPVr-xxgcl
+  normal yyP^v$r-xxgclj
 endfunction
 
 nmap <leader>sa  :call AppendSeparator()<cr>
