@@ -523,6 +523,27 @@ nmap <leader>sa  :call AppendSeparator()<cr>
 nmap <leader>sp  :call PrependSeparator()<cr>
 " -------------------------
 
+
+" -------------------------------
+function! DeleteCharAtEndOfLine()
+  " TODO: call plugin redo in this code
+  normal! mz$x`z
+
+  " silent! call repeat#set("\<Plug>DeleteCharAtEndOfLine")
+endfunction
+" nnoremap <silent> <Plug>DeleteCharAtEndOfLine .
+nnoremap <leader>d  :call DeleteCharAtEndOfLine()<cr>
+
+function! ReplaceCharAtEndOfLine()
+  " TODO: call plugin redo in this code
+  let replacement = nr2char(getchar())
+  execute 'normal! mz$r' . replacement . '`z'
+endfunction
+nnoremap <leader>R  :call ReplaceCharAtEndOfLine()<cr>
+" ----------------------------------------------------
+
+
+
 " remap jump to line of mark to jump to pos
 function! JumpToPos()
   set mark = getchar()
