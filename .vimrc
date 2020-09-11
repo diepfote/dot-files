@@ -462,6 +462,9 @@ Plug 'dag/vim-fish'
 Plug 'vim-syntastic/syntastic'
 Plug 'tpope/vim-endwise'
 
+Plug 'tweekmonster/local-indent.vim'  " highlight indentation with vertical colored line
+autocmd FileType * LocalIndentGuide +hl -cc
+
 Plug 'christoomey/vim-sort-motion'  " type gs then the rest of your text objects & motions
 
 " --------------------------------
