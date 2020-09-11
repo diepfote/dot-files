@@ -536,13 +536,14 @@ nmap <leader>sp  :call PrependSeparator()<cr>
 function! DeleteCharAtEndOfLine()
   normal! mz$x`z
 endfunction
-nnoremap <leader>d :call DeleteCharAtEndOfLine()<cr>:silent! call repeat#set("\<leader>d", -1)<cr>
+nnoremap <leader>d  :call DeleteCharAtEndOfLine()<cr>:silent! call repeat#set("\<leader>d", -1)<cr>
 
 function! ReplaceCharAtEndOfLine()
   " TODO: call plugin redo in this code
   let replacement = nr2char(getchar())
   execute 'normal! mz$r' . replacement . '`z'
 endfunction
+nnoremap <leader>R  :call ReplaceCharAtEndOfLine()<cr>
 " -------------------------------
 
 
