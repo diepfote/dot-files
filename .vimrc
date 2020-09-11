@@ -474,6 +474,9 @@ let g:VtrClearEmptyLines = 0
 let g:VtrAppendNewline = 0
 " --------------------------------
 
+Plug 'glts/vim-magnum'  " dependency for vim-radical
+Plug 'glts/vim-radical'
+Plug 'tpope/vim-speeddating'
 Plug 'tpope/vim-surround'  " e.g. ds" to delete surrounding quotes
 Plug 'tpope/vim-repeat'  " support native repeat operation '.' for plugins that implement tpope/vim-repeat
 
