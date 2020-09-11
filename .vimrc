@@ -540,6 +540,20 @@ endfunction
 nnoremap <leader>d  :call DeleteCharAtEndOfLine()<cr>:silent! call repeat#set("\<leader>d", -1)<cr>
 " -------------------------------
 
+" ---------------------------------------------------------------------
+let s:append_val = ''  " global so last append_val will be remembered
+function! s:AppendCharAtEndOfLine(isRepeat)
+  if ! a:isRepeat
+    let s:append_val = nr2char(getchar())
+  endif
+  execute 'normal! mz$a' . s:append_val . '`z'
+  silent! call repeat#set("\<plug>AppendCharAtEndOfLineRepeat");
+endfunction
+
+nnoremap <silent> <plug>AppendCharAtEndOfLineRepeat :<c-u>call <sid>AppendCharAtEndOfLine(1)<cr>
+nnoremap <silent> <plug>AppendCharAtEndOfLine :<c-u>call <sid>AppendCharAtEndOfLine(0)<cr>
+nmap <leader>sA <plug>AppendCharAtEndOfLine
+" ---------------------------------------------------------------------
 
 " ---------------------------------------------------------------------
 let s:replacement = ''  " global so last replacement will be remembered
@@ -553,7 +567,7 @@ endfunction
 
 nnoremap <silent> <plug>ReplaceCharAtEndOfLineRepeat :<c-u>call <sid>ReplaceCharAtEndOfLine(1)<cr>
 nnoremap <silent> <plug>ReplaceCharAtEndOfLine :<c-u>call <sid>ReplaceCharAtEndOfLine(0)<cr>
-nmap <Leader>R <plug>ReplaceCharAtEndOfLine
+nmap <leader>R <plug>ReplaceCharAtEndOfLine
 " ---------------------------------------------------------------------
 
 
