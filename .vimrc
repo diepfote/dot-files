@@ -559,6 +559,10 @@ Plug 'inkarkat/vim-ingo-library'  " dependency for vim-mark and vim-ReplaceWithR
 Plug 'inkarkat/vim-visualrepeat'  " dependency for vim-ReplaceWithRegister
 " -----------------
 " vim-mark
+"
+" to highlight a word under your cursor do: <leader>m
+" to remove all highlights do: :MarkClear
+"
 Plug 'inkarkat/vim-mark'
 let g:mwDefaultHighlightingPalette = 'extended'
 " -----------------
