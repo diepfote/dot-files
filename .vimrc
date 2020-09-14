@@ -522,13 +522,13 @@ function! s:IndTxtObj(inner)
     normal! $
   endif
 endfunction
-" ---------
+" -------------------
 
 " -----------------------------------
 " prepend and append separating lines
 
 function! AppendSeparator()
-  normal yyp^v$r-xxgclk
+  normal yy}kp^v$r-xxgclk
 endfunction
 function! PrependSeparator()
   normal yyP^v$r-xxgclj
