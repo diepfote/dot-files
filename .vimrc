@@ -3,7 +3,7 @@
 "use fish as your login shell or launch Vim from fish, you need to set `shell`
 "to something else in your `~/.vimrc`, for example:
 if &shell =~# 'fish$'
-    set shell=sh
+    set shell=bash
 endif
 
 " set lead key to space
@@ -14,6 +14,13 @@ let mapleader = "\<space>"
 set hidden  " do not require buffer writes before switching buffers
 
 map <F4> :execute "vimgrep /" . expand("<cword>") . "/j **" <Bar> cw<CR>
+
+" resize windows with arrow keys
+nnoremap <c-down>  :resize +2<cr>
+nnoremap <c-up>  :resize -2<cr>
+nnoremap <c-left>  :vertical resize -2<cr>
+nnoremap <c-right>  :vertical resize +2<cr>
+
 
 "disable compatibility
 set nocompatible
