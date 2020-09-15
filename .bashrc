@@ -82,16 +82,10 @@ fi
 # bash history
 #
 
-# make bash history saving immediate and shared between sessions
-# taken from https://askubuntu.com/a/115625
-#
-# history -c clears the history of the running session. This will reduce the history counter by the amount of $HISTSIZE.
-# history -r read the contents of $HISTFILE and insert them in to the current running session history.
-# This will raise the history counter by the amount of lines in $HISTFILE
 shopt -s histappend                      # append to history, don't overwrite it
-export HISTSIZE=-1
-export HISTFILESIZE=-1
-export PROMPT_COMMAND="source ~/.sh_functions; history -a; history -c; history -r; remove_non-ascii_characters ~/.bash_history ~/.bash_history 1>/dev/null 2>/dev/null; $PROMPT_COMMAND"
+export HISTSIZE='blub'
+export HISTFILESIZE='blub'
+export PROMPT_COMMAND="source ~/.sh_functions; history -a; history -n; remove_non-ascii_characters ~/.bash_history ~/.bash_history 1>/dev/null 2>/dev/null; $PROMPT_COMMAND"
 
 
 #
