@@ -33,6 +33,8 @@ bind '"\C-w":backward-kill-word'
 # configure to use direnv
 eval "$(direnv hook bash 2>/dev/null || true)"
 
+eval "$(gh completion -s bash 2>/dev/null || true)"
+
 source ~/Documents/scripts/source-me/bash-nnn.sh
 source ~/Documents/scripts/source-me/posix-compliant-shells.sh
 for name in $(find ~/Documents/scripts/source-me -name 'completions*'); do
