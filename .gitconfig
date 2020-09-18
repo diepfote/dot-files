@@ -45,6 +45,8 @@
 
   af-helm-weirdness = "!f() { ~/Documents/scripts/af-helm-weirdness.sh $@; }; f"
 
+  delete-all-git-branches-except-master = "!f() { [ -n \"$1\" ] && delete=D || delete=d; git for-each-ref --shell --format='git log --oneline %(refname) ^origin/master'   refs/heads/ | sed \"s#.*refs/heads/##;s#' .*##\" | grep -v master | xargs git branch -\"$delete\"; }; f"
+
 [filter "lfs"]
 	required = true
 	clean = git-lfs clean -- %f
