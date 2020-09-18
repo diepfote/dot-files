@@ -43,6 +43,7 @@
 
   files-in-commit = "!f() { [ -z "$@" ] && set -- HEAD;git diff-tree --no-commit-id --name-only -r $@; }; f"
 
+  af-helm-weirdness = "!f() { ~/Documents/scripts/af-helm-weirdness.sh $@; }; f"
 
 [filter "lfs"]
 	required = true
