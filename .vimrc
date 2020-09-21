@@ -30,8 +30,11 @@ set backspace=indent,eol,start
 
 " customize the wildmenu
 set wildignore+=*.dll,*.o,*.pyc,*.bak,*.exe,*.jpg,*.jpeg,*.png,*.gif,*$py.class,*.class,*/*.dSYM/*,*.dylib,*.so,*.PNG,*.JPG
+set wildmenu
+set wildmode=longest:full,full
+
 " for sidebars?
-let g:netrw_list_hide='^\.,.\(pyc\|pyo\)$'
+let g:netrw_list_hide='^\.\(pyc\|pyo\)$'
 
 
 " sudo write this, no use with firejail obviously
