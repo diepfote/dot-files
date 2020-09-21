@@ -112,8 +112,8 @@ set list
 " line extends screen (if no word-wrap), add a '#'
 " non-breaking space, add a dot
 "
-"set listchars=tab:▸,trail:.,extends:#,nbsp:.
-set listchars=tab:▸\ ,extends:#,nbsp:⍽
+" set listchars=tab:✧\ ,extends:#,nbsp:⍽
+set listchars=tab:▴\ ,extends:#,nbsp:⍽
 
 " wrapping settings
 set colorcolumn=85 " display vertical line to show 85 character limit
