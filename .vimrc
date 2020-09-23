@@ -584,8 +584,8 @@ nmap <leader>R <plug>ReplaceCharAtEndOfLine
 
 " remap jump to line of mark to jump to pos
 function! JumpToPos()
-  set mark = getchar()
-  execute 'normal! `' . mark<cr>
+  let s:mark = nr2char(getchar())
+  execute 'normal! `' . s:mark
 endfunction
 nnoremap ' :call JumpToPos()<cr>
 
