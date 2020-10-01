@@ -420,6 +420,8 @@ call plug#begin('~/.vim/plugged')
 "    'github_user/repo_name'
 
 
+Plug 'tpope/vim-vinegar'  " improve vim's netrw
+
 " -----------------
 " vim-commentary
 Plug 'tpope/vim-commentary'
@@ -490,7 +492,7 @@ let g:VtrAppendNewline = 0
 Plug 'glts/vim-magnum'  " dependency for vim-radical
 Plug 'glts/vim-radical'
 Plug 'tpope/vim-speeddating'
-Plug 'tpope/vim-surround'  " e.g. ds" to delete surrounding quotes
+Plug 'tpope/vim-surround'  " e.g. ds" to delete surrounding quotes ; ysTEXTOBJECT'  to surround TEXTOBJECT with ' ; cs"' to change " to '
 Plug 'tpope/vim-repeat'  " support native repeat operation '.' for plugins that implement tpope/vim-repeat
 
 " -------------------
