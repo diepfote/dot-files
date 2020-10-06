@@ -34,7 +34,7 @@ else
     set -x NNN_TRASH 1
     set -x NNN_BMS "d:~/Documents;h:~;D:~/Downloads;f:~/.config/fish/functions;s:~/Documents/scripts;L:~/Library/LaunchAgents;l:~/Documents/systemd-user;S:~/.config/systemd/user;E:/etc/;v:~/Videos;V:/run/media/$USER/large_drive/Media/Video-Files/Videos;m:~/Movies;b:~/Documents/wir/bauen_haus;p:~/Documents/wir/bauen_haus/pläne"  # jump locations for nnn
     set -x NNN_FIFO /tmp/nnn.fifo
-    set -x NNN_PLUG 'p:preview-tui'  # curl -Ls https://raw.githubusercontent.com/jarun/nnn/master/plugins/getplugs | sh
+    set -x NNN_PLUG 'p:preview-tui;v:imgview;t:imgthumb'   # curl -Ls https://raw.githubusercontent.com/jarun/nnn/master/plugins/getplugs | sh
 
 
     set -x FZF_DEFAULT_OPTS '--height 40% --layout=reverse --border'
