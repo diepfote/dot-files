@@ -422,6 +422,8 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'tpope/vim-vinegar'  " improve vim's netrw
 
+Plug 'tpope/vim-afterimage'  " edit ICO, PNG, and GIF, PDFs and macos plists
+
 " -----------------
 " vim-commentary
 Plug 'tpope/vim-commentary'
