@@ -38,8 +38,8 @@
 
   delete-gone-branches = "!f() {   for branch in $(git branch -vv | grep gone | sed -r 's#\\s+##;s#^\\*##' | cut -d ' ' -f1); do echo \"Deleting $branch\";  git branch -d \"$branch\"; done }; f"
 
-  resubmit = "!f() { [ -z "$@" ] && git add . || git add $@; git commit --amend -C HEAD; git push -u origin \"$(git branch | head -n 1 | cut -d ' ' -f2)\" --force-with-lease; }; f"
-  resubmit-force = "!f() { [ -z "$@" ] && git add . || git add $@; git commit --amend -C HEAD; git push -u origin \"$(git branch | head -n 1 | cut -d ' ' -f2)\" --force; }; f"
+  resubmit = "!f() { [ -z "$@" ] && git add . || git add $@; git commit --amend -C HEAD; git push -u origin \"$(git branch | grep '*' | head -n 1 | cut -d ' ' -f2)\" --force-with-lease; }; f"
+  resubmit-force = "!f() { [ -z "$@" ] && git add . || git add $@; git commit --amend -C HEAD; git push -u origin \"$(git branch | grep '*' | head -n 1 | cut -d ' ' -f2)\" --force; }; f"
 
   files-in-commit = "!f() { [ -z "$@" ] && set -- HEAD;git diff-tree --no-commit-id --name-only -r $@; }; f"
 
