@@ -569,6 +569,11 @@ nnoremap <silent> <plug>AppendCharAtEndOfLine :<c-u>call <sid>AppendCharAtEndOfL
 nmap <leader>sA <plug>AppendCharAtEndOfLine
 " ---------------------------------------------------------------------
 
+" copy clipboard to no-name register
+nmap <leader>gr :let @"=@+<cr>
+" copy no-name register to clipboard
+nmap <leader>gR :let @+=@"<cr>
+
 " ---------------------------------------------------------------------
 let s:replacement = ''  " global so last replacement will be remembered
 function! s:ReplaceCharAtEndOfLine(isRepeat)
