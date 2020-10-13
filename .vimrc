@@ -589,6 +589,16 @@ nnoremap <silent> <plug>ReplaceCharAtEndOfLine :<c-u>call <sid>ReplaceCharAtEndO
 nmap <leader>R <plug>ReplaceCharAtEndOfLine
 " ---------------------------------------------------------------------
 
+function! DeleteIntoTheVoid()
+  " let s:first_visual_selected_line = getline("'<")[getpos("'<")[2]-1:getpos("'>")[2]]
+  " if s:first_visual_selected_line != ''
+    normal! "_dd
+  " else
+  "   echom 'here'
+  "   normal! "_d
+  " endif
+endfunction
+nnoremap _d :call DeleteIntoTheVoid()<cr>
 
 
 " remap jump to line of mark to jump to pos
