@@ -590,11 +590,13 @@ nmap <leader>R <plug>ReplaceCharAtEndOfLine
 " ---------------------------------------------------------------------
 
 
-" Delete to Black Hole Register
+" Delete to Black Hole Register | Delete to Blackhole Register | Delete into the Void
 " normal mode; combine with any textobject
 nnoremap _d "_d
+nnoremap _x "_x
 " visual mode
 vnoremap _d "_d<cr>
+vnoremap _x "_x<cr>
 
 
 " remap jump to line of mark to jump to pos

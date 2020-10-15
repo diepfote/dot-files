@@ -23,6 +23,8 @@
   find-commits-changed-file = "!f() { git l --follow -- "$1" ; }; f"
   find-commit-introduced-file = "!f() { git l --follow --diff-filter=A "$1" ; }; f"
 
+  files-in-commit = "!f() { [ -z "$@" ] && set -- HEAD;git diff-tree --no-commit-id --name-only -r $@; }; f"
+
 
   ;change committer email
   ;
@@ -45,10 +47,9 @@
 
   delete-gone-branches = "!f() {   for branch in $(git branch -vv | grep gone | sed -r 's#\\s+##;s#^\\*##' | cut -d ' ' -f1); do echo \"Deleting $branch\";  git branch -d \"$branch\"; done }; f"
 
-  resubmit = "!f() { [ -z "$@" ] && git add . || git add $@; git commit --amend -C HEAD; git push -u origin \"$(git branch | grep '*' | head -n 1 | cut -d ' ' -f2)\" --force-with-lease; }; f"
-  resubmit-force = "!f() { [ -z "$@" ] && git add . || git add $@; git commit --amend -C HEAD; git push -u origin \"$(git branch | grep '*' | head -n 1 | cut -d ' ' -f2)\" --force; }; f"
-
-  files-in-commit = "!f() { [ -z "$@" ] && set -- HEAD;git diff-tree --no-commit-id --name-only -r $@; }; f"
+  resubmit-base = "!f() { [ -z "$@" ] && git add . || git add $@; branch_name=\"$(git branch | grep '*' | head -n 1 | cut -d ' ' -f2)\"; branch_origin=\"$(git branch -r | grep \"$branch_name\" | head -n1 | cut -d '/' -f1 | sed 's#\\s*##' )\"; git push -u \"$branch_origin\" \"$branch_name\"; }; f"
+  resubmit = "!f() { git resubmit-base $@ --force-with-lease; }; f"
+  resubmit-force = "!f() { git resubmit-base $@ --force; }; f"
 
   af-helm-weirdness = "!f() { ~/Documents/scripts/af-helm-weirdness.sh $@; }; f"
 
