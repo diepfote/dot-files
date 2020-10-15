@@ -47,7 +47,7 @@
 
   delete-gone-branches = "!f() {   for branch in $(git branch -vv | grep gone | sed -r 's#\\s+##;s#^\\*##' | cut -d ' ' -f1); do echo \"Deleting $branch\";  git branch -d \"$branch\"; done }; f"
 
-  resubmit-base = "!f() { last_arg=\"${@:$#}\"; set -- \"${@:1:$(($#-1))}\"; [ -z "$1" ] && git add . || git add $@; branch_name=\"$(git branch | grep '*' | head -n 1 | cut -d ' ' -f2)\"; branch_origin=\"$(git branch -r | grep \"$branch_name\" | head -n1 | cut -d '/' -f1 | sed 's#\\s*##' )\"; git push -u \"$branch_origin\" \"$branch_name\" \"$last_arg\"; }; f"
+  resubmit-base = "!f() { last_arg=\"${@:$#}\"; set -- \"${@:1:$(($#-1))}\"; [ -z "$1" ] && git add . || git add $@; git commit --amend -C HEAD; branch_name=\"$(git branch | grep '*' | head -n 1 | cut -d ' ' -f2)\"; branch_origin=\"$(git branch -r | grep \"$branch_name\" | head -n1 | cut -d '/' -f1 | sed 's#\\s*##' )\"; git push -u \"$branch_origin\" \"$branch_name\" \"$last_arg\"; }; f"
   resubmit = "!f() { git resubmit-base $@ --force-with-lease; }; f"
   resubmit-force = "!f() { git resubmit-base $@ --force; }; f"
 
