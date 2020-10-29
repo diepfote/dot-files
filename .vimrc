@@ -37,6 +37,7 @@ set wildmode=longest:full,full
 let g:netrw_list_hide='^\.\(pyc\|pyo\)$'
 
 
+
 " sudo write this, no use with firejail obviously
 cmap W! w !sudo tee % >/dev/null
 
@@ -85,6 +86,12 @@ if has("nvim")
     autocmd!
     autocmd BufWinEnter * call ResCur()
   augroup END
+
+
+  set termguicolors
+  colorscheme lingodirector  "-> 'flazz/vim-colorschemes'
+  " set search highlight color
+  highlight Search guibg='LightBlue' guifg='NONE'
 else
   set viminfo=
 end
@@ -117,7 +124,7 @@ set list
 " non-breaking space, add a dot
 "
 " set listchars=tab:✧\ ,extends:#,nbsp:⍽
-set listchars=tab:▴\ ,extends:#,nbsp:⍽
+set listchars=tab:▴\ ,extends:#,nbsp:⍽,space:·
 
 " wrapping settings
 set colorcolumn=85 " display vertical line to show 85 character limit
@@ -319,13 +326,6 @@ autocmd FileType fish compiler fish
 
     " IMPORTANT: :help Ncm2PopupOpen for more information
     set completeopt=noinsert,menuone,noselect
-
-    set termguicolors
-    colorscheme lingodirector  "-> 'flazz/vim-colorschemes'
-    " set search highlight color
-    highlight Search guibg='LightBlue' guifg='NONE'
-
-
   endif
 " ####
 
