@@ -123,8 +123,8 @@ complete -f -c append_syscall -a $command
 # PKGBUILD AUR completion
 set command '(yay -Qqm)'
 
-complete -f -c pkgbuild_for_pkg -a $command
-complete -f -c pkgbuild_for_pkgv -a $command
+complete -f -c pkgbuild -a $command
+complete -f -c pkgbuild -a $command
 
 set command '(yay -Qqn)'
 complete -f -c downgrade -a $command
