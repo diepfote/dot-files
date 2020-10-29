@@ -129,6 +129,7 @@ set list
 
 " --------------------------------
 let g:listchars_for_space_enabled = 0
+set listchars=tab:▴\ ,extends:#,nbsp:⍽
 function! ToggleListCharsOptions()
   if ! g:listchars_for_space_enabled
     let g:listchars_for_space_enabled = 1
