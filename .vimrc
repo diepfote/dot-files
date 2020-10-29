@@ -54,16 +54,23 @@ endfun
 inoremap <c-u> <C-R>=InsertUUID4()
 
 
-
 " do not write backup files
 set nobackup
 set nowritebackup
 
-" ----------
-"viminfo
+
+let os=substitute(system('uname'), '\n', '', '')
+if os == 'Darwin' || os == 'Mac'
+  " If installed using Homebrew
+  set rtp+=/usr/local/opt/fzf
+elseif os == 'Linux'
+  " to use :FZF
+  set rtp+=/usr/bin/fzf
+endif
+
+
 
 if has("nvim")
-
   " Tell vim to remember certain things when we exit
   "  '10  :  marks will be remembered for up to 10 previously edited files
   "  "100 :  will save up to 100 lines for each register
@@ -95,6 +102,7 @@ if has("nvim")
 else
   set viminfo=
 end
+
 
 
 " disable swapfile
@@ -315,20 +323,7 @@ autocmd FileType fish compiler fish
 
 
 " -----------------------
-" ncm2 settings and tips
-"
-" ####
-" SETTINGS
-  " enable ncm2 for all buffers
-
-  if has("nvim")
-    autocmd BufEnter * call ncm2#enable_for_buffer()
-
-    " IMPORTANT: :help Ncm2PopupOpen for more information
-    set completeopt=noinsert,menuone,noselect
-  endif
-" ####
-
+" ncm2 tips
 
 " ####
 " TIPS
@@ -351,24 +346,6 @@ autocmd FileType fish compiler fish
 "
 " -----------------------
 
-" -----------------------
-" tmux-complete settings
-"
-" to enable fuzzy matching disable filter_prefix -> set to 0
-let g:tmuxcomplete#asyncomplete_source_options = {
-            \ 'name':      'tmuxcomplete',
-            \ 'whitelist': ['*'],
-            \ 'config': {
-            \     'splitmode':      'words',
-            \     'filter_prefix':   0,
-            \     'show_incomplete': 1,
-            \     'sort_candidates': 0,
-            \     'scrollback':      0,
-            \     'truncate':        0
-            \     }
-            \ }
-
-" -----------------------
 
 " remap PageUp to C-a
 "nnoremap <C-a>  <C-b>
@@ -419,88 +396,8 @@ nmap <f8> :TagbarToggle<cr>
 set tags=.git/tags
 
 
-filetype plugin on
-call plug#begin('~/.vim/plugged')
-"    'github_user/repo_name'
-
-
-Plug 'tpope/vim-vinegar'  " improve vim's netrw
-
-Plug 'tpope/vim-afterimage'  " edit ICO, PNG, and GIF, PDFs and macos plists
-
-" -----------------
-" vim-commentary
-Plug 'tpope/vim-commentary'
-
-" custom comment strings
-autocmd FileType firejail setlocal commentstring=#\ %s
-" -----------------
-
-Plug 'majutsushi/tagbar'
-
-" tmux-resurrect dependency (do :mksession automatically...)
-Plug 'tpope/vim-obsession'
-
-Plug 'mileszs/ack.vim'
-" replace ack by ag
-let g:ackprg = 'ag --vimgrep'
-
-let os=substitute(system('uname'), '\n', '', '')
-if os == 'Darwin' || os == 'Mac'
-  " If installed using Homebrew
-  set rtp+=/usr/local/opt/fzf
-
-  " -----------------------------------
-  " coc language server
-
-  " Use <c-space> to trigger completion.
-  if has('nvim')
-    Plug 'neoclide/coc.nvim'
-
-    inoremap <silent><expr> <c-space> coc#refresh()
-  else
-    inoremap <silent><expr> <c-@> coc#refresh()
-  endif
-  " -----------------------------------
-
-elseif os == 'Linux'
-  " to use :FZF
-  set rtp+=/usr/bin/fzf
-endif
-
-
-
-Plug 'luochen1990/rainbow'
-" :RainbowToggle
-let g:rainbow_active = 0
-
-" TODO: vim-endwise or vim-fish causes end statements to outdent all the way
-" if ft=fish
-"
-Plug 'dag/vim-fish'
-Plug 'vim-syntastic/syntastic'
-Plug 'tpope/vim-endwise'
-
-Plug 'tweekmonster/local-indent.vim'  " highlight indentation with vertical colored line
-autocmd FileType yaml,markdown LocalIndentGuide +hl -cc
-
-Plug 'christoomey/vim-sort-motion'  " type gs then the rest of your text objects & motions
-
-" --------------------------------
-" vim tmux runner settings
-Plug 'christoomey/vim-tmux-runner'
-
-" for Python and other languages with syntactic whitespace
-let g:VtrStripLeadingWhitespace = 0
-let g:VtrClearEmptyLines = 0
-let g:VtrAppendNewline = 0
-" --------------------------------
-
-Plug 'glts/vim-magnum'  " dependency for vim-radical
-Plug 'glts/vim-radical'
-Plug 'tpope/vim-speeddating'
-Plug 'tpope/vim-surround'  " e.g. ds" to delete surrounding quotes ; ysTEXTOBJECT'  to surround TEXTOBJECT with ' ; cs"' to change " to '
-Plug 'tpope/vim-repeat'  " support native repeat operation '.' for plugins that implement tpope/vim-repeat
+" --------------------------------------------------
+" vimscript functions not dependend on plugins start
 
 " -------------------
 " textobj indentation
@@ -559,25 +456,27 @@ endfunction
 nnoremap <leader>d  :call DeleteCharAtEndOfLine()<cr>:silent! call repeat#set("\<leader>d", -1)<cr>
 " -------------------------------
 
-" ---------------------------------------------------------------------
-let s:append_val = ''  " global so last append_val will be remembered
-function! s:AppendCharAtEndOfLine(isRepeat)
-  if ! a:isRepeat
-    let s:append_val = nr2char(getchar())
-  endif
-  execute 'normal! mz$a' . s:append_val . '`z'
-  silent! call repeat#set("\<plug>AppendCharAtEndOfLineRepeat");
-endfunction
-
-nnoremap <silent> <plug>AppendCharAtEndOfLineRepeat :<c-u>call <sid>AppendCharAtEndOfLine(1)<cr>
-nnoremap <silent> <plug>AppendCharAtEndOfLine :<c-u>call <sid>AppendCharAtEndOfLine(0)<cr>
-nmap <leader>sA <plug>AppendCharAtEndOfLine
-" ---------------------------------------------------------------------
 
 " copy clipboard to no-name register
 nmap <leader>gr :let @"=@+<cr>
 " copy no-name register to clipboard
 nmap <leader>gR :let @+=@"<cr>
+
+" Delete to Black Hole Register | Delete to Blackhole Register | Delete into the Void
+" normal mode; combine with any textobject
+nnoremap _d "_d
+nnoremap _x "_x
+" visual mode
+vnoremap _d "_d<cr>
+vnoremap _x "_x<cr>
+
+
+" remap jump to line of mark to jump to pos
+function! JumpToPos()
+  let s:mark = nr2char(getchar())
+  execute 'normal! `' . s:mark
+endfunction
+nnoremap ' :call JumpToPos()<cr>
 
 " ---------------------------------------------------------------------
 let s:replacement = ''  " global so last replacement will be remembered
@@ -595,21 +494,102 @@ nmap <leader>R <plug>ReplaceCharAtEndOfLine
 " ---------------------------------------------------------------------
 
 
-" Delete to Black Hole Register | Delete to Blackhole Register | Delete into the Void
-" normal mode; combine with any textobject
-nnoremap _d "_d
-nnoremap _x "_x
-" visual mode
-vnoremap _d "_d<cr>
-vnoremap _x "_x<cr>
-
-
-" remap jump to line of mark to jump to pos
-function! JumpToPos()
-  let s:mark = nr2char(getchar())
-  execute 'normal! `' . s:mark
+" ---------------------------------------------------------------------
+let s:append_val = ''  " global so last append_val will be remembered
+function! s:AppendCharAtEndOfLine(isRepeat)
+  if ! a:isRepeat
+    let s:append_val = nr2char(getchar())
+  endif
+  execute 'normal! mz$a' . s:append_val . '`z'
+  silent! call repeat#set("\<plug>AppendCharAtEndOfLineRepeat");
 endfunction
-nnoremap ' :call JumpToPos()<cr>
+
+nnoremap <silent> <plug>AppendCharAtEndOfLineRepeat :<c-u>call <sid>AppendCharAtEndOfLine(1)<cr>
+nnoremap <silent> <plug>AppendCharAtEndOfLine :<c-u>call <sid>AppendCharAtEndOfLine(0)<cr>
+nmap <leader>sA <plug>AppendCharAtEndOfLine
+" ---------------------------------------------------------------------
+
+" vimscript functions not dependend on plugins end
+" --------------------------------------------------
+
+
+
+
+filetype plugin on
+call plug#begin('~/.vim/plugged')
+"    'github_user/repo_name'
+
+
+Plug 'tpope/vim-vinegar'  " improve vim's netrw
+
+Plug 'tpope/vim-afterimage'  " edit ICO, PNG, and GIF, PDFs and macos plists
+
+" -----------------
+" vim-commentary
+Plug 'tpope/vim-commentary'
+
+" custom comment strings
+autocmd FileType firejail setlocal commentstring=#\ %s
+" -----------------
+
+Plug 'majutsushi/tagbar'
+
+" tmux-resurrect dependency (do :mksession automatically...)
+Plug 'tpope/vim-obsession'
+
+Plug 'mileszs/ack.vim'
+" replace ack by ag
+let g:ackprg = 'ag --vimgrep'
+
+
+" -----------------------------------
+" coc language server
+
+" Use <c-space> to trigger completion.
+if has('nvim')
+  Plug 'neoclide/coc.nvim'
+
+  inoremap <silent><expr> <c-space> coc#refresh()
+else
+  inoremap <silent><expr> <c-@> coc#refresh()
+endif
+" -----------------------------------
+
+
+Plug 'luochen1990/rainbow'
+" :RainbowToggle
+let g:rainbow_active = 0
+
+" TODO: vim-endwise or vim-fish causes end statements to outdent all the way
+" if ft=fish
+"
+Plug 'dag/vim-fish'
+Plug 'vim-syntastic/syntastic'
+Plug 'tpope/vim-endwise'
+
+Plug 'tweekmonster/local-indent.vim'  " highlight indentation with vertical colored line
+autocmd FileType yaml,markdown LocalIndentGuide +hl -cc
+
+Plug 'christoomey/vim-sort-motion'  " type gs then the rest of your text objects & motions
+
+" --------------------------------
+" vim tmux runner settings
+Plug 'christoomey/vim-tmux-runner'
+
+" for Python and other languages with syntactic whitespace
+let g:VtrStripLeadingWhitespace = 0
+let g:VtrClearEmptyLines = 0
+let g:VtrAppendNewline = 0
+" --------------------------------
+
+Plug 'glts/vim-magnum'  " dependency for vim-radical
+Plug 'glts/vim-radical'
+Plug 'tpope/vim-speeddating'
+Plug 'tpope/vim-surround'  " e.g. ds" to delete surrounding quotes ; ysTEXTOBJECT'  to surround TEXTOBJECT with ' ; cs"' to change " to '
+Plug 'tpope/vim-repeat'  " support native repeat operation '.' for plugins that implement tpope/vim-repeat
+
+
+
 
 
 Plug 'inkarkat/vim-ingo-library'  " dependency for vim-mark and vim-ReplaceWithRegister
@@ -645,8 +625,35 @@ if has('nvim')
   "Plug 'HiPhish/ncm2-vlime'  "  completions taken from vlime (requires
     "connection to vlime server)
   "Plug 'l04m33/vlime'  "https://github.com/l04m33/vlime#quickstart
+"
+  if has("nvim")
+    autocmd BufEnter * call ncm2#enable_for_buffer()
 
+    " IMPORTANT: :help Ncm2PopupOpen for more information
+    set completeopt=noinsert,menuone,noselect
+  endif
+
+
+  " -----------------------
+  " tmux-complete settings
   "
+  Plug 'wellle/tmux-complete.vim' " vim completions from other tmux panes (used by ncm2)
+  " to enable fuzzy matching disable filter_prefix -> set to 0
+  let g:tmuxcomplete#asyncomplete_source_options = {
+              \ 'name':      'tmuxcomplete',
+              \ 'whitelist': ['*'],
+              \ 'config': {
+              \     'splitmode':      'words',
+              \     'filter_prefix':   0,
+              \     'show_incomplete': 1,
+              \     'sort_candidates': 0,
+              \     'scrollback':      0,
+              \     'truncate':        0
+              \     }
+              \ }
+
+  " -----------------------
+
   " ncm2 end
   " --------------
 
@@ -679,7 +686,6 @@ if has('nvim')
   " -----------------------------------
 
   Plug 'flazz/vim-colorschemes'
-  Plug 'wellle/tmux-complete.vim' " vim completions from other tmux panes (used by ncm2)
   Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 endif
 
