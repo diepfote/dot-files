@@ -17,8 +17,8 @@
 
   lauthor-and-committer = "!f() { git log --graph --pretty=format:'%C(bold cyan)%h%Creset%C(bold magenta)%d%Creset %C(bold green)<a:%ae | c:%ce>%Creset %C(bold red)(a:%ad |  c:%cd)%Creset %s' $@ ; }; f"
 
-  find-commit-contains-string = "!f() { git le --reverse --source -S "'$1'" ; }; f"
-  find-commit-contains-regex = "!f() { git le --reverse --source -G "'$1'" ; }; f"
+  find-commit-contains-string = "!f() { git le --reverse --source -S $@ ; }; f"
+  find-commit-contains-regex = "!f() { git le --reverse --source -G $@ ; }; f"
   find-commits-changed-file-w-patches = "!f() { git l -p -- "$1"; }; f"
   find-commits-changed-file = "!f() { git l --follow -- "$1" ; }; f"
   find-commit-introduced-file = "!f() { git l --follow --diff-filter=A "$1" ; }; f"
