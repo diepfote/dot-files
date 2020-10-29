@@ -540,7 +540,7 @@ endfunction
 " prepend and append separating lines
 
 function! AppendSeparator()
-  normal yy}kp^v$r-xxgclk
+  normal mlyy}kp^v$r-xxgclk'l
 endfunction
 function! PrependSeparator()
   normal yyP^v$r-xxgclj
