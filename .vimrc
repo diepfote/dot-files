@@ -125,14 +125,23 @@ let html_no_rendering=1
 
 "
 set list
-"
-" show trailing spaces with a dot
-" tabs with '>.'
-" line extends screen (if no word-wrap), add a '#'
-" non-breaking space, add a dot
-"
-" set listchars=tab:✧\ ,extends:#,nbsp:⍽
-set listchars=tab:▴\ ,extends:#,nbsp:⍽,space:·
+
+
+" --------------------------------
+let g:listchars_for_space_enabled = 0
+function! ToggleListCharsOptions()
+  if ! g:listchars_for_space_enabled
+    let g:listchars_for_space_enabled = 1
+    set listchars=tab:▴\ ,extends:#,nbsp:⍽,space:·
+  else
+    let g:listchars_for_space_enabled = 0
+    set listchars=tab:▴\ ,extends:#,nbsp:⍽
+  endif
+endfunction
+
+nmap <leader>ss  :call ToggleListCharsOptions()<cr>
+" --------------------------------
+
 
 " wrapping settings
 set colorcolumn=85 " display vertical line to show 85 character limit
