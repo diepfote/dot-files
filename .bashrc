@@ -147,7 +147,7 @@ builtin bind '"\C-r": "\C-x1\e^\er"'
 #\$(show_kubernetes_context)$YELLOW\$(show_kubernetes_namespace)$NC]\n$ "
 
 
-export PS1="\$(refresh_tmux_kubecontext)[ $LIGHT_GREEN\w$NC$PURPLE\$(__git_ps1)$NC${YELLOW}\$(show_openstack_project)$NC ]\n$ "
+export PS1="\$(refresh_tmux_kubecontext)[ $LIGHT_GREEN\w$NC$PURPLE$NC${YELLOW}\$(show_openstack_project)$NC ]\n$ "
 
 #
 # prompt style end
