@@ -46,7 +46,7 @@ done
 #
 
 # kubernetes autocompletion | kubectl autocompletion
-[[ -x kubectl ]] && tsource <(kubectl completion bash)
+[[ -x kubectl ]] && source <(kubectl completion bash)
 
 # ----
 # Darwin
