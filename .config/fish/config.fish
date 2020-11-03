@@ -48,7 +48,7 @@ else
       eval (direnv hook fish)
     end
 
-    set gh_location (which direnv 2>/dev/null)
+    set gh_location (which gh 2>/dev/null)
     if [ -n "$gh_location" ]
       eval (gh completion -s fish)
     end
