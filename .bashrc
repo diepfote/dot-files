@@ -88,7 +88,7 @@ shopt -s histappend                      # append to history, don't overwrite it
 export HISTSIZE='blub'
 export HISTFILESIZE='blub'
 # run refresh_tmux_kubecontext in subshell to supress job output
-export PROMPT_COMMAND="(refresh_tmux_kubecontext); source ~/.sh_functions; history -a; history -n; $PROMPT_COMMAND"
+export PROMPT_COMMAND="(refresh_tmux_openstack_and_kubecontext); source ~/.sh_functions; history -a; history -n; $PROMPT_COMMAND"
 
 
 #
@@ -140,7 +140,7 @@ builtin bind '"\C-r": "\C-x1\e^\er"'
 # prompt style start
 #
 # !! remember to ecaspe dollar signs, otherwise PS1 caches the output !!
-export PS1="[ $LIGHT_GREEN\w$NC${YELLOW}\$(show_openstack_project)$NC ]\n$ "
+export PS1="[ $LIGHT_GREEN\w$NC ]\n$ "
 
 #
 # prompt style end
