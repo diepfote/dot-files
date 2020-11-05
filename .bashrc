@@ -26,30 +26,12 @@ bind '"\C-w":backward-kill-word'
 #
 # ----
 
-
-
-
-
-# configure to use direnv
-eval "$(direnv hook bash 2>/dev/null || true)"
-
-eval "$(gh completion -s bash 2>/dev/null || true)"
-
 source ~/Documents/scripts/source-me/bash-nnn.sh
 source ~/Documents/scripts/source-me/posix-compliant-shells.sh
 for name in $(find ~/Documents/scripts/source-me -name 'completions*'); do
   source "$name"
 done
 
-# -----
-# kubectl | kubernetes  just bash
-#
-
-# kubernetes autocompletion | kubectl autocompletion
-[[ -x kubectl ]] && source <(kubectl completion bash)
-
-# ----
-# Darwin
 if [ "$(uname)" = Darwin ]; then
   dir=/usr/local/etc/bash_completion.d
   for name in $(ls "$dir"); do
@@ -60,10 +42,10 @@ fi
 
 bash_completion_file=/usr/local/etc/profile.d/bash_completion.sh
 [[ -f "$bash_completion_file" ]] && source "$bash_completion_file"
-# ----
 
 # helper functions such as 'get_pod' for kubernetes
 source ~/Documents/scripts/kubernetes/source-me/common-functions.sh
+
 #------------
 
 # --------------------------
@@ -73,14 +55,6 @@ shopt -s nocaseglob  # case-insensitive-globbing in pathname expansion
 # --------------------------
 
 
-#------------
-# Darwin misc
-
-if [ "$(uname)" = Darwin ]; then
-  :
-fi
-
-#------------
 # bash history
 #
 
@@ -137,7 +111,6 @@ builtin bind '"\C-r": "\C-x1\e^\er"'
 # prompt style start
 #
 
-# !! remember to ecaspe dollar signs, otherwise PS1 caches the output !!
 source ~/Documents/scripts/source-me/bash-prompt.sh
 #
 # prompt style end
