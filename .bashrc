@@ -23,7 +23,7 @@ stty werase undef
 # set '-', '/' etc. as word delmiters
 bind '"\C-w":backward-kill-word'
 
-bind -f ~/.inputrc
+bind 'set enable-bracketed-paste'
 
 #
 # ----
