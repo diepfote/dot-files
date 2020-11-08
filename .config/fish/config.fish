@@ -18,7 +18,13 @@ else
 
 
 
-  [ (uname) = Darwin ] && alias grep='ggrep --exclude-dir=.git --color' && alias find=gfind || alias grep='grep --exclude-dir=.git --color'
+  if [ (uname) = Darwin ]
+    alias grep='ggrep --exclude-dir=.git --color'
+    alias find=gfind
+  else
+      alias grep='grep --exclude-dir=.git --color'
+      set -x PASSWORD_STORE_DIR ~/.password-store-private
+  end
 
 
   # IS INTERACTIVE!
