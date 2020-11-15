@@ -29,6 +29,11 @@ bind 'set enable-bracketed-paste'
 # ----
 
 source ~/Documents/scripts/source-me/bash-nnn.sh
+
+
+source ~/.password-store/.extensions/pass-tail.bash.completion
+export PASSWORD_STORE_ENABLE_EXTENSIONS=true
+
 source ~/Documents/scripts/source-me/posix-compliant-shells.sh
 for name in $(find ~/Documents/scripts/source-me -name 'completions*'); do
   source "$name"
