@@ -13,7 +13,7 @@
   push-force-with-lease  = "!f() { git push --force-with-lease $@ ; }; f"
 
   l = "!f() { git log --graph --pretty=format:'%C(bold cyan)%h%Creset%C(bold magenta)%d%Creset %C(bold green)<%ae>%Creset %C(bold red)(%cd)%Creset %s' $@ ; }; f"  # show author name but commit date
-  le = "!f() { git log --pretty=format:'%C(bold cyan)%h%Creset%C(bold magenta)%d%Creset %C(bold green)<%ae>%Creset %C(bold red)(%cd)%Creset %s' $@ ; }; f"  # show author name but commit date
+  le = "!f() { git log --pretty=format:'%C(bold cyan)%h%Creset%C(bold magenta)%d%Creset %C(bold green)<%ae>%Creset %C(bold red)(%cd)%Creset %s' $@ ; }; f"  # show author name but commit date | no ascii art/graph
 
   lauthor-and-committer = "!f() { git log --graph --pretty=format:'%C(bold cyan)%h%Creset%C(bold magenta)%d%Creset %C(bold green)<a:%ae | c:%ce>%Creset %C(bold red)(a:%ad |  c:%cd)%Creset %s' $@ ; }; f"
 
