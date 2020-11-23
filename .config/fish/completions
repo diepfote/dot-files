@@ -53,6 +53,21 @@ complete -f -c checkout-function -a $command
 
 
 # ---------
+# complete for golang tools
+set command '(find ~/Documents/golang/tools  -path "**/.git" -prune -o -type f -print | sed "s#.*Documents/golang/tools/##")'
+
+  # -f --> no file completion
+  #
+complete -f -c new-go -a $command
+complete -f -c edit-go -a $command
+complete -f -c mv-go -a $command
+complete -f -c cp-go -a $command
+complete -f -c rm-go -a $command
+complete -f -c checkout-go -a $command
+# ---------
+
+
+# ---------
 # complete for scripts
 set command '(find ~/Documents/scripts/ -path "**/.git" -prune -o -print | sed "s#.*Documents/scripts/##")'
 
