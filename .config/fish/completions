@@ -67,6 +67,20 @@ complete -f -c checkout-script -a $command
 # ---------
 
 # ---------
+# complete for vimscript
+set command '(find ~/.vim -path "**/.git" -prune -o -path "**/plugged" -prune -o -print | sed "s#.*'"$HOME/.vim[/]*"'##")'
+
+  # -f --> no file completion
+  #
+complete -f -c new-vim -a $command
+complete -f -c edit-vim -a $command
+complete -f -c mv-vim -a $command
+complete -f -c cp-vim -a $command
+complete -f -c rm-vim -a $command
+complete -f -c checkout-vim -a $command
+# ---------
+
+# ---------
 # complete for python
 set command '(find ~/Documents/python/ -path "**/.git" -prune -o -print | sed "s#.*Documents/python/##")'
 
