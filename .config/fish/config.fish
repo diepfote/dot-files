@@ -101,7 +101,7 @@ else
     set -x fish_color_end normal
     set -x fish_color_escape green
     set -x fish_pager_color_description yellow
-    set -x fish_color_quote yellow
+    set -x fish_color_quote 828282
     set -x fish_color_autosuggestion 848484
     set -x fish_color_operator fa5bd0
 
