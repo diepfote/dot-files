@@ -1,6 +1,11 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
+if [ "$(tty)" = /dev/tty1 ] && [ "$(uname)" = Linux ]; then
+  startxfce4
+  return
+fi
+
 if [[ -z "$TMUX" ]]; then
   default_tmux_cmd="tmux -2 -u new"  # -u -> utf-8; -2 -> force 256 colors
 
