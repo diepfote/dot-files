@@ -11,4 +11,6 @@ venv/
 .vscode/
 .envrc
 .custom-envrc
+*.xls*
+*.doc*
 
