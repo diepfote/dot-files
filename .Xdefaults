@@ -8,7 +8,7 @@ xterm.vt100.geometry: 88x38
 ! tmux two panes
 !xterm.vt100.geometry: 151x73
 
-xterm*saveLines: 30000
+xterm*saveLines: 0
 
 !XTerm*metaSendsEscape: true
 !XTerm*altIsNotMeta: true
@@ -37,6 +37,13 @@ xterm*charClass: 33:48,37-38:48,45-47:48,64:48,58:48,126:48,61:48,63:48,43:48,35
 ! Enable mouse scrolling in applications like vim
 xterm*vt100*alternateScroll: true
 
+
+! nicked from www.futurile.net/2016/06/15/xterm-256color-themes-molokai-terminal-theme/
+! Only select text
+xterm*highlightSelection: true
+! Remove trailing spaces
+xterm*trimSelection: true
+
 xterm*vt100*translations: #override \n\
   Shift Ctrl <KeyPress>C: copy-selection(CLIPBOARD) \n\
   Shift Ctrl <KeyPress>V: insert-selection(CLIPBOARD) \n\
@@ -44,11 +51,15 @@ xterm*vt100*translations: #override \n\
   Ctrl <Key> plus: larger-vt-font() \n\
   Ctrl <Key> 0: set-vt-font(d) \n\
   Ctrl <Key>o: exec-formatted("xdg-open '%t'", PRIMARY)
-               !CTRL + o to open selected file
+!
+!CTRL + o to open selected file almost all nicked from
+!www.futurile.net/2016/06/15/xterm-256color-themes-molokai-terminal-theme/
+!
+!
 
 xterm*faceName: DejaVu Sans Mono
 !xterm*faceName: Droid Sans Mono
-xterm*faceSize: 14
+xterm*faceSize: 16
 
 !!xterm*background:#ffffff
 !xterm*background:#0e3d4d
