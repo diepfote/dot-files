@@ -47,7 +47,7 @@
 
   delete-gone-branches = "!f() {   for branch in $(git branch -vv | grep gone | sed -r 's#\\s+##;s#^\\*##' | cut -d ' ' -f1); do echo \"Deleting $branch\";  git branch -d \"$branch\"; done }; f"
 
-  redo = "!f() { [ -z "$1" ] && git add . || git add $@; git commit --amend -C HEAD; }; f"
+  redo = "!f() { [ -z "$1" ] && git add . || git add $@; git commit --amend --no-edit; }; f"
   resubmit-base = "!f() { last_arg=\"${@:$#}\"; set -- \"${@:1:$(($#-1))}\"; git redo $@; \
     branch_name=\"$(git branch | grep '*' | head -n 1 | cut -d ' ' -f2)\"; \
     branch_origin=\"$(git branch -r | grep \"$branch_name\" | head -n1 | cut -d '/' -f1 | sed 's#\\s*##' )\"; \
@@ -58,6 +58,21 @@
   af-helm-weirdness = "!f() { ~/Documents/scripts/af-helm-weirdness.sh $@; }; f"
 
   delete-all-git-branches-except-master = "!f() { [ -n \"$1\" ] && delete=D || delete=d; git for-each-ref --shell --format='git log --oneline %(refname) ^origin/master'   refs/heads/ | sed \"s#.*refs/heads/##;s#' .*##\" | grep -v master | xargs git branch -\"$delete\"; }; f"
+
+	; --------------------------------
+  ; nicked from https://dzone.com/articles/lesser-known-git-commands
+  ;
+  ; stash only unstaged changes to tracked files
+	stsh = stash --keep-index
+  ;
+  ; stash -> stash any changes to tracked files
+  ;
+  ; stash untracked and tracked files
+	staash = stash --include-untracked
+  ;
+  ; stash ignored, untracked, and tracked files
+	staaash = stash --all
+	; --------------------------------
 
 [filter "lfs"]
 	required = true
