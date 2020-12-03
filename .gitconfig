@@ -28,9 +28,11 @@
 
   ;change committer email
   ;
-  ;taken from https://github.com/brauliobo/gitconfig/blob/master/configs/.gitconfig
-  ;change-commits = "!f() { VAR=$1; OLD=$2; NEW=$3; shift 3; git filter-branch --env-filter \"if [[ \\\"$`echo $VAR`\\\" = '$OLD' ]]; then export $VAR='$NEW'; fi\" $@; }; f "
-  ;; forcefully
+  ; nicked from https://github.com/brauliobo/gitconfig/blob/master/configs/.gitconfig
+  ;
+  ; usage: git change-commits GIT_COMMITTER_EMAIL "old email" "new email" or
+  ;        git change-commits GIT_AUTHOR_EMAIL "old email" "new email"
+  ;
   change-commits = "!f() { VAR=$1; OLD=$2; NEW=$3; shift 3; git filter-branch -f --env-filter \"if [[ \\\"$`echo $VAR`\\\" = '$OLD' ]]; then export $VAR='$NEW'; fi\" $@; }; f "
 
   # taken from https://github.com/nedbat/dot/blob/master/.gitconfig
