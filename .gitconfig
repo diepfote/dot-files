@@ -61,6 +61,8 @@
 
   delete-all-git-branches-except-master = "!f() { [ -n \"$1\" ] && delete=D || delete=d; git for-each-ref --shell --format='git log --oneline %(refname) ^origin/master'   refs/heads/ | sed \"s#.*refs/heads/##;s#' .*##\" | grep -v master | xargs git branch -\"$delete\"; }; f"
 
+  start-fresh = "!f() { git clean -df ; git reset --hard; git checkout master; git pull -p; git checkout -b \"$1\"; }; f"
+
 	; --------------------------------
   ; nicked from https://dzone.com/articles/lesser-known-git-commands
   ;

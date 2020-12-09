@@ -1,10 +1,4 @@
 {
-  "languageserver": {
-    "groovy": {
-      "command": "groovy-language-server",
-      "filetypes": ["groovy"]
-    }
-  },
 
   "yaml.schemas": {
       "kubernetes": "/*.yaml"
