@@ -74,6 +74,7 @@ shopt -s nocaseglob  # case-insensitive-globbing in pathname expansion
 shopt -s histappend                      # append to history, don't overwrite it
 export HISTSIZE='blub'
 export HISTFILESIZE='blub'
+export HISTCONTROL=ignoreboth:erasedups  # no duplicates, only keeps the latest of any command
 
 #
 # fzf reverse search
