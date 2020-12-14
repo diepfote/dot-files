@@ -63,6 +63,8 @@
 
   start-fresh = "!f() { git clean -df ; git reset --hard; git checkout master; git pull -p; git checkout -b \"$1\"; }; f"
 
+  get-upstream = "!f() { set -x; git update; git rebase master; set +x; }; f"
+
 	; --------------------------------
   ; nicked from https://dzone.com/articles/lesser-known-git-commands
   ;
