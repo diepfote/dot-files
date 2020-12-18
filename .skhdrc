@@ -22,15 +22,15 @@ shift + alt - 0 : yabai -m space --balance
 shift + alt - f     : yabai -m window --grid 1:1:0:0:1:1
 
 # make floating window fill left-half of screen
-shift + alt - h   : yabai -m window --grid 1:2:0:0:1:1
+shift + alt - a   : yabai -m window --grid 1:2:0:0:1:1
 
 # make floating window fill right-half of screen
-shift + alt - l  : yabai -m window --grid 1:2:1:0:1:1
+shift + alt - d  : yabai -m window --grid 1:2:1:0:1:1
 
 # destroy desktop
 cmd + alt - w : yabai -m space --destroy
 
-# send window to desktop and follow focus
+# send window to desktop and follow focus  (does not follow focus SIP?)
 shift + cmd - x : yabai -m window --space recent; yabai -m space --focus recent
 shift + cmd - y : yabai -m window --space prev; yabai -m space --focus prev
 shift + cmd - c : yabai -m window --space next; yabai -m space --focus next
