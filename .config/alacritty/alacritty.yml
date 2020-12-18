@@ -24,7 +24,7 @@ window:
 # Font configuration (changes require restart)
 font:
   # Point size
-  size: 13
+  size: 20
 
 # Colors (Tomorrow Night Bright)
 colors:
