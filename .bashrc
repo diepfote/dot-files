@@ -1,6 +1,8 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
+[ "$(uname)" = Darwin ] && export TERM=screen-256color
+
 if [ "$(tty)" = /dev/tty1 ] && [ "$(uname)" = Linux ]; then
   startxfce4
   return
