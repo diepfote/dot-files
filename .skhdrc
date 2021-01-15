@@ -1,5 +1,5 @@
 # open terminal
-cmd - return :/Applications/Alacritty.app/Contents/MacOS/alacritty
+ctrl - return :/Applications/Alacritty.app/Contents/MacOS/alacritty
 # open ranger
 # shift + cmd - r : /Applications/Kitty.app/Contents/MacOS/kitty -d --single-instance ranger
 
