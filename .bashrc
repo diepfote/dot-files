@@ -43,13 +43,13 @@ source ~/.password-store/.extensions/pass-tail.bash.completion
 export PASSWORD_STORE_ENABLE_EXTENSIONS=true
 
 source ~/Documents/scripts/source-me/posix-compliant-shells.sh
-for name in $(find ~/Documents/scripts/source-me -name 'completions*'); do
+for name in ~/Documents/scripts/source-me/completions*; do
   source "$name"
 done
 
 if [ "$(uname)" = Darwin ]; then
   dir=/usr/local/etc/bash_completion.d
-  for name in $(ls "$dir"); do
+  for name in "$dir"/*; do
     source "$dir"/"$name"
   done
   unset dir
