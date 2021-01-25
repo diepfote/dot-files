@@ -50,7 +50,7 @@ done
 if [ "$(uname)" = Darwin ]; then
   dir=/usr/local/etc/bash_completion.d
   for name in "$dir"/*; do
-    source "$dir"/"$name"
+    source "$name"
   done
   unset dir
 fi
