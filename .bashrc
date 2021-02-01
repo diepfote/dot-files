@@ -1,5 +1,5 @@
 # If not running interactively, don't do anything
-[[ $- != *i* ]] && return
+[[ $- != *i* ]] && [[ -z "$BASH_SOURCE_IT" ]] && return
 
 [ "$(uname)" = Darwin ] && export TERM=screen-256color
 
