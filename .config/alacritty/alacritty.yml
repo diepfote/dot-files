@@ -243,4 +243,5 @@ key_bindings:
   - { key: Right,    mods: Alt,     chars: "\x1bf"                           }
   - { key: Left,     mods: Command, chars: "\x1bOH",   mode: AppCursor       } # Home
   - { key: Right,    mods: Command, chars: "\x1bOF",   mode: AppCursor       } # End
+  - { key: B,        mods: Command, chars: ""                                } # noop for backward search
   - { key: Space,    mods: Alt,     chars: "\x20"                            } # Prevent non-breaking space
