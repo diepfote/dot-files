@@ -87,6 +87,7 @@ yabai -m rule --add app="^Ex.*Falso" manage=off
 yabai -m rule --add app="^JConsole*" manage=off
 yabai -m rule --add app="^Signal.*" manage=off
 yabai -m rule --add app="^TextEdit.*" manage=off
+yabai -m rule --add app="^gedit$" manage=off
 yabai -m rule --add app="^Telegram$" manage=off
 yabai -m rule --add app="^Standard Notes$" manage=off
 
