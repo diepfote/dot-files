@@ -245,5 +245,6 @@ key_bindings:
   - { key: Right,    mods: Command, chars: "\x1bOF",   mode: AppCursor       } # End
   - { key: Space,    mods: Alt,     chars: "\x20"                            } # Prevent non-breaking space
 
+  - { key: F, mods: Command, chars: "" } # noop for search
   - { key: B, mods: Command, chars: "" } # noop for backward search
   - { key: N, mods: Command, chars: "" } # noop for new terminal
