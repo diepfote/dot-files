@@ -90,6 +90,7 @@ yabai -m rule --add app="^TextEdit.*" manage=off
 yabai -m rule --add app="^gedit$" manage=off
 yabai -m rule --add app="^GIMP.*" manage=off
 yabai -m rule --add app="^Telegram$" manage=off
+yabai -m rule --add app="^Slack$" manage=off
 yabai -m rule --add app="^mpv$" manage=off
 yabai -m rule --add app="^Standard Notes$" manage=off
 
