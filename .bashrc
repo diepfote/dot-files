@@ -4,7 +4,8 @@
 [ "$(uname)" = Darwin ] && export TERM=screen-256color
 
 if [ "$(tty)" = /dev/tty1 ] && [ "$(uname)" = Linux ]; then
-  startxfce4
+  # startxfce4
+  startx  # i3 based on ~/.xinitrc
   return
 fi
 
