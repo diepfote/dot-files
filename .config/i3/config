@@ -187,7 +187,37 @@ bindsym $mod+Shift+Next exec xbacklight -dec 5  # Next ... page-down
 
 bindsym $mod+e exec thunar  # gui file manager
 
-bindsym $mod+Control+q exec i3lock && sleep 1  # lock screen
+
+
+
+# ---------------------------
+# power management START
+
+set $Locker i3lock && sleep 1
+
+# similar to Darwin
+bindsym $mod+Control+q exec --no-startup-id $Locker, mode "default"
+
+set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
+mode "$mode_system" {
+    bindsym l exec --no-startup-id $Locker, mode "default"
+    bindsym e exec --no-startup-id i3-msg exit, mode "default"
+    bindsym s exec --no-startup-id $Locker && systemctl suspend, mode "default"
+    bindsym h exec --no-startup-id $Locker && systemctl hibernate, mode "default"
+    bindsym r exec --no-startup-id systemctl reboot, mode "default"
+    bindsym Shift+s exec --no-startup-id systemctl poweroff -i, mode "default"
+
+    # back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+# press: $mod+<
+bindsym $mod+less mode "$mode_system"
+
+# power management END
+# ---------------------------
+
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
