@@ -175,6 +175,16 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
+
+# bindsym --release $mod+x exec --no-startup-id import /tmp/latest-screenshot.png
+#
+# to get keysym names use
+# https://wiki.archlinux.org/index.php/Keyboard_input#Identifying_keycodes_in_Xorg
+#  $ xev | awk -F'[ )]+' '/^KeyPress/ { a[NR+2] } NR in a { printf "%-3s %s\n", $5, $8 }'
+#
+bindsym $mod+Shift+Prior exec xbacklight -inc 5  # Prior ... page-up
+bindsym $mod+Shift+Next exec xbacklight -dec 5  # Next ... page-down
+
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
