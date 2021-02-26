@@ -45,7 +45,7 @@ interval = 1
 [[block]]
 block = "load"
 interval = 1
-format = "{5m}"
+format = "{1m}"
 
 [[block]]
 block = "bluetooth"
