@@ -1,7 +1,7 @@
 [core]
   editor = nvim
   excludesfile = ~/.gitignore_global
-  pager = bat
+  pager = less
 [pull]
   rebase = true
 [rebase]
