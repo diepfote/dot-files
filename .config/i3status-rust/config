@@ -11,15 +11,15 @@ icons = "awesome"
 #warning = 5.0
 #alert = 2.0
 
-[[block]]
-block = "disk_space"
-path = "/home/flo/Videos"
-alias = "~/Videos"
-info_type = "available"
-unit = "GB"
-interval = 20
-warning = 5.0
-alert = 2.0
+# [[block]]
+# block = "disk_space"
+# path = "/home/flo/Videos"
+# alias = "~/Videos"
+# info_type = "available"
+# unit = "GB"
+# interval = 20
+# warning = 5.0
+# alert = 2.0
 
 [[block]]
 block = "disk_space"
