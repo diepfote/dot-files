@@ -1,5 +1,7 @@
 .vaultfile
+
 *.swp
+*.un~
 Session.vim
 
 .DS_Store
