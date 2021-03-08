@@ -10,7 +10,11 @@ set -x EDITOR nvim
 set -x VISUAL nvim
 
 
-set -x LESSSECURE 1
+# cannot use this any longer
+# this breaks custom lesskey files
+#
+# set -x LESSSECURE 1
+
 # due to https://phoenhex.re/2018-03-25/not-a-vagrant-bug
 set -x VAGRANT_DISABLE_VBOXSYMLINKCREATE 1
 
