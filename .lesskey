@@ -2,3 +2,6 @@
 H    back-screen
 L    forw-screen
 
+#env
+LESS=-I
+
