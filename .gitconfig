@@ -2,6 +2,7 @@
   editor = nvim
   excludesfile = ~/.gitignore_global
   pager = less -k ~/.less -R
+  attributesfile=~/.gitattributes_global
 [pull]
   rebase = true
 [rebase]
@@ -22,8 +23,6 @@
   find-commits-changed-file-w-patches = "!f() { git l -p -- "$1"; }; f"
   find-commits-changed-file = "!f() { git l --follow -- "$1" ; }; f"
   find-commit-introduced-file = "!f() { git l --follow --diff-filter=A "$1" ; }; f"
-
-  files-in-commit = "!f() { [ -z "$@" ] && set -- HEAD;git diff-tree --no-commit-id --name-only -r $@; }; f"
 
 
   ;change committer email
