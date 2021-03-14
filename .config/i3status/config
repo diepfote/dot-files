@@ -44,12 +44,6 @@ disk "/home/flo/.local/share/containers" {
         format_not_mounted = "disk missing"
 }
 
-read_file ping {
-        path = "/tmp/tmp.ping-success"
-        format = ""
-        format_bad = "%title failed!"
-}
-
 path_exists VPN {
         path = "/proc/sys/net/ipv4/conf/tun0"
         format = "%title: %status"
