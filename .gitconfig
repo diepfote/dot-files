@@ -48,7 +48,7 @@
 
   update = "!f() { set -x; git checkout master; git pull --prune; git checkout -; set +x; }; f"
 
-  delete-gone-branches = "!f() {   for branch in $(git branch -vv | grep gone | sed -r 's#\\s+##;s#^\\*##' | cut -d ' ' -f1); do echo \"Deleting $branch\";  git branch -d \"$branch\"; done }; f"
+  delete-gone-branches = "!f() {   for branch in $(git branch -vv | grep gone | sed -r 's#\\s+##;s#^\\*##' | cut -d ' ' -f1); do echo \"Deleting $branch\"; [ -n \"$1\" ] && delete=D || delete=d; git branch -\"$delete\" \"$branch\"; done }; f"
 
   redo = "!f() { last_arg=\"${@:$#}\"; [[ \"$last_arg\" =~ git_prefix ]] && GIT_PREFIX=\"$(echo \"$last_arg\" | sed 's#.*=##')/\" && set -- \"${@:1:$(($#-1))}\";  add_given() { for file in $@; do  set -x;  git add \"$GIT_PREFIX$file\"; set +x;  done; }; [ -z \"$1\" ] && git add . || add_given $@ ; git commit --amend --no-edit; }; f"
   resubmit-base = "!f() { last_arg=\"${@:$#}\"; git_prefix=\"${@:$#-1:1}\"; set -- \"${@:1:$(($#-2))}\"; git redo $@ \"git_prefix=$git_prefix\"; \
