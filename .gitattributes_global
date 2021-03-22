@@ -1,0 +1,3 @@
+#**/*route-vault*.yaml  diff=nodiff
+**/*cert-state*.vault.yaml  diff=nodiff
+**/*.kdbx diff=ansible-vault merge=binary
