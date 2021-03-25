@@ -114,8 +114,8 @@ ctrl + alt - s : yabai -m space --layout stack
 
 cmd - j : yabai -m window --focus stack.prev || yabai -m window --focus prev || yabai -m window --focus last
 cmd - k : yabai -m window --focus stack.next || yabai -m window --focus next || yabai -m window --focus first
-cmd + shift - h : yabai -m window --focus stack.first
-cmd + shift - l : yabai -m window --focus stack.last
+# cmd + shift - h : yabai -m window --focus stack.first
+# cmd + shift - l : yabai -m window --focus stack.last
 
 
 # focus window
