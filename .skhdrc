@@ -112,16 +112,16 @@ ctrl + alt - s : yabai -m space --layout stack
 # start stacks
 #
 
-cmd + shift - j : yabai -m window --focus stack.prev || yabai -m window --focus prev || yabai -m window --focus last
-cmd + shift - k : yabai -m window --focus stack.next || yabai -m window --focus next || yabai -m window --focus first
+cmd - j : yabai -m window --focus stack.prev || yabai -m window --focus prev || yabai -m window --focus last
+cmd - k : yabai -m window --focus stack.next || yabai -m window --focus next || yabai -m window --focus first
 cmd + shift - h : yabai -m window --focus stack.first
 cmd + shift - l : yabai -m window --focus stack.last
 
 
 # focus window
 # go to each window WITHOUT going into a stack
-cmd - j : yabai -m query --spaces | jq -re ".[] | select(.visible == 1).index" | xargs -I{} yabai -m query --windows --space {} | jq -re "[.[] | select(.app)]" | jq -sre 'add | sort_by(.display, .frame.x, .frame.y, .id) | reverse | nth(index(map(select(.focused == 1))) + 1).id' | xargs -I{} yabai -m window --focus {}
-cmd - k : yabai -m query --spaces | jq -re ".[] | select(.visible == 1).index" | xargs -I{} yabai -m query --windows --space {} | jq -re "[.[] | select(.app)]" | jq -sre 'add | sort_by(.display, .frame.x, .frame.y, .id) | reverse | nth(index(map(select(.focused == 1))) - 1).id' | xargs -I{} yabai -m window --focus {}
+cmd + shift - j : yabai -m query --spaces | jq -re ".[] | select(.visible == 1).index" | xargs -I{} yabai -m query --windows --space {} | jq -re "[.[] | select(.app)]" | jq -sre 'add | sort_by(.display, .frame.x, .frame.y, .id) | reverse | nth(index(map(select(.focused == 1))) + 1).id' | xargs -I{} yabai -m window --focus {}
+cmd + shift - k : yabai -m query --spaces | jq -re ".[] | select(.visible == 1).index" | xargs -I{} yabai -m query --windows --space {} | jq -re "[.[] | select(.app)]" | jq -sre 'add | sort_by(.display, .frame.x, .frame.y, .id) | reverse | nth(index(map(select(.focused == 1))) - 1).id' | xargs -I{} yabai -m window --focus {}
 
 
 #hyper - 0x29 : yabai -m query --spaces \
