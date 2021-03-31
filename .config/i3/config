@@ -180,6 +180,10 @@ bindsym $mod+r mode "resize"
 # https://wiki.archlinux.org/index.php/Keyboard_input#Identifying_keycodes_in_Xorg
 #  $ xev | awk -F'[ )]+' '/^KeyPress/ { a[NR+2] } NR in a { printf "%-3s %s\n", $5, $8 }'
 #
+#
+bindsym $mod+Ctrl+Prior exec --no-startup-id pactl set-sink-volume 0 +5%  # Prior ... page-up
+bindsym $mod+Ctrl+Next exec --no-startup-id pactl set-sink-volume 0 -5%  # Next ... page-down
+
 bindsym $mod+Shift+Prior exec --no-startup-id xbacklight -inc 5  # Prior ... page-up
 bindsym $mod+Shift+Next exec --no-startup-id xbacklight -dec 5  # Next ... page-down
 
