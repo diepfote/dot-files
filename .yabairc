@@ -11,8 +11,8 @@
 # see this wiki page for information:
 #  - https://github.com/koekeishiya/yabai/wiki/Installing-yabai-(latest-release)
 #
-# sudo yabai --load-sa
-# yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
+sudo yabai --load-sa
+yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
 
 
 yabai -m config window_opacity               off
@@ -75,6 +75,8 @@ yabai -m rule --add app="^Telegram$" manage=off
 yabai -m rule --add app="^Slack$" manage=off
 yabai -m rule --add app="^mpv$" manage=off
 yabai -m rule --add app="^Standard Notes$" manage=off
+yabai -m rule --add app="^Quod Libet$" manage=off
+yabai -m rule --add app="^Karabiner-Elements$" manage=off
 
 
 echo "yabai configuration loaded.."
