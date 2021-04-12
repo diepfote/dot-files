@@ -27,6 +27,8 @@ cmd + alt - w : yabai -m space --destroy
 
 # focus space
 # karabiner-elements map cmd - h to ctrl + alt + cmd - h
+# ctrl + alt + cmd - h: yabai -m space --focus prev
+# cmd - k : yabai -m space --focus next
 ctrl + alt + cmd - h: yabai -m space --focus prev
 cmd - k : yabai -m space --focus next
 
