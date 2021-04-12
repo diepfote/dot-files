@@ -11,15 +11,15 @@
 [alias]
   commit-do-not-push = "!f() { git add .; git commit -m 'DO NOT PUSH' ; }; f"
 
-  push-force-with-lease  = "!f() { git push --force-with-lease $@ ; }; f"
+  push-force-with-lease  = "!f() { git push --force-with-lease \"$@\" ; }; f"
 
-  l = "!f() { git log --graph --pretty=format:'%C(bold cyan)%h%Creset%C(bold magenta)%d%Creset %C(bold green)<%ae>%Creset %C(bold red)(%cd)%Creset %s' $@ ; }; f"  # show author name but commit date
-  le = "!f() { git log --pretty=format:'%C(bold cyan)%h%Creset%C(bold magenta)%d%Creset %C(bold green)<%ae>%Creset %C(bold red)(%cd)%Creset %s' $@ ; }; f"  # show author name but commit date | no ascii art/graph
+  l = "!f() { git log --graph --pretty=format:'%C(bold cyan)%h%Creset%C(bold magenta)%d%Creset %C(bold green)<%ae>%Creset %C(bold red)(%cd)%Creset %s' \"$@\" ; }; f"  # show author name but commit date
+  le = "!f() { git log --pretty=format:'%C(bold cyan)%h%Creset%C(bold magenta)%d%Creset %C(bold green)<%ae>%Creset %C(bold red)(%cd)%Creset %s' \"$@\" ; }; f"  # show author name but commit date | no ascii art/graph
 
-  lauthor-and-committer = "!f() { git log --graph --pretty=format:'%C(bold cyan)%h%Creset%C(bold magenta)%d%Creset %C(bold green)<a:%ae | c:%ce>%Creset %C(bold red)(a:%ad |  c:%cd)%Creset %s' $@ ; }; f"
+  lauthor-and-committer = "!f() { git log --graph --pretty=format:'%C(bold cyan)%h%Creset%C(bold magenta)%d%Creset %C(bold green)<a:%ae | c:%ce>%Creset %C(bold red)(a:%ad |  c:%cd)%Creset %s' \"$@\" ; }; f"
 
-  find-commit-contains-string = "!f() { git le --reverse --source -S $@ ; }; f"
-  find-commit-contains-regex = "!f() { git le --reverse --source -G $@ ; }; f"
+  find-commit-contains-string = "!f() { git le --reverse --source -S \"$@\" ; }; f"
+  find-commit-contains-regex = "!f() { git le --reverse --source -G \"$@\" ; }; f"
   find-commits-changed-file-w-patches = "!f() { git l -p -- "$1"; }; f"
   find-commits-changed-file = "!f() { git l --follow -- "$1" ; }; f"
   find-commit-introduced-file = "!f() { git l --follow --diff-filter=A "$1" ; }; f"
@@ -32,12 +32,12 @@
   ; usage: git change-commits GIT_COMMITTER_EMAIL "old email" "new email" or
   ;        git change-commits GIT_AUTHOR_EMAIL "old email" "new email"
   ;
-  change-commits = "!f() { VAR=$1; OLD=$2; NEW=$3; shift 3; git filter-branch -f --env-filter \"if [[ \\\"$`echo $VAR`\\\" = '$OLD' ]]; then export $VAR='$NEW'; fi\" $@; }; f "
+  change-commits = "!f() { VAR=$1; OLD=$2; NEW=$3; shift 3; git filter-branch -f --env-filter \"if [[ \\\"$`echo $VAR`\\\" = '$OLD' ]]; then export $VAR='$NEW'; fi\" \"$@\"; }; f "
 
   # taken from https://github.com/nedbat/dot/blob/master/.gitconfig
   #
   # Get a plain-text diff, for making patches.
-  patch = "!f() { git --no-pager diff --no-color $@; }; f"
+  patch = "!f() { git --no-pager diff --no-color \"$@\"; }; f"
 
   # taken from https://github.com/nedbat/dot/blob/master/.gitconfig
   #
@@ -50,15 +50,13 @@
 
   delete-gone-branches = "!f() {   for branch in $(git branch -vv | grep gone | sed -r 's#\\s+##;s#^\\*##' | cut -d ' ' -f1); do echo \"Deleting $branch\"; [ -n \"$1\" ] && delete=D || delete=d; git branch -\"$delete\" \"$branch\"; done }; f"
 
-  redo = "!f() { last_arg=\"${@:$#}\"; [[ \"$last_arg\" =~ git_prefix ]] && GIT_PREFIX=\"$(echo \"$last_arg\" | sed 's#.*=##')/\" && set -- \"${@:1:$(($#-1))}\";  add_given() { for file in $@; do  set -x;  git add \"$GIT_PREFIX$file\"; set +x;  done; }; [ -z \"$1\" ] && git add . || add_given $@ ; git commit --amend --no-edit; }; f"
-  resubmit-base = "!f() { last_arg=\"${@:$#}\"; git_prefix=\"${@:$#-1:1}\"; set -- \"${@:1:$(($#-2))}\"; git redo $@ \"git_prefix=$git_prefix\"; \
+  redo = "!f() { last_arg=\"${@:$#}\"; [[ \"$last_arg\" =~ git_prefix ]] && GIT_PREFIX=\"$(echo \"$last_arg\" | sed 's#.*=##')/\" && set -- \"${@:1:$(($#-1))}\";  add_given() { for file in \"$@\"; do  set -x;  git add \"$GIT_PREFIX$file\"; set +x;  done; }; [ -z \"$1\" ] && git add . || add_given \"$@\" ; git commit --amend --no-edit; }; f"
+  resubmit-base = "!f() { last_arg=\"${@:$#}\"; git_prefix=\"${@:$#-1:1}\"; set -- \"${@:1:$(($#-2))}\"; git redo \"$@\" \"git_prefix=$git_prefix\"; \
     branch_name=\"$(git branch | grep '*' | head -n 1 | cut -d ' ' -f2)\"; \
     branch_origin=\"$(git branch -r | grep \"$branch_name\" | head -n1 | cut -d '/' -f1 | sed 's#\\s*##' )\"; \
     git push -u \"$branch_origin\" \"$branch_name\" \"$last_arg\";  }; f"
-  resubmit = "!f() { git resubmit-base $@ \"${GIT_PREFIX:-.}\" --force-with-lease; }; f"
-  resubmit-force = "!f() { git resubmit-base $@ \"${GIT_PREFIX:-.}\" --force; }; f"
-
-  af-helm-weirdness = "!f() { ~/Documents/scripts/af-helm-weirdness.sh $@; }; f"
+  resubmit = "!f() { git resubmit-base \"$@\" \"${GIT_PREFIX:-.}\" --force-with-lease; }; f"
+  resubmit-force = "!f() { git resubmit-base \"$@\" \"${GIT_PREFIX:-.}\" --force; }; f"
 
   delete-all-git-branches-except-master = "!f() { [ -n \"$1\" ] && delete=D || delete=d; git for-each-ref --shell --format='git log --oneline %(refname) ^origin/master'   refs/heads/ | sed \"s#.*refs/heads/##;s#' .*##\" | grep -v master | xargs git branch -\"$delete\"; }; f"
 
