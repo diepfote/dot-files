@@ -1,0 +1,30 @@
+{
+  "title": "Remap command-h",
+  "rules": [
+    {
+      "description": "Remap command-h",
+      "manipulators": [
+        {
+          "type": "basic",
+          "description": "",
+          "from": {
+            "key_code": "h",
+            "modifiers": {
+              "mandatory": ["command"]
+            }
+          },
+          "to":
+          {
+            "key_code": "h",
+            "modifiers": [
+              "left_option",
+              "command",
+              "left_control"
+            ]
+          }
+
+        }
+      ]
+    }
+  ]
+}
