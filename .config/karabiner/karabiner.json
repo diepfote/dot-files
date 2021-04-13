@@ -263,6 +263,31 @@
                                 "type": "basic"
                             }
                         ]
+                    },
+                    {
+                        "description": "Remap command-h",
+                        "manipulators": [
+                            {
+                                "description": "",
+                                "from": {
+                                    "key_code": "h",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "command"
+                                        ]
+                                    }
+                                },
+                                "to": {
+                                    "key_code": "h",
+                                    "modifiers": [
+                                        "left_option",
+                                        "command",
+                                        "left_control"
+                                    ]
+                                },
+                                "type": "basic"
+                            }
+                        ]
                     }
                 ]
             },
