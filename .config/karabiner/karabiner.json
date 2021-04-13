@@ -288,6 +288,27 @@
                                 "type": "basic"
                             }
                         ]
+                    },
+                    {
+                        "description": "Disalbe F1 help",
+                        "manipulators": [
+                            {
+                                "conditions": [
+                                    {
+                                        "bundle_identifiers": [
+                                            "^com\\.microsoft\\.Excel$",
+                                            "^com\\.microsoft\\.Word$"
+                                        ],
+                                        "type": "frontmost_application_if"
+                                    }
+                                ],
+                                "description": "",
+                                "from": {
+                                    "key_code": "f1"
+                                },
+                                "type": "basic"
+                            }
+                        ]
                     }
                 ]
             },

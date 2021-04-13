@@ -1,0 +1,26 @@
+{
+  "title": "Disable F1 help",
+  "rules": [
+    {
+      "description": "Disalbe F1 help",
+      "manipulators": [
+        {
+          "type": "basic",
+          "description": "",
+          "from": {
+            "key_code": "f1"
+          },
+          "conditions": [
+            {
+              "type": "frontmost_application_if",
+              "bundle_identifiers": [
+                "^com\\.microsoft\\.Excel$",
+                "^com\\.microsoft\\.Word$"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
