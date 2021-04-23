@@ -3,15 +3,15 @@
 
 [ "$(uname)" = Darwin ] && export TERM=screen-256color
 
-if [ "$(tty)" = /dev/tty1 ] && \
-   [ "$(uname)" = Linux ] && \
-   [ "$(hostname)" != docker-desktop ]; then
-  # startxfce4
-  startx  # i3 based on ~/.xinitrc
-  return
-fi
-
 if [ "$(hostname)" != docker-desktop ]; then
+
+  if [ "$(tty)" = /dev/tty1 ] && \
+     [ "$(uname)" = Linux ]; then
+    # startxfce4
+    startx  # i3 based on ~/.xinitrc
+    return
+  fi
+
   if [[ -z "$TMUX" ]]; then
     default_tmux_cmd="tmux -2 -u new"  # -u -> utf-8; -2 -> force 256 colors
 
@@ -21,6 +21,8 @@ if [ "$(hostname)" != docker-desktop ]; then
       $default_tmux_cmd
     fi
   fi
+else
+  HISTFILE=~/.container/bash_history
 fi
 
 # ----
