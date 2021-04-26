@@ -1,4 +1,7 @@
 .vaultfile
+ansible-vault
+*.key
+*.asc
 
 *.swp
 *.un~
