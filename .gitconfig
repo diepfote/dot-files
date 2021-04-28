@@ -33,7 +33,7 @@
   # taken from https://github.com/nedbat/dot/blob/master/.gitconfig
   #
   # Show branches, verbosely, sorted by last touch, with commit messages.
-  brv = "!f() { git branch --sort=-creatordate --color=always --format='%(color:reset)%(creatordate:short) %(color:bold white)%(align:2,right)%(upstream:trackshort)%(end)%(color:nobold) %(align:40,left)%(color:yellow)%(refname:short)%(end) %(color:reset)%(contents:subject)'; }; f"
+  list-branches-by-last-touch = "!f() { git branch --sort=-creatordate --color=always --format='%(color:reset)%(creatordate:short) %(color:bold magenta)%(align:2,right)%(upstream:trackshort)%(end)%(color:nobold) %(align:40,left)%(color:cyan)%(refname:short)%(end) %(color:reset)%(contents:subject)'; }; f"
   # nicked from https://stackoverflow.com/questions/15606955/how-can-i-make-git-show-a-list-of-the-files-that-are-being-tracked/15606995#15606995
   list-all-files-ever-existed= "!f() { git log --pretty=format: --name-only --diff-filter=A | sort - | sed '/^$/d'; }; f"
 
