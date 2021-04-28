@@ -1,7 +1,7 @@
 [core]
   editor = nvim
   excludesfile = ~/.gitignore_global
-  pager = less -k ~/.less -R
+  pager = bat
   attributesfile=~/.gitattributes_global
 [pull]
   rebase = true
@@ -24,15 +24,6 @@
   find-commits-changed-file = "!f() { git l --follow -- "$1" ; }; f"
   find-commit-introduced-file = "!f() { git l --follow --diff-filter=A "$1" ; }; f"
 
-
-  ;change committer email
-  ;
-  ; nicked from https://github.com/brauliobo/gitconfig/blob/master/configs/.gitconfig
-  ;
-  ; usage: git change-commits GIT_COMMITTER_EMAIL "old email" "new email" or
-  ;        git change-commits GIT_AUTHOR_EMAIL "old email" "new email"
-  ;
-  change-commits = "!f() { VAR=$1; OLD=$2; NEW=$3; shift 3; git filter-branch -f --env-filter \"if [[ \\\"$`echo $VAR`\\\" = '$OLD' ]]; then export $VAR='$NEW'; fi\" \"$@\"; }; f "
 
   # taken from https://github.com/nedbat/dot/blob/master/.gitconfig
   #
