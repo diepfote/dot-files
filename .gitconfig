@@ -3,6 +3,8 @@
   excludesfile = ~/.gitignore_global
   pager = bat
   attributesfile=~/.gitattributes_global
+[fetch]
+  prune = true
 [pull]
   rebase = true
 [rebase]
