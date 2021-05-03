@@ -22,7 +22,7 @@ if [ "$(hostname)" != docker-desktop ]; then
     fi
   fi
 else
-  HISTFILE=~/.container/bash_history
+  HISTFILE=~/.container/.bash_history
 fi
 
 # ----
