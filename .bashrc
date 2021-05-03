@@ -23,6 +23,7 @@ if [ "$(hostname)" != docker-desktop ]; then
   fi
 else
   HISTFILE=~/.container/.bash_history
+  export USER=build-user
 fi
 
 # ----
