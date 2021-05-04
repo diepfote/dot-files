@@ -11,10 +11,6 @@
   autoStash = true
 
 [alias]
-  commit-do-not-push = "!f() { git add .; git commit -m 'DO NOT PUSH' ; }; f"
-
-  push-force-with-lease  = "!f() { git push --force-with-lease \"$@\" ; }; f"
-
   l = "!f() { git log --graph --pretty=format:'%C(bold cyan)%h%Creset%C(bold magenta)%d%Creset %C(bold green)<%ae>%Creset %C(bold red)(%cd)%Creset %s' \"$@\" ; }; f"  # show author name but commit date
   le = "!f() { git log --pretty=format:'%C(bold cyan)%h%Creset%C(bold magenta)%d%Creset %C(bold green)<%ae>%Creset %C(bold red)(%cd)%Creset %s' \"$@\" ; }; f"  # show author name but commit date | no ascii art/graph
 
