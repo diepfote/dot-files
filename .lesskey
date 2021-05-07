@@ -3,5 +3,5 @@ H    back-screen
 L    forw-screen
 
 #env
-LESS=-I -X
+LESS=-I -X --quit-if-one-screen
 
