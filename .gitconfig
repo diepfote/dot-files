@@ -1,7 +1,7 @@
 [core]
   editor = nvim
   excludesfile = ~/.gitignore_global
-  pager = bat
+  pager = less -R -k ~/.less
   attributesfile=~/.gitattributes_global
 [fetch]
   prune = true
