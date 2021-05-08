@@ -44,7 +44,7 @@ yabai -m config focus_follows_mouse autofocus
 
 
 # Mouse follows focus makes it so that when yabai focuses another window (e.g. through a focus command), the mouse cursor gets moved to the center of the focused window.
-yabai -m config mouse_follows_focus on
+# yabai -m config mouse_follows_focus on
 
 
 # general space settings
@@ -77,6 +77,7 @@ yabai -m rule --add app="^mpv$" manage=off
 yabai -m rule --add app="^Standard Notes$" manage=off
 yabai -m rule --add app="^Quod Libet$" manage=off
 yabai -m rule --add app="^Karabiner-Elements$" manage=off
+yabai -m rule --add app="^Alacritty$" mouse_follows_focus=on
 
 
 echo "yabai configuration loaded.."
