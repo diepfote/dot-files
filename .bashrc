@@ -44,30 +44,43 @@ bind 'set enable-bracketed-paste'
 #
 # ----
 
+# shellcheck disable=SC1090
 source ~/Documents/scripts/source-me/bash-nnn.sh
 
 
+# shellcheck disable=SC1090
 source ~/.password-store/.extensions/pass-tail.bash.completion
 export PASSWORD_STORE_ENABLE_EXTENSIONS=true
 
+# shellcheck disable=SC1090
 source ~/Documents/scripts/source-me/common-functions.sh
+# shellcheck disable=SC1090
 source ~/Documents/scripts/source-me/posix-compliant-shells.sh
+
+# shellcheck disable=SC1090
 for name in ~/Documents/scripts/source-me/completions*; do
+  # shellcheck disable=SC1090
   source "$name"
 done
 
 if [ "$(uname)" = Darwin ]; then
-  dir=/usr/local/etc/bash_completion.d
-  for name in "$dir"/*; do
+  for name in /usr/local/etc/bash_completion.d/*; do
+    # shellcheck disable=SC1090
     source "$name"
   done
-  unset dir
+
+  # shellcheck disable=SC1091
+  source /Applications/Docker.app/Contents/Resources/etc/docker-compose.bash-completion
+  # shellcheck disable=SC1091
+  source /Applications/Docker.app/Contents/Resources/etc/docker.bash-completion
 fi
 
 bash_completion_file=/usr/local/etc/profile.d/bash_completion.sh
+# shellcheck disable=SC1090
 [[ -f "$bash_completion_file" ]] && source "$bash_completion_file"
 
 # helper functions such as 'get_pod' for kubernetes
+# shellcheck disable=SC1090
 source ~/Documents/scripts/kubernetes/source-me/common-functions.sh
 
 #------------
@@ -136,6 +149,7 @@ builtin bind '"\C-r": "\C-x1\e^\er"'
 # prompt style start
 #
 
+# shellcheck disable=SC1090
 source ~/Documents/scripts/source-me/bash-prompt.sh
 #
 # prompt style end
