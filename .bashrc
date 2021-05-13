@@ -73,6 +73,11 @@ if [ "$(uname)" = Darwin ]; then
   source /Applications/Docker.app/Contents/Resources/etc/docker-compose.bash-completion
   # shellcheck disable=SC1091
   source /Applications/Docker.app/Contents/Resources/etc/docker.bash-completion
+
+  # shellcheck disable=SC1090
+  [[ -x kubectl ]] && source <(kubectl completion bash)
+  [[ -x /usr/local/bin/openstack ]] && source <(openstack complete --shell bash)
+
 fi
 
 bash_completion_file=/usr/local/etc/profile.d/bash_completion.sh
