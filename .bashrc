@@ -64,10 +64,17 @@ for name in ~/Documents/scripts/source-me/completions*; do
 done
 
 if [ "$(uname)" = Darwin ]; then
-  for name in /usr/local/etc/bash_completion.d/*; do
-    # shellcheck disable=SC1090
-    source "$name"
-  done
+
+  source /usr/local/etc/bash_completion.d/ag*
+  source /usr/local/etc/bash_completion.d/brew*
+  source /usr/local/etc/bash_completion.d/git-completion*
+  source /usr/local/etc/bash_completion.d/helm*
+  source /usr/local/etc/bash_completion.d/pass*
+  source /usr/local/etc/bash_completion.d/restic*
+  source /usr/local/etc/bash_completion.d/stern*
+  source /usr/local/etc/bash_completion.d/tmux*
+  source /usr/local/etc/bash_completion.d/youtube-dl*
+
 
   # shellcheck disable=SC1091
   source /Applications/Docker.app/Contents/Resources/etc/docker-compose.bash-completion
@@ -75,8 +82,8 @@ if [ "$(uname)" = Darwin ]; then
   source /Applications/Docker.app/Contents/Resources/etc/docker.bash-completion
 
   # shellcheck disable=SC1090
-  [[ -x kubectl ]] && source <(kubectl completion bash)
-  [[ -x /usr/local/bin/openstack ]] && source <(openstack complete --shell bash)
+  [[ -x oc ]] && source <(oc completion bash)
+  # [[ -x /usr/local/bin/openstack ]] && source <(openstack complete --shell bash)
 
 fi
 
