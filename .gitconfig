@@ -18,9 +18,11 @@
 
   find-commit-contains-string = "!f() { git le --reverse --source -S \"$@\" ; }; f"
   find-commit-contains-regex = "!f() { git le --reverse --source -G \"$@\" ; }; f"
-  find-commits-changed-file-w-patches = "!f() { git l -p -- "$1"; }; f"
-  find-commits-changed-file = "!f() { git l --follow -- "$1" ; }; f"
-  find-commit-introduced-file = "!f() { git l --follow --diff-filter=A "$1" ; }; f"
+
+  # use --follow if you want to follow beyond renames
+  find-commits-changed-file = "!f() { filename=\"${*:$#:$#}\"; set -- \"${@:1:$(($#-1))}\"; git l \"$@\" -- \"$filename\"; }; f"
+
+  find-commit-introduced-file = "!f() { filename=\"${*:$#:$#}\"; set -- \"${@:1:$(($#-1))}\";  git l --follow --diff-filter=A \"$@\" -- \"$filename\" ; }; f"
 
 
   # taken from https://github.com/nedbat/dot/blob/master/.gitconfig
@@ -34,7 +36,7 @@
   list-branches-by-last-touch = "!f() { git branch --sort=-creatordate --color=always --format='%(color:reset)%(creatordate:short) %(color:bold magenta)%(align:2,right)%(upstream:trackshort)%(end)%(color:nobold) %(align:40,left)%(color:cyan)%(refname:short)%(end) %(color:reset)%(contents:subject)'; }; f"
   # nicked from https://stackoverflow.com/questions/15606955/how-can-i-make-git-show-a-list-of-the-files-that-are-being-tracked/15606995#15606995
   list-all-files-ever-existed= "!f() { git log --pretty=format: --name-only --diff-filter=A | sort - | sed '/^$/d'; }; f"
- 
+
   update = "!f() { set -x; git checkout master; git pull --prune; git checkout -; git delete-gone-branches; set +x; }; f"
 
   delete-gone-branches = "!f() {   for branch in $(git branch -vv | grep gone | sed -r 's#\\s+##;s#^\\*##' | cut -d ' ' -f1); do echo \"Deleting $branch\"; [ -n \"$1\" ] && delete=D || delete=d; git branch -\"$delete\" \"$branch\"; done }; f"
