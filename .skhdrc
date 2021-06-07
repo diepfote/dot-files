@@ -27,8 +27,8 @@ cmd + alt - w : yabai -m space --destroy
 
 # focus space
 # karabiner-elements map cmd - h to ctrl + alt + cmd - h
-ctrl + alt + cmd - h: yabai -m space --focus prev
-cmd - k : yabai -m space --focus next
+# cmd - z: yabai -m space --focus prev   <- cmd + h via native bindings
+# cmd - o : yabai -m space --focus next  <- cmd + k via native bindings
 cmd - 1  : yabai -m space --focus 1
 cmd - 2  : yabai -m space --focus 2
 cmd - 3  : yabai -m space --focus 3
