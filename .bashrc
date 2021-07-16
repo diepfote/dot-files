@@ -82,6 +82,9 @@ if [ "$(uname)" = Darwin ]; then
   [[ -x oc ]] && source <(oc completion bash)
   # [[ -x /usr/local/bin/openstack ]] && source <(openstack complete --shell bash)
 
+  # helper functions such as 'get_pod' for kubernetes
+  source ~/Documents/scripts/kubernetes/source-me/common-functions.sh
+
 else
   for name in ~/Documents/scripts/source-me/linux/completions_*; do
     source "$name"
@@ -90,9 +93,6 @@ fi
 
 bash_completion_file=/usr/local/etc/profile.d/bash_completion.sh
 [[ -f "$bash_completion_file" ]] && source "$bash_completion_file"
-
-# helper functions such as 'get_pod' for kubernetes
-source ~/Documents/scripts/kubernetes/source-me/common-functions.sh
 
 #------------
 
