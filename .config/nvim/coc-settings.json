@@ -1,4 +1,5 @@
 {
+  "hover.target": "preview",
 
   "yaml.schemas": {
       "kubernetes": "/*.yaml"
