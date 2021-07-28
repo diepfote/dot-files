@@ -64,6 +64,9 @@ if [ "$(uname)" = Darwin ]; then
   for name in ~/Documents/scripts/source-me/darwin/completions_*; do
     source "$name"
   done
+  for name in ~/Documents/scripts/kubernetes/source-me/completions_*; do
+    source "$name"
+  done
 
   source /usr/local/etc/bash_completion.d/ag*
   source /usr/local/etc/bash_completion.d/brew*
