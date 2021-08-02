@@ -69,6 +69,7 @@ volume master {
 volume headset {
         format = "♪: %volume"
         format_muted = "♪: muted (%volume)"
+        # pw-link -i  # pactl replacement?
         device = "pulse:bluez_output.70_BF_92_36_A5_C6.a2dp-sink"
 }
 
