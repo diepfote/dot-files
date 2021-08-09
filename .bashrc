@@ -82,20 +82,28 @@ if [ "$(uname)" = Darwin ]; then
   source /Applications/Docker.app/Contents/Resources/etc/docker-compose.bash-completion
   source /Applications/Docker.app/Contents/Resources/etc/docker.bash-completion
 
-  [[ -x oc ]] && source <(oc completion bash)
+  if [[ -x /usr/local/bin/oc ]]; then
+    temp_dir="$(mktemp -d)"
+    filename="$temp_dir"/oc-completions
+    oc completion bash > "$filename"
+
+    patch -s "$filename" ~/Documents/scripts/kubernetes/source-me/patch-script_oc-completion-bash
+    source "$filename"
+
+    rm -r "$temp_dir"
+    unset temp_dir filename
+  fi
+
   # [[ -x /usr/local/bin/openstack ]] && source <(openstack complete --shell bash)
 
   # helper functions such as 'get_pod' for kubernetes
   source ~/Documents/scripts/kubernetes/source-me/common-functions.sh
-
 else
   for name in ~/Documents/scripts/source-me/linux/completions_*; do
     source "$name"
   done
 fi
 
-bash_completion_file=/usr/local/etc/profile.d/bash_completion.sh
-[[ -f "$bash_completion_file" ]] && source "$bash_completion_file"
 
 #------------
 
