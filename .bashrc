@@ -78,6 +78,10 @@ if [ "$(uname)" = Darwin ]; then
   source /usr/local/etc/bash_completion.d/tmux*
   source /usr/local/etc/bash_completion.d/youtube-dl*
 
+  # Makefile target completions
+  # snatched from https://zgadzaj.com/development/makefile/bash-auto-completion-for-makefile-targets-in-macos
+  complete -W "\`grep -oE '^[^.][a-zA-Z0-9_.-]+:([^=]|$)' Makefile | sed 's/[^a-zA-Z0-9_.-]*$//'\`" make
+
 
   source /Applications/Docker.app/Contents/Resources/etc/docker-compose.bash-completion
   source /Applications/Docker.app/Contents/Resources/etc/docker.bash-completion
