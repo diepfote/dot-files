@@ -230,7 +230,7 @@ bindsym $mod+less mode "$mode_system"
 # finds out, if available)
 bar {
     position bottom
-    status_command i3status
+    status_command i3cat -cmd-file ~/.config/i3cat/config
     colors {
         separator #666666
         background #eeeeee

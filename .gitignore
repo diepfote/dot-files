@@ -4,3 +4,6 @@
 /.config/*
 
 !/.config/karabiner
+!/.config/i3*
+!/.config/i3*/*
+
