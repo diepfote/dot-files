@@ -42,8 +42,8 @@ menupopup > menu, menupopup > menuitem {
 
 
 .toolbar-items, .tabbrowser-tab {
-  max-height: 38px;
+  max-height: 5px;
 }
 :root[uidensity=touch] .toolbar-items, .tabbrowser-tab {
-  max-height: 45px;
+  max-height: 5px;
 }
