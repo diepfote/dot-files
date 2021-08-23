@@ -1,0 +1,49 @@
+/* Snatched from */
+/* https://www.dedoimedo.com/computers/firefox-91-disable-proton.html */
+
+.tab-background {
+  border-radius: 0px 0px !important;
+  margin-bottom: 0px !important;
+}
+
+.tabbrowser-tab:not([selected="true"]):not([multiselected="true"]) .tab-background {
+  background-color: color-mix(in srgb, currentColor 5%, transparent);
+}
+
+menupopup > menu, menupopup > menuitem {
+  padding-block: 2px !important;
+}
+
+:root {
+  --arrowpanel-menuitem-padding: 2px !important;
+}
+
+
+.tabbrowser-tab:not([selected="true"]) > .tab-stack > .tab-background {
+  border: 1px solid rgba(130, 130, 130, 0.5) !important;
+}
+
+
+.tabbrowser-tab[selected="true"] .tab-background {
+  border-left: 1px solid rgba(130, 130, 130, 0.5) !important;
+  border-right: 1px solid rgba(130, 130, 130, 0.5) !important;
+}
+
+.tabbrowser-tab[selected="true"] .tab-background {
+  border-top: 3px solid -moz-accent-color-foreground !important;
+}
+
+
+
+#urlbar-zoom-button {
+  padding-top: 0px !important;
+}
+
+
+
+.toolbar-items, .tabbrowser-tab {
+  max-height: 38px;
+}
+:root[uidensity=touch] .toolbar-items, .tabbrowser-tab {
+  max-height: 45px;
+}
