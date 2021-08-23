@@ -1,3 +1,10 @@
 # pw-link -i
-i3status -c ~/.config/i3status/config
+i3status -c ~/.config/i3status/config1
+
+# TODO reload on mute, unmute, vol change
+~/Documents/scripts/bin/linux/_i3cat-audio-device-helper Master
+# TODO reload on mute, unmute, vol change
+~/Documents/scripts/bin/linux/_i3cat-audio-device-helper Capture
+
+i3status -c ~/.config/i3status/config2
 
