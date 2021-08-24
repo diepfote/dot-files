@@ -71,6 +71,7 @@ if [ "$(uname)" = Darwin ]; then
   source /usr/local/etc/bash_completion.d/stern*
   source /usr/local/etc/bash_completion.d/tmux*
   source /usr/local/etc/bash_completion.d/youtube-dl*
+  source /usr/local/etc/bash_completion.d/task.sh  # taskwarrior
 
   for name in ~/Documents/scripts/source-me/darwin/completions_*; do
     source "$name"
