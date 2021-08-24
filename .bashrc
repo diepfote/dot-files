@@ -80,6 +80,9 @@ if [ "$(uname)" = Darwin ]; then
     source "$name"
   done
 
+  # mostly kubernetes - cc only
+  source ~/Documents/scripts/cc/source-me
+
 
 
   source /Applications/Docker.app/Contents/Resources/etc/docker-compose.bash-completion
