@@ -5,7 +5,12 @@
 
 [ "$(uname)" = Darwin ] && export TERM=screen-256color
 
-if [ "$(hostname)" != docker-desktop ]; then
+if [[ "$(hostname)" =~ ^[a-z0-9]+$ ]] ||\
+   [ "$(hostname)" = docker-desktop ]; then
+  IN_CONTAINER=true
+fi
+
+if [ -z "$IN_CONTAINER" ]; then
 
   if [ "$(tty)" = /dev/tty1 ] && \
      [ "$(uname)" = Linux ]; then
