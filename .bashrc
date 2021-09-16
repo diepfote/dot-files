@@ -70,7 +70,6 @@ if [ "$(uname)" = Darwin ]; then
 
   source /usr/local/etc/bash_completion.d/ag*
   source /usr/local/etc/bash_completion.d/brew*
-  source /usr/local/etc/bash_completion.d/helm*
   source /usr/local/etc/bash_completion.d/pass*
   source /usr/local/etc/bash_completion.d/restic*
   source /usr/local/etc/bash_completion.d/stern*
