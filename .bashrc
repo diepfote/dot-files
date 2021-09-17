@@ -7,7 +7,7 @@
 
 if [[ "$(hostname)" =~ ^[a-z0-9]+$ ]] ||\
    [ "$(hostname)" = docker-desktop ]; then
-  IN_CONTAINER=true
+  export IN_CONTAINER=true
 fi
 
 if [ -z "$IN_CONTAINER" ]; then
