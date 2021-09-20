@@ -88,10 +88,6 @@ if [ "$(uname)" = Darwin ]; then
   source ~/Documents/scripts/cc/source-me
 
 
-
-  source /Applications/Docker.app/Contents/Resources/etc/docker-compose.bash-completion
-  source /Applications/Docker.app/Contents/Resources/etc/docker.bash-completion
-
   if [[ -x /usr/local/bin/oc ]]; then
     temp_dir="$(mktemp -d)"
     filename="$temp_dir"/oc-completions
