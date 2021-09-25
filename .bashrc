@@ -77,15 +77,19 @@ if [ "$(uname)" = Darwin ]; then
   source /usr/local/etc/bash_completion.d/youtube-dl*
   source /usr/local/etc/bash_completion.d/task.sh  # taskwarrior
 
-  for name in ~/Documents/scripts/source-me/darwin/completions_*; do
+  for name in ~/Documents/scripts/source-me/darwin/*; do
     source "$name"
   done
   for name in ~/Documents/scripts/kubernetes/source-me/completions_*; do
     source "$name"
   done
 
+
   # mostly kubernetes - cc only
   source ~/Documents/scripts/cc/source-me
+
+  # bb only
+  source ~/Documents/scripts/bb/source-me
 
 
   if [[ -x /usr/local/bin/oc ]]; then
@@ -105,7 +109,7 @@ if [ "$(uname)" = Darwin ]; then
   # helper functions such as 'get_pod' for kubernetes
   source ~/Documents/scripts/kubernetes/source-me/common-functions.sh
 else
-  for name in ~/Documents/scripts/source-me/linux/completions_*; do
+  for name in ~/Documents/scripts/source-me/linux/*; do
     source "$name"
   done
 fi
