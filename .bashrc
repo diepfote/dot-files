@@ -8,6 +8,8 @@
 if [[ "$(hostname)" =~ ^[a-z0-9]+$ ]] ||\
    [ "$(hostname)" = docker-desktop ]; then
   export IN_CONTAINER=true
+else
+  export IN_CONTAINER=''
 fi
 
 if [ -z "$IN_CONTAINER" ]; then
