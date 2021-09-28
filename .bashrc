@@ -98,7 +98,7 @@ if [ "$(uname)" = Darwin ]; then
     temp_dir="$(mktemp -d)"
     filename="$temp_dir"/oc-completions
     oc completion bash > "$filename"
-    ~/Documents/python/tools/replace_bash_function.py "$filename" > "$filename-patched"
+    ~/Documents/python/tools/completion_script_patcher.py "$filename" > "$filename-patched"
     source "$filename-patched"
 
     rm -r "$temp_dir"
