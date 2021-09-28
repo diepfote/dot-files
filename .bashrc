@@ -95,14 +95,16 @@ if [ "$(uname)" = Darwin ]; then
 
 
   if [[ -x /usr/local/bin/oc ]]; then
-    temp_dir="$(mktemp -d)"
-    filename="$temp_dir"/oc-completions
-    oc completion bash > "$filename"
-    ~/Documents/python/tools/completion_script_patcher.py "$filename" > "$filename-patched"
-    source "$filename-patched"
+    filename="/tmp/_oc-completions"
+    _patched_oc_completions="$filename-patched"
 
-    rm -r "$temp_dir"
-    unset temp_dir filename
+    if [ ! -e "$_patched_oc_completions" ]; then
+      oc completion bash > "$filename"
+      ~/Documents/python/tools/completion_script_patcher.py "$filename" > "$_patched_oc_completions"
+    fi
+
+    source "$_patched_oc_completions"
+    unset filename _patched_oc_completions
   fi
 
   # [[ -x /usr/local/bin/openstack ]] && source <(openstack complete --shell bash)
