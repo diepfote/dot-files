@@ -73,6 +73,10 @@ bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
+# move workspace to the left (wraps around)
+# https://faq.i3wm.org/question/591/move-workspace-to-other-monitor/index.html%3Fanswer=2803.html#post-id-2803
+bindsym $mod+m move workspace to output left
+
 # split in horizontal orientation
 # bindsym $mod+b split h
 
