@@ -5,6 +5,17 @@
 # this file and re-run i3-config-wizard(1).
 #
 
+# monitors
+set $monitor_1st eDP1
+
+# assign these workspaces to the first monitor
+workspace 1 output $monitor_1st
+workspace 2 output $monitor_1st
+workspace 3 output $monitor_1st
+workspace 4 output $monitor_1st
+workspace 5 output $monitor_1st
+
+
 # i3 config file (v4)
 #
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
