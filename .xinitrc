@@ -38,6 +38,6 @@ fi
 
 twm &
 xclock -geometry 50x50-1+1 &
-uxterm &
+# uxterm &
 xset -b  # disable bell
 exec i3
