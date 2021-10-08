@@ -55,6 +55,35 @@ set $terminal_cmd 'i3-sensible-terminal'
 # start a terminal
 bindsym $mod+Return exec $terminal_cmd
 bindsym $mod+KP_Enter exec $terminal_cmd
+# numpad key codes
+# KP_0
+# KP_1
+# KP_2
+# KP_3
+# KP_4
+# KP_5
+# KP_6
+# KP_7
+# KP_8
+# KP_9
+# KP_Add
+# KP_Begin
+# KP_Decimal
+# KP_Delete
+# KP_Divide
+# KP_Down
+# KP_End
+# KP_Enter
+# KP_Home
+# KP_Insert
+# KP_Left
+# KP_Multiply
+# KP_Next
+# KP_Prior
+# KP_Right
+# KP_Subtract
+# KP_Up
+
 
 # kill focused window
 bindsym $mod+Shift+q kill
