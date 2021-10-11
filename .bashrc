@@ -85,6 +85,18 @@ if [ "$(uname)" = Darwin ]; then
   # bb only
   source ~/Documents/scripts/bb/source-me
 
+  if [[ -x /usr/local/bin/kubectl ]]; then
+    filename="/tmp/_kubectl-completions"
+    _patched_kubectl_completions="$filename-patched"
+
+    if [ ! -e "$_patched_kubectl_completions" ]; then
+      kubectl completion bash > "$filename"
+      ~/Documents/python/tools/kubectl-client/completion_script_patcher.py "$filename" > "$_patched_kubectl_completions"
+    fi
+
+    source "$_patched_kubectl_completions"
+    unset filename _patched_kubectl_completions
+  fi
 
   if [[ -x /usr/local/bin/oc ]]; then
     filename="/tmp/_oc-completions"
