@@ -64,7 +64,7 @@ volume master {
         # TODO
         # internal="$(pw-link -i | grep analog-stereo | tail -n 1 | sed 's#:.*#"#; s#^#device = "pulse:#')"
         # PULSE_PLACEHOLDER_INTERNAL
-        device = "pulse:alsa_output.pci-0000_00_1f.3.analog-stereo"
+        device = ""
 }
 volume headset {
         format = "♪: %volume"
@@ -72,7 +72,7 @@ volume headset {
         # TODO
         # external="$(pw-link -i | grep bluez |tail -n 1 | sed 's#:.*#"#; s#^#device = "pulse:#')"
         # PULSE_PLACEHOLDER_EXTERNAL
-        device = "pulse:bluez_output.70_BF_92_36_A5_C6.headset-head-unit"
+        device = ""
 }
 
 load {
