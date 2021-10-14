@@ -58,6 +58,26 @@
 
   get-upstream = "!f() { git update; set -x; git rebase master; set +x; }; f"
 
+  # -i for ignore-case
+  # --grep= can be applied multiple-times --> will be ORed;
+  #   if it should be ANDed --> --all-match
+  log-grep = "!f() { \
+    command=('git' 'log' '--all'); \
+    for search_param in "$@"; do \
+      command+=("--grep=$search_param"); \
+    done; \
+    \
+    "${command[@]}"; \
+  }; f"
+
+  content-grep = "!f() { \
+    set -x; \
+    git rev-list --all | xargs git grep "$@"; \
+    set +x; \
+  }; f"
+
+
+
 	; --------------------------------
   ; nicked from https://dzone.com/articles/lesser-known-git-commands
   ;
