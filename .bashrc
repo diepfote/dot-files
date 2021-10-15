@@ -99,7 +99,7 @@ if [ "$(uname)" = Darwin ]; then
 
     if [ ! -e "$_patched_oc_completions" ]; then
       oc completion bash > "$filename"
-      ~/Documents/python/tools/completion_script_patcher.py "$filename" > "$_patched_oc_completions"
+      ~/Documents/python/tools/oc-client/completion_script_patcher.py "$filename" > "$_patched_oc_completions"
     fi
 
     source "$_patched_oc_completions"
