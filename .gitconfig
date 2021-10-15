@@ -83,12 +83,35 @@
 
   get-upstream = "!f() { git update; set -x; git rebase master; set +x; }; f"
 
-  # TODO --all-match cannot be specified...
   # -i for ignore-case
   # --grep= can be applied multiple-times --> will be ORed;
   #   if it should be ANDed --> --all-match
-  log-grep-base = "!f() { \
-    command=('git' 'log'); \
+  # usage examples:
+  # - $ git log-grep -i -- 'service_annotations' charts
+  #   + git log -i --grep=service_annotations --grep=charts
+  # - $ git log-grep -- 'service_annotations' charts
+  #   + git log --grep=service_annotations --grep=charts
+  # - $ git log-grep --all-match -i -- 'service_annotations' charts
+  #   + git log --all-match -i --grep=service_annotations --grep=charts
+  log-grep = "!f() { \
+    \
+    positional_args=(); \
+    while [ $# -gt 0 ]; do \
+    key="$1"; \
+      case "$key" in \
+        *) \
+        if [ "$1" = '--' ]; then \
+          shift; \
+          break; \
+        else \
+          positional_args+=("$1"); \
+          shift; \
+        fi \
+        ;; \
+      esac \
+    done; \
+    \
+    command=('git' 'log' "${positional_args[@]}"); \
     for search_param in "$@"; do \
       command+=("--grep=$search_param"); \
     done; \
