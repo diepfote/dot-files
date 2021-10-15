@@ -75,7 +75,8 @@ if [ "$(uname)" = Darwin ]; then
 
 
   # mostly kubernetes - cc only
-  source ~/Documents/scripts/cc/source-me
+  source ~/Documents/scripts/cc/source-me/posix-compliant-shells.sh
+  source ~/Documents/scripts/cc/source-me/completions_*
 
   # bb only
   source ~/Documents/scripts/bb/source-me
