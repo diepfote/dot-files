@@ -42,11 +42,36 @@
 
   delete-gone-branches = "!f() {   for branch in $(git branch -vv | grep gone | sed -r 's#\\s+##;s#^\\*##' | cut -d ' ' -f1); do echo \"Deleting $branch\"; [ -n \"$1\" ] && delete=D || delete=d; git branch -\"$delete\" \"$branch\"; done }; f"
 
-  redo = "!f() { last_arg=\"${@:$#}\"; [[ \"$last_arg\" =~ git_prefix ]] && GIT_PREFIX=\"$(echo \"$last_arg\" | sed 's#.*=##')/\" && set -- \"${@:1:$(($#-1))}\";  add_given() { for file in \"$@\"; do  set -x;  git add \"$GIT_PREFIX$file\"; set +x;  done; }; set -x; git reset; set +x; [ -z \"$1\" ] && git add . || add_given \"$@\" ; git commit --amend --no-edit; }; f"
-  resubmit-base = "!f() { last_arg=\"${@:$#}\"; git_prefix=\"${@:$#-1:1}\"; set -- \"${@:1:$(($#-2))}\"; git redo \"$@\" \"git_prefix=$git_prefix\"; \
+  redo = "!f() { \
+    last_arg=\"${@:$#}\"; \
+    [[ \"$last_arg\" =~ git_prefix ]] && \
+    GIT_PREFIX=\"$(echo \"$last_arg\" | sed 's#.*=##')/\" && \
+    set -- \"${@:1:$(($#-1))}\"; \
+    \
+    add_given() { \
+      for file in \"$@\"; do \
+      set -x; \
+      git add \"$GIT_PREFIX$file\"; \
+      set +x; \
+      done; \
+    }; \
+    \
+    set -x; git reset; set +x; \
+    [ -z \"$1\" ] && git add . || add_given \"$@\" ; \
+    git commit --amend --no-edit; }; f"
+
+
+  resubmit-base = "!f() { \
+    last_arg=\"${@:$#}\"; \
+    git_prefix=\"${@:$#-1:1}\"; \
+    set -- \"${@:1:$(($#-2))}\"; \
+    git redo \"$@\" \"git_prefix=$git_prefix\"; \
+    \
     branch_name=\"$(git branch | grep '*' | head -n 1 | cut -d ' ' -f2)\"; \
     branch_origin=\"$(git branch -r | grep \"$branch_name\" | head -n1 | cut -d '/' -f1 | sed 's#\\s*##' )\"; \
+    \
     git push -u \"$branch_origin\" \"$branch_name\" \"$last_arg\";  }; f"
+
   resubmit = "!f() { git resubmit-base \"$@\" \"${GIT_PREFIX:-.}\" --force-with-lease; }; f"
   resubmit-force = "!f() { git resubmit-base \"$@\" \"${GIT_PREFIX:-.}\" --force; }; f"
 
@@ -58,11 +83,12 @@
 
   get-upstream = "!f() { git update; set -x; git rebase master; set +x; }; f"
 
+  # TODO --all-match cannot be specified...
   # -i for ignore-case
   # --grep= can be applied multiple-times --> will be ORed;
   #   if it should be ANDed --> --all-match
-  log-grep = "!f() { \
-    command=('git' 'log' '--all'); \
+  log-grep-base = "!f() { \
+    command=('git' 'log'); \
     for search_param in "$@"; do \
       command+=("--grep=$search_param"); \
     done; \
