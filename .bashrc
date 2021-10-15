@@ -23,12 +23,7 @@ if [ -z "$IN_CONTAINER" ]; then
 
   if [[ -z "$TMUX" ]] && [ -z "$BASH_SOURCE_IT" ]; then
     default_tmux_cmd=(tmux -2 -u new)  # -u -> utf-8; -2 -> force 256 colors
-
-    if ! tmux list-sessions 2>/dev/null; then
-      "${default_tmux_cmd[@]}" 'sleep 2; tmux source ~/.tmux.conf; tmux detach'
-    else
-      "${default_tmux_cmd[@]}"
-    fi
+    "${default_tmux_cmd[@]}"
   fi
 else
   HISTFILE=~/.container/.bash_history
