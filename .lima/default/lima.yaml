@@ -10,18 +10,12 @@ arch: "default"
 # Ubuntu and Fedora are known to work.
 # Default: none (must be specified)
 images:
-  # Try to use a local image first.
-  - location: "~/Downloads/hirsute-server-cloudimg-amd64.img"
-    arch: "x86_64"
-  - location: "~/Downloads/hirsute-server-cloudimg-arm64.img"
-    arch: "aarch64"
-
   # Download the file from the internet when the local file is missing.
   # Hint: run `limactl prune` to invalidate the "current" cache
-  - location: "https://cloud-images.ubuntu.com/hirsute/current/hirsute-server-cloudimg-amd64.img"
+  # NOTE: the image is periodically rotated, if you face 404, see https://mirror.pkgbuild.com/images/ to find the latest image.
+  - location: "https://mirror.pkgbuild.com/images/v20211001.35402/Arch-Linux-x86_64-cloudimg-20211001.0.qcow2"
     arch: "x86_64"
-  - location: "https://cloud-images.ubuntu.com/hirsute/current/hirsute-server-cloudimg-arm64.img"
-    arch: "aarch64"
+    digest: "sha256:bee4dbb88c2e9e2306cf1de92e40797b892c937557e5986a65153e16f9037878"
 
 # CPUs: if you see performance issues, try limiting cpus to 1.
 # Default: 4
@@ -61,7 +55,7 @@ ssh:
   # A localhost port of the host. Forwarded to port 22 of the guest.
   # Currently, this port number has to be specified manually.
   # Default: none
-  localPort: 60022
+  localPort: 60050
   # Load ~/.ssh/*.pub in addition to $LIMA_HOME/_config/user.pub .
   # This option is useful when you want to use other SSH-based
   # applications such as rsync with the Lima instance.
@@ -85,22 +79,21 @@ containerd:
 
 # Provisioning scripts need to be idempotent because they might be called
 # multiple times, e.g. when the host VM is being restarted.
-# provision:
+provision:
 #   # `system` is executed with the root privilege
-#   - mode: system
-#     script: |
-#       #!/bin/bash
-#       set -eux -o pipefail
-#       export DEBIAN_FRONTEND=noninteractive
-#       apt-get install -y vim
+  - mode: system
+    script: |
+      #!/usr/bin/env bash
+      pacman -Syu --needed --noconfirm
+      pacman --needed --noconfirm -S git base-devel man man-pages pkgfile vi neovim
+      pkgfile -u
+      cd /tmp && \
+        sudo -u florian git clone https://aur.archlinux.org/yay.git || cd yay && sudo -u florian git pull
+      cd /tmp/yay && sudo -u florian makepkg -sri --noconfirm || true
 #   # `user` is executed without the root privilege
-#   - mode: user
-#     script: |
-#       #!/bin/bash
-#       set -eux -o pipefail
-#       cat <<EOF > ~/.vimrc
-#       set number
-#       EOF
+  #- mode: user
+  #  script: |
+  #    #!/usr/bin/env bash
 
 # probes:
 #  # Only `readiness` probes are supported right now.
@@ -124,7 +117,7 @@ containerd:
 firmware:
   # Use legacy BIOS instead of UEFI.
   # Default: false
-  legacyBIOS: false
+  legacyBIOS: true
 
 video:
   # QEMU display, e.g., "none", "cocoa", "sdl".
