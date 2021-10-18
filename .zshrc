@@ -50,8 +50,9 @@ setopt    incappendhistory  #Immediately append to the history file, not just wh
 ########################
 
 # autocompletion
-autoload -Uz compinit
+autoload -Uz compinit bashcompinit
 compinit
+bashcompinit
 setopt COMPLETE_ALIASES
 #zstyle ':completion:*' rehash true
 # autocompletion with arrow keys
@@ -64,7 +65,17 @@ zstyle ':completion:*' menu select
 # configure to use direnv
 #eval "$(direnv hook zsh 2>/dev/null || true)"
 
+source ~/Documents/scripts/source-me/common-functions.sh
 source ~/Documents/scripts/source-me/posix-compliant-shells.sh
+source ~/Documents/scripts/source-me/completions_*
+
+source ~/Documents/scripts/source-me/darwin/posix-compliant-shells.sh
+source ~/Documents/scripts/source-me/darwin/completions_*
+
+source ~/Documents/scripts/bb/source-me
+
+source ~/Documents/scripts/cc/source-me/posix-compliant-shells.sh
+source ~/Documents/scripts/cc/source-me/completions_* || true
 
 
 # kubectl autocompletion
