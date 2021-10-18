@@ -55,7 +55,7 @@ ssh:
   # A localhost port of the host. Forwarded to port 22 of the guest.
   # Currently, this port number has to be specified manually.
   # Default: none
-  localPort: 60050
+  localPort: 60906
   # Load ~/.ssh/*.pub in addition to $LIMA_HOME/_config/user.pub .
   # This option is useful when you want to use other SSH-based
   # applications such as rsync with the Lima instance.
@@ -84,31 +84,36 @@ provision:
   - mode: system
     script: |
       #!/usr/bin/env bash
+      set -eux -o pipefail
       pacman -Syu --needed --noconfirm
+      command -v yay >/dev/null 2>&1 && exit 0
       pacman --needed --noconfirm -S git base-devel man man-pages pkgfile vi neovim
       pkgfile -u
       cd /tmp && \
         sudo -u florian git clone https://aur.archlinux.org/yay.git || cd yay && sudo -u florian git pull
       cd /tmp/yay && sudo -u florian makepkg -sri --noconfirm || true
-#   # `user` is executed without the root privilege
-  #- mode: user
-  #  script: |
-  #    #!/usr/bin/env bash
 
-# probes:
-#  # Only `readiness` probes are supported right now.
-#  - mode: readiness
-#    description: vim to be installed
-#    script: |
-#       #!/bin/bash
-#       set -eux -o pipefail
-#       if ! timeout 30s bash -c "until command -v vim; do sleep 3; done"; then
-#         echo >&2 "vim is not installed yet"
-#         exit 1
-#       fi
-#    hint: |
-#      vim was not installed in the guest. Make sure the package system is working correctly.
-#      Also see "/var/log/cloud-init-output.log" in the guest.
+  - mode: system
+    script: |
+      #!/usr/bin/env bash
+      set -eux -o pipefail
+      command -v podman >/dev/null 2>&1 && exit 0
+      pacman -S --needed --noconfirm podman
+  - mode: user
+    script: |
+      #!/bin/bash
+      set -eux -o pipefail
+      systemctl --user enable --now podman.socket
+probes:
+  - script: |
+      #!/bin/bash
+      set -eux -o pipefail
+      if ! timeout 30s bash -c "until command -v podman >/dev/null 2>&1; do sleep 3; done"; then
+        echo >&2 "podman is not installed yet"
+        exit 1
+      fi
+    hint: See "/var/log/cloud-init-output.log". in the guest
+
 
 # ===================================================================== #
 # FURTHER ADVANCED CONFIGURATION
