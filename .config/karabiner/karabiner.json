@@ -263,7 +263,7 @@
                         ]
                     },
                     {
-                        "description": "Disalbe F1 help",
+                        "description": "Disable F1 help",
                         "manipulators": [
                             {
                                 "conditions": [

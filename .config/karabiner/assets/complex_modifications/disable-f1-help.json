@@ -2,7 +2,7 @@
   "title": "Disable F1 help",
   "rules": [
     {
-      "description": "Disalbe F1 help",
+      "description": "Disable F1 help",
       "manipulators": [
         {
           "type": "basic",
