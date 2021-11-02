@@ -3,6 +3,9 @@
 !/.config/
 /.config/*
 
+!/.config/nvim
+!/.config/nvim/*
+
 !/.config/karabiner
 !/.config/i3*
 !/.config/i3*/*
