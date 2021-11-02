@@ -120,6 +120,8 @@
     "${command[@]}"; \
   }; f"
 
+  # usage example
+  # $ git content-grep -E -- 'abc|def|some'
   content-grep = "!f() { \
     set -x; \
     git rev-list --all | xargs git grep "$@"; \
