@@ -1,9 +1,9 @@
 {
   "hover.target": "preview",
 
-  "yaml.schemas": {
-      "kubernetes": "/*.yaml"
-  },
+//  "yaml.schemas": {
+//     "kubernetes": "/*.yaml"
+// },
 
 
   "diagnostic-languageserver.filetypes": {
