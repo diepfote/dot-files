@@ -27,7 +27,7 @@ memory: "8GiB"
 
 # Disk size
 # Default: "100GiB"
-disk: "100GiB"
+disk: "50GiB"
 
 # Expose host directories to the guest, the mount point might be accessible from all UIDs in the guest
 # Default: none
@@ -36,6 +36,10 @@ mounts:
     # CAUTION: `writable` SHOULD be false for the home directory.
     # Setting `writable` to true is possible, but untested and dangerous.
     writable: true
+  - location: "~/Movies/"
+    writable: false
+  - location: "~/Music"
+    writable: false
   - location: "~/.vim"
     writable: true
   - location: "~/.container"
