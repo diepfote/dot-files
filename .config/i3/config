@@ -136,9 +136,9 @@ bindsym $mod+a layout toggle split
 workspace_layout stacking
 
 
-# scrot
+# scrot  --> screenshot to /tmp folder
 bindsym $mod+P exec scrot -e 'mv $f /tmp/'
-# scrot & gimp
+# scrot & gimp  --> screenshot open in gimp
 bindsym $mod+Shift+P exec scrot -e 'mv $f /tmp/ && gimp /tmp/$f'
 
 
