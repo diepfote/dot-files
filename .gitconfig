@@ -111,7 +111,7 @@
       esac \
     done; \
     \
-    command=('git' 'log' "${positional_args[@]}"); \
+    command=('git' 'l' "${positional_args[@]}"); \
     for search_param in "$@"; do \
       command+=("--grep=$search_param"); \
     done; \
