@@ -21,15 +21,15 @@
   find-commit-contains-regex = "!f() { git le --reverse --source -G \"$@\" ; }; f"
 
   # use --follow if you want to follow beyond renames
-  find-commits-changed-file = "!f() { filename=\"${*:$#:$#}\"; set -- \"${@:1:$(($#-1))}\"; git l \"$@\" -- \"$filename\"; }; f"
+  find-commits-changed-file = "!f() { : git add ; filename=\"${*:$#:$#}\"; set -- \"${@:1:$(($#-1))}\"; git l \"$@\" -- \"$filename\"; }; f"
 
-  find-commit-introduced-file = "!f() { filename=\"${*:$#:$#}\"; set -- \"${@:1:$(($#-1))}\";  git l --follow --diff-filter=A \"$@\" -- \"$filename\" ; }; f"
+  find-commit-introduced-file = "!f() { : git add ; filename=\"${*:$#:$#}\"; set -- \"${@:1:$(($#-1))}\";  git l --follow --diff-filter=A \"$@\" -- \"$filename\" ; }; f"
 
 
   # taken from https://github.com/nedbat/dot/blob/master/.gitconfig
   #
   # Get a plain-text diff, for making patches.
-  patch = "!f() { git --no-pager diff --no-color \"$@\"; }; f"
+  patch = "!f() { : git diff ; git --no-pager diff --no-color \"$@\"; }; f"
 
   # taken from https://github.com/nedbat/dot/blob/master/.gitconfig
   #
@@ -72,8 +72,8 @@
     \
     git push -u \"$branch_origin\" \"$branch_name\" \"$last_arg\";  }; f"
 
-  resubmit = "!f() { git resubmit-base \"$@\" \"${GIT_PREFIX:-.}\" --force-with-lease; }; f"
-  resubmit-force = "!f() { git resubmit-base \"$@\" \"${GIT_PREFIX:-.}\" --force; }; f"
+  resubmit = "!f() { : git add ; git resubmit-base \"$@\" \"${GIT_PREFIX:-.}\" --force-with-lease; }; f"
+  resubmit-force = "!f() { : git add ; git resubmit-base \"$@\" \"${GIT_PREFIX:-.}\" --force; }; f"
 
   delete-all-git-branches-except-master = "!f() { [ -n \"$1\" ] && delete=D || delete=d; git for-each-ref --shell --format='git log --oneline %(refname) ^origin/master'   refs/heads/ | sed \"s#.*refs/heads/##;s#' .*##\" | grep -v master | xargs git branch -\"$delete\"; }; f"
 
