@@ -1,3 +1,6 @@
+# https://github.com/JoshuaManuel/Karabiner-Elements-Key-List
+# like: neomutt: exec what-key ^
+
 # open terminal
 ctrl - return :/Applications/Alacritty.app/Contents/MacOS/alacritty
 # open ranger
@@ -139,6 +142,9 @@ ctrl + alt - s : yabai -m space --layout stack
 # go to each window WITHOUT going into a stack
 #
 # LIKE ALT-TAB
+# in my config I assume you use karabiner-elements to remap keys
+# I remapped alt + tab         to cmd + shift - o and
+#            alt + shift + tab to cmd + shift - p
 #
 cmd + shift - o : yabai -m query --spaces | jq -re ".[] | select(.focused == 1).index" | xargs -I{} yabai -m query --windows --space {} | jq -re "[.[] | select(.app)]" | jq -sre 'add | sort_by(.display, .frame.x, .frame.y, .id) | reverse | nth(index(map(select(.focused == 1))) + 1).id' | xargs -I{} yabai -m window --focus {}
 cmd + shift - p : yabai -m query --spaces | jq -re ".[] | select(.focused == 1).index" | xargs -I{} yabai -m query --windows --space {} | jq -re "[.[] | select(.app)]" | jq -sre 'add | sort_by(.display, .frame.x, .frame.y, .id) | reverse | nth(index(map(select(.focused == 1))) - 1).id' | xargs -I{} yabai -m window --focus {}
