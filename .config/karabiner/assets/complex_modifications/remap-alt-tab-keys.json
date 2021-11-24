@@ -1,0 +1,54 @@
+{
+  "title": "Remap Alt Tab Keys",
+  "rules": [
+    {
+      "description": "Remap Alt Tab",
+      "manipulators": [
+        {
+          "type": "basic",
+          "description": "",
+          "from": {
+            "key_code": "tab",
+            "modifiers": {
+              "mandatory": ["command"]
+            }
+          },
+          "to":
+          {
+            "key_code": "p",
+            "modifiers": [
+              "left_shift",
+              "command"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "description": "Remap Shift Alt Tab",
+      "manipulators": [
+        {
+          "type": "basic",
+          "description": "",
+          "from": {
+            "key_code": "tab",
+            "modifiers": {
+              "mandatory": [
+                "command",
+                "left_shift"
+              ]
+            }
+          },
+          "to":
+          {
+            "key_code": "o",
+            "modifiers": [
+              "left_shift",
+              "command"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}
