@@ -61,6 +61,8 @@ for name in ~/Documents/scripts/source-me/completions_*; do
   source "$name"
 done
 
+  source ~/Documents/scripts/private/source-me/posix-compliant-shells.sh
+
 if [ "$(uname)" = Darwin ]; then
 
   source /usr/local/share/bash-completion/bash_completion
@@ -116,6 +118,8 @@ else
   for name in ~/Documents/scripts/source-me/linux/*; do
     source "$name"
   done
+
+  source ~/Documents/scripts/private/source-me/linux/posix-compliant-shells.sh
 fi
 
 
