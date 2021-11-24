@@ -137,8 +137,11 @@ ctrl + alt - s : yabai -m space --layout stack
 
 # focus window
 # go to each window WITHOUT going into a stack
-# cmd + shift - j : yabai -m query --spaces | jq -re ".[] | select(.visible == 1).index" | xargs -I{} yabai -m query --windows --space {} | jq -re "[.[] | select(.app)]" | jq -sre 'add | sort_by(.display, .frame.x, .frame.y, .id) | reverse | nth(index(map(select(.focused == 1))) + 1).id' | xargs -I{} yabai -m window --focus {}
-# cmd + shift - k : yabai -m query --spaces | jq -re ".[] | select(.visible == 1).index" | xargs -I{} yabai -m query --windows --space {} | jq -re "[.[] | select(.app)]" | jq -sre 'add | sort_by(.display, .frame.x, .frame.y, .id) | reverse | nth(index(map(select(.focused == 1))) - 1).id' | xargs -I{} yabai -m window --focus {}
+#
+# LIKE ALT-TAB
+#
+cmd + shift - o : yabai -m query --spaces | jq -re ".[] | select(.focused == 1).index" | xargs -I{} yabai -m query --windows --space {} | jq -re "[.[] | select(.app)]" | jq -sre 'add | sort_by(.display, .frame.x, .frame.y, .id) | reverse | nth(index(map(select(.focused == 1))) + 1).id' | xargs -I{} yabai -m window --focus {}
+cmd + shift - p : yabai -m query --spaces | jq -re ".[] | select(.focused == 1).index" | xargs -I{} yabai -m query --windows --space {} | jq -re "[.[] | select(.app)]" | jq -sre 'add | sort_by(.display, .frame.x, .frame.y, .id) | reverse | nth(index(map(select(.focused == 1))) - 1).id' | xargs -I{} yabai -m window --focus {}
 
 
 #hyper - 0x29 : yabai -m query --spaces \
