@@ -24,6 +24,7 @@ if [ -z "$IN_CONTAINER" ]; then
   if [[ -z "$TMUX" ]] && [ -z "$BASH_SOURCE_IT" ]; then
     default_tmux_cmd=(tmux -2 -u new)  # -u -> utf-8; -2 -> force 256 colors
     "${default_tmux_cmd[@]}"
+    return  # do not source anything if outside tmux sessions
   fi
 else
   HISTFILE=~/.container/.bash_history
