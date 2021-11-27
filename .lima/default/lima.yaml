@@ -52,6 +52,12 @@ mounts:
     writable: true
   - location: "~/.config"
     writable: true
+  # used in arch-all image build
+  - location: "/var/cache/pkgfile"
+    writable: true
+  # used in arch-all image build
+  - location: "/var/cache/pacman"
+    writable: true
   - location: "/tmp/lima"
     writable: true
 
