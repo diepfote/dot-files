@@ -3,7 +3,26 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && [[ -z "$BASH_SOURCE_IT" ]] && return
 
+
 [ "$(uname)" = Darwin ] && export TERM=screen-256color
+
+# ----
+# keybindings | bind settings | binding settings
+
+# undefine previous assignment!
+stty werase undef
+
+# set '/' as word delmiter
+#bind '\C-w:unix-filename-rubout'
+
+# set '-', '/' etc. as word delmiters
+bind '"\C-w":backward-kill-word'
+
+# do not execute multiline pastes immediately
+bind 'set enable-bracketed-paste'
+
+#
+# ----
 
 if [[ "$(hostname)" =~ ^[a-z0-9]+$ ]] ||\
    [ "$(hostname)" = docker-desktop ]; then
@@ -24,6 +43,7 @@ if [ -z "$IN_CONTAINER" ]; then
   if [[ -z "$TMUX" ]] && [ -z "$BASH_SOURCE_IT" ]; then
     default_tmux_cmd=(tmux -2 -u new)  # -u -> utf-8; -2 -> force 256 colors
     "${default_tmux_cmd[@]}"
+    HISTFILE=''
     return  # do not source anything if outside tmux sessions
   fi
 else
@@ -31,23 +51,8 @@ else
   export USER=build-user
 fi
 
-# ----
-# keybindings | bind settings | binding settings
 
-# undefine previous assignment!
-stty werase undef
 
-# set '/' as word delmiter
-#bind '\C-w:unix-filename-rubout'
-
-# set '-', '/' etc. as word delmiters
-bind '"\C-w":backward-kill-word'
-
-# do not execute multiline pastes immediately
-bind 'set enable-bracketed-paste'
-
-#
-# ----
 
 source ~/Documents/scripts/source-me/bash-nnn.sh
 
