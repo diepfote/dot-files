@@ -25,7 +25,8 @@ bind 'set enable-bracketed-paste'
 # ----
 
 if [[ "$(hostname)" =~ ^[a-z0-9]+$ ]] ||\
-   [ "$(hostname)" = docker-desktop ]; then
+   [ "$(hostname)" = docker-desktop ] || \
+   [[ "$(hostname)" =~ lima* ]] ; then
   export IN_CONTAINER=true
 else
   export IN_CONTAINER=''
