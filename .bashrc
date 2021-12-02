@@ -42,7 +42,22 @@ if [ -z "$IN_CONTAINER" ]; then
   fi
 
   if [[ -z "$TMUX" ]] && [ -z "$BASH_SOURCE_IT" ]; then
-    default_tmux_cmd=(tmux -2 -u new)  # -u -> utf-8; -2 -> force 256 colors
+    default_tmux_cmd=(tmux -2 -u)  # -u -> utf-8; -2 -> force 256 colors
+    default_session_to_attach_info="$(tmux ls -F '#S #{session_attached}' |\
+      grep -E 'general|default|private' |\
+      head -n1)"
+
+    if [ -n "$default_session_to_attach_info" ]; then
+      default_session_to_attach="$(echo "$default_session_to_attach_info" | awk '{ print $1 }')"
+      default_session_num_of_attached_clients="$(echo "$default_session_to_attach_info" | awk '{ print $2 }')"
+      if [ "$default_session_num_of_attached_clients" -lt 1 ]; then
+        default_tmux_cmd+=('attach' '-t' "$default_session_to_attach")
+      else
+        default_tmux_cmd+=('new')
+      fi
+    else
+      default_tmux_cmd+=('new')
+    fi
     "${default_tmux_cmd[@]}"
     HISTFILE=''
     return  # do not source anything if outside tmux sessions
