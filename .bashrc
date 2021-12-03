@@ -6,6 +6,16 @@
 
 [ "$(uname)" = Darwin ] && export TERM=screen-256color
 
+
+# ----
+# bash history
+#
+shopt -s histappend                      # append to history, don't overwrite it
+export HISTSIZE='blub'
+export HISTFILESIZE='blub'
+export HISTCONTROL=ignoreboth:erasedups  # no duplicates, only keeps the latest of any command
+# ----
+
 # ----
 # keybindings | bind settings | binding settings
 
@@ -23,6 +33,13 @@ bind 'set enable-bracketed-paste'
 
 #
 # ----
+
+# --------------------------------------------------------------------
+#
+
+
+
+
 
 if [[ "$(hostname)" =~ ^[a-z0-9]+$ ]] ||\
    [ "$(hostname)" = docker-desktop ] || \
@@ -153,15 +170,6 @@ shopt -s autocd   # assume one wants to cd given a directory
 shopt -s cdspell  # autocorrect spelling errors for cd
 shopt -s nocaseglob  # case-insensitive-globbing in pathname expansion
 # --------------------------
-
-
-# bash history
-#
-
-shopt -s histappend                      # append to history, don't overwrite it
-export HISTSIZE='blub'
-export HISTFILESIZE='blub'
-export HISTCONTROL=ignoreboth:erasedups  # no duplicates, only keeps the latest of any command
 
 #
 # fzf reverse search
