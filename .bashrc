@@ -2,11 +2,7 @@
 
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && [[ -z "$BASH_SOURCE_IT" ]] && return
-
-
 [ "$(uname)" = Darwin ] && export TERM=screen-256color
-
-
 # ----
 # bash history
 #
@@ -15,7 +11,6 @@ export HISTSIZE='blub'
 export HISTFILESIZE='blub'
 export HISTCONTROL=ignoreboth:erasedups  # no duplicates, only keeps the latest of any command
 # ----
-
 # ----
 # keybindings | bind settings | binding settings
 
@@ -33,6 +28,7 @@ bind 'set enable-bracketed-paste'
 
 #
 # ----
+
 
 # --------------------------------------------------------------------
 #
