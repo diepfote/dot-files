@@ -57,6 +57,7 @@ if [ -z "$IN_CONTAINER" ]; then
   if [[ -z "$TMUX" ]] && [ -z "$BASH_SOURCE_IT" ]; then
     default_tmux_cmd=(tmux -2 -u)  # -u -> utf-8; -2 -> force 256 colors
     default_session_to_attach_info="$(tmux ls -F '#S #{session_attached}' |\
+      grep -vE '\s+1$' |\
       grep -E 'general|default|private|work' |\
       sort -r |\
       head -n1)"
