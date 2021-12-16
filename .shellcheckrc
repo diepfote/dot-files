@@ -1,0 +1,21 @@
+
+# example: var=hello; echo $var
+# fix:     var=hello; echo "$var"
+enable=quote-safe-variables
+
+enable=check-unassigned-uppercase
+
+# && and || can suppress set -e
+#
+# example: set -e; func() { cp *.txt ~/backup; rm *.txt; }; func && echo ok
+# fix:     set -e; func() { cp *.txt ~/backup; rm *.txt; }; func; echo ok
+#
+enable=check-set-e-suppressed
+
+# example: [ "$var" ]
+# fix:     [ -n "$var" ]
+enable=avoid-nullary-conditions
+
+# example: case $? in 0) echo 'Success';; esac
+# fix:     case $? in 0) echo 'Success';; *) echo 'Fail' ;; esac
+enable=add-default-case

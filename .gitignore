@@ -15,3 +15,5 @@
 !/.lima/default
 /.lima/default/*
 !/.lima/default/lima.yaml
+
+!/.shellcheckrc
