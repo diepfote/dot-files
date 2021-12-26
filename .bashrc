@@ -39,7 +39,8 @@ bind 'set enable-bracketed-paste'
 
 if [[ "$(hostname)" =~ ^[a-z0-9]+$ ]] ||\
    [ "$(hostname)" = docker-desktop ] || \
-   [[ "$(hostname)" =~ lima* ]] ; then
+   [[ "$(hostname)" =~ lima* ]]
+   [ "$(id -u --name)" = build-user ]; then
   export IN_CONTAINER=true
 else
   export IN_CONTAINER=''
