@@ -118,7 +118,8 @@ if [ "$(uname)" = Darwin ]; then
   source ~/Documents/scripts/cc/source-me/completions_* || true
 
   # bb only
-  source ~/Documents/scripts/bb/source-me
+  source ~/Documents/scripts/bb/source-me/posix-compliant-shells.sh
+  source ~/Documents/scripts/bb/source-me/completions_* || true
 
   if [[ -x /usr/local/bin/kubectl ]]; then
     filename="/tmp/_kubectl-completions"
