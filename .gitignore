@@ -10,6 +10,8 @@
 !/.config/i3*
 !/.config/i3*/*
 
+!/.config/dunst
+
 !/.lima
 /.lima/_config
 !/.lima/default
