@@ -3,6 +3,8 @@
 !/.config/
 /.config/*
 
+!/.config/gummi
+
 !/.config/nvim
 !/.config/nvim/*
 
