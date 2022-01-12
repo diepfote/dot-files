@@ -152,9 +152,6 @@ if [ "$(uname)" = Darwin ]; then
   # helper functions such as 'get_pod' for kubernetes
   source ~/Documents/scripts/kubernetes/source-me/common-functions.sh
 else
-  # disable caps lock
-  setxkbmap -option ctrl:nocaps
-
   for name in ~/Documents/scripts/source-me/linux/*; do
     source "$name"
   done
