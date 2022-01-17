@@ -58,7 +58,6 @@
       done; \
     }; \
     \
-    set -x; git reset; set +x; \
     [ -z \"$1\" ] && git add \"$GIT_PREFIX\". || add_given \"$@\" ; \
     git commit --amend --no-edit; }; f"
 
