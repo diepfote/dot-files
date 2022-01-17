@@ -25,15 +25,13 @@ bind '"\C-w":backward-kill-word'
 
 # do not execute multiline pastes immediately
 bind 'set enable-bracketed-paste'
-
 #
 # ----
 
 
-# --------------------------------------------------------------------
-#
-
-
+# TODO if you want to DEBUG this bashrc
+# return
+# ..................................................
 
 
 
