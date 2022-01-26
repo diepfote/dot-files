@@ -9,7 +9,7 @@
 shopt -s histappend                      # append to history, don't overwrite it
 export HISTSIZE='blub'
 export HISTFILESIZE='blub'
-export HISTCONTROL=ignoreboth:erasedups  # no duplicates, only keeps the latest of any command
+export HISTCONTROL='ignorespace:erasedups'  # man bash
 # ----
 # ----
 # keybindings | bind settings | binding settings
