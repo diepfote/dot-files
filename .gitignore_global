@@ -11,8 +11,11 @@ Session.vim
 
 .idea/
 *.iml
+
+__pycache__/
 venv/
 .venv/
+
 .vscode/
 .envrc
 .custom-envrc
