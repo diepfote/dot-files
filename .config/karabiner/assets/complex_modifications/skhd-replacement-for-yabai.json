@@ -15,7 +15,7 @@
           },
           "to": [
             {
-              "shell_command": "echo ran > /tmp/asdf.ran.yaml && yabai -m space --focus 1"
+              "shell_command": "echo ran > /tmp/asdf.ran.yaml && /usr/local/bin/yabai -m space --focus 1"
             }
           ],
           "type": "basic"
@@ -36,7 +36,7 @@
           },
           "to": [
             {
-              "shell_command": "echo ran > /tmp/asdf.ran.yaml && yabai -m space --focus 2"
+              "shell_command": "echo ran > /tmp/asdf.ran.yaml && /usr/local/bin/yabai -m space --focus 2"
             }
           ],
           "type": "basic"
@@ -57,7 +57,7 @@
           },
           "to": [
             {
-              "shell_command": "echo ran > /tmp/asdf.ran.yaml && yabai -m space --focus 3"
+              "shell_command": "echo ran > /tmp/asdf.ran.yaml && /usr/local/bin/yabai -m space --focus 3"
             }
           ],
           "type": "basic"
@@ -78,7 +78,7 @@
           },
           "to": [
             {
-              "shell_command": "echo ran > /tmp/asdf.ran.yaml && yabai -m space --focus 4"
+              "shell_command": "echo ran > /tmp/asdf.ran.yaml && /usr/local/bin/yabai -m space --focus 4"
             }
           ],
           "type": "basic"
@@ -99,7 +99,7 @@
           },
           "to": [
             {
-              "shell_command": "echo ran > /tmp/asdf.ran.yaml && yabai -m space --focus 5"
+              "shell_command": "echo ran > /tmp/asdf.ran.yaml && /usr/local/bin/yabai -m space --focus 5"
             }
           ],
           "type": "basic"
@@ -120,7 +120,7 @@
           },
           "to": [
             {
-              "shell_command": "echo ran > /tmp/asdf.ran.yaml && yabai -m space --focus 6"
+              "shell_command": "echo ran > /tmp/asdf.ran.yaml && /usr/local/bin/yabai -m space --focus 6"
             }
           ],
           "type": "basic"
@@ -141,7 +141,7 @@
           },
           "to": [
             {
-              "shell_command": "echo ran > /tmp/asdf.ran.yaml && yabai -m space --focus 7"
+              "shell_command": "echo ran > /tmp/asdf.ran.yaml && /usr/local/bin/yabai -m space --focus 7"
             }
           ],
           "type": "basic"
@@ -162,7 +162,7 @@
           },
           "to": [
             {
-              "shell_command": "echo ran > /tmp/asdf.ran.yaml && yabai -m space --focus 8"
+              "shell_command": "echo ran > /tmp/asdf.ran.yaml && /usr/local/bin/yabai -m space --focus 8"
             }
           ],
           "type": "basic"
@@ -183,7 +183,7 @@
           },
           "to": [
             {
-              "shell_command": "echo ran > /tmp/asdf.ran.yaml && yabai -m space --focus 9"
+              "shell_command": "echo ran > /tmp/asdf.ran.yaml && /usr/local/bin/yabai -m space --focus 9"
             }
           ],
           "type": "basic"
@@ -191,7 +191,7 @@
       ]
     },
     {
-      "description": "focus space 0",
+      "description": "focus space 10",
       "manipulators": [
         {
           "from": {
@@ -204,7 +204,7 @@
           },
           "to": [
             {
-              "shell_command": "echo ran > /tmp/asdf.ran.yaml && yabai -m space --focus 0"
+              "shell_command": "echo ran > /tmp/asdf.ran.yaml && /usr/local/bin/yabai -m space --focus 10"
             }
           ],
           "type": "basic"
@@ -227,7 +227,7 @@
           },
           "to": [
             {
-              "shell_command": "yabai -m window --space  1"
+              "shell_command": "/usr/local/bin/yabai -m window --space  1"
             }
           ],
           "type": "basic"
@@ -249,7 +249,7 @@
           },
           "to": [
             {
-              "shell_command": "yabai -m window --space  2"
+              "shell_command": "/usr/local/bin/yabai -m window --space  2"
             }
           ],
           "type": "basic"
@@ -271,7 +271,7 @@
           },
           "to": [
             {
-              "shell_command": "yabai -m window --space  3"
+              "shell_command": "/usr/local/bin/yabai -m window --space  3"
             }
           ],
           "type": "basic"
@@ -293,7 +293,7 @@
           },
           "to": [
             {
-              "shell_command": "yabai -m window --space  4"
+              "shell_command": "/usr/local/bin/yabai -m window --space  4"
             }
           ],
           "type": "basic"
@@ -315,7 +315,7 @@
           },
           "to": [
             {
-              "shell_command": "yabai -m window --space  5"
+              "shell_command": "/usr/local/bin/yabai -m window --space  5"
             }
           ],
           "type": "basic"
@@ -337,7 +337,7 @@
           },
           "to": [
             {
-              "shell_command": "yabai -m window --space  6"
+              "shell_command": "/usr/local/bin/yabai -m window --space  6"
             }
           ],
           "type": "basic"
@@ -359,7 +359,7 @@
           },
           "to": [
             {
-              "shell_command": "yabai -m window --space  7"
+              "shell_command": "/usr/local/bin/yabai -m window --space  7"
             }
           ],
           "type": "basic"
@@ -381,7 +381,7 @@
           },
           "to": [
             {
-              "shell_command": "yabai -m window --space  8"
+              "shell_command": "/usr/local/bin/yabai -m window --space  8"
             }
           ],
           "type": "basic"
@@ -403,7 +403,7 @@
           },
           "to": [
             {
-              "shell_command": "yabai -m window --space  9"
+              "shell_command": "/usr/local/bin/yabai -m window --space  9"
             }
           ],
           "type": "basic"
@@ -411,7 +411,7 @@
       ]
     },
     {
-      "description": "move window to space 0",
+      "description": "move window to space 10",
       "manipulators": [
         {
           "from": {
@@ -425,7 +425,96 @@
           },
           "to": [
             {
-              "shell_command": "yabai -m window --space  0"
+              "shell_command": "/usr/local/bin/yabai -m window --space  10"
+            }
+          ],
+          "type": "basic"
+        }
+      ]
+    },
+
+    {
+      "description": "change layout to bsp",
+      "manipulators": [
+        {
+          "from": {
+            "key_code": "a",
+            "modifiers": {
+              "mandatory": [
+                "left_control",
+                "left_option"
+              ]
+            }
+          },
+          "to": [
+            {
+              "shell_command": "/usr/local/bin/yabai -m space --layout bsp"
+            }
+          ],
+          "type": "basic"
+        }
+      ]
+    },
+    {
+      "description": "change layout to stack",
+      "manipulators": [
+        {
+          "from": {
+            "key_code": "s",
+            "modifiers": {
+              "mandatory": [
+                "left_control",
+                "left_option"
+              ]
+            }
+          },
+          "to": [
+            {
+              "shell_command": "/usr/local/bin/yabai -m space --layout stack"
+            }
+          ],
+          "type": "basic"
+        }
+      ]
+    },
+    {
+      "description": "change layout to float",
+      "manipulators": [
+        {
+          "from": {
+            "key_code": "d",
+            "modifiers": {
+              "mandatory": [
+                "left_control",
+                "left_option"
+              ]
+            }
+          },
+          "to": [
+            {
+              "shell_command": "/usr/local/bin/yabai -m space --layout stack"
+            }
+          ],
+          "type": "basic"
+        }
+      ]
+    },
+
+    {
+      "description": "open alacritty",
+      "manipulators": [
+        {
+          "from": {
+            "key_code": "return_or_enter",
+            "modifiers": {
+              "mandatory": [
+                "left_control"
+              ]
+            }
+          },
+          "to": [
+            {
+              "shell_command": "/Applications/Alacritty.app/Contents/MacOS/alacritty"
             }
           ],
           "type": "basic"
