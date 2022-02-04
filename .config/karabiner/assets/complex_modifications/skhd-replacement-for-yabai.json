@@ -514,7 +514,7 @@
           },
           "to": [
             {
-              "shell_command": "/Applications/Alacritty.app/Contents/MacOS/alacritty"
+              "shell_command": "/Applications/Alacritty.app/Contents/MacOS/alacritty -qq &"
             }
           ],
           "type": "basic"
