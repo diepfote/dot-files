@@ -22,9 +22,9 @@
   find-commit-contains-regex = "!f() { git le --reverse --source -G \"$@\" ; }; f"
 
   # use --follow if you want to follow beyond renames
-  find-commits-changed-file = "!f() { : git add ; filename=\"${*:$#:$#}\"; set -- \"${@:1:$(($#-1))}\"; git l \"$@\" -- \"$filename\"; }; f"
+  find-commits-changed-file = "!f() { : git add ; filename=\"${*:$#:$#}\"; set -- \"${@:1:$(($#-1))}\"; git l \"$@\" -- \"${GIT_PREFIX:-.}\"/\"$filename\"; }; f"
 
-  find-commit-introduced-file = "!f() { : git add ; filename=\"${*:$#:$#}\"; set -- \"${@:1:$(($#-1))}\";  git l --follow --diff-filter=A \"$@\" -- \"$filename\" ; }; f"
+  find-commit-introduced-file = "!f() { : git add ; filename=\"${*:$#:$#}\"; set -- \"${@:1:$(($#-1))}\";  git l --follow --diff-filter=A \"$@\" -- \"${GIT_PREFIX:-.}\"/\"$filename\" ; }; f"
 
 
   # taken from https://github.com/nedbat/dot/blob/master/.gitconfig
