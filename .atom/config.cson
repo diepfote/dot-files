@@ -17,6 +17,7 @@
       "github-atom-light-syntax"
     ]
   editor:
+    fontSize: 16
     invisibles: {}
     showIndentGuide: true
     softWrap: true

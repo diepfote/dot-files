@@ -1,5 +1,12 @@
 /*
 /*/
+
+!/.atom
+/.atom/*
+# do not add keymap -> different on Mac & Linux
+/.atom/keymap.cson
+!/.atom/config.cson
+
 !/.config/
 /.config/*
 
