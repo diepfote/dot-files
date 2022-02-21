@@ -13,9 +13,9 @@ images:
   # Download the file from the internet when the local file is missing.
   # Hint: run `limactl prune` to invalidate the "current" cache
   # NOTE: the image is periodically rotated, if you face 404, see https://mirror.pkgbuild.com/images/ to find the latest image.
-  - location: "https://mirror.pkgbuild.com/images/v20220204.46656/Arch-Linux-x86_64-cloudimg-20220204.46656.qcow2"
+  - location: "https://mirror.pkgbuild.com/images/v20220215.47946/Arch-Linux-x86_64-cloudimg-20220215.47946.qcow2"
     arch: "x86_64"
-    digest: "sha256:cf936eaededf6aff595dc72c91a9fac9d0577c6269a677a95d4daf80da612c8c"
+    digest: "sha256:db87b9f0bbab553fdb271545d221e3a8a2c94d94840efa2d78a06fcc1aed12ec"
 
 # CPUs: if you see performance issues, try limiting cpus to 1.
 # Default: 4
