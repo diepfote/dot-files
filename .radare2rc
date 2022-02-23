@@ -7,29 +7,32 @@ e scr.utf8=true
 # Disable fortune startup messages
 e cfg.fortunes=false
 
-e bin.demangle = true
-e asm.demangle = true
-e asm.relsub = true
-e asm.syntax = intel
-e asm.flags = true
-e asm.trace = true
-
-# Save the target binary inside the project directory
-#e prj.files = true
-
-# Display stack and register values on top of disasembly view (visual mode)
-e cmd.stack = true
+# TODO
+e bin.demangle=true
+e asm.demangle=true
+e asm.syntax=intel
+e asm.flags=true
+e asm.trace=true
 
 # Show comments at right of disassembly if they fit in screen
 #e asm.cmt.right=true
-
 # Show explanations for assembly instructions
 #e asm.describe=true
-
 # Shows pseudocode in disassembly. Eg mov eax, str.ok = > eax = str.ok
-#e asm.pseudo = true
+#e asm.pseudo=true
 
-# Solarized theme
+
+# Save the target binary inside the project directory
+#e prj.files=true
+
+# Display stack and register values on top of disasembly view (visual mode)
+e cmd.stack=true
+
+
+
+# Color themes
+#
+# Possible values:
 # ayu
 # basic
 # behelit
@@ -58,6 +61,7 @@ e cmd.stack = true
 # xvilka
 # zenburn
 #
+# Set theme
 #eco matrix
 #eco cutter
 #eco tango

@@ -21,15 +21,19 @@
 
 !/.config/dunst
 
+
+!/.msmtprc
+!/.muttrc
+
 !/.lima
 /.lima/_config
 !/.lima/default
 /.lima/default/*
 !/.lima/default/lima.yaml
 
-!/.shellcheckrc
+!/.radare2rc
+!/.rizinrc
 
-!/.msmtprc
-!/.muttrc
+!/.shellcheckrc
 
 !/.skhdrc
