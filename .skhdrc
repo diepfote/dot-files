@@ -57,3 +57,7 @@ ctrl + alt - a : yabai -m space --layout bsp
 ctrl + alt - d : yabai -m space --layout float
 ctrl + alt - s : yabai -m space --layout stack
 
+# switch between windows in a stack (bsp layout)
+cmd - j : yabai -m window --focus stack.prev || yabai -m window --focus prev || yabai -m window --focus last
+cmd - k : yabai -m window --focus stack.next || yabai -m window --focus next || yabai -m window --focus first
+
