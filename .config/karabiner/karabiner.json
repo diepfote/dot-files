@@ -263,27 +263,6 @@
                         ]
                     },
                     {
-                        "description": "Disable F1 help",
-                        "manipulators": [
-                            {
-                                "conditions": [
-                                    {
-                                        "bundle_identifiers": [
-                                            "^com\\.microsoft\\.Excel$",
-                                            "^com\\.microsoft\\.Word$"
-                                        ],
-                                        "type": "frontmost_application_if"
-                                    }
-                                ],
-                                "description": "",
-                                "from": {
-                                    "key_code": "f1"
-                                },
-                                "type": "basic"
-                            }
-                        ]
-                    },
-                    {
                         "description": "focus space 1",
                         "manipulators": [
                             {
@@ -794,6 +773,51 @@
                                 "to": [
                                     {
                                         "shell_command": "/Applications/Alacritty.app/Contents/MacOS/alacritty -qq &"
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "Disable F1 help",
+                        "manipulators": [
+                            {
+                                "description": "",
+                                "from": {
+                                    "key_code": "f1"
+                                },
+                                "to": [
+                                    {
+                                        "set_variable": {
+                                            "name": "none_but_ab",
+                                            "value": 1
+                                        }
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "Disable cmd-q",
+                        "manipulators": [
+                            {
+                                "description": "",
+                                "from": {
+                                    "key_code": "q",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "left_command"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "set_variable": {
+                                            "name": "none_but_ab",
+                                            "value": 1
+                                        }
                                     }
                                 ],
                                 "type": "basic"

@@ -1,0 +1,51 @@
+{
+  "title": "Disable keys",
+  "rules": [
+    {
+      "description": "Disable F1 help",
+      "manipulators": [
+        {
+          "type": "basic",
+          "description": "",
+          "from": {
+            "key_code": "f1"
+          },
+          "to": [
+            {
+              "set_variable": {
+                "name": "none_but_ab",
+                "value": 1
+              }
+            }
+          ]
+        }
+      ]
+    },
+
+    {
+      "description": "Disable cmd-q",
+      "manipulators": [
+        {
+          "type": "basic",
+          "description": "",
+          "from": {
+            "key_code": "q",
+            "modifiers": {
+              "mandatory": [
+                "left_command"
+              ]
+            }
+          },
+          "to": [
+            {
+              "set_variable": {
+                "name": "none_but_ab",
+                "value": 1
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
