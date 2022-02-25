@@ -97,7 +97,8 @@ done
 
   source ~/Documents/scripts/private/source-me/posix-compliant-shells.sh
 
-if [ "$(uname)" = Darwin ]; then
+system="$(uname)"
+if [ "$system" = Darwin ]; then
 
   source /usr/local/share/bash-completion/bash_completion
 
@@ -149,7 +150,10 @@ if [ "$(uname)" = Darwin ]; then
 
   # helper functions such as 'get_pod' for kubernetes
   source ~/Documents/scripts/kubernetes/source-me/common-functions.sh
-else
+
+elif [ "$system" = Linux ]; then
+  # Arch Linux
+
   for name in ~/Documents/scripts/source-me/linux/*; do
     source "$name"
   done
