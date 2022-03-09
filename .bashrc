@@ -104,21 +104,6 @@ if [ "$system" = Darwin ]; then
 
 
   source ~/Documents/scripts/source-me/darwin/posix-compliant-shells.sh
-  for name in ~/Documents/scripts/source-me/darwin/completions_*; do
-    source "$name"
-  done
-  for name in ~/Documents/scripts/kubernetes/source-me/completions_*; do
-    source "$name"
-  done
-
-
-  # mostly kubernetes - cc only
-  source ~/Documents/scripts/cc/source-me/posix-compliant-shells.sh
-  source ~/Documents/scripts/cc/source-me/completions_* || true
-
-  # bb only
-  source ~/Documents/scripts/bb/source-me/posix-compliant-shells.sh
-  source ~/Documents/scripts/bb/source-me/completions_* || true
 
   if [[ -x /usr/local/bin/kubectl ]]; then
     filename="/tmp/_kubectl-completions"
@@ -147,6 +132,24 @@ if [ "$system" = Darwin ]; then
   fi
 
   # [[ -x /usr/local/bin/openstack ]] && source <(openstack complete --shell bash)
+
+
+  for name in ~/Documents/scripts/source-me/darwin/completions_*; do
+    source "$name"
+  done
+  for name in ~/Documents/scripts/kubernetes/source-me/completions_*; do
+    source "$name"
+  done
+
+
+  # mostly kubernetes - cc only
+  source ~/Documents/scripts/cc/source-me/posix-compliant-shells.sh
+  source ~/Documents/scripts/cc/source-me/completions_* || true
+
+  # bb only
+  source ~/Documents/scripts/bb/source-me/posix-compliant-shells.sh
+  source ~/Documents/scripts/bb/source-me/completions_* || true
+
 
   # helper functions such as 'get_pod' for kubernetes
   source ~/Documents/scripts/kubernetes/source-me/common-functions.sh
