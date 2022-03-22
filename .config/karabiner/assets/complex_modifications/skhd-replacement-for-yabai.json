@@ -15,7 +15,7 @@
           },
           "to": [
             {
-              "shell_command": "echo ran > /tmp/asdf.ran.yaml && /usr/local/bin/yabai -m space --focus 1"
+              "shell_command": "/usr/local/bin/yabai -m space --focus 1"
             }
           ],
           "type": "basic"
@@ -36,7 +36,7 @@
           },
           "to": [
             {
-              "shell_command": "echo ran > /tmp/asdf.ran.yaml && /usr/local/bin/yabai -m space --focus 2"
+              "shell_command": "/usr/local/bin/yabai -m space --focus 2"
             }
           ],
           "type": "basic"
@@ -57,7 +57,7 @@
           },
           "to": [
             {
-              "shell_command": "echo ran > /tmp/asdf.ran.yaml && /usr/local/bin/yabai -m space --focus 3"
+              "shell_command": "/usr/local/bin/yabai -m space --focus 3"
             }
           ],
           "type": "basic"
@@ -78,7 +78,7 @@
           },
           "to": [
             {
-              "shell_command": "echo ran > /tmp/asdf.ran.yaml && /usr/local/bin/yabai -m space --focus 4"
+              "shell_command": "/usr/local/bin/yabai -m space --focus 4"
             }
           ],
           "type": "basic"
@@ -99,7 +99,7 @@
           },
           "to": [
             {
-              "shell_command": "echo ran > /tmp/asdf.ran.yaml && /usr/local/bin/yabai -m space --focus 5"
+              "shell_command": "/usr/local/bin/yabai -m space --focus 5"
             }
           ],
           "type": "basic"
@@ -120,7 +120,7 @@
           },
           "to": [
             {
-              "shell_command": "echo ran > /tmp/asdf.ran.yaml && /usr/local/bin/yabai -m space --focus 6"
+              "shell_command": "/usr/local/bin/yabai -m space --focus 6"
             }
           ],
           "type": "basic"
@@ -141,7 +141,7 @@
           },
           "to": [
             {
-              "shell_command": "echo ran > /tmp/asdf.ran.yaml && /usr/local/bin/yabai -m space --focus 7"
+              "shell_command": "/usr/local/bin/yabai -m space --focus 7"
             }
           ],
           "type": "basic"
@@ -162,7 +162,7 @@
           },
           "to": [
             {
-              "shell_command": "echo ran > /tmp/asdf.ran.yaml && /usr/local/bin/yabai -m space --focus 8"
+              "shell_command": "/usr/local/bin/yabai -m space --focus 8"
             }
           ],
           "type": "basic"
@@ -183,7 +183,7 @@
           },
           "to": [
             {
-              "shell_command": "echo ran > /tmp/asdf.ran.yaml && /usr/local/bin/yabai -m space --focus 9"
+              "shell_command": "/usr/local/bin/yabai -m space --focus 9"
             }
           ],
           "type": "basic"
@@ -204,7 +204,7 @@
           },
           "to": [
             {
-              "shell_command": "echo ran > /tmp/asdf.ran.yaml && /usr/local/bin/yabai -m space --focus 10"
+              "shell_command": "/usr/local/bin/yabai -m space --focus 10"
             }
           ],
           "type": "basic"
