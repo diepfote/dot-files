@@ -97,7 +97,8 @@ provision:
       set -eux -o pipefail
       pacman -Syu --needed --noconfirm
       command -v yay >/dev/null 2>&1 && exit 0
-      pacman --needed --noconfirm -S git base-devel man man-pages pkgfile vi neovim
+      pacman --needed --noconfirm -S base-devel setconf git man man-pages pkgfile vi neovim
+      ln -f -s /usr/bin/nvim /usr/bin/vim
       pkgfile -u
 
   - mode: system
