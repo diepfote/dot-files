@@ -46,6 +46,33 @@
           ]
         }
       ]
+    },
+
+    {
+      "description": "Disable cmd-m/minimize keybind",
+      "manipulators": [
+        {
+          "type": "basic",
+          "description": "",
+          "from": {
+            "key_code": "m",
+            "modifiers": {
+              "mandatory": [
+                "left_command"
+              ]
+            }
+          },
+          "to": [
+            {
+              "set_variable": {
+                "name": "none_but_ab",
+                "value": 1
+              }
+            }
+          ]
+        }
+      ]
     }
+
   ]
 }
