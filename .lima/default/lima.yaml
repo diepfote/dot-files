@@ -105,7 +105,7 @@ provision:
       #!/usr/bin/env bash
       set -eux -o pipefail
       command -v podman >/dev/null 2>&1 && exit 0
-      pacman -S --needed --noconfirm podman
+      pacman -S --needed --noconfirm podman podman-compose
 
   - mode: user
     script: |
