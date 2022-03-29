@@ -107,6 +107,7 @@ provision:
       set -eux -o pipefail
       command -v podman >/dev/null 2>&1 && exit 0
       pacman -S --needed --noconfirm podman podman-compose
+      setconf /usr/share/containers/containers.conf log_driver '"k8s-file"'
 
   - mode: user
     script: |
