@@ -35,6 +35,10 @@ bind 'set enable-bracketed-paste'
 
 
 
+# stupid workaround for $SHELL set to whatever you did with `chsh -s`
+# on Mac OS
+export ZSH=''
+
 if [[ "$(hostname)" =~ ^[a-z0-9]+$ ]] ||\
    [ "$(hostname)" = docker-desktop ] || \
    [[ "$(hostname)" =~ lima* ]]
