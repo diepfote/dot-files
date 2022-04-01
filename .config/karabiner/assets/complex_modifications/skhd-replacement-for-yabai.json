@@ -501,6 +501,49 @@
     },
 
     {
+      "description": "switch application forwards",
+      "manipulators": [
+        {
+          "from": {
+            "key_code": "j",
+            "modifiers": {
+              "mandatory": [
+                "left_command"
+              ]
+            }
+          },
+          "to": [
+            {
+              "shell_command": "/usr/local/bin/yabai -m window --focus stack.next || /usr/local/bin/yabai -m window --focus stack.first || /usr/local/bin/yabai -m window --focus next || /usr/local/bin/yabai -m window --focus first"
+            }
+          ],
+          "type": "basic"
+        }
+      ]
+    },
+    {
+      "description": "switch application backwards",
+      "manipulators": [
+        {
+          "from": {
+            "key_code": "k",
+            "modifiers": {
+              "mandatory": [
+                "left_command"
+              ]
+            }
+          },
+          "to": [
+            {
+              "shell_command": "/usr/local/bin/yabai -m window --focus stack.prev || /usr/local/bin/yabai -m window --focus stack.last || /usr/local/bin/yabai -m window --focus prev || /usr/local/bin/yabai -m window --focus last"
+            }
+          ],
+          "type": "basic"
+        }
+      ]
+    },
+
+    {
       "description": "open alacritty",
       "manipulators": [
         {
