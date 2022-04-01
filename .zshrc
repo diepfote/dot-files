@@ -1,8 +1,6 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && [[ -z "$BASH_SOURCE_IT" ]] && return
 
-export PS1=''
-PROMPT='%~ %# '
 ### Jump to start or end of line
 # bindkey "^[[H" beginning-of-line
 # bindkey "^[[F" end-of-line

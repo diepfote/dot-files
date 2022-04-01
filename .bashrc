@@ -176,15 +176,6 @@ builtin bind '"\C-r": "\C-x1\e^\er"'
 # --------------------------
 
 
-# --------------------------
-# prompt style start
-#
-
-source ~/Documents/scripts/source-me/bash-prompt.sh
-#
-# prompt style end
-# --------------------------
-
 
 # --------------------------
 # preexec hook
