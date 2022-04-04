@@ -106,7 +106,19 @@ provision:
       #!/usr/bin/env bash
       set -eux -o pipefail
       command -v podman >/dev/null 2>&1 && exit 0
-      pacman -S --needed --noconfirm podman podman-compose
+      pacman -S --needed --noconfirm podman
+      # docker-compose / podman-compose
+      pacman -S --needed --noconfirm podman-compose
+      # container name resolution for docker-compose / container name resolution for podman-compose
+      #
+      # docs:
+      # - https://github.com/containers/podman-compose
+      # - https://github.com/containers/dnsname
+      # - https://github.com/containers/dnsname/blob/main/README_PODMAN.md
+      # - https://github.com/containers/dnsname/blob/main/example/foobar.conflist
+      #
+      pacman -S --needed --noconfirm podman-dnsname
+      # fix unable to tail container logs
       setconf /usr/share/containers/containers.conf log_driver '"k8s-file"'
 
   - mode: user
