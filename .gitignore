@@ -21,6 +21,10 @@
 
 !/.config/dunst
 
+!/.config/qalculate
+/.config/qalculate/*
+!/.config/qalculate/qalc.cfg
+
 
 !/.msmtprc
 !/.muttrc
@@ -30,6 +34,7 @@
 !/.lima/default
 /.lima/default/*
 !/.lima/default/lima.yaml
+
 
 !/.radare2rc
 !/.rizinrc
