@@ -156,3 +156,7 @@
 	helper = store
 [diff "sopsdiffer"]
 	textconv = sops -d
+[safe]
+	directory = /etc
+	directory = /etc/systemd/system
+	directory = /etc/pacman.d/hooks
