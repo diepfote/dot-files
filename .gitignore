@@ -42,3 +42,12 @@
 !/.shellcheckrc
 
 !/.taskrc
+
+!/Library/
+/Library/*
+!/Library/Application\ Support/
+/Library/Application\ Support/*
+!/Library/Application\ Support/xbar
+/Library/Application\ Support/xbar/*
+!/Library/Application\ Support/xbar/plugins
+
