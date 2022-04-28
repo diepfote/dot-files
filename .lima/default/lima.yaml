@@ -60,6 +60,8 @@ mounts:
     writable: true
   - location: "/tmp/lima"
     writable: true
+  - location: /usr/local/Homebrew
+    writable: false
 
 ssh:
   # A localhost port of the host. Forwarded to port 22 of the guest.
@@ -85,7 +87,7 @@ containerd:
   system: false
   # Enable user-scoped (aka rootless) containerd and its dependencies
   # Default: true
-  user: true
+  user: false
 
 # Provisioning scripts need to be idempotent because they might be called
 # multiple times, e.g. when the host VM is being restarted.
@@ -94,9 +96,7 @@ provision:
   - mode: system
     script: |
       #!/usr/bin/env bash
-      set -eux -o pipefail
       pacman -Syu --needed --noconfirm
-      command -v yay >/dev/null 2>&1 && exit 0
       pacman --needed --noconfirm -S base-devel setconf git man man-pages pkgfile vi neovim
       ln -f -s /usr/bin/nvim /usr/bin/vim
       pkgfile -u
@@ -104,7 +104,6 @@ provision:
   - mode: system
     script: |
       #!/usr/bin/env bash
-      set -eux -o pipefail
       command -v podman >/dev/null 2>&1 && exit 0
       pacman -S --needed --noconfirm podman
       # docker-compose / podman-compose
@@ -130,10 +129,14 @@ provision:
   - mode: system
     script: |
       #!/bin/bash
-      (cd /tmp && sudo -u florian git clone https://aur.archlinux.org/yay.git)
+      command -v yay >/dev/null 2>&1 && exit 0
+      # TODO potentially fix username
+      (cd /tmp && sudo -u lima git clone https://aur.archlinux.org/yay.git)
       cd /tmp/yay
-      sudo -u florian git pull
-      sudo -u florian makepkg -sri --noconfirm
+      sudo mkdir /var/cache
+      sudo chown lima:lima -R /var/cache
+      sudo -u lima git pull
+      sudo -u lima makepkg -sri --noconfirm
 
 probes:
   - script: |
