@@ -1,6 +1,8 @@
 /*
 /*/
 
+!/.ansible-lint
+
 !/.atom
 /.atom/*
 # do not add keymap -> different on Mac & Linux
