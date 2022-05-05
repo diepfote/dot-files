@@ -14,7 +14,7 @@
     telemetryConsent: "no"
     themes: [
       "one-light-ui"
-      "github-atom-light-syntax"
+      "an-old-hope-light-syntax"
     ]
   editor:
     fontSize: 16
