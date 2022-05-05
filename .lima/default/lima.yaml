@@ -119,6 +119,8 @@ provision:
       pacman -S --needed --noconfirm podman-dnsname
       # fix unable to tail container logs
       setconf /usr/share/containers/containers.conf log_driver '"k8s-file"'
+      # allow unqualified registries
+      echo -e '[[registry]]\nprefix = "quay.io/"\nlocation = "quay.io/"\n[[registry]]\nprefix = "docker.io/"\nlocation = "docker.io/"'  > /etc/containers/registries.conf
 
   - mode: user
     script: |
