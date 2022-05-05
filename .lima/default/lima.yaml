@@ -135,8 +135,6 @@ provision:
       # TODO potentially fix username
       (cd /tmp && sudo -u lima git clone https://aur.archlinux.org/yay.git)
       cd /tmp/yay
-      sudo mkdir /var/cache
-      sudo chown lima:lima -R /var/cache
       sudo -u lima git pull
       sudo -u lima makepkg -sri --noconfirm
 
