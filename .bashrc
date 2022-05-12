@@ -4,13 +4,26 @@
 [[ $- != *i* ]] && [[ -z "$BASH_SOURCE_IT" ]] && return
 [ "$(uname)" = Darwin ] && export TERM=screen-256color
 # ----
-# bash history
+# bash history START
 #
+
 export HISTSIZE='blub'
 export HISTFILESIZE='blub'
 export HISTCONTROL='ignorespace:erasedups'  # man bash
-export HISTIGNORE=''
+
+# TODO add additional?
+# based on https://github.com/justinmk/config/blob/9332827a1cbcc2fc144364459d7f65c736b11938/.bashrc#L28
+HISTIGNORE='exit:cd:ls:bg:fg:history:f:fd'
+
+# Non-default history file, to avoid accidental truncation.
+# -> copy default file if non-default does not exist <-
+# snatched from https://github.com/justinmk/config/blob/9332827a1cbcc2fc144364459d7f65c736b11938/.bashrc#L22
+[ -f "$HOME/.bash_history_x" ] || { [ -f "$HOME/.bash_history" ] && cp "$HOME/.bash_history" "$HOME/.bash_history_x" ; }
+HISTFILE="$HOME/.bash_history_x"
+
 # ----
+
+
 # ----
 # keybindings | bind settings | binding settings
 
