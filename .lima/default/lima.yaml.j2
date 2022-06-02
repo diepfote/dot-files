@@ -97,8 +97,7 @@ provision:
     script: |
       #!/usr/bin/env bash
       pacman -Syu --needed --noconfirm
-      pacman --needed --noconfirm -S base-devel setconf git man man-pages pkgfile vi neovim
-      ln -f -s /usr/bin/nvim /usr/bin/vim
+      pacman --needed --noconfirm -S base-devel setconf git man man-pages pkgfile vi
       pkgfile -u
 
   - mode: system
@@ -137,6 +136,17 @@ provision:
       cd /tmp/yay
       sudo -u lima git pull
       sudo -u lima makepkg -sri --noconfirm
+
+
+  - mode: system
+    script: |
+      #!/bin/bash
+      set -eux -o pipefail
+      if ! timeout 30s bash -c "until command -v yay >/dev/null 2>&1; do sleep 3; done"; then
+        :
+      fi
+      yay --needed --noconfirm -S {{ arch_pkgs }}
+      ln -f -s /usr/bin/nvim /usr/local/bin/vim
 
 probes:
   - script: |

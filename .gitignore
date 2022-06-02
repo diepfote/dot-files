@@ -35,7 +35,8 @@
 /.lima/_config
 !/.lima/default
 /.lima/default/*
-!/.lima/default/lima.yaml
+!/.lima/default/lima.yaml.j2
+!/.lima/default/template.py
 
 
 !/.radare2rc
