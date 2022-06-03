@@ -9,6 +9,9 @@
 /.atom/keymap.cson
 !/.atom/config.cson
 
+!/bin
+!/Makefile
+
 !/.config/
 /.config/*
 
