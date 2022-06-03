@@ -17,6 +17,7 @@
 
 !/.config/gummi
 
+!/.vimrc
 !/.config/nvim
 !/.config/nvim/*
 
