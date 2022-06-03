@@ -36,7 +36,7 @@ mounts:
     # CAUTION: `writable` SHOULD be false for the home directory.
     # Setting `writable` to true is possible, but untested and dangerous.
     writable: true
-  - location: "~/Movies/"
+  - location: "~/Movies"
     writable: false
   - location: "~/Music"
     writable: false
@@ -45,12 +45,6 @@ mounts:
   - location: "~/.container"
     writable: true
   - location: "~/.gnupg"
-    writable: true
-  - location: "~/.cache"
-    writable: true
-  - location: "~/.local"
-    writable: true
-  - location: "~/.config"
     writable: true
   # used in arch-all image build
   - location: "/var/cache/pkgfile"
