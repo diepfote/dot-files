@@ -88,6 +88,7 @@ provision:
   - mode: system
     script: |
       #!/usr/bin/env bash
+      sudo chown 501 -R /var/cache/
       pacman -Syu --needed --noconfirm
       pacman --needed --noconfirm -S base-devel setconf git man man-pages pkgfile vi
       pkgfile -u
