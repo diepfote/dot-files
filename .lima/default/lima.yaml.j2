@@ -40,8 +40,6 @@ mounts:
     writable: false
   - location: "~/Music"
     writable: false
-  - location: "~/.vim"
-    writable: true
   - location: "~/.container"
     writable: true
   - location: "~/.gnupg"
@@ -136,17 +134,22 @@ provision:
     script: |
       #!/bin/bash
       set -eux -o pipefail
-      if ! timeout 30s bash -c "until command -v yay >/dev/null 2>&1; do sleep 3; done"; then
-        :
+      # if `yay` command becomes available in the next 10 min,
+      # run `yay` to install arbitrary packages and configure (neo)vim
+      if timeout 10m bash -c "until command -v yay >/dev/null 2>&1; do sleep 3; done"; then
+        yay --needed --noconfirm -S {{ arch_pkgs }}
+
+        mac_user_directory="$(df --output=target | grep '/Users' | head -n 1 | sed -r 's#(/[^/]+/[^/]+).*#\1#')"
+        ln -f -s "$mac_user_directory"/.vim ~/.vim
+
+        ln -f -s /usr/bin/nvim /usr/local/bin/vim
       fi
-      yay --needed --noconfirm -S {{ arch_pkgs }}
-      ln -f -s /usr/bin/nvim /usr/local/bin/vim
 
 probes:
   - script: |
       #!/bin/bash
       set -eux -o pipefail
-      if ! timeout 30s bash -c "until command -v podman >/dev/null 2>&1; do sleep 3; done"; then
+      if ! timeout 5m bash -c "until command -v podman >/dev/null 2>&1; do sleep 3; done"; then
         echo >&2 "podman is not installed yet"
         exit 1
       fi
@@ -154,8 +157,16 @@ probes:
   - script: |
       #!/bin/bash
       set -eux -o pipefail
-      if ! timeout 30s bash -c "until command -v yay >/dev/null 2>&1; do sleep 3; done"; then
+      if ! timeout 5m bash -c "until command -v yay >/dev/null 2>&1; do sleep 3; done"; then
         echo >&2 "yay is not installed yet"
+        exit 1
+      fi
+
+  - script: |
+      #!/bin/bash
+      set -eux -o pipefail
+      if ! timeout 5m bash -c "until command -v rizin >/dev/null 2>&1; do sleep 3; done"; then
+        echo >&2 "rizin is not installed yet"
         exit 1
       fi
     hint: See "/var/log/cloud-init-output.log". in the guest
