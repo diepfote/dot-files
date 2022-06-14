@@ -12,6 +12,7 @@
 
 [alias]
   clone-aur-repo = clone -q  https://aur.archlinux.org/
+  lmessages = "!f() { : git log ; git log --graph --pretty=format:'%s' \"$@\" ; }; f"  # show author name but commit date
   l = le --graph
   le = "!f() { : git log ; git log --pretty=format:'%C(bold cyan)%h%Creset%C(bold magenta)%d%Creset %C(bold green)<%ae>%Creset (%GK) %C(bold red)(%cd)%Creset %s' \"$@\" ; }; f"  # show author name but commit date
 
