@@ -24,6 +24,8 @@ if [ -n "$IN_CONTAINER" ]; then
   # Hint all tool folders sit right next to $DOT_FILES_DIR
 
   ln -f -s "$DOT_FILES_DIR"/../../.container  ~/.container
+  unlink ~/.vim || rm -rf ~/.vim
+  ln -f -s "$DOT_FILES_DIR"/../../.vim  ~/.vim
 
   mkdir -p ~/Documents
   ln -f -s "$DOT_FILES_DIR"/../scripts ~/Documents/scripts

@@ -94,7 +94,8 @@ provision:
       #!/usr/bin/env bash
       sudo chown 501 -R /var/cache/
       pacman -Syu --needed --noconfirm
-      pacman --needed --noconfirm -S base-devel setconf git man man-pages pkgfile vi
+      pacman --needed --noconfirm -S base-devel setconf git man man-pages pkgfile vi nvim
+      ln -f -s /usr/bin/nvim /usr/local/bin/vim
       pkgfile -u
 
   - mode: system
@@ -143,11 +144,6 @@ provision:
       # run `yay` to install arbitrary packages and configure (neo)vim
       if timeout 10m bash -c "until command -v yay >/dev/null 2>&1; do sleep 3; done"; then
         yay --needed --noconfirm -S {{ arch_pkgs }}
-
-        mac_user_directory="$(df --output=target | grep '/Users' | head -n 1 | sed -r 's#(/[^/]+/[^/]+).*#\1#')"
-        ln -f -s "$mac_user_directory"/.vim ~/.vim
-
-        ln -f -s /usr/bin/nvim /usr/local/bin/vim
       fi
 
 probes:
