@@ -22,7 +22,7 @@ while read -r line; do
 done < <(cd "$DOT_FILES_DIR" && git ls-files | grep -vE '^bin/|Makefile')
 
 
-if [ -n "$IN_CONTAINER" ]; then
+if [ -n "$NOT_HOST_ENV" ]; then
   # link tool folders if in container or in lima vm
 
   # Hint all tool folders sit right next to $DOT_FILES_DIR
