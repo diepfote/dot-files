@@ -1,5 +1,8 @@
 // snatched from https://support.mozilla.org/en-US/questions/1207607#answer-1083704
 
+// IMPORTANT: on Linux please do not symlink but copy -> firejail
+//            blocks reads of this file otherwise.
+
 #PlacesToolbarItems,
 #sidebar-search-container #search-box,
 .sidebar-placesTree {
