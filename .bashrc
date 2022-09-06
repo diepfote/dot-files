@@ -71,9 +71,6 @@ done
 system="$(uname)"
 if [ "$system" = Darwin ]; then
 
-  source /usr/local/share/bash-completion/bash_completion
-
-
   source ~/Documents/scripts/source-me/darwin/posix-compliant-shells.sh
 
   if [[ -x /usr/local/bin/kubectl ]]; then
@@ -112,18 +109,32 @@ if [ "$system" = Darwin ]; then
     source "$name"
   done
 
-
   # mostly kubernetes - cc only
   source ~/Documents/scripts/cc/source-me/posix-compliant-shells.sh
-  source ~/Documents/scripts/cc/source-me/completions_* || true
+  for file in ~/Documents/scripts/cc/source-me/completions_*; do
+    source "$file"
+  done
 
   # bb only
   source ~/Documents/scripts/bb/source-me/posix-compliant-shells.sh
-  source ~/Documents/scripts/bb/source-me/completions_* || true
+  for file in ~/Documents/scripts/bb/source-me/completions_*; do
+    source "$file"
+  done
 
 
   # helper functions such as 'get_pod' for kubernetes
   source ~/Documents/scripts/kubernetes/source-me/common-functions.sh
+
+
+  # LEAVE THIS AT THE END!
+  # we do not want fun like this again:
+  # ```
+  # bash: /usr/local/etc/bash_completion.d/poetry: line 40: syntax error near unexpected token `clear'
+  # bash: /usr/local/etc/bash_completion.d/poetry: line 40: `            (cache clear)'
+  # ```
+  #
+  # source all brew installed completions
+  source /usr/local/share/bash-completion/bash_completion
 
 elif [ "$system" = Linux ]; then
   # Arch Linux
