@@ -126,6 +126,7 @@ if [ "$system" = Darwin ]; then
   source ~/Documents/scripts/kubernetes/source-me/common-functions.sh
 
 
+  # --------------------------------------------------------------------------------------------------
   # LEAVE THIS AT THE END!
   # we do not want fun like this again:
   # ```
@@ -133,8 +134,11 @@ if [ "$system" = Darwin ]; then
   # bash: /usr/local/etc/bash_completion.d/poetry: line 40: `            (cache clear)'
   # ```
   #
+  # remove docker completions
+  unlink /usr/local/etc/bash_completion.d/docker 2>/dev/null || true
   # source all brew installed completions
   source /usr/local/share/bash-completion/bash_completion
+  # --------------------------------------------------------------------------------------------------
 
 elif [ "$system" = Linux ]; then
   # Arch Linux
