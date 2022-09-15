@@ -66,11 +66,13 @@ source ~/Documents/scripts/source-me/common-functions.sh
 source ~/Documents/scripts/source-me/posix-compliant-shells.sh
 source ~/Documents/scripts/source-me/completions*
 
+source ~/Documents/scripts/kubernetes/source-me/common-functions.sh
+
 source ~/Documents/scripts/source-me/darwin/posix-compliant-shells.sh
 source ~/Documents/scripts/source-me/darwin/completions*
 
 source ~/Documents/scripts/bb/source-me
 
-source ~/Documents/scripts/cc/source-me/posix-compliant-shells.sh
-source ~/Documents/scripts/cc/source-me/completions*
+# source ~/Documents/scripts/cc/source-me/posix-compliant-shells.sh
+# source ~/Documents/scripts/cc/source-me/completions*
 
