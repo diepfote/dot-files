@@ -41,6 +41,8 @@
   list-all-files-ever-tracked = "!f() { git log --pretty=format: --name-only | sed '/^$/d' | sort | uniq; }; f"
   ls-all-files-ever-tracked = list-all-files-ever-tracked
 
+  # switches to master, pulls latest changes, switches back to previous branch
+  # if it cannot switch to master, it will only fetch master
   update = "!f() { \
     set -x; \
     fetch_or_pull () { \
@@ -49,7 +51,7 @@
         git checkout -; \
       else \
         git fetch origin master; \
-      fi \
+      fi; \
     }; \
     fetch_or_pull; \
     git delete-gone-branches; set +x; }; f"
