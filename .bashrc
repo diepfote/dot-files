@@ -74,6 +74,9 @@ if [ "$system" = Darwin ]; then
   source ~/Documents/scripts/source-me/darwin/posix-compliant-shells.sh
 
   if [[ -x /usr/local/bin/kubectl ]]; then
+    # remove default completions
+    unlink /usr/local/etc/bash_completion.d/kubectl 2>/dev/null || true
+
     filename="/tmp/_kubectl-completions"
     _patched_kubectl_completions="$filename-patched"
 
@@ -87,6 +90,9 @@ if [ "$system" = Darwin ]; then
   fi
 
   if [[ -x /usr/local/bin/oc ]]; then
+    # remove default completions
+    unlink /usr/local/etc/bash_completion.d/oc 2>/dev/null || true
+
     filename="/tmp/_oc-completions"
     _patched_oc_completions="$filename-patched"
 
