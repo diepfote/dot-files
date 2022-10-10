@@ -73,6 +73,40 @@ if [ "$system" = Darwin ]; then
 
   source ~/Documents/scripts/source-me/darwin/posix-compliant-shells.sh
 
+# ------------------------------------------------
+# kubectl/oc completion patching START
+
+  _save-timestamped-kubernetes-completions () {
+
+    local completion_path completion_filename backup_sha new_sha backup_store_loc
+
+    copy_compl_and_timestamp () {
+      cp "$completion_path" "$backup_store_loc/$completion_filename"-"$(date --iso-8601=seconds | sed 's#:#-#g')"
+    }
+
+    completion_path="$1"
+    completion_filename="$(basename "$completion_path")"
+    backup_store_loc=~/Desktop/no-backup
+
+    latest_compl_backup="$(find-sorted "$backup_store_loc" -name "$completion_filename*" | head -n1)"
+
+    save_compl=''
+    if [ -n "$latest_compl_backup" ]; then
+      backup_sha="$(sha256sum "$latest_compl_backup" | awk '{ print $1 }')"
+      new_sha="$(sha256sum "$latest_compl_backup" | awk '{ print $1 }')"
+
+      if [ "$backup_sha" != "$new_sha" ]; then
+        save_compl=true
+      fi
+    else
+        save_compl=true
+    fi
+
+    if [ -n "$save_compl" ]; then
+      copy_compl_and_timestamp
+    fi
+  }
+
   if [[ -x /usr/local/bin/kubectl ]]; then
     # remove default completions
     unlink /usr/local/etc/bash_completion.d/kubectl 2>/dev/null || true
@@ -86,6 +120,7 @@ if [ "$system" = Darwin ]; then
     fi
 
     source "$_patched_kubectl_completions"
+    _save-timestamped-kubernetes-completions "$filename"
     unset filename _patched_kubectl_completions
   fi
 
@@ -102,8 +137,12 @@ if [ "$system" = Darwin ]; then
     fi
 
     source "$_patched_oc_completions"
+    _save-timestamped-kubernetes-completions "$filename"
     unset filename _patched_oc_completions
   fi
+
+# kubectl/oc completion patching END
+# ------------------------------------------------
 
   # [[ -x /usr/local/bin/openstack ]] && source <(openstack complete --shell bash)
 
