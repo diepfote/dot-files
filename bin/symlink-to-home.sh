@@ -23,14 +23,14 @@ while read -r line; do
 done < <(cd "$DOT_FILES_DIR" && git ls-files | grep -vE '^bin/|Makefile')
 
 
+# link tool folders if in container or in lima vm/lima-vm
 if [ -n "$NOT_HOST_ENV" ]; then
-  # link tool folders if in container or in lima vm
-
   # Hint all tool folders sit right next to $DOT_FILES_DIR
 
   ln -f -s "$DOT_FILES_DIR"/../../.container  ~/.container
   unlink ~/.vim || rm -rf ~/.vim
   ln -f -s "$DOT_FILES_DIR"/../../.vim  ~/.vim
+  ln -f -s "$DOT_FILES_DIR"/../../.ssh  ~/.ssh
 
   mkdir -p ~/Documents
   ln -f -s "$DOT_FILES_DIR"/../scripts ~/Documents/scripts
@@ -40,5 +40,6 @@ if [ -n "$NOT_HOST_ENV" ]; then
   mkdir -p ~/Documents/{golang,python}
   ln -f -s "$DOT_FILES_DIR"/../golang/tools ~/Documents/golang/tools
   ln -f -s "$DOT_FILES_DIR"/../python/tools ~/Documents/python/tools
+  ln -f -s "$DOT_FILES_DIR"/../ie-tools ~/Documents/ie-tools
 fi
 

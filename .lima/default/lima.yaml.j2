@@ -96,80 +96,85 @@ provision:
   - mode: system
     script: |
       #!/usr/bin/env bash
+      set -x
       sudo chown 501 -R /var/cache/
-      pacman -Syu --needed --noconfirm
-      pacman --needed --noconfirm -S base-devel setconf git man man-pages pkgfile vi nvim
-      ln -f -s /usr/bin/nvim /usr/local/bin/vim
-      pkgfile -u
 
-  - mode: system
-    script: |
-      #!/usr/bin/env bash
-      command -v podman >/dev/null 2>&1 && exit 0
-      pacman -S --needed --noconfirm podman
-      # docker-compose / podman-compose
-      pacman -S --needed --noconfirm podman-compose
-      # container name resolution for docker-compose / container name resolution for podman-compose
-      #
-      # docs:
-      # - https://github.com/containers/podman-compose
-      # - https://github.com/containers/dnsname
-      # - https://github.com/containers/dnsname/blob/main/README_PODMAN.md
-      # - https://github.com/containers/dnsname/blob/main/example/foobar.conflist
-      #
-      pacman -S --needed --noconfirm podman-dnsname
-      # fix unable to tail container logs
-      setconf -u /usr/share/containers/containers.conf log_driver '"k8s-file"'
-      # allow unqualified registries
-      echo 'unqualified-search-registries=["docker.io", "quay.io"]'  > /etc/containers/registries.conf
+      pacman -Syu --noconfirm
 
-  - mode: user
-    script: |
-      #!/bin/bash
-      set -eux -o pipefail
-      systemctl --user enable --now podman.socket
+      if timeout 10m bash -c "until command -v git >/dev/null 2>&1; do sleep 3; done"; then
+        pacman --needed --noconfirm -S base-devel setconf sudo git man man-pages pkgfile vi neovim
+      fi
 
-  - mode: system
-    script: |
-      #!/bin/bash
-      command -v yay >/dev/null 2>&1 && exit 0
-      # TODO potentially fix username
-      (cd /tmp && sudo -u lima git clone https://aur.archlinux.org/yay.git)
-      cd /tmp/yay
-      sudo -u lima git pull
-      sudo -u lima makepkg -sri --noconfirm
+      if timeout 10m bash -c "until test -f /usr/lib/cni/dnsname >/dev/null 2>&1; do sleep 3; done"; then
+        pacman -S --needed --noconfirm podman
+        # docker-compose / podman-compose
+        pacman -S --needed --noconfirm podman-compose
+        # container name resolution for docker-compose / container name resolution for podman-compose
+        #
+        # docs:
+        # - https://github.com/containers/podman-compose
+        # - https://github.com/containers/dnsname
+        # - https://github.com/containers/dnsname/blob/main/README_PODMAN.md
+        # - https://github.com/containers/dnsname/blob/main/example/foobar.conflist
+        #
+        pacman -S --needed --noconfirm podman-dnsname
+        # fix unable to tail container logs
+        setconf -u /usr/share/containers/containers.conf log_driver '"k8s-file"'
+        # allow unqualified registries
+        echo 'unqualified-search-registries=["docker.io", "quay.io"]'  > /etc/containers/registries.conf
 
+        systemctl --user enable --now podman.socket
+      fi
 
-  - mode: system
-    script: |
-      #!/bin/bash
-      set -eux -o pipefail
+      if ! command -v yay >/dev/null 2>&1; then
+        if timeout 10m bash -c "until command -v git >/dev/null 2>&1; do sleep 3; done"; then
+          # TODO potentially fix username
+          (cd /tmp && sudo -u lima git clone https://aur.archlinux.org/yay.git)
+          cd /tmp/yay
+          sudo -u lima git pull
+          sudo -u lima makepkg -sri --noconfirm
+        fi
+      fi
+
       # if `yay` command becomes available in the next 10 min,
       # run `yay` to install arbitrary packages and configure (neo)vim
       if timeout 10m bash -c "until command -v yay >/dev/null 2>&1; do sleep 3; done"; then
         yay --needed --noconfirm -S {{ arch_pkgs }}
       fi
 
+
+  - mode: system
+    script: |
+      #!/usr/bin/env bash
+      set -x
+      if timeout 10m bash -c "until command -v pkgfile >/dev/null 2>&1; do sleep 3; done"; then
+        pkgfile -u
+      fi
+
+  - mode: system
+    script: |
+      #!/usr/bin/env bash
+      set -x
+      command -v nvim >/dev/null 2>&1 && exit 0
+      ln -f -s /usr/bin/nvim /usr/local/bin/vim
+
 probes:
   - script: |
-      #!/bin/bash
-      set -eux -o pipefail
+      #!/usr/bin/env bash
       if ! timeout 5m bash -c "until command -v podman >/dev/null 2>&1; do sleep 3; done"; then
         echo >&2 "podman is not installed yet"
         exit 1
       fi
 
   - script: |
-      #!/bin/bash
-      set -eux -o pipefail
+      #!/usr/bin/env bash
       if ! timeout 5m bash -c "until command -v yay >/dev/null 2>&1; do sleep 3; done"; then
         echo >&2 "yay is not installed yet"
         exit 1
       fi
 
   - script: |
-      #!/bin/bash
-      set -eux -o pipefail
+      #!/usr/bin/env bash
       if ! timeout 5m bash -c "until command -v rizin >/dev/null 2>&1; do sleep 3; done"; then
         echo >&2 "rizin is not installed yet"
         exit 1
