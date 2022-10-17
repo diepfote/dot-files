@@ -13,9 +13,9 @@ images:
   # Download the file from the internet when the local file is missing.
   # Hint: run `limactl prune` to invalidate the "current" cache
   # NOTE: the image is periodically rotated, if you face 404, see https://mirror.pkgbuild.com/images/ to find the latest image.
-  - location: "https://mirror.pkgbuild.com/images/v20221001.91187/Arch-Linux-x86_64-cloudimg-20221001.91187.qcow2"
+  - location: "https://mirror.pkgbuild.com/images/v20221015.94571/Arch-Linux-x86_64-cloudimg-20221015.94571.qcow2"
     arch: "x86_64"
-    digest: "sha256:f237ada9ba61431f6aebb066d2b3f0b5b432ea21da6034d98248725df1417545"
+    digest: "sha256:9b28e98d7ab81716c77472d3428acf1c81bb3d280b25879880b39f95fb02aa37"
 
 # CPUs: if you see performance issues, try limiting cpus to 1.
 # Default: 4
@@ -45,6 +45,8 @@ mounts:
   - location: "~/.config"
     writable: false
   - location: "~/.vim"
+    writable: true
+  - location: "~/.ssh"
     writable: true
   - location: "~/.gnupg"
     writable: true
@@ -92,6 +94,20 @@ containerd:
 # Provisioning scripts need to be idempotent because they might be called
 # multiple times, e.g. when the host VM is being restarted.
 provision:
+  - mode: user
+    script: |
+      #!/usr/bin/env bash
+      set -x
+      if ! test -e ~/Documents; then
+        ln -s -f /Users/*/Documents ~/Documents
+      fi
+      if ! test -e ~/.container; then
+        if timeout 10m bash -c "until command -v make >/dev/null 2>&1; do sleep 3; done"; then
+          (export NOT_HOST_ENV=true; cd ~/Documents/dot-files && make)
+        fi
+      fi
+
+
 #   # `system` is executed with the root privilege
   - mode: system
     script: |
@@ -101,11 +117,11 @@ provision:
 
       pacman -Syu --noconfirm
 
-      if timeout 10m bash -c "until command -v git >/dev/null 2>&1; do sleep 3; done"; then
+      if ! command -v git >/dev/null 2>&1; then
         pacman --needed --noconfirm -S base-devel setconf sudo git man man-pages pkgfile vi neovim
       fi
 
-      if timeout 10m bash -c "until test -f /usr/lib/cni/dnsname >/dev/null 2>&1; do sleep 3; done"; then
+      if ! test -f /usr/lib/cni/dnsname; then
         pacman -S --needed --noconfirm podman
         # docker-compose / podman-compose
         pacman -S --needed --noconfirm podman-compose
@@ -126,7 +142,7 @@ provision:
         systemctl --user enable --now podman.socket
       fi
 
-      if ! command -v yay >/dev/null 2>&1; then
+      if ! test -f /usr/bin/yay >/dev/null 2>&1; then
         if timeout 10m bash -c "until command -v git >/dev/null 2>&1; do sleep 3; done"; then
           # TODO potentially fix username
           (cd /tmp && sudo -u lima git clone https://aur.archlinux.org/yay.git)
@@ -134,12 +150,6 @@ provision:
           sudo -u lima git pull
           sudo -u lima makepkg -sri --noconfirm
         fi
-      fi
-
-      # if `yay` command becomes available in the next 10 min,
-      # run `yay` to install arbitrary packages and configure (neo)vim
-      if timeout 10m bash -c "until command -v yay >/dev/null 2>&1; do sleep 3; done"; then
-        yay --needed --noconfirm -S {{ arch_pkgs }}
       fi
 
 
@@ -155,8 +165,25 @@ provision:
     script: |
       #!/usr/bin/env bash
       set -x
-      command -v nvim >/dev/null 2>&1 && exit 0
+      test -f /usr/local/bin/vim >/dev/null 2>&1 && exit 0
       ln -f -s /usr/bin/nvim /usr/local/bin/vim
+
+  - mode: user
+    script: |
+      #!/usr/bin/env bash
+      set -x
+
+      # if `yay` command becomes available in the next 10 min,
+      # run `yay` to install arbitrary packages and configure (neo)vim
+      if timeout 10m bash -c "until command -v yay >/dev/null 2>&1; do sleep 3; done"; then
+        sudo chown 501 -R /var/cache/
+        # if pacman db is locked wait for 10 minutes for it do become available again.
+        # if it does -> run yay install arbitrary packages
+        if timeout 1m bash -c 'until ! test -f /var/lib/pacman/db.lck; do sleep 3; done'; then
+          yay --needed --noconfirm -S {{ arch_pkgs }}
+        fi
+      fi
+
 
 probes:
   - script: |

@@ -27,19 +27,24 @@ done < <(cd "$DOT_FILES_DIR" && git ls-files | grep -vE '^bin/|Makefile')
 if [ -n "$NOT_HOST_ENV" ]; then
   # Hint all tool folders sit right next to $DOT_FILES_DIR
 
-  ln -f -s "$DOT_FILES_DIR"/../../.container  ~/.container
-  unlink ~/.vim || rm -rf ~/.vim
+  test -e ~/Documents || ln -f -s "$DOT_FILES_DIR"/../../Documents  ~/Documents
+
+  test -e ~/.container || ln -f -s "$DOT_FILES_DIR"/../../.container  ~/.container
+
+  unlink ~/.vim >/dev/null 2>&1 || rm -rf ~/.vim
   ln -f -s "$DOT_FILES_DIR"/../../.vim  ~/.vim
-  ln -f -s "$DOT_FILES_DIR"/../../.ssh  ~/.ssh
 
-  mkdir -p ~/Documents
-  ln -f -s "$DOT_FILES_DIR"/../scripts ~/Documents/scripts
-  ln -f -s "$DOT_FILES_DIR"/../cheatsheets ~/Documents/cheatsheets
-  ln -f -s "$DOT_FILES_DIR"/../config ~/Documents/config
+  path="$DOT_FILES_DIR"/../../.ssh
+  for file in "$path"/*; do
+    bname="$(basename "$file")"
+    if [ "$bname" = known_hosts ] || \
+       [ "$bname" = authorized_keys ]; then
+      continue
+    fi
 
-  mkdir -p ~/Documents/{golang,python}
-  ln -f -s "$DOT_FILES_DIR"/../golang/tools ~/Documents/golang/tools
-  ln -f -s "$DOT_FILES_DIR"/../python/tools ~/Documents/python/tools
-  ln -f -s "$DOT_FILES_DIR"/../ie-tools ~/Documents/ie-tools
+    ln -f -s "$path"/"$bname"  ~/.ssh/"$bname"
+  done
+  unset path
+
 fi
 
