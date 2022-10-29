@@ -66,7 +66,7 @@ for name in ~/Documents/scripts/source-me/completions_*; do
   source "$name"
 done
 
-  source ~/Documents/scripts/private/source-me/posix-compliant-shells.sh
+source ~/Documents/scripts/private/source-me/posix-compliant-shells.sh
 
 system="$(uname)"
 if [ "$system" = Darwin ]; then
