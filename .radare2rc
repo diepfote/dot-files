@@ -1,5 +1,5 @@
-# 16 basic ANSI colors
-e scr.color=1
+# scr.color: Enable colors (0: none, 1: ansi, 2: 256 colors, 3: truecolor)
+e scr.color=3
 
 e scr.utf8=true
 #e io.cache=true
@@ -63,7 +63,7 @@ e cmd.stack=true
 #
 # Set theme
 #eco matrix
-#eco cutter
+# eco cutter
 #eco tango
 eco white
-#eco white2
+# eco white2
