@@ -42,7 +42,7 @@ mounts:
     writable: true
   - location: "~/Music"
     writable: true
-  - location: "~/.container"
+  - location: "~/.not_host_env"
     writable: true
   - location: "~/.config"
     writable: false
@@ -103,7 +103,7 @@ provision:
       if ! test -e ~/Documents; then
         ln -s -f /Users/*/Documents ~/Documents
       fi
-      if ! test -e ~/.container; then
+      if ! test -e ~/.not_host_env; then
         if timeout 10m bash -c "until command -v make >/dev/null 2>&1; do sleep 3; done"; then
           (export NOT_HOST_ENV=true; cd ~/Documents/dot-files && make)
         fi
