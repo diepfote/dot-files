@@ -29,7 +29,9 @@ if [ -n "$NOT_HOST_ENV" ]; then
 
   test -e ~/Documents || ln -f -s "$DOT_FILES_DIR"/../../Documents  ~/Documents
 
-  test -e ~/.container || ln -f -s "$DOT_FILES_DIR"/../../.container  ~/.container
+  folder_name=.not_host_env
+  test -e ~/"$folder_name" || ln -f -s "$DOT_FILES_DIR"/../../"$folder_name"  ~/"$folder_name"
+  unset folder_name
 
   unlink ~/.vim >/dev/null 2>&1 || rm -rf ~/.vim
   ln -f -s "$DOT_FILES_DIR"/../../.vim  ~/.vim
