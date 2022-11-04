@@ -190,22 +190,19 @@ provision:
 probes:
   - script: |
       #!/usr/bin/env bash
-      if ! timeout 5m bash -c "until command -v podman >/dev/null 2>&1; do sleep 3; done"; then
-        echo >&2 "podman is not installed yet"
+      if ! timeout 5m bash -c "until command -v podman >/dev/null 2>&1; do echo >&2 'podman is not installed yet'; sleep 3; done"; then
         exit 1
       fi
 
   - script: |
       #!/usr/bin/env bash
-      if ! timeout 5m bash -c "until command -v yay >/dev/null 2>&1; do sleep 3; done"; then
-        echo >&2 "yay is not installed yet"
+      if ! timeout 5m bash -c "until command -v yay >/dev/null 2>&1; do echo >&2 'yay is not installed yet'; sleep 3; done"; then
         exit 1
       fi
 
   - script: |
       #!/usr/bin/env bash
-      if ! timeout 5m bash -c "until command -v rizin >/dev/null 2>&1; do sleep 3; done"; then
-        echo >&2 "rizin is not installed yet"
+      if ! timeout 5m bash -c "until command -v rizin >/dev/null 2>&1; do echo >&2 'rizin is not installed yet'; sleep 3; done"; then
         exit 1
       fi
     hint: See "/var/log/cloud-init-output.log". in the guest
