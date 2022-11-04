@@ -119,7 +119,7 @@ provision:
 
       pacman -Syu --noconfirm
 
-      if ! command -v git >/dev/null 2>&1; then
+      if ! command -v neovim >/dev/null 2>&1; then
         pacman --needed --noconfirm -S base-devel setconf sudo git man man-pages pkgfile vi neovim
       fi
 
