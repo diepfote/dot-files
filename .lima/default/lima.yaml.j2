@@ -127,6 +127,7 @@ provision:
         pacman -S --needed --noconfirm podman
         # docker-compose / podman-compose
         pacman -S --needed --noconfirm podman-compose
+
         # container name resolution for docker-compose / container name resolution for podman-compose
         #
         # docs:
@@ -136,8 +137,17 @@ provision:
         # - https://github.com/containers/dnsname/blob/main/example/foobar.conflist
         #
         pacman -S --needed --noconfirm podman-dnsname
+
+        # fix
+        # ```
+        # podman start -a 1-ha_haproxy_1
+        # WARN[0000] aardvark-dns binary not found, container dns will not be enabled
+        # ```
+        pacman -S --needed --noconfirm aardvark-dns
+
         # fix unable to tail container logs
         setconf -u /usr/share/containers/containers.conf log_driver '"k8s-file"'
+
         # allow unqualified registries
         echo 'unqualified-search-registries=["docker.io", "quay.io"]'  > /etc/containers/registries.conf
 
