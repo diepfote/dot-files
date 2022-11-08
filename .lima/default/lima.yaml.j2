@@ -56,8 +56,6 @@ mounts:
   - location: "/var/cache/pkgfile"
     writable: true
   # used in arch-all image build
-  - location: "/var/cache/pacman"
-    writable: true
   - location: "/tmp/.X11-unix"
     writable: true
   - location: "/tmp/drc"
@@ -115,7 +113,6 @@ provision:
     script: |
       #!/usr/bin/env bash
       set -x
-      sudo chown 501 -R /var/cache/
 
       pacman -Syu --noconfirm
 
@@ -188,7 +185,6 @@ provision:
       # if `yay` command becomes available in the next 10 min,
       # run `yay` to install arbitrary packages and configure (neo)vim
       if timeout 10m bash -c "until command -v yay >/dev/null 2>&1; do sleep 3; done"; then
-        sudo chown 501 -R /var/cache/
         # if pacman db is locked wait for 10 minutes for it do become available again.
         # if it does -> run yay install arbitrary packages
         if timeout 1m bash -c 'until ! test -f /var/lib/pacman/db.lck; do sleep 3; done'; then
