@@ -11,7 +11,12 @@
   autoStash = true
 
 [alias]
+  get-org-and-repo = "!f() { git remote get-url origin | sed 's#.git$##'| tr ':' '/' | python -c '_stdin=input(); split=_stdin.rsplit(\"/\",2); print(\"/\".join(split[1:]))'  ; }; f"
+  # snatched from https://github.com/ttaylorr/dotfiles/blob/work-gh/bin/git-curl & extended
+  curl = "!f() { : git log ; if [ $# -lt 1 ]; then set -- origin/master HEAD; fi; git show -s --format='%H' \"$@\" | tr '\n' ' ' | awk '{ print \"https://'\"$GITHUB_INSTANCE\"'/'\"$(git get-org-and-repo)\"'/compare/\" $1 \"...\" $2 }'  ; }; f"
+
   clone-aur-repo = clone -q  https://aur.archlinux.org/
+
   lmessages = "!f() { : git log ; git log --graph --pretty=format:'%s' \"$@\" ; }; f"  # show author name but commit date
   l = le --graph
   le = "!f() { : git log ; git log --pretty=format:'%C(bold cyan)%h%Creset%C(bold magenta)%d%Creset %C(bold green)<%aE>%Creset (%GK) %C(bold red)(%cd)%Creset %s' \"$@\" ; }; f"  # show author name but commit date
