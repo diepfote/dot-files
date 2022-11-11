@@ -184,3 +184,5 @@
 	directory = /etc
 	directory = /etc/systemd/system
 	directory = /etc/pacman.d/hooks
+[merge]
+	conflictStyle = zdiff3
