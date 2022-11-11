@@ -87,8 +87,8 @@
     set -- \"${@:1:$(($#-2))}\"; \
     git redo \"$@\" \"git_prefix=$git_prefix\"; \
     \
-    branch_name=\"$(git branch | grep '*' | head -n 1 | cut -d ' ' -f2)\"; \
-    branch_origin=\"$(git branch -r | grep \"$branch_name\" | head -n1 | cut -d '/' -f1 | sed 's#\\s*##' )\"; \
+    branch_name=\"$(git branch --no-color | grep '*' | head -n 1 | cut -d ' ' -f2)\"; \
+    branch_origin=\"$(git branch --no-color -r | grep \"$branch_name\" | head -n1 | cut -d '/' -f1 | sed 's#\\s*##' )\"; \
     \
     git push -u \"$branch_origin\" \"$branch_name\" \"$last_arg\";  }; f"
 
@@ -171,6 +171,11 @@
 	process = git-lfs filter-process
 [color]
 	ui = auto
+	branch = auto
+	diff = auto
+	interactive = auto
+	status = auto
+	log = auto
 [credential]
 	helper = store
 [diff "sopsdiffer"]
