@@ -1,3 +1,5 @@
+!------------------------------------------
+! XTERM Begin
 !! put the following in ~/.Xdefaults (then run: $ xrdb -merge ~/.Xdefaults):
 !!
 ! do set this in .tmux.conf
@@ -97,4 +99,15 @@ xterm*color14:          #34E2E2
 !! Whites
 !xterm*color7:           #D3D7CF
 !xterm*color15:          #EEEEEC
+
+! XTERM End
+!------------------------------------------
+
+
+! window manager font
+Xft.antialias: true
+Xft.hinting:   true
+Xft.rgba:      rgb
+Xft.hintstyle: hintfull
+Xft.dpi: 130
 
