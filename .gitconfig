@@ -1,166 +1,166 @@
 [core]
-  editor = nvim
-  excludesfile = ~/.gitignore_global
-  pager = less -R
-  attributesfile=~/.gitattributes_global
+	editor = nvim
+	excludesfile = ~/.gitignore_global
+	pager = less -R
+	attributesfile=~/.gitattributes_global
 [fetch]
-  prune = true
+	prune = true
 [pull]
-  rebase = true
+	rebase = true
 [rebase]
-  autoStash = true
+	autoStash = true
 
 [alias]
-  get-org-and-repo = "!f() { git remote get-url origin | sed 's#.git$##'| tr ':' '/' | python -c '_stdin=input(); split=_stdin.rsplit(\"/\",2); print(\"/\".join(split[1:]))'  ; }; f"
-  # snatched from https://github.com/ttaylorr/dotfiles/blob/work-gh/bin/git-curl & extended
-  curl = "!f() { : git log ; if [ $# -lt 1 ]; then set -- origin/master HEAD; fi; git show -s --format='%H' \"$@\" | tr '\n' ' ' | awk '{ print \"https://'\"$GITHUB_INSTANCE\"'/'\"$(git get-org-and-repo)\"'/compare/\" $1 \"...\" $2 }'  ; }; f"
+	get-org-and-repo = "!f() { git remote get-url origin | sed 's#.git$##'| tr ':' '/' | python -c '_stdin=input(); split=_stdin.rsplit(\"/\",2); print(\"/\".join(split[1:]))'  ; }; f"
+	# snatched from https://github.com/ttaylorr/dotfiles/blob/work-gh/bin/git-curl & extended
+	curl = "!f() { : git log ; if [ $# -lt 1 ]; then set -- origin/master HEAD; fi; git show -s --format='%H' \"$@\" | tr '\n' ' ' | awk '{ print \"https://'\"$GITHUB_INSTANCE\"'/'\"$(git get-org-and-repo)\"'/compare/\" $1 \"...\" $2 }'	; }; f"
 
-  clone-aur-repo = clone -q  https://aur.archlinux.org/
+	clone-aur-repo = clone -q  https://aur.archlinux.org/
 
-  lmessages = "!f() { : git log ; git log --graph --pretty=format:'%s' \"$@\" ; }; f"  # show author name but commit date
-  l = le --graph
-  le = "!f() { : git log ; git log --pretty=format:'%C(bold cyan)%h%Creset%C(bold magenta)%d%Creset %C(bold green)<%aE>%Creset (%GK) %C(bold red)(%cd)%Creset %s' \"$@\" ; }; f"  # show author name but commit date
+	lmessages = "!f() { : git log ; git log --graph --pretty=format:'%s' \"$@\" ; }; f"  # show author name but commit date
+	l = le --graph
+	le = "!f() { : git log ; git log --pretty=format:'%C(bold cyan)%h%Creset%C(bold magenta)%d%Creset %C(bold green)<%aE>%Creset (%GK) %C(bold red)(%cd)%Creset %s' \"$@\" ; }; f"	# show author name but commit date
 
-  lauthor-and-committer = leauthor-and-committer --graph
-  leauthor-and-committer = "!f() { : git log ; git log --pretty=format:'%C(bold cyan)%h%Creset%C(bold magenta)%d%Creset %C(bold green)<a:%aE | c:%cE>%Creset (%GK) %C(bold red)(a:%ad |  c:%cd)%Creset %s' \"$@\" ; }; f"
+	lauthor-and-committer = leauthor-and-committer --graph
+	leauthor-and-committer = "!f() { : git log ; git log --pretty=format:'%C(bold cyan)%h%Creset%C(bold magenta)%d%Creset %C(bold green)<a:%aE | c:%cE>%Creset (%GK) %C(bold red)(a:%ad |  c:%cd)%Creset %s' \"$@\" ; }; f"
 
-  find-commit-contains-string = "!f() { git le --reverse --source -S \"$@\" ; }; f"
-  find-commit-contains-regex = "!f() { git le --reverse --source -G \"$@\" ; }; f"
+	find-commit-contains-string = "!f() { git le --reverse --source -S \"$@\" ; }; f"
+	find-commit-contains-regex = "!f() { git le --reverse --source -G \"$@\" ; }; f"
 
-  # use --follow if you want to follow beyond renames
-  find-commits-changed-file = "!f() { : git add ; filename=\"${*:$#:$#}\"; set -- \"${@:1:$(($#-1))}\"; git l \"$@\" -- \"${GIT_PREFIX:-.}\"/\"$filename\"; }; f"
+	# use --follow if you want to follow beyond renames
+	find-commits-changed-file = "!f() { : git add ; filename=\"${*:$#:$#}\"; set -- \"${@:1:$(($#-1))}\"; git l \"$@\" -- \"${GIT_PREFIX:-.}\"/\"$filename\"; }; f"
 
-  find-commit-introduced-file = "!f() { : git add ; filename=\"${*:$#:$#}\"; set -- \"${@:1:$(($#-1))}\";  git l --follow --diff-filter=A \"$@\" -- \"${GIT_PREFIX:-.}\"/\"$filename\" ; }; f"
-
-
-  # taken from https://github.com/nedbat/dot/blob/master/.gitconfig
-  #
-  # Get a plain-text diff, for making patches.
-  patch = "!f() { : git diff ; git --no-pager diff --no-color \"$@\"; }; f"
-
-  # taken from https://github.com/nedbat/dot/blob/master/.gitconfig
-  #
-  # Show branches, verbosely, sorted by last touch, with commit messages.
-  list-branches-by-last-touch = "!f() { git branch --sort=-creatordate --color=always --format='%(color:reset)%(creatordate:short) %(color:bold magenta)%(align:2,right)%(upstream:trackshort)%(end)%(color:nobold) %(align:40,left)%(color:cyan)%(refname:short)%(end) %(color:reset)%(contents:subject)'; }; f"
-  # nicked from https://stackoverflow.com/questions/15606955/how-can-i-make-git-show-a-list-of-the-files-that-are-being-tracked/15606995#15606995
-  list-all-files-ever-tracked = "!f() { git log --pretty=format: --name-only | sed '/^$/d' | sort | uniq; }; f"
-  ls-all-files-ever-tracked = list-all-files-ever-tracked
-
-  # switches to master, pulls latest changes, switches back to previous branch
-  # if it cannot switch to master, it will only fetch master
-  update = "!f() { \
-    set -x; \
-    fetch_or_pull () { \
-      if git checkout master; then \
-        git pull --prune; \
-        git checkout -; \
-      else \
-        git fetch origin master; \
-      fi; \
-    }; \
-    fetch_or_pull; \
-    git delete-gone-branches; set +x; }; f"
-
-  delete-gone-branches = "!f() {   for branch in $(git branch -vv | grep gone | sed -r 's#\\s+##;s#^\\*##' | cut -d ' ' -f1); do echo \"Deleting $branch\"; [ -n \"$1\" ] && delete=D || delete=d; git branch -\"$delete\" \"$branch\"; done }; f"
-
-  redo = "!f() { \
-    last_arg=\"${@:$#}\"; \
-    [[ \"$last_arg\" =~ git_prefix ]] && \
-    GIT_PREFIX=\"$(echo \"$last_arg\" | sed 's#.*=##')/\" && \
-    set -- \"${@:1:$(($#-1))}\"; \
-    \
-    add_given() { \
-      for file in \"$@\"; do \
-      set -x; \
-      git add \"$GIT_PREFIX$file\"; \
-      set +x; \
-      done; \
-    }; \
-    \
-    [ -z \"$1\" ] && git add \"$GIT_PREFIX\". || add_given \"$@\" ; \
-    git commit --amend --no-edit; }; f"
+	find-commit-introduced-file = "!f() { : git add ; filename=\"${*:$#:$#}\"; set -- \"${@:1:$(($#-1))}\";  git l --follow --diff-filter=A \"$@\" -- \"${GIT_PREFIX:-.}\"/\"$filename\" ; }; f"
 
 
-  resubmit-base = "!f() { \
-    last_arg=\"${@:$#}\"; \
-    git_prefix=\"${@:$#-1:1}\"; \
-    set -- \"${@:1:$(($#-2))}\"; \
-    git redo \"$@\" \"git_prefix=$git_prefix\"; \
-    \
-    branch_name=\"$(git branch --no-color | grep '*' | head -n 1 | cut -d ' ' -f2)\"; \
-    branch_origin=\"$(git branch --no-color -r | grep \"$branch_name\" | head -n1 | cut -d '/' -f1 | sed 's#\\s*##' )\"; \
-    \
-    git push -u \"$branch_origin\" \"$branch_name\" \"$last_arg\";  }; f"
+	# taken from https://github.com/nedbat/dot/blob/master/.gitconfig
+	#
+	# Get a plain-text diff, for making patches.
+	patch = "!f() { : git diff ; git --no-pager diff --no-color \"$@\"; }; f"
 
-  resubmit = "!f() { : git add ; git resubmit-base \"$@\" \"${GIT_PREFIX:-.}\" --force-with-lease; }; f"
-  resubmit-force = "!f() { : git add ; git resubmit-base \"$@\" \"${GIT_PREFIX:-.}\" --force; }; f"
+	# taken from https://github.com/nedbat/dot/blob/master/.gitconfig
+	#
+	# Show branches, verbosely, sorted by last touch, with commit messages.
+	list-branches-by-last-touch = "!f() { git branch --sort=-creatordate --color=always --format='%(color:reset)%(creatordate:short) %(color:bold magenta)%(align:2,right)%(upstream:trackshort)%(end)%(color:nobold) %(align:40,left)%(color:cyan)%(refname:short)%(end) %(color:reset)%(contents:subject)'; }; f"
+	# nicked from https://stackoverflow.com/questions/15606955/how-can-i-make-git-show-a-list-of-the-files-that-are-being-tracked/15606995#15606995
+	list-all-files-ever-tracked = "!f() { git log --pretty=format: --name-only | sed '/^$/d' | sort | uniq; }; f"
+	ls-all-files-ever-tracked = list-all-files-ever-tracked
 
-  delete-all-git-branches-except-master = "!f() { [ -n \"$1\" ] && delete=D || delete=d; git for-each-ref --shell --format='git log --oneline %(refname) ^origin/master'   refs/heads/ | sed \"s#.*refs/heads/##;s#' .*##\" | grep -v master | xargs git branch -\"$delete\"; }; f"
+	# switches to master, pulls latest changes, switches back to previous branch
+	# if it cannot switch to master, it will only fetch master
+	update = "!f() { \
+		set -x; \
+		fetch_or_pull () { \
+			if git checkout master; then \
+				git pull --prune; \
+				git checkout -; \
+			else \
+				git fetch origin master; \
+			fi; \
+		}; \
+		fetch_or_pull; \
+		git delete-gone-branches; set +x; }; f"
 
-  # heads up
-  # this saves all stashed and tracked files
-  start-fresh = "!f() { git staash; git checkout master; git pull -p; git checkout -b \"$1\"; }; f"
+	delete-gone-branches = "!f() {	 for branch in $(git branch -vv | grep gone | sed -r 's#\\s+##;s#^\\*##' | cut -d ' ' -f1); do echo \"Deleting $branch\"; [ -n \"$1\" ] && delete=D || delete=d; git branch -\"$delete\" \"$branch\"; done }; f"
 
-  get-upstream = "!f() { git update; set -x; git rebase master; set +x; }; f"
+	redo = "!f() { \
+		last_arg=\"${@:$#}\"; \
+		[[ \"$last_arg\" =~ git_prefix ]] && \
+		GIT_PREFIX=\"$(echo \"$last_arg\" | sed 's#.*=##')/\" && \
+		set -- \"${@:1:$(($#-1))}\"; \
+		\
+		add_given() { \
+			for file in \"$@\"; do \
+			set -x; \
+			git add \"$GIT_PREFIX$file\"; \
+			set +x; \
+			done; \
+		}; \
+		\
+		[ -z \"$1\" ] && git add \"$GIT_PREFIX\". || add_given \"$@\" ; \
+		git commit --amend --no-edit; }; f"
 
-  # -i for ignore-case
-  # --grep= can be applied multiple-times --> will be ORed;
-  #   if it should be ANDed --> --all-match
-  # usage examples:
-  # - $ git log-grep -i -- 'service_annotations' charts
-  #   + git log -i --grep=service_annotations --grep=charts
-  # - $ git log-grep -- 'service_annotations' charts
-  #   + git log --grep=service_annotations --grep=charts
-  # - $ git log-grep --all-match -i -- 'service_annotations' charts
-  #   + git log --all-match -i --grep=service_annotations --grep=charts
-  log-grep = "!f() { \
-    \
-    positional_args=(); \
-    while [ $# -gt 0 ]; do \
-    key="$1"; \
-      case "$key" in \
-        *) \
-        if [ "$1" = '--' ]; then \
-          shift; \
-          break; \
-        else \
-          positional_args+=("$1"); \
-          shift; \
-        fi \
-        ;; \
-      esac \
-    done; \
-    \
-    command=('git' 'l' "${positional_args[@]}"); \
-    for search_param in "$@"; do \
-      command+=("--grep=$search_param"); \
-    done; \
-    \
-    set -x; \
-    "${command[@]}"; \
-  }; f"
 
-  # usage example
-  # $ git content-grep -E -- 'abc|def|some'
-  content-grep = "!f() { \
-    set -x; \
-    git rev-list --all | xargs git grep \"$@\"; \
-  }; f"
+	resubmit-base = "!f() { \
+		last_arg=\"${@:$#}\"; \
+		git_prefix=\"${@:$#-1:1}\"; \
+		set -- \"${@:1:$(($#-2))}\"; \
+		git redo \"$@\" \"git_prefix=$git_prefix\"; \
+		\
+		branch_name=\"$(git branch --no-color | grep '*' | head -n 1 | cut -d ' ' -f2)\"; \
+		branch_origin=\"$(git branch --no-color -r | grep \"$branch_name\" | head -n1 | cut -d '/' -f1 | sed 's#\\s*##' )\"; \
+		\
+		git push -u \"$branch_origin\" \"$branch_name\" \"$last_arg\";	}; f"
+
+	resubmit = "!f() { : git add ; git resubmit-base \"$@\" \"${GIT_PREFIX:-.}\" --force-with-lease; }; f"
+	resubmit-force = "!f() { : git add ; git resubmit-base \"$@\" \"${GIT_PREFIX:-.}\" --force; }; f"
+
+	delete-all-git-branches-except-master = "!f() { [ -n \"$1\" ] && delete=D || delete=d; git for-each-ref --shell --format='git log --oneline %(refname) ^origin/master'	 refs/heads/ | sed \"s#.*refs/heads/##;s#' .*##\" | grep -v master | xargs git branch -\"$delete\"; }; f"
+
+	# heads up
+	# this saves all stashed and tracked files
+	start-fresh = "!f() { git staash; git checkout master; git pull -p; git checkout -b \"$1\"; }; f"
+
+	get-upstream = "!f() { git update; set -x; git rebase master; set +x; }; f"
+
+	# -i for ignore-case
+	# --grep= can be applied multiple-times --> will be ORed;
+	#		if it should be ANDed --> --all-match
+	# usage examples:
+	# - $ git log-grep -i -- 'service_annotations' charts
+	#		+ git log -i --grep=service_annotations --grep=charts
+	# - $ git log-grep -- 'service_annotations' charts
+	#		+ git log --grep=service_annotations --grep=charts
+	# - $ git log-grep --all-match -i -- 'service_annotations' charts
+	#		+ git log --all-match -i --grep=service_annotations --grep=charts
+	log-grep = "!f() { \
+		\
+		positional_args=(); \
+		while [ $# -gt 0 ]; do \
+		key="$1"; \
+			case "$key" in \
+				*) \
+				if [ "$1" = '--' ]; then \
+					shift; \
+					break; \
+				else \
+					positional_args+=("$1"); \
+					shift; \
+				fi \
+				;; \
+			esac \
+		done; \
+		\
+		command=('git' 'l' "${positional_args[@]}"); \
+		for search_param in "$@"; do \
+			command+=("--grep=$search_param"); \
+		done; \
+		\
+		set -x; \
+		"${command[@]}"; \
+	}; f"
+
+	# usage example
+	# $ git content-grep -E -- 'abc|def|some'
+	content-grep = "!f() { \
+		set -x; \
+		git rev-list --all | xargs git grep \"$@\"; \
+	}; f"
 
 
 
 	; --------------------------------
-  ; nicked from https://dzone.com/articles/lesser-known-git-commands
-  ;
-  ; stash only unstaged changes to tracked files
+	; nicked from https://dzone.com/articles/lesser-known-git-commands
+	;
+	; stash only unstaged changes to tracked files
 	stsh = stash --keep-index
-  ;
-  ; stash -> stash any changes to tracked files
-  ;
-  ; stash untracked and tracked files
+	;
+	; stash -> stash any changes to tracked files
+	;
+	; stash untracked and tracked files
 	staash = stash --include-untracked
-  ;
-  ; stash ignored, untracked, and tracked files
+	;
+	; stash ignored, untracked, and tracked files
 	staaash = stash --all
 	; --------------------------------
 
