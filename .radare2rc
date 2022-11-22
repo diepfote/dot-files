@@ -15,7 +15,7 @@ e asm.flags=true
 e asm.trace=true
 
 # Show comments at right of disassembly if they fit in screen
-#e asm.cmt.right=true
+e asm.cmt.right=true
 # Show explanations for assembly instructions
 #e asm.describe=true
 # Shows pseudocode in disassembly. Eg mov eax, str.ok = > eax = str.ok
