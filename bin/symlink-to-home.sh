@@ -33,6 +33,10 @@ if [ -n "$NOT_HOST_ENV" ]; then
   test -e ~/"$folder_name" || ln -f -s "$DOT_FILES_DIR"/../../"$folder_name"  ~/"$folder_name"
   unset folder_name
 
+  folder_name=.cache/rizin
+  test -e ~/"$folder_name" || ln -f -s "$DOT_FILES_DIR"/../../"$folder_name"  ~/"$folder_name"
+  unset folder_name
+
   unlink ~/.vim >/dev/null 2>&1 || rm -rf ~/.vim
   ln -f -s "$DOT_FILES_DIR"/../../.vim  ~/.vim
 
