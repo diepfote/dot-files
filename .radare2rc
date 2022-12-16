@@ -9,6 +9,10 @@ e cfg.fortunes=false
 
 # TODO
 e bin.demangle=true
+# fix relocations in disassembly
+e bin.cache=true
+
+# TODO
 e asm.demangle=true
 e asm.syntax=intel
 e asm.flags=true
