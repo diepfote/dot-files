@@ -27,6 +27,7 @@
 	find-commit-contains-string = "!f() { git le --reverse --source -S \"$@\" ; }; f"
 	find-commit-contains-regex = "!f() { git le --reverse --source -G \"$@\" ; }; f"
 
+	# use --show-pulls to show merge commits (which PR introduced the change?)
 	# use --follow if you want to follow beyond renames
 	find-commits-changed-file = "!f() { : git add ; filename=\"${*:$#:$#}\"; set -- \"${@:1:$(($#-1))}\"; git l \"$@\" -- \"${GIT_PREFIX:-.}\"/\"$filename\"; }; f"
 
