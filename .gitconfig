@@ -19,7 +19,7 @@
 
 	lmessages = "!f() { : git log ; git log --graph --pretty=format:'%s' \"$@\" ; }; f"  # show author name but commit date
 	l = le --graph
-	le = "!f() { : git log ; git log --pretty=format:'%C(bold cyan)%h%Creset%C(bold magenta)%d%Creset %C(bold green)<%aE>%Creset (%GK) %C(bold red)(%cd)%Creset %s' \"$@\" ; }; f"	# show author name but commit date
+	le = "!f() { : git log ; git log --date=auto:human --pretty=format:'%C(bold cyan)%h%Creset%C(bold magenta)%d%Creset %C(bold green)<%aE>%Creset (%GK) %C(bold red)(%cd)%Creset %s' \"$@\" ; }; f"	# show author name but commit date
 
 	lauthor-and-committer = leauthor-and-committer --graph
 	leauthor-and-committer = "!f() { : git log ; git log --pretty=format:'%C(bold cyan)%h%Creset%C(bold magenta)%d%Creset %C(bold green)<a:%aE | c:%cE>%Creset (%GK) %C(bold red)(a:%ad |  c:%cd)%Creset %s' \"$@\" ; }; f"
