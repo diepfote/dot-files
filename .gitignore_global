@@ -21,4 +21,5 @@ venv/
 .custom-envrc
 *.xls*
 *.doc*
+!*.doc*/
 
