@@ -50,5 +50,8 @@ setxkbmap -option "ctrl:nocaps"  # change caps-lock to ctrl
 
 tmux start-server &
 
+# set background
+~/.fehbg &
+
 exec i3
 
