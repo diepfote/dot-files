@@ -13,10 +13,36 @@
 [alias]
 	get-org-and-repo = "!f() { git remote get-url origin | sed 's#.git$##'| tr ':' '/' | python -c '_stdin=input(); split=_stdin.rsplit(\"/\",2); print(\"/\".join(split[1:]))'  ; }; f"
 	# snatched from https://github.com/ttaylorr/dotfiles/blob/work-gh/bin/git-curl & extended
-	# converts refs to commit ids
-	visually-compare-commit-ids = "!f() { : git log ; if [ $# -lt 1 ]; then set -- origin/master HEAD; fi; git show -s --format='%H' \"$@\" | tr '\n' ' ' | awk '{ print \"https://'\"$GITHUB_INSTANCE\"'/'\"$(git get-org-and-repo)\"'/compare/\" $1 \"...\" $2 }'	; }; f"
-	# takes input as is
-	visually-compare-branch-names = "!f() { echo https://\"$GITHUB_INSTANCE\"/\"$(git get-org-and-repo)\"/compare/\"$1\"...\"$2\"; }; f"
+	#
+	# how to use:
+	# $ git visually-compare
+	# https://cc-github.bmwgroup.net/diepfote/scripts/compare/origin/master...HEAD
+	#
+	# $ git visually-compare -c
+	# https://cc-github.bmwgroup.net/diepfote/scripts/compare/077a1f0e025036d1ae409c82d9957bf05b319846...
+	#
+	# $ git visually-compare test-test master
+	# https://cc-github.bmwgroup.net/diepfote/scripts/compare/test-test...master
+	#
+	# $ git visually-compare -c test-test master
+	# https://cc-github.bmwgroup.net/diepfote/scripts/compare/d3d8a85888a9b773943d34ec389593735a495cfc...077a1f0e025036d1ae409c82d9957bf05b319846
+	#
+	# $ git visually-compare --commit-ids test-test master
+	# https://cc-github.bmwgroup.net/diepfote/scripts/compare/d3d8a85888a9b773943d34ec389593735a495cfc...077a1f0e025036d1ae409c82d9957bf05b319846
+	#
+	visually-compare = "!f() { : git log ; \
+		if [ $# -lt 1 ]; then set -- origin/master HEAD; fi; \
+		if [ "$1" = '--commit-ids' ] || [ "$1" = '-c' ]; then \
+			convert_to_commits=true; \
+			shift; \
+		fi; \
+		\
+		if [ -n \"$convert_to_commits\" ]; then \
+		git show -s --format='%H' \"$@\" | tr '\n' ' ' | awk '{ print \"https://'\"$GITHUB_INSTANCE\"'/'\"$(git get-org-and-repo)\"'/compare/\" $1 \"...\" $2 }' ; \
+		else \
+			echo https://\"$GITHUB_INSTANCE\"/\"$(git get-org-and-repo)\"/compare/\"$1\"...\"$2\"; \
+		fi; \
+	}; f"
 
 	clone-aur-repo = clone -q  https://aur.archlinux.org/
 
