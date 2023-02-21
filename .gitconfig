@@ -13,7 +13,10 @@
 [alias]
 	get-org-and-repo = "!f() { git remote get-url origin | sed 's#.git$##'| tr ':' '/' | python -c '_stdin=input(); split=_stdin.rsplit(\"/\",2); print(\"/\".join(split[1:]))'  ; }; f"
 	# snatched from https://github.com/ttaylorr/dotfiles/blob/work-gh/bin/git-curl & extended
-	curl = "!f() { : git log ; if [ $# -lt 1 ]; then set -- origin/master HEAD; fi; git show -s --format='%H' \"$@\" | tr '\n' ' ' | awk '{ print \"https://'\"$GITHUB_INSTANCE\"'/'\"$(git get-org-and-repo)\"'/compare/\" $1 \"...\" $2 }'	; }; f"
+	# converts refs to commit ids
+	visually-compare-commit-ids = "!f() { : git log ; if [ $# -lt 1 ]; then set -- origin/master HEAD; fi; git show -s --format='%H' \"$@\" | tr '\n' ' ' | awk '{ print \"https://'\"$GITHUB_INSTANCE\"'/'\"$(git get-org-and-repo)\"'/compare/\" $1 \"...\" $2 }'	; }; f"
+	# takes input as is
+	visually-compare-branch-names = "!f() { echo https://\"$GITHUB_INSTANCE\"/\"$(git get-org-and-repo)\"/compare/\"$1\"...\"$2\"; }; f"
 
 	clone-aur-repo = clone -q  https://aur.archlinux.org/
 
