@@ -89,7 +89,7 @@
 			fi; \
 		}; \
 		fetch_or_pull; \
-		git delete-all-git-branches-except-master; set +x; }; f"
+		git delete-gone-branches; set +x; }; f"
 
 	delete-gone-branches = "!f() {	 for branch in $(git branch -vv | grep gone | sed -r 's#\\s+##;s#^\\*##' | cut -d ' ' -f1); do echo \"Deleting $branch\"; [ -n \"$1\" ] && delete=D || delete=d; git branch -\"$delete\" \"$branch\"; done }; f"
 
