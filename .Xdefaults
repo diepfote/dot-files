@@ -61,7 +61,7 @@ xterm*vt100*translations: #override \n\
 
 xterm*faceName: DejaVu Sans Mono
 !xterm*faceName: Droid Sans Mono
-xterm*faceSize: 18
+xterm*faceSize: 24
 
 !!xterm*background:#ffffff
 !xterm*background:#0e3d4d
@@ -109,5 +109,5 @@ Xft.antialias: true
 Xft.hinting:   true
 Xft.rgba:      rgb
 Xft.hintstyle: hintfull
-Xft.dpi: 120
+Xft.dpi: 95
 
