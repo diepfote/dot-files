@@ -13,6 +13,13 @@ hints:
             mods: Control|Shift
 
 window:
+  # Make `Option` key behave as `Alt` (macOS only):
+  #   - OnlyLeft
+  #   - OnlyRight
+  #   - Both
+  #   - None (default)
+  option_as_alt: Both
+
   # Window dimensions (changes require restart)
   #
   # Specified in number of columns/lines, not pixels.
@@ -70,13 +77,6 @@ selection:
   # When set to `true`, selected text will be copied to the primary clipboard.
   # save_to_clipboard: true
 
-
-# Send ESC (\x1b) before characters when alt is pressed.
-#
-# Macs are shit!
-# nicked from https://github.com/alacritty/alacritty/issues/3824#issuecomment-640057360
-#
-alt_send_esc: false
 
 # MacOS bindings only | Darwin bindings only
 # nicked from https://gist.github.com/gregarmer/f3c81fda2698bc01b2d5042aa0ff3b57
