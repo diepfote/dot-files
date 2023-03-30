@@ -48,6 +48,8 @@ mounts:
     writable: false
   - location: "~/.cache/rizin"
     writable: true
+  - location: "~/.cache/radare2"
+    writable: true
   - location: "~/.vim"
     writable: true
   - location: "~/.gnupg"
@@ -208,7 +210,7 @@ probes:
 
   - script: |
       #!/usr/bin/env bash
-      if ! timeout 5m bash -c "until command -v rizin >/dev/null 2>&1; do echo >&2 'rizin is not installed yet'; sleep 3; done"; then
+      if ! timeout 5m bash -c "until command -v r2 >/dev/null 2>&1; do echo >&2 'radare2 is not installed yet'; sleep 3; done"; then
         exit 1
       fi
     hint: See "/var/log/cloud-init-output.log". in the guest
