@@ -216,3 +216,8 @@
 	directory = /etc/pacman.d/hooks
 [merge]
 	conflictStyle = zdiff3
+[url "https://"]
+	# snatched from https://stackoverflow.com/a/55502818
+	# never use the git:// protocol
+	# $ git config --global url.https://.insteadOf git://
+	insteadOf = git://
