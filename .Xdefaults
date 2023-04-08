@@ -63,6 +63,9 @@ xterm*faceName: DejaVu Sans Mono
 !xterm*faceName: Droid Sans Mono
 xterm*faceSize: 24
 
+Xcursor.theme: Vanilla-DMZ
+Xcursor.size: 32
+
 !!xterm*background:#ffffff
 !xterm*background:#0e3d4d
 !!xterm*background:#0c303d
