@@ -1,6 +1,8 @@
 # pw-link -i
 i3status -c ~/.config/i3status/config1
 
+~/Documents/scripts/i3cat-vpn-last-handshake-helper.sh wg-de
+~/Documents/scripts/i3cat-vpn-last-handshake-helper.sh wg-at
 ~/Documents/scripts/i3cat-audio-device-helper.sh Master
 ~/Documents/scripts/i3cat-audio-device-helper.sh Capture
 

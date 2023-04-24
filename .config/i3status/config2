@@ -18,10 +18,10 @@ order += "battery all"
 order += "tztime local"
 
 battery all {
-        format = "bat: %status %percentage %remaining"
+        format = "%status %percentage %remaining"
 }
 
 tztime local {
-        format = "%a %Y-%m-%d %H:%M %z"
+        format = "%a %Y-%m-%dT%H:%M%z"
         timezone = "Europe/Vienna"
 }

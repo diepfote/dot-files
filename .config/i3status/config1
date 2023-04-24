@@ -15,13 +15,10 @@ general {
 }
 
 order += "ipv6"
-order += "read_file ping"
-order += "read_file VPN"
-order += "wireless _first_"
 order += "ethernet _first_"
+order += "wireless _first_"
+order += "read_file ping"
 # order += "disk /home/flo/.local/share/containers"
-# order += "load"
-# order += "memory"
 
 ipv6 {
   format_up = "%ip"
@@ -29,18 +26,15 @@ ipv6 {
 }
 
 wireless _first_ {
-        format_up = "W: (%quality at %essid)"
-        format_down = "W: down"
+        format_up = "W:(%quality %essid)"
+        format_down = "W:down"
 }
 
 ethernet _first_ {
-        format_up = "E: (%speed)"
-        format_down = "E: down"
+        format_up = "E:(%speed)"
+        format_down = "E:down"
 }
 
-battery all {
-        format = "bat: %status %percentage %remaining"
-}
 
 disk "/home/flo/.local/share/containers" {
         format = "~/.l/s/containers %avail"
@@ -53,38 +47,3 @@ read_file ping {
         format_bad = "%title failed!"
 }
 
-read_file VPN {
-        path = "/proc/sys/net/ipv4/conf/tun0"
-        format = ""
-        format_bad = "%title: no"
-}
-volume master {
-        format = "♪: %volume"
-        format_muted = "♪: muted (%volume)"
-        # TODO
-        # internal="$(pw-link -i | grep analog-stereo | tail -n 1 | sed 's#:.*#"#; s#^#device = "pulse:#')"
-        # PULSE_PLACEHOLDER_INTERNAL
-        device = ""
-}
-volume headset {
-        format = "♪: %volume"
-        format_muted = "♪: muted (%volume)"
-        # TODO
-        # external="$(pw-link -i | grep bluez |tail -n 1 | sed 's#:.*#"#; s#^#device = "pulse:#')"
-        # PULSE_PLACEHOLDER_EXTERNAL
-        device = ""
-}
-
-load {
-       format = "load: %1min"
-}
-
-memory {
-        format = "mem: %used"
-        threshold_degraded = "1G"
-        format_degraded = "MEMORY < %available"
-}
-
-tztime local {
-        format = "%a %Y-%m-%d %H:%M %z"
-}
