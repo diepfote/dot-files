@@ -4,7 +4,7 @@
 
 # Arch: "default", "x86_64", "aarch64".
 # "default" corresponds to the host architecture.
-arch: "default"
+arch: "aarch64"
 
 # An image must support systemd and cloud-init.
 # Ubuntu and Fedora are known to work.
@@ -13,9 +13,9 @@ images:
   # Download the file from the internet when the local file is missing.
   # Hint: run `limactl prune` to invalidate the "current" cache
   # NOTE: the image is periodically rotated, if you face 404, see https://mirror.pkgbuild.com/images/ to find the latest image.
-  - location: "https://mirror.pkgbuild.com/images/v20230701.161647/Arch-Linux-x86_64-cloudimg-20230701.161647.qcow2"
-    arch: "x86_64"
-    digest: "sha256:e316f169e83587d6fb56aa940368ff132c123762c7cb16b8712ad9fbd65a659a"
+- location: "https://github.com/mcginty/arch-boxes-arm/releases/download/v20220323/Arch-Linux-aarch64-cloudimg-20220323.0.qcow2"
+  arch: "aarch64"
+  digest: "sha512:27524910bf41cb9b3223c8749c6e67fd2f2fdb8b70d40648708e64d6b03c0b4a01b3c5e72d51fefd3e0c3f58487dbb400a79ca378cde2da341a3a19873612be8"
 
 # CPUs: if you see performance issues, try limiting cpus to 1.
 # Default: 4
@@ -23,7 +23,7 @@ cpus: 4
 
 # Memory size
 # Default: "4GiB"
-memory: "8GiB"
+memory: "4GiB"
 
 # Disk size
 # Default: "100GiB"
@@ -223,7 +223,7 @@ probes:
 firmware:
   # Use legacy BIOS instead of UEFI.
   # Default: false
-  legacyBIOS: true
+  #legacyBIOS: true
 
 video:
   # QEMU display, e.g., "none", "cocoa", "sdl".

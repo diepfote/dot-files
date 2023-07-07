@@ -2,7 +2,12 @@
 
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && [[ -z "$BASH_SOURCE_IT" ]] && return
-[ "$(uname)" = Darwin ] && export TERM=screen-256color
+if [ "$(uname)" = Darwin ]; then
+  export TERM=screen-256color
+  # TODO improve location of export
+  export PATH="$PATH:/opt/homebrew/bin"
+fi
+
 # ----
 # bash history START
 #
@@ -60,6 +65,7 @@ source ~/Documents/scripts/source-me/bash-fzf-reverse-search.sh
 source ~/.password-store/.extensions/pass-tail.bash.completion
 export PASSWORD_STORE_ENABLE_EXTENSIONS=true
 
+
 source ~/Documents/scripts/source-me/common-functions.sh
 source ~/Documents/scripts/source-me/posix-compliant-shells.sh
 
@@ -108,9 +114,9 @@ if [ "$system" = Darwin ]; then
     fi
   }
 
-  if [[ -x /usr/local/bin/kubectl ]]; then
+  if [[ -x /opt/homebrew/bin/kubectl ]]; then
     # remove default completions
-    unlink /usr/local/etc/bash_completion.d/kubectl 2>/dev/null || true
+    unlink /opt/homebrew/etc/bash_completion.d/kubectl 2>/dev/null || true
 
     filename="/tmp/_kubectl-completions"
     _patched_kubectl_completions="$filename-patched"
@@ -125,9 +131,9 @@ if [ "$system" = Darwin ]; then
     unset filename _patched_kubectl_completions
   fi
 
-  if [[ -x /usr/local/bin/oc ]]; then
+  if [[ -x /opt/homebrew/bin/oc ]]; then
     # remove default completions
-    unlink /usr/local/etc/bash_completion.d/oc 2>/dev/null || true
+    unlink /opt/homebrew/etc/bash_completion.d/oc 2>/dev/null || true
 
     filename="/tmp/_oc-completions"
     _patched_oc_completions="$filename-patched"
@@ -145,7 +151,7 @@ if [ "$system" = Darwin ]; then
   # kubectl/oc completion patching END
   # ------------------------------------------------
 
-  # [[ -x /usr/local/bin/openstack ]] && source <(openstack complete --shell bash)
+  # [[ -x /opt/homebrew/bin/openstack ]] && source <(openstack complete --shell bash)
 
 
   for name in ~/Documents/scripts/source-me/darwin/completions_*; do
@@ -176,14 +182,14 @@ if [ "$system" = Darwin ]; then
   # LEAVE THIS AT THE END!
   # we do not want fun like this again:
   # ```
-  # bash: /usr/local/etc/bash_completion.d/poetry: line 40: syntax error near unexpected token `clear'
-  # bash: /usr/local/etc/bash_completion.d/poetry: line 40: `            (cache clear)'
+  # bash: /opt/homebrew/etc/bash_completion.d/poetry: line 40: syntax error near unexpected token `clear'
+  # bash: /opt/homebrew/etc/bash_completion.d/poetry: line 40: `            (cache clear)'
   # ```
   #
   # remove docker completions
-  unlink /usr/local/etc/bash_completion.d/docker 2>/dev/null || true
+  unlink /opt/homebrew/etc/bash_completion.d/docker 2>/dev/null || true
   # source all brew installed completions
-  source /usr/local/share/bash-completion/bash_completion
+  source /opt/homebrew/share/bash-completion/bash_completion
   # --------------------------------------------------------------------------------------------------
 
 elif [ "$system" = Linux ]; then

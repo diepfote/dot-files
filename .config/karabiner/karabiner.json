@@ -206,7 +206,7 @@
                                 },
                                 "to": [
                                     {
-                                        "shell_command": "/usr/local/bin/yabai -m space --focus 1"
+                                        "shell_command": "/opt/homebrew/bin/yabai -m space --focus 1"
                                     }
                                 ],
                                 "type": "basic"
@@ -222,7 +222,7 @@
                                 },
                                 "to": [
                                     {
-                                        "shell_command": "/usr/local/bin/yabai -m space --focus 2"
+                                        "shell_command": "/opt/homebrew/bin/yabai -m space --focus 2"
                                     }
                                 ],
                                 "type": "basic"
@@ -238,7 +238,7 @@
                                 },
                                 "to": [
                                     {
-                                        "shell_command": "/usr/local/bin/yabai -m space --focus 3"
+                                        "shell_command": "/opt/homebrew/bin/yabai -m space --focus 3"
                                     }
                                 ],
                                 "type": "basic"
@@ -254,7 +254,7 @@
                                 },
                                 "to": [
                                     {
-                                        "shell_command": "/usr/local/bin/yabai -m space --focus 4"
+                                        "shell_command": "/opt/homebrew/bin/yabai -m space --focus 4"
                                     }
                                 ],
                                 "type": "basic"
@@ -270,7 +270,7 @@
                                 },
                                 "to": [
                                     {
-                                        "shell_command": "/usr/local/bin/yabai -m space --focus 5"
+                                        "shell_command": "/opt/homebrew/bin/yabai -m space --focus 5"
                                     }
                                 ],
                                 "type": "basic"
@@ -286,7 +286,7 @@
                                 },
                                 "to": [
                                     {
-                                        "shell_command": "/usr/local/bin/yabai -m space --focus 6"
+                                        "shell_command": "/opt/homebrew/bin/yabai -m space --focus 6"
                                     }
                                 ],
                                 "type": "basic"
@@ -302,7 +302,7 @@
                                 },
                                 "to": [
                                     {
-                                        "shell_command": "/usr/local/bin/yabai -m space --focus 7"
+                                        "shell_command": "/opt/homebrew/bin/yabai -m space --focus 7"
                                     }
                                 ],
                                 "type": "basic"
@@ -318,7 +318,7 @@
                                 },
                                 "to": [
                                     {
-                                        "shell_command": "/usr/local/bin/yabai -m space --focus 8"
+                                        "shell_command": "/opt/homebrew/bin/yabai -m space --focus 8"
                                     }
                                 ],
                                 "type": "basic"
@@ -334,7 +334,7 @@
                                 },
                                 "to": [
                                     {
-                                        "shell_command": "/usr/local/bin/yabai -m space --focus 9"
+                                        "shell_command": "/opt/homebrew/bin/yabai -m space --focus 9"
                                     }
                                 ],
                                 "type": "basic"
@@ -350,7 +350,7 @@
                                 },
                                 "to": [
                                     {
-                                        "shell_command": "/usr/local/bin/yabai -m space --focus 10"
+                                        "shell_command": "/opt/homebrew/bin/yabai -m space --focus 10"
                                     }
                                 ],
                                 "type": "basic"
@@ -367,7 +367,7 @@
                                 },
                                 "to": [
                                     {
-                                        "shell_command": "/usr/local/bin/yabai -m window --space  1"
+                                        "shell_command": "/opt/homebrew/bin/yabai -m window --space  1"
                                     }
                                 ],
                                 "type": "basic"
@@ -384,7 +384,7 @@
                                 },
                                 "to": [
                                     {
-                                        "shell_command": "/usr/local/bin/yabai -m window --space  2"
+                                        "shell_command": "/opt/homebrew/bin/yabai -m window --space  2"
                                     }
                                 ],
                                 "type": "basic"
@@ -401,7 +401,7 @@
                                 },
                                 "to": [
                                     {
-                                        "shell_command": "/usr/local/bin/yabai -m window --space  3"
+                                        "shell_command": "/opt/homebrew/bin/yabai -m window --space  3"
                                     }
                                 ],
                                 "type": "basic"
@@ -418,7 +418,7 @@
                                 },
                                 "to": [
                                     {
-                                        "shell_command": "/usr/local/bin/yabai -m window --space  4"
+                                        "shell_command": "/opt/homebrew/bin/yabai -m window --space  4"
                                     }
                                 ],
                                 "type": "basic"
@@ -435,7 +435,7 @@
                                 },
                                 "to": [
                                     {
-                                        "shell_command": "/usr/local/bin/yabai -m window --space  5"
+                                        "shell_command": "/opt/homebrew/bin/yabai -m window --space  5"
                                     }
                                 ],
                                 "type": "basic"
@@ -452,7 +452,7 @@
                                 },
                                 "to": [
                                     {
-                                        "shell_command": "/usr/local/bin/yabai -m window --space  6"
+                                        "shell_command": "/opt/homebrew/bin/yabai -m window --space  6"
                                     }
                                 ],
                                 "type": "basic"
@@ -469,7 +469,7 @@
                                 },
                                 "to": [
                                     {
-                                        "shell_command": "/usr/local/bin/yabai -m window --space  7"
+                                        "shell_command": "/opt/homebrew/bin/yabai -m window --space  7"
                                     }
                                 ],
                                 "type": "basic"
@@ -486,7 +486,7 @@
                                 },
                                 "to": [
                                     {
-                                        "shell_command": "/usr/local/bin/yabai -m window --space  8"
+                                        "shell_command": "/opt/homebrew/bin/yabai -m window --space  8"
                                     }
                                 ],
                                 "type": "basic"
@@ -503,7 +503,7 @@
                                 },
                                 "to": [
                                     {
-                                        "shell_command": "/usr/local/bin/yabai -m window --space  9"
+                                        "shell_command": "/opt/homebrew/bin/yabai -m window --space  9"
                                     }
                                 ],
                                 "type": "basic"
@@ -520,7 +520,7 @@
                                 },
                                 "to": [
                                     {
-                                        "shell_command": "/usr/local/bin/yabai -m window --space  10"
+                                        "shell_command": "/opt/homebrew/bin/yabai -m window --space  10"
                                     }
                                 ],
                                 "type": "basic"
@@ -542,7 +542,7 @@
                                 },
                                 "to": [
                                     {
-                                        "shell_command": "/usr/local/bin/yabai -m space --layout bsp"
+                                        "shell_command": "/opt/homebrew/bin/yabai -m space --layout bsp"
                                     }
                                 ],
                                 "type": "basic"
@@ -564,7 +564,7 @@
                                 },
                                 "to": [
                                     {
-                                        "shell_command": "/usr/local/bin/yabai -m space --layout stack"
+                                        "shell_command": "/opt/homebrew/bin/yabai -m space --layout stack"
                                     }
                                 ],
                                 "type": "basic"
@@ -586,7 +586,7 @@
                                 },
                                 "to": [
                                     {
-                                        "shell_command": "/usr/local/bin/yabai -m space --layout stack"
+                                        "shell_command": "/opt/homebrew/bin/yabai -m space --layout stack"
                                     }
                                 ],
                                 "type": "basic"
@@ -607,7 +607,7 @@
                                 },
                                 "to": [
                                     {
-                                        "shell_command": "/usr/local/bin/yabai -m window --focus stack.next || /usr/local/bin/yabai -m window --focus stack.first || /usr/local/bin/yabai -m window --focus next || /usr/local/bin/yabai -m window --focus first"
+                                        "shell_command": "/opt/homebrew/bin/yabai -m window --focus stack.next || /opt/homebrew/bin/yabai -m window --focus stack.first || /opt/homebrew/bin/yabai -m window --focus next || /opt/homebrew/bin/yabai -m window --focus first"
                                     }
                                 ],
                                 "type": "basic"
@@ -628,7 +628,7 @@
                                 },
                                 "to": [
                                     {
-                                        "shell_command": "/usr/local/bin/yabai -m window --focus stack.prev || /usr/local/bin/yabai -m window --focus stack.last || /usr/local/bin/yabai -m window --focus prev || /usr/local/bin/yabai -m window --focus last"
+                                        "shell_command": "/opt/homebrew/bin/yabai -m window --focus stack.prev || /opt/homebrew/bin/yabai -m window --focus stack.last || /opt/homebrew/bin/yabai -m window --focus prev || /opt/homebrew/bin/yabai -m window --focus last"
                                     }
                                 ],
                                 "type": "basic"
@@ -650,7 +650,7 @@
                                 },
                                 "to": [
                                     {
-                                        "shell_command": "/usr/local/bin/yabai -m window --focus next || /usr/local/bin/yabai -m window --focus first"
+                                        "shell_command": "/opt/homebrew/bin/yabai -m window --focus next || /opt/homebrew/bin/yabai -m window --focus first"
                                     }
                                 ],
                                 "type": "basic"
@@ -672,7 +672,7 @@
                                 },
                                 "to": [
                                     {
-                                        "shell_command": "/usr/local/bin/yabai -m window --focus prev || /usr/local/bin/yabai -m window --focus last"
+                                        "shell_command": "/opt/homebrew/bin/yabai -m window --focus prev || /opt/homebrew/bin/yabai -m window --focus last"
                                     }
                                 ],
                                 "type": "basic"

@@ -9,4 +9,4 @@
 #Prefix="AUT"
 Time_Zone="Europe/Vienna"
 #TZ=":$Time_Zone" date "+$Prefix %H:%M"
-TZ=":$Time_Zone" /usr/local/opt/coreutils/libexec/gnubin/date -Iminutes | sed 's#T#  #;s#+# +#'
+TZ=":$Time_Zone" /opt/homebrew/opt/coreutils/libexec/gnubin/date -Iminutes | sed 's#T#  #;s#+# +#'
