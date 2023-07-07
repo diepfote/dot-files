@@ -66,12 +66,7 @@ source ~/.password-store/.extensions/pass-tail.bash.completion
 export PASSWORD_STORE_ENABLE_EXTENSIONS=true
 
 
-source ~/Documents/scripts/source-me/common-functions.sh
 source ~/Documents/scripts/source-me/posix-compliant-shells.sh
-
-for name in ~/Documents/scripts/source-me/completions_*; do
-  source "$name"
-done
 
 source ~/Documents/scripts/private/source-me/posix-compliant-shells.sh
 
