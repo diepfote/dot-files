@@ -4,8 +4,11 @@
 [[ $- != *i* ]] && [[ -z "$BASH_SOURCE_IT" ]] && return
 if [ "$(uname)" = Darwin ]; then
   export TERM=screen-256color
-  # TODO improve location of export
-  export PATH="$PATH:/opt/homebrew/bin"
+
+  # Fix /opt/homebrew/bin is set at the end of PATH
+  # this messes with every `bin/` folder I have set up
+  PATH="$(echo "$PATH" | /opt/homebrew/opt/gnu-sed/libexec/gnubin/sed -r 's#:/opt/homebrew/bin##g')"
+  export PATH
 fi
 
 # ----
