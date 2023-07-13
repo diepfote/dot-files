@@ -5,10 +5,10 @@
 if [ "$(uname)" = Darwin ]; then
   export TERM=screen-256color
 
-  # Fix /opt/homebrew/bin is set at the end of PATH
+  # Fix /opt/homebrew/bin is set at the veryeend of PATH
   # this messes with every `bin/` folder I have set up
   PATH="$(echo "$PATH" | /opt/homebrew/opt/gnu-sed/libexec/gnubin/sed -r 's#:/opt/homebrew/bin##g')"
-  export PATH
+  export PATH="/opt/homebrew/bin:$PATH"
 fi
 
 # ----
