@@ -85,8 +85,8 @@ if [ "$system" = Darwin ]; then
 
     local completion_path completion_filename backup_sha new_sha backup_store_loc
 
-    copy_compl_and_timestamp () {
-      cp "$completion_path" "$backup_store_loc/$completion_filename"-"$(date --iso-8601=seconds | sed 's#:#-#g')"
+    _copy_compl_and_timestamp () {
+      cp "$completion_path" "$backup_store_loc/$completion_filename-$(/opt/homebrew/opt/coreutils/libexec/gnubin/date --iso-8601=seconds | /opt/homebrew/opt/gnu-sed/libexec/gnubin/sed 's#:#-#g')"
     }
 
     completion_path="$1"
@@ -108,7 +108,7 @@ if [ "$system" = Darwin ]; then
     fi
 
     if [ -n "$save_compl" ]; then
-      copy_compl_and_timestamp
+      _copy_compl_and_timestamp
     fi
   }
 
