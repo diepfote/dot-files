@@ -98,7 +98,7 @@ if [ "$system" = Darwin ]; then
     save_compl=''
     if [ -n "$latest_compl_backup" ]; then
       backup_sha="$(sha256sum "$latest_compl_backup" | awk '{ print $1 }')"
-      new_sha="$(sha256sum "$latest_compl_backup" | awk '{ print $1 }')"
+      new_sha="$(sha256sum "$completion_path" | awk '{ print $1 }')"
 
       if [ "$backup_sha" != "$new_sha" ]; then
         save_compl=true
