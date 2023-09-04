@@ -52,6 +52,12 @@ bind 'set enable-bracketed-paste'
 
 # TODO if you want to DEBUG this bashrc
 # return
+
+if ! hostname 2>/dev/null; then
+  # if the hostname command is not available:
+  # do not set anything else for bash
+  return
+fi
 # ..................................................
 
 

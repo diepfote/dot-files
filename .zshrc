@@ -59,6 +59,14 @@ zstyle ':completion:*' menu select
 export ZSH=true
 
 
+export PATH="/opt/homebrew/bin:$PATH"
+
+
+# do not load custom posix-compliant config -> I use zsh as a fallback
+return
+
+
+
 # configure to use direnv
 eval "$(direnv hook zsh 2>/dev/null || true)"
 
