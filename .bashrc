@@ -200,6 +200,7 @@ elif [ "$system" = Linux ]; then
   # Arch Linux
 
   # for yay/pacman in combination with trickle
+  # rate KB/s
   export THROTTLE_BANDWIDTH=500
 
   for name in ~/Documents/scripts/source-me/linux/*; do
