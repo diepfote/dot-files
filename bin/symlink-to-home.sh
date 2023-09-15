@@ -1,5 +1,10 @@
 #!/usr/bin/env bash
 
+
+_copy-file-to-dot-files () {
+  cp ~/"$1" "$1"
+}
+
 # ensure directories
 DOT_FILES_DIR="$(realpath "$(git rev-parse --show-toplevel)")"
 
@@ -17,22 +22,24 @@ while read -r line; do
     # skip xbar.app plugins for Linux. Mac OS only
     continue
   fi
+  echo $line
   if [[ "$line" =~ .*\.config/karabiner/karabiner\.json ]]; then
+      # do not symlink as this breaks keybindings
+      # and do not link if this is linux -> so both continue
 
     if [ "$system" = Darwin ]; then
       if [ ! -f ~/"$line" ]; then
-        # do not symlink as this breaks keybindings
-        # and do not link if this is linux -> so both continue
         cp "$line" ~/"$line"
       else
         set -x
         # in case the file exists copy it to the dot-files repo -> to commit changes
-        cp ~/"$line" "$line"
+        _copy-file-to-dot-files "$line"
         set +x
       fi
     fi
 
     # do not override custom behavior with a symlink
+    # and ignore on Linux
     continue
   fi
 
