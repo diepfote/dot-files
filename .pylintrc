@@ -1,0 +1,7 @@
+# generated via `pylint --generate-rc`
+
+[MESSAGES CONTROL]
+
+disable=broad-exception-raised,trailing-newlines
+
+
