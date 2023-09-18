@@ -16,7 +16,7 @@
 local options = require 'mp.options'
 
 local o = {
-	save_period = 30
+	save_period = 180
 }
 
 options.read_options(o)
@@ -27,6 +27,7 @@ local function save()
 	mp.commandv("set", "msg-level", "cplayer=warn")
 	mp.command("write-watch-later-config")
 	mp.commandv("set", "msg-level", "cplayer=status")
+	mp.commandv("run", os.getenv("HOME") .. "/Documents/scripts/normal-privileges_systemd_scripts/report-videos.sh")
 end
 
 local save_period_timer = mp.add_periodic_timer(o.save_period, save)
