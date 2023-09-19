@@ -201,7 +201,12 @@ elif [ "$system" = Linux ]; then
 
   # for yay/pacman in combination with trickle
   # rate KB/s
-  export THROTTLE_BANDWIDTH=500
+  #
+  # check `pacman` wrapper to see why this is neccessary
+  pacman_bandwidth_limit_file=/tmp/pacman-bandwidth-limit
+  if [ ! -f "$pacman_bandwidth_limit_file" ]; then
+    echo -n 500 > "$pacman_bandwidth_limit_file"
+  fi
 
   for name in ~/Documents/scripts/source-me/linux/*; do
     source "$name"
