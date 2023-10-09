@@ -84,3 +84,10 @@ source ~/Documents/scripts/bb/source-me
 # source ~/Documents/scripts/cc/source-me/posix-compliant-shells.sh
 # source ~/Documents/scripts/cc/source-me/completions*
 
+
+
+# Lima BEGIN
+# Make sure iptables and mount.fuse3 are available
+PATH="$PATH:/usr/sbin:/sbin"
+export PATH
+# Lima END
