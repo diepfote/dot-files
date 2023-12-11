@@ -6,7 +6,5 @@
 # <xbar.author.github>xremix</xbar.author.github>
 # <xbar.desc>Show the current time of a different timezone.</xbar.desc>
 
-#Prefix="AUT"
 Time_Zone="Europe/Vienna"
-#TZ=":$Time_Zone" date "+$Prefix %H:%M"
-TZ=":$Time_Zone" /opt/homebrew/opt/coreutils/libexec/gnubin/date -Iminutes | sed 's#T#  #;s#+# +#'
+TZ=":$Time_Zone" date "+$Prefix %a %y-%m-%d %H:%M%z"
