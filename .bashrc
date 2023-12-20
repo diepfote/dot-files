@@ -85,7 +85,7 @@ if [ "$system" = Darwin ]; then
   source ~/Documents/scripts/source-me/darwin/posix-compliant-shells.sh
 
   # ------------------------------------------------
-  # kubectl/oc completion patching START
+  # kubectl completion patching START
 
   _save-timestamped-kubernetes-completions () {
 
@@ -135,24 +135,8 @@ if [ "$system" = Darwin ]; then
     unset filename _patched_kubectl_completions
   fi
 
-  if [[ -x /opt/homebrew/bin/oc ]]; then
-    # remove default completions
-    unlink /opt/homebrew/etc/bash_completion.d/oc 2>/dev/null || true
 
-    filename="/tmp/_oc-completions"
-    _patched_oc_completions="$filename-patched"
-
-    if [ ! -e "$_patched_oc_completions" ]; then
-      oc completion bash > "$filename"
-      ~/Documents/python/tools/oc-client/completion_script_patcher.py "$filename" > "$_patched_oc_completions"
-    fi
-
-    source "$_patched_oc_completions"
-    _save-timestamped-kubernetes-completions "$filename"
-    unset filename _patched_oc_completions
-  fi
-
-  # kubectl/oc completion patching END
+  # kubectl completion patching END
   # ------------------------------------------------
 
   # [[ -x /opt/homebrew/bin/openstack ]] && source <(openstack complete --shell bash)
