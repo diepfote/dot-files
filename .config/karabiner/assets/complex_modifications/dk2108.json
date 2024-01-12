@@ -1,0 +1,26 @@
+{
+  "title": "dk2108",
+  "rules": [
+
+    {
+      "description": "right opt + cmd to right cmd",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "right_option",
+            "modifiers": {
+              "optional": ["right_command"]
+            }
+          },
+          "to": [
+            {
+              "key_code": "right_command"
+            }
+          ]
+        }
+      ]
+    }
+
+  ]
+}
