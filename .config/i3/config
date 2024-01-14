@@ -139,8 +139,7 @@ workspace_layout stacking
 
 
 # screenshots
-bindsym $mod+P exec i3-input -F 'exec scrot -u --file /tmp/%s-"$(date --iso-8601=seconds | sed 's#:#_#g')"-scrot.png' -f 30 -P 'filename prefix: '
-bindsym $mod+Shift+P exec i3-input -F 'exec scrot --select --file /tmp/%s-"$(date --iso-8601=seconds | sed 's#:#_#g')"-scrot.png' -f 30 -P 'filename prefix: '
+bindsym $mod+P exec flameshot gui
 
 
 # toggle tiling / floating
