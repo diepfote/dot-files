@@ -53,7 +53,8 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl $pactl_default_sink_mute_tog
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
-set $terminal_cmd 'i3-sensible-terminal'
+# TODO use i3-sensible-terminal and set TERMINAL=alacritty
+set $terminal_cmd 'alacritty'
 # start a terminal
 bindsym $mod+Return exec $terminal_cmd
 bindsym $mod+KP_Enter exec $terminal_cmd
