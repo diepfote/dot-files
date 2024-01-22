@@ -76,8 +76,9 @@
 	list-all-files-ever-tracked = "!f() { git log --pretty=format: --name-only | sed '/^$/d' | sort | uniq; }; f"
 	ls-all-files-ever-tracked = list-all-files-ever-tracked
 
-	# switches to master, pulls latest changes, switches back to previous branch
-	# if it cannot switch to master, it will only fetch master
+	# switches to master, pulls latest changes, switches back to previous branch;
+	# if it cannot switch to master, it will only fetch master;
+	# then run `git gc` if certain thresholds are met
 	update = "!f() { \
 		set -x; \
 		fetch_or_pull () { \
@@ -89,7 +90,8 @@
 			fi; \
 		}; \
 		fetch_or_pull; \
-		git delete-gone-branches; set +x; }; f"
+		git delete-gone-branches; \
+		git maintenance run --auto; set +x; }; f"
 
 	delete-gone-branches = "!f() {	 for branch in $(git branch -vv | grep gone | sed -r 's#\\s+##;s#^\\*##' | cut -d ' ' -f1); do echo \"Deleting $branch\"; [ -n \"$1\" ] && delete=D || delete=d; git branch -\"$delete\" \"$branch\"; done }; f"
 
