@@ -205,11 +205,18 @@
 	ui = auto
 	branch = auto
 	diff = auto
+	diffFilter = delta --color-only
 	interactive = auto
 	status = auto
 	log = auto
+[delta]
+	navigate = true
+	light = true
+	side-by-side = true
 [credential]
 	helper = store
+[diff]
+	colorMoved = default
 [diff "sopsdiffer"]
 	textconv = sops -d
 [safe]
