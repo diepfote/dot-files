@@ -2,7 +2,9 @@
 
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && [[ -z "$BASH_SOURCE_IT" ]] && return
-if [ "$(uname)" = Darwin ]; then
+system="$(uname)"
+export system
+if [ "$system" = Darwin ]; then
   export TERM=screen-256color
 
   # Fix /opt/homebrew/bin is set at the veryeend of PATH
@@ -79,7 +81,6 @@ source ~/Documents/scripts/source-me/posix-compliant-shells.sh
 
 source ~/Documents/scripts/private/source-me/posix-compliant-shells.sh
 
-system="$(uname)"
 if [ "$system" = Darwin ]; then
 
   source ~/Documents/scripts/source-me/darwin/posix-compliant-shells.sh
