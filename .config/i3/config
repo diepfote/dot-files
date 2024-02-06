@@ -5,6 +5,8 @@
 # this file and re-run i3-config-wizard(1).
 #
 
+# fetch key codes by running `xmodmap -pke`
+
 # monitors
 set $monitor_1st eDP1
 
