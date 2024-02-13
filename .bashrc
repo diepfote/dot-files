@@ -12,6 +12,7 @@ if [ "$system" = Darwin ]; then
   PATH="$(echo "$PATH" | /opt/homebrew/opt/gnu-sed/libexec/gnubin/sed -r 's#:/opt/homebrew/bin##g')"
   export PATH="/opt/homebrew/bin:$PATH"
 fi
+first_source=/tmp/._first-unsource-since-boot
 
 # ----
 # bash history START
@@ -120,18 +121,20 @@ if [ "$system" = Darwin ]; then
   }
 
   if [[ -x /opt/homebrew/bin/kubectl ]]; then
-    filename="/tmp/_kubectl-completions"
-    _patched_kubectl_completions="$filename-patched"
+    _raw_kubectl_compl_file="/tmp/_kubectl-completions"
+    _patched_kubectl_completions="$_raw_kubectl_compl_file-patched"
 
     if [ ! -e "$_patched_kubectl_completions" ]; then
-      kubectl completion bash > "$filename"
-      ~/Documents/python/tools/kubectl-client/completion_script_patcher.py "$filename" > "$_patched_kubectl_completions"
+      kubectl completion bash > "$_raw_kubectl_compl_file"
+      ~/Documents/python/tools/kubectl-client/completion_script_patcher.py "$_raw_kubectl_compl_file" > "$_patched_kubectl_completions"
     fi
 
     source "$_patched_kubectl_completions"
-    # @cleanup: disabled for performance reasons 2024-02-12
-    # _save-timestamped-kubernetes-completions "$filename"
-    unset filename _patched_kubectl_completions
+
+    if [ ! -f "$first_source" ]; then
+      _save-timestamped-kubernetes-completions "$_raw_kubectl_compl_file"
+    fi
+    unset _raw_kubectl_compl_file _patched_kubectl_completions
   fi
 
 
@@ -173,7 +176,6 @@ if [ "$system" = Darwin ]; then
   # bash: /opt/homebrew/etc/bash_completion.d/poetry: line 40: `            (cache clear)'
   # ```
   #
-  first_source=/tmp/._first-unsource-since-boot
   if [ ! -f "$first_source" ]; then
 
     find /opt/homebrew/etc/bash_completion.d -mindepth 1 -maxdepth 1   ! -name gh ! -name 'git-*' ! -name pipx ! -name 'pass*' ! -name tmux -exec bash -c ' set -x; unlink "$0" ' {} \;
@@ -181,7 +183,6 @@ if [ "$system" = Darwin ]; then
     touch "$first_source"
   fi
 
-  unset first_source
 
   # source all brew installed completions
   source /opt/homebrew/share/bash-completion/bash_completion
@@ -205,6 +206,9 @@ elif [ "$system" = Linux ]; then
 
   source ~/Documents/scripts/private/source-me/linux/posix-compliant-shells.sh
 fi
+
+
+unset first_source
 
 
 #------------
