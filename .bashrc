@@ -120,9 +120,6 @@ if [ "$system" = Darwin ]; then
   }
 
   if [[ -x /opt/homebrew/bin/kubectl ]]; then
-    # remove default completions
-    unlink /opt/homebrew/etc/bash_completion.d/kubectl 2>/dev/null || true
-
     filename="/tmp/_kubectl-completions"
     _patched_kubectl_completions="$filename-patched"
 
@@ -132,7 +129,8 @@ if [ "$system" = Darwin ]; then
     fi
 
     source "$_patched_kubectl_completions"
-    _save-timestamped-kubernetes-completions "$filename"
+    # @cleanup: disabled for performance reasons 2024-02-12
+    # _save-timestamped-kubernetes-completions "$filename"
     unset filename _patched_kubectl_completions
   fi
 
@@ -175,8 +173,16 @@ if [ "$system" = Darwin ]; then
   # bash: /opt/homebrew/etc/bash_completion.d/poetry: line 40: `            (cache clear)'
   # ```
   #
-  # remove docker completions
-  unlink /opt/homebrew/etc/bash_completion.d/docker 2>/dev/null || true
+  first_source=/tmp/._first-unsource-since-boot
+  if [ ! -f "$first_source" ]; then
+
+    find /opt/homebrew/etc/bash_completion.d -mindepth 1 -maxdepth 1   ! -name gh ! -name 'git-*' ! -name pipx ! -name 'pass*' ! -name tmux -exec bash -c ' set -x; unlink "$0" ' {} \;
+
+    touch "$first_source"
+  fi
+
+  unset first_source
+
   # source all brew installed completions
   source /opt/homebrew/share/bash-completion/bash_completion
   # --------------------------------------------------------------------------------------------------
