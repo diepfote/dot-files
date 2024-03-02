@@ -7,6 +7,7 @@ _skip_exclusions () {
        [[ "$line" =~ .*xbar.* ]] || \
        [[ "$line" =~ .*karabiner.* ]] || \
        [[ "$line" =~ .*lima.* ]] || \
+       [[ "$line" =~ .*yabai.* ]] || \
        [[ "$line" =~ .*Library/Application.* ]]; then
       return 0
     fi
