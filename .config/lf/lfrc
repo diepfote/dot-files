@@ -9,5 +9,6 @@ map <c-g> quit-to-cwd
 
 # trash as in the trash command
 # as indicated by `$ `
-map D $ trash "$f"
+set filesep ' '
+map D $ trash $fx
 
