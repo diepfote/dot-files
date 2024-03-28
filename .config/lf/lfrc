@@ -9,6 +9,6 @@ map <c-g> quit-to-cwd
 
 # trash as in the trash command
 # as indicated by `$ `
-set filesep ' '
-map D $ trash $fx
-
+# set filesep ' '
+# map D $ echo -e "$fx" | sed -r "s#^'##;s#'$##" | xargs -n 1 rm -r
+map D $ printf "$fx"  | xargs -d '\n' -n 1 trash --
