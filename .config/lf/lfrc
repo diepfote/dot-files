@@ -12,3 +12,6 @@ map <c-g> quit-to-cwd
 # set filesep ' '
 # map D $ echo -e "$fx" | sed -r "s#^'##;s#'$##" | xargs -n 1 rm -r
 map D $ printf "$fx"  | xargs -d '\n' -n 1 trash --
+map x $ printf "$fx"  | xargs -d '\n' -n 1 trash --
+
+map <enter> open
