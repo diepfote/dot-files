@@ -70,7 +70,7 @@ fi
 export ZSH=''
 
 
-# source ~/Documents/scripts/source-me/bash-nnn.sh
+source ~/Documents/scripts/source-me/bash-nnn.sh
 source ~/Documents/scripts/source-me/bash-lf.sh
 source ~/Documents/scripts/source-me/bash-fzf-reverse-search.sh
 
