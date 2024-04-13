@@ -22,6 +22,6 @@ battery all {
 }
 
 tztime local {
-        format = "%a %Y-%m-%dT%H:%M%z"
+        format = "%a %m/%d %H:%M%:::z"
         timezone = "Europe/Vienna"
 }
