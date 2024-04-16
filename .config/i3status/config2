@@ -20,4 +20,3 @@ order += "tztime local"
 battery all {
         format = "%status %percentage %remaining"
 }
-

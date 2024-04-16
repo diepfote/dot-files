@@ -8,4 +8,4 @@ i3status -c ~/.config/i3status/config1
 
 i3status -c ~/.config/i3status/config2
 
-i3cat encode < <(TZ='Europe/Vienna' date "+%a %m/%d %H:%M%z" | tr -d '\n')
+~/Documents/scripts/i3cat-time-helper.sh 'Europe/Vienna'
