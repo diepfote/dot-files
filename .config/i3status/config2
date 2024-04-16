@@ -21,7 +21,3 @@ battery all {
         format = "%status %percentage %remaining"
 }
 
-tztime local {
-        format = "%a %m/%d %H:%M%:::z"
-        timezone = "Europe/Vienna"
-}
