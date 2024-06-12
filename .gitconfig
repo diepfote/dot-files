@@ -9,6 +9,8 @@
 	rebase = true
 [rebase]
 	autoStash = true
+	# same as --rebase-merges (and its deprecated predecessor --preserve-merges)
+	rebaseMerges = true
 
 [alias]
 	get-org-and-repo = "!f() { git remote get-url origin | sed 's#.git$##'| tr ':' '/' | python -c '_stdin=input(); split=_stdin.rsplit(\"/\",2); print(\"/\".join(split[1:]))'  ; }; f"
