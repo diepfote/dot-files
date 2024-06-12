@@ -180,6 +180,10 @@
 	}; f"
 
 
+	s = status -sb
+	p = push
+	pf = push --force-with-lease
+	d = diff
 
 	; --------------------------------
 	; nicked from https://dzone.com/articles/lesser-known-git-commands
