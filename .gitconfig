@@ -184,8 +184,11 @@
 
 	s = status -sb
 	p = push
+	P = pull
 	pf = push --force-with-lease
+	pF = push --force
 	d = diff
+	dw = diff --word-diff
 
 	; --------------------------------
 	; nicked from https://dzone.com/articles/lesser-known-git-commands
