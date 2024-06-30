@@ -8,7 +8,7 @@
 # fetch key codes by running `xmodmap -pke`
 
 # monitors
-set $monitor_1st eDP1
+set $monitor_1st eDP-1
 
 # assign these workspaces to the first monitor
 workspace 1 output $monitor_1st
@@ -44,7 +44,7 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 exec --no-startup-id nm-applet
 
 # Use pactl to adjust volume in Pipewire.
-set $refresh_pactl_default_sink_vol_status  ps -ef | grep "$(pgrep i3cat)" | grep bash | awk '{ print $2 }' | xargs kill -SIGUSR1
+set $refresh_pactl_default_sink_vol_status  ps -ef | grep i3cat | grep bash | awk '{ print $2 }' | xargs kill -SIGUSR1
 set $pactl_default_sink_vol  pactl set-sink-volume @DEFAULT_SINK@
 set $pactl_default_sink_mute_toggle  pactl set-sink-mute @DEFAULT_SINK@ toggle
 bindsym XF86AudioRaiseVolume exec --no-startup-id  $pactl_default_sink_vol +5% && $refresh_pactl_default_sink_vol_status
@@ -91,6 +91,7 @@ bindsym $mod+KP_Add exec 'i3-sensible-terminal'
 
 
 # kill focused window
+# if there is no 'X' button in the UI this is the only option
 bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
@@ -102,23 +103,11 @@ bindsym $mod+j focus down
 bindsym $mod+k focus up
 bindsym $mod+l focus right
 
-# alternatively, you can use the cursor keys:
-bindsym $mod+Left focus left
-bindsym $mod+Down focus down
-bindsym $mod+Up focus up
-bindsym $mod+Right focus right
-
 # move focused window
 bindsym $mod+Shift+h move left
 bindsym $mod+Shift+j move down
 bindsym $mod+Shift+k move up
 bindsym $mod+Shift+l move right
-
-# alternatively, you can use the cursor keys:
-bindsym $mod+Shift+Left move left
-bindsym $mod+Shift+Down move down
-bindsym $mod+Shift+Up move up
-bindsym $mod+Shift+Right move right
 
 # move workspace to the left (wraps around)
 # https://faq.i3wm.org/question/591/move-workspace-to-other-monitor/index.html%3Fanswer=2803.html#post-id-2803
@@ -234,11 +223,11 @@ bindsym $mod+r mode "resize"
 #  $ xev | awk -F'[ )]+' '/^KeyPress/ { a[NR+2] } NR in a { printf "%-3s %s\n", $5, $8 }'
 #
 #
-bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 5  # Prior ... page-up
-bindsym $mod+KP_Prior exec --no-startup-id xbacklight -inc 5  # Next ... page-down
+bindsym XF86MonBrightnessUp exec --no-startup-id sudo xbacklight -inc 5  # Prior ... page-up
+bindsym $mod+KP_Prior exec --no-startup-id sudo xbacklight -inc 5  # Next ... page-down
 
-bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 5  # Next ... page-down
-bindsym $mod+KP_Next exec --no-startup-id xbacklight -dec 5  # Next ... page-down
+bindsym XF86MonBrightnessDown exec --no-startup-id sudo xbacklight -dec 5  # Next ... page-down
+bindsym $mod+KP_Next exec --no-startup-id sudo xbacklight -dec 5  # Next ... page-down
 
 
 
@@ -278,7 +267,7 @@ bindsym $mod+less mode "$mode_system"
 # finds out, if available)
 bar {
     position bottom
-    status_command i3cat -cmd-file ~/.config/i3cat/config
+    status_command ~/go/bin/i3cat -cmd-file ~/.config/i3cat/config
     colors {
         separator #666666
         background #eeeeee
