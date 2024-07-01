@@ -189,6 +189,8 @@
 	pF = push --force
 	d = diff
 	dw = diff --word-diff
+	c = checkout
+	ch = checkout
 
 	; --------------------------------
 	; nicked from https://dzone.com/articles/lesser-known-git-commands
