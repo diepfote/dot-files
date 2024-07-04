@@ -186,8 +186,11 @@
 	p = push
 	pf = push --force-with-lease
 	pF = push --force
+
 	d = diff
+	df = diff
 	dw = diff --word-diff
+	dfw = diff --word-diff
 	c = checkout
 	ch = checkout
 
