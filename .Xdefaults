@@ -107,10 +107,11 @@ xterm*color14:          #34E2E2
 !------------------------------------------
 
 
-! window manager font
+! window manager font (i3)
 Xft.antialias: true
 Xft.hinting:   true
 Xft.rgba:      rgb
 Xft.hintstyle: hintfull
-Xft.dpi: 95
+# resolution scaling | high resolution
+Xft.dpi: 130
 
