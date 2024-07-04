@@ -46,7 +46,9 @@
 		fi; \
 	}; f"
 
-	clone-aur-repo = clone -q  https://aur.archlinux.org/
+	clone-aur-repo = "!f() { : git log ; \
+	 git clone -q  https://aur.archlinux.org/"$@"; \
+	}; f"
 
 	lmessages = "!f() { : git log ; git log --graph --pretty=format:'%s' \"$@\" ; }; f"  # show author name but commit date
 	l = le --graph
@@ -183,6 +185,7 @@
 
 
 	s = status -sb
+	pl = pull
 	p = push
 	pf = push --force-with-lease
 	pF = push --force
