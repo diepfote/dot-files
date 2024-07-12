@@ -66,6 +66,14 @@
 
 	find-commit-introduced-file = "!f() { : git add ; filename=\"${*:$#:$#}\"; set -- \"${@:1:$(($#-1))}\";  git l --follow --diff-filter=A \"$@\" -- \"${GIT_PREFIX:-.}\"/\"$filename\" ; }; f"
 
+	reflog-find-commit-contains-string = "!f() { git reflog --source -S \"$@\" ; }; f"
+	reflog-find-commit-contains-regex = "!f() { git reflog --source -G \"$@\" ; }; f"
+
+	# use --show-pulls to show merge commits (which PR introduced the change?)
+	# use --follow if you want to follow beyond renames
+	reflog-find-commits-changed-file = "!f() { : git add ; filename=\"${*:$#:$#}\"; set -- \"${@:1:$(($#-1))}\"; git reflog \"$@\" -- \"${GIT_PREFIX:-.}\"/\"$filename\"; }; f"
+
+	reflog-find-commit-introduced-file = "!f() { : git add ; filename=\"${*:$#:$#}\"; set -- \"${@:1:$(($#-1))}\";  git reflog --follow --diff-filter=A \"$@\" -- \"${GIT_PREFIX:-.}\"/\"$filename\" ; }; f"
 
 	# taken from https://github.com/nedbat/dot/blob/master/.gitconfig
 	#
@@ -79,6 +87,8 @@
 	# nicked from https://stackoverflow.com/questions/15606955/how-can-i-make-git-show-a-list-of-the-files-that-are-being-tracked/15606995#15606995
 	list-all-files-ever-tracked = "!f() { git log --pretty=format: --name-only | sed '/^$/d' | sort | uniq; }; f"
 	ls-all-files-ever-tracked = list-all-files-ever-tracked
+	reflog-list-all-files-ever-tracked = "!f() { git log --pretty=format: --name-only | sed '/^$/d' | sort | uniq; }; f"
+	reflog-ls-all-files-ever-tracked = "!f() { git reflog --pretty=format: --name-only | sed '/^$/d' | sort | uniq; }; f"
 
 	# switches to master, pulls latest changes, switches back to previous branch;
 	# if it cannot switch to master, it will only fetch master;
