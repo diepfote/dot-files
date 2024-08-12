@@ -134,6 +134,7 @@ if [ "$system" = Darwin ]; then
 
     if [ ! -f "$first_source" ]; then
       _save-timestamped-kubernetes-completions "$_raw_kubectl_compl_file"
+      touch "$first_source"
     fi
     unset _raw_kubectl_compl_file _patched_kubectl_completions
   fi
@@ -177,12 +178,10 @@ if [ "$system" = Darwin ]; then
   # bash: /opt/homebrew/etc/bash_completion.d/poetry: line 40: `            (cache clear)'
   # ```
   #
-  if [ ! -f "$first_source" ]; then
 
-    find /opt/homebrew/etc/bash_completion.d -mindepth 1 -maxdepth 1   ! -name gh ! -name 'git-*' ! -name pipx ! -name 'pass*' ! -name tmux -exec bash -c ' set -x; unlink "$0" ' {} \;
-
-    touch "$first_source"
-  fi
+  find /opt/homebrew/etc/bash_completion.d -mindepth 1 -maxdepth 1   ! -name gh ! -name 'git-*' ! -name pipx ! -name 'pass*' ! -name tmux -exec bash -c ' set -x; unlink "$0" ' {} \;
+  find /opt/homebrew/opt/coreutils/libexec/gnubin -name df -exec bash -c ' set -x; unlink "$0" ' {} \;
+  find /opt/homebrew/opt/coreutils/libexec/gnubin -name du -exec bash -c ' set -x; unlink "$0" ' {} \;
 
 
   # source all brew installed completions
