@@ -180,9 +180,8 @@ if [ "$system" = Darwin ]; then
   #
 
   find /opt/homebrew/etc/bash_completion.d -mindepth 1 -maxdepth 1   ! -name gh ! -name 'git-*' ! -name pipx ! -name 'pass*' ! -name tmux -exec bash -c ' set -x; unlink "$0" ' {} \;
-  find /opt/homebrew/opt/coreutils/libexec/gnubin -name df -exec bash -c ' set -x; unlink "$0" ' {} \;
   find /opt/homebrew/opt/coreutils/libexec/gnubin -name du -exec bash -c ' set -x; unlink "$0" ' {} \;
-
+  find /opt/homebrew/opt/coreutils/libexec/gnubin -name uptime -exec bash -c ' set -x; unlink "$0" ' {} \;
 
   # source all brew installed completions
   source /opt/homebrew/share/bash-completion/bash_completion
