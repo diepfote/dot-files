@@ -187,6 +187,7 @@
 		git rev-list --all | xargs git grep \"$@\"; \
 	}; f"
 
+	not-modified = "!f() { : git add ; filename=\"${*:$#:$#}\"; set -- \"${@:1:$(($#-1))}\"; git diff-index --quiet  HEAD -- \"${GIT_PREFIX:-.}\"/\"$filename\"; }; f"
 
 	s = status -sb
 	pl = pull
