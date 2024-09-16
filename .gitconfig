@@ -13,7 +13,10 @@
 	rebaseMerges = true
 
 [alias]
+	get-branch = rev-parse --abbrev-ref HEAD
+
 	get-org-and-repo = "!f() { git remote get-url origin | sed 's#.git$##'| tr ':' '/' | python -c '_stdin=input(); split=_stdin.rsplit(\"/\",2); print(\"/\".join(split[1:]))'  ; }; f"
+
 	# snatched from https://github.com/ttaylorr/dotfiles/blob/work-gh/bin/git-curl & extended
 	#
 	# how to use:
