@@ -107,11 +107,14 @@ xterm*color14:          #34E2E2
 !------------------------------------------
 
 
-! window manager font (i3)
-Xft.antialias: true
-Xft.hinting:   true
-Xft.rgba:      rgb
-Xft.hintstyle: hintfull
-# resolution scaling | high resolution
-Xft.dpi: 130
+! window manager font (i3) | resolution scaling
+! https://wiki.archlinux.org/title/HiDPI#X_Resources
+Xft.autohint: 0
+Xft.lcdfilter:  lcddefault
+Xft.hintstyle:  hintfull
+Xft.hinting: 1
+Xft.antialias: 1
+Xft.rgba: rgb
+! resolution scaling | high resolution
+Xft.dpi: 105
 
