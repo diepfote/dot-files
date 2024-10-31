@@ -94,6 +94,7 @@
 		set -x; \
 		fetch_or_pull () { \
 			if git checkout master; then \
+				git branch --set-upstream-to=origin/master master; \
 				git pull --prune; \
 				git checkout -; \
 			else \
