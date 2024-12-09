@@ -240,8 +240,6 @@
 	side-by-side = true
 [credential]
 	helper = store
-[diff]
-	colorMoved = default
 [diff "sopsdiffer"]
 	textconv = sops -d
 [safe]
