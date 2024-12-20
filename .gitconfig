@@ -139,7 +139,7 @@
 	resubmit = "!f() { : git add ; git resubmit-base \"$@\" \"${GIT_PREFIX:-.}\" --force-with-lease; }; f"
 	resubmit-force = "!f() { : git add ; git resubmit-base \"$@\" \"${GIT_PREFIX:-.}\" --force; }; f"
 
-	delete-all-git-branches-except-master = "!f() { [ -n \"$1\" ] && delete=D || delete=d; git for-each-ref --shell --format='git log --oneline %(refname) ^origin/master'	 refs/heads/ | sed \"s#.*refs/heads/##;s#' .*##\" | grep -v master | xargs git branch -\"$delete\"; }; f"
+	delete-all-git-branches-except-master-release-main = "!f() { [ -n \"$1\" ] && delete=D || delete=d; git for-each-ref --shell --format='git log --oneline %(refname) ^origin/master'	 refs/heads/ | sed \"s#.*refs/heads/##;s#' .*##\" | grep -vE '^(master|release|main)$' | xargs git branch -\"$delete\"; }; f"
 
 	# heads up
 	# this saves all stashed and tracked files
