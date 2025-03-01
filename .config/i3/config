@@ -240,7 +240,7 @@ bindsym $mod+KP_Next exec --no-startup-id sudo xbacklight -dec 5  # Next ... pag
 
 
 
-bindsym $mod+e exec thunar  # gui file manager
+bindsym $mod+e exec pcmanfm  # gui file manager
 
 
 # ---------------------------
