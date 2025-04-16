@@ -16,14 +16,14 @@ template = template_env.get_template(TEMPLATE_FILE)
 
 arch_pkgs = []
 filename_pkg_explicit_internal = os.environ['HOME'] \
-    + '/Documents/misc/arch/packages_explicit_internal'
+    + '/Documents/misc/arch/packages_explicit_internal.txt'
 with open(filename_pkg_explicit_internal) as f:
     content = f.read()
     arch_pkgs.extend(content.split('\n'))
     del content
 
 filename_pkg_explicit_external = os.environ['HOME'] \
-    + '/Documents/misc/arch/packages_explicit_external'
+    + '/Documents/misc/arch/packages_explicit_external.txt'
 with open(filename_pkg_explicit_external) as f:
     content = f.read()
     arch_pkgs.extend(content.split('\n'))
