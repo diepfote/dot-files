@@ -70,22 +70,22 @@ fi
 export ZSH=''
 
 
-source ~/Documents/scripts/source-me/bash-nnn.sh
-source ~/Documents/scripts/source-me/bash-lf.sh
-source ~/Documents/scripts/source-me/bash-fzf-reverse-search.sh
+source ~/Repos/scripts/source-me/bash-nnn.sh
+source ~/Repos/scripts/source-me/bash-lf.sh
+source ~/Repos/scripts/source-me/bash-fzf-reverse-search.sh
 
 
 source ~/.password-store/.extensions/pass-tail.bash.completion
 export PASSWORD_STORE_ENABLE_EXTENSIONS=true
 
 
-source ~/Documents/scripts/source-me/posix-compliant-shells.sh
+source ~/Repos/scripts/source-me/posix-compliant-shells.sh
 
-source ~/Documents/scripts/private/source-me/posix-compliant-shells.sh
+source ~/Repos/scripts/private/source-me/posix-compliant-shells.sh
 
 if [ "$system" = Darwin ]; then
 
-  source ~/Documents/scripts/source-me/darwin/posix-compliant-shells.sh
+  source ~/Repos/scripts/source-me/darwin/posix-compliant-shells.sh
 
   # ------------------------------------------------
   # kubectl completion patching START
@@ -127,7 +127,7 @@ if [ "$system" = Darwin ]; then
 
     if [ ! -e "$_patched_kubectl_completions" ]; then
       kubectl completion bash > "$_raw_kubectl_compl_file"
-      ~/Documents/python/tools/kubectl-client/completion_script_patcher.py "$_raw_kubectl_compl_file" > "$_patched_kubectl_completions"
+      ~/Repos/python/tools/kubectl-client/completion_script_patcher.py "$_raw_kubectl_compl_file" > "$_patched_kubectl_completions"
     fi
 
     source "$_patched_kubectl_completions"
@@ -146,28 +146,28 @@ if [ "$system" = Darwin ]; then
   # [[ -x /opt/homebrew/bin/openstack ]] && source <(openstack complete --shell bash)
 
 
-  for name in ~/Documents/scripts/source-me/darwin/completions_*; do
+  for name in ~/Repos/scripts/source-me/darwin/completions_*; do
     source "$name"
   done
-  for name in ~/Documents/scripts/kubernetes/source-me/completions_*; do
+  for name in ~/Repos/scripts/kubernetes/source-me/completions_*; do
     source "$name"
   done
 
   # mostly kubernetes - cc only
-  source ~/Documents/scripts/cc/source-me/posix-compliant-shells.sh
-  for file in ~/Documents/scripts/cc/source-me/completions_*; do
+  source ~/Repos/scripts/cc/source-me/posix-compliant-shells.sh
+  for file in ~/Repos/scripts/cc/source-me/completions_*; do
     source "$file"
   done
 
   # bb only
-  source ~/Documents/scripts/bb/source-me/posix-compliant-shells.sh
-  for file in ~/Documents/scripts/bb/source-me/completions_*; do
+  source ~/Repos/scripts/bb/source-me/posix-compliant-shells.sh
+  for file in ~/Repos/scripts/bb/source-me/completions_*; do
     source "$file"
   done
 
 
   # helper functions such as 'get_pod' for kubernetes
-  source ~/Documents/scripts/kubernetes/source-me/common-functions.sh
+  source ~/Repos/scripts/kubernetes/source-me/common-functions.sh
 
 
   # --------------------------------------------------------------------------------------------------
@@ -199,11 +199,11 @@ elif [ "$system" = Linux ]; then
     echo -n 500 > "$pacman_bandwidth_limit_file"
   fi
 
-  for name in ~/Documents/scripts/source-me/linux/*; do
+  for name in ~/Repos/scripts/source-me/linux/*; do
     source "$name"
   done
 
-  source ~/Documents/scripts/private/source-me/linux/posix-compliant-shells.sh
+  source ~/Repos/scripts/private/source-me/linux/posix-compliant-shells.sh
 fi
 
 

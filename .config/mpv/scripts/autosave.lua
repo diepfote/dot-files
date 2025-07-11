@@ -28,7 +28,7 @@ local function save()
 	mp.commandv("set", "msg-level", "cplayer=warn")
 	mp.command("write-watch-later-config")
 	mp.commandv("set", "msg-level", "cplayer=status")
-	mp.commandv("run", os.getenv("HOME") .. "/Documents/scripts/mpv-lua-helper-report-videos.sh")
+	mp.commandv("run", os.getenv("HOME") .. "/Repos/scripts/mpv-lua-helper-report-videos.sh")
 end
 
 local save_period_timer = mp.add_periodic_timer(o.save_period, save)

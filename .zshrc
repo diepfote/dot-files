@@ -70,19 +70,19 @@ return
 # configure to use direnv
 eval "$(direnv hook zsh 2>/dev/null || true)"
 
-source ~/Documents/scripts/source-me/common-functions.sh
-source ~/Documents/scripts/source-me/posix-compliant-shells.sh
-source ~/Documents/scripts/source-me/completions*
+source ~/Repos/scripts/source-me/common-functions.sh
+source ~/Repos/scripts/source-me/posix-compliant-shells.sh
+source ~/Repos/scripts/source-me/completions*
 
-source ~/Documents/scripts/kubernetes/source-me/common-functions.sh
+source ~/Repos/scripts/kubernetes/source-me/common-functions.sh
 
-source ~/Documents/scripts/source-me/darwin/posix-compliant-shells.sh
-source ~/Documents/scripts/source-me/darwin/completions*
+source ~/Repos/scripts/source-me/darwin/posix-compliant-shells.sh
+source ~/Repos/scripts/source-me/darwin/completions*
 
-source ~/Documents/scripts/bb/source-me
+source ~/Repos/scripts/bb/source-me
 
-# source ~/Documents/scripts/cc/source-me/posix-compliant-shells.sh
-# source ~/Documents/scripts/cc/source-me/completions*
+# source ~/Repos/scripts/cc/source-me/posix-compliant-shells.sh
+# source ~/Repos/scripts/cc/source-me/completions*
 
 
 

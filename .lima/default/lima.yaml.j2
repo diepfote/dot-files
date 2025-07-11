@@ -101,12 +101,14 @@ provision:
     script: |
       #!/usr/bin/env bash
       set -x
-      if ! test -e ~/Documents; then
-        ln -s -f /Users/*/Documents ~/Documents
+      if ! test -e ~/Repos; then
+        ln -s -f /Users/*/Repos ~/Repos
+      if ! test -e ~/.config/personal; then
+        ln -s -f /Users/*/.config/personal ~/.config/personal
       fi
       if ! test -e ~/.not_host_env; then
         if timeout 10m bash -c "until command -v make >/dev/null 2>&1; do sleep 3; done"; then
-          (export NOT_HOST_ENV=true; cd ~/Documents/dot-files && make)
+          (export NOT_HOST_ENV=true; cd ~/Repos/dot-files && make)
         fi
       fi
 
