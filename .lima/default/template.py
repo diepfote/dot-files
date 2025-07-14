@@ -16,21 +16,21 @@ template = template_env.get_template(TEMPLATE_FILE)
 
 arch_pkgs = []
 filename_pkg_explicit_internal = os.environ['HOME'] \
-    + '/Repos/misc/arch/packages_explicit_internal.txt'
+    + '/.config/personal/sync-config/arch/packages_explicit_internal.txt'
 with open(filename_pkg_explicit_internal) as f:
     content = f.read()
     arch_pkgs.extend(content.split('\n'))
     del content
 
 filename_pkg_explicit_external = os.environ['HOME'] \
-    + '/Repos/misc/arch/packages_explicit_external.txt'
+    + '/.config/personal/sync-config/arch/packages_explicit_external.txt'
 with open(filename_pkg_explicit_external) as f:
     content = f.read()
     arch_pkgs.extend(content.split('\n'))
     del content
 
 filename_exclusions = os.environ['HOME'] \
-    + f'/Repos/misc/arch/{image_name}-docker-image-package-exclusions.txt'
+    + f'/.config/personal/sync-config/arch/{image_name}-docker-image-package-exclusions.txt'
 with open(filename_exclusions) as f:
     content = f.read()
     exclusions = content.split('\n')[:-1]
