@@ -65,10 +65,17 @@ export PATH="/opt/homebrew/bin:$PATH"
 # do not load custom posix-compliant config -> I use zsh as a fallback
 return
 
-
+# fzf reverse search
+if fzf --help >/dev/null 2>&1; then
+  # https://github.com/junegunn/fzf/issues/1304
+  source <(fzf --zsh)
+fi
 
 # configure to use direnv
-eval "$(direnv hook zsh 2>/dev/null || true)"
+if direnv --help >/dev/null 2>&1; then
+  source <(fzf --zsh)
+  eval "$(direnv hook zsh 2>/dev/null || true)"
+fi
 
 source ~/Repos/scripts/source-me/common-functions.sh
 source ~/Repos/scripts/source-me/posix-compliant-shells.sh
