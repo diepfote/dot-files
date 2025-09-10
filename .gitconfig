@@ -205,6 +205,7 @@
 	dfw = diff --word-diff
 	c = checkout
 	ch = checkout
+	co = commit
 
 	; --------------------------------
 	; nicked from https://dzone.com/articles/lesser-known-git-commands
