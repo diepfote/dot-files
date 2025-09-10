@@ -203,6 +203,7 @@
 	df = diff
 	dw = diff --word-diff
 	dfw = diff --word-diff
+	dn = diff --no-index
 	c = checkout
 	ch = checkout
 	co = commit
