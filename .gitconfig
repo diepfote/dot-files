@@ -214,6 +214,9 @@
 
 	co = commit
 
+	br = list-branches-by-last-touch
+	b  = br
+
 	; --------------------------------
 	; nicked from https://dzone.com/articles/lesser-known-git-commands
 	;
