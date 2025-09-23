@@ -91,14 +91,19 @@
 	# if it cannot switch to master, it will only fetch master;
 	# then run `git gc` if certain thresholds are met
 	update = "!f() { \
+		if [ $# -gt 0 ]; then \
+			branch=\"$1\"; \
+		else \
+			branch=master; \
+		fi; \
 		set -x; \
 		fetch_or_pull () { \
-			if git checkout master; then \
-				git branch --set-upstream-to=origin/master master; \
+			if git checkout \"$branch\"; then \
+				git branch --set-upstream-to=origin/\"$branch\" \"$branch\"; \
 				git pull --prune; \
 				git checkout -; \
 			else \
-				git fetch origin master; \
+				git fetch origin \"$branch\"; \
 			fi; \
 		}; \
 		fetch_or_pull; \
@@ -143,9 +148,25 @@
 
 	# heads up
 	# this saves all stashed and tracked files
-	start-fresh = "!f() { git staash; git checkout master; git pull -p; git checkout -b \"$1\"; }; f"
+	start-fresh = "!f() { \
+		if [ $# -gt 1 ]; then \
+			branch=\"$2\"; \
+		else \
+			branch=master; \
+		fi; \
+		git staash; \
+		git checkout \"$branch\"; \
+		git pull -p; git checkout -b \"$1\"; \
+	git stash apply }; f"
 
-	get-upstream = "!f() { git update; set -x; git rebase master; set +x; }; f"
+	get-upstream = "!f() { \
+		if [ $# -gt 0 ]; then \
+			branch=\"$1\"; \
+		else \
+			branch=master; \
+		fi; \
+		git update \"$branch\"; set -x; git rebase origin/\"$branch\"; set +x; \
+	}; f"
 
 	# -i for ignore-case
 	# --grep= can be applied multiple-times --> will be ORed;
@@ -264,3 +285,4 @@
 	# never use the git:// protocol
 	# $ git config --global url.https://.insteadOf git://
 	insteadOf = git://
+
