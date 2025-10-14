@@ -152,19 +152,21 @@ if [ "$system" = Darwin ]; then
   for name in ~/Repos/scripts/kubernetes/source-me/completions_*; do
     source "$name"
   done
+  unset name
 
   # mostly kubernetes - cc only
   source ~/Repos/scripts/cc/source-me/posix-compliant-shells.sh
   for file in ~/Repos/scripts/cc/source-me/completions_*; do
     source "$file"
   done
+  unset file
 
   # bb only
   source ~/Repos/scripts/bb/source-me/posix-compliant-shells.sh
   for file in ~/Repos/scripts/bb/source-me/completions_*; do
     source "$file"
   done
-
+  unset file
 
   # helper functions such as 'get_pod' for kubernetes
   source ~/Repos/scripts/kubernetes/source-me/common-functions.sh
@@ -202,6 +204,7 @@ elif [ "$system" = Linux ]; then
   for name in ~/Repos/scripts/source-me/linux/*; do
     source "$name"
   done
+  unset name
 
   source ~/Repos/scripts/private/source-me/linux/posix-compliant-shells.sh
 fi
