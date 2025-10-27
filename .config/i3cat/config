@@ -3,9 +3,7 @@ i3status -c ~/.config/i3status/config1
 
 # @TODO be sure to add a `sudoers` line per interface:
 # <user> <hostname> =NOPASSWD: /usr/bin/wg show wg-<location> latest-handshakes
-~/Repos/scripts/i3cat-vpn-last-handshake-helper.sh wg-de
-~/Repos/scripts/i3cat-vpn-last-handshake-helper.sh wg-uk
-~/Repos/scripts/i3cat-vpn-last-handshake-helper.sh wg-at
+~/Repos/scripts/private/i3cat-vpn-helper.sh
 ~/Repos/scripts/i3cat-audio-device-helper.sh Master
 ~/Repos/scripts/i3cat-audio-device-helper.sh Capture
 
