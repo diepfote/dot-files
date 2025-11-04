@@ -43,9 +43,9 @@
 		fi; \
 		\
 		if [ -n \"$convert_to_commits\" ]; then \
-		git show -s --format='%H' \"$@\" | tr '\n' ' ' | awk '{ print \"https://'\"$GITHUB_INSTANCE\"'/'\"$(git get-org-and-repo)\"'/compare/\" $1 \"...\" $2 }' ; \
+		git show -s --format='%H' \"$@\" | tr '\n' ' ' | awk '{ print \"https://'\"$GH_HOST\"'/'\"$(git get-org-and-repo)\"'/compare/\" $1 \"...\" $2 }' ; \
 		else \
-			echo https://\"$GITHUB_INSTANCE\"/\"$(git get-org-and-repo)\"/compare/\"$1\"...\"$2\"; \
+			echo https://\"$GH_HOST\"/\"$(git get-org-and-repo)\"/compare/\"$1\"...\"$2\"; \
 		fi; \
 	}; f"
 
