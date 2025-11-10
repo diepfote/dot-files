@@ -104,7 +104,9 @@ done < <(cd "$DOT_FILES_DIR" && git ls-files | grep -vE '^bin/|Makefile')
 if [ -n "$NOT_HOST_ENV" ]; then
   # Hint all tool folders sit right next to $DOT_FILES_DIR
 
-  test -e ~/Documents || ln -f -s "$DOT_FILES_DIR"/../../Documents  ~/Documents
+  test -e ~/Repos || ln -f -s "$DOT_FILES_DIR"/../../Repos  ~/Repos
+
+  test -e ~/.config/personal || ln -f -s "$DOT_FILES_DIR"/../../.config/personal  ~/.config/personal
 
   folder_name=.not_host_env
   test -e ~/"$folder_name" || ln -f -s "$DOT_FILES_DIR"/../../"$folder_name"  ~/"$folder_name"
