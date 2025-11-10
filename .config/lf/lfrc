@@ -1,6 +1,9 @@
 # change columns
 set ratios 1:1
 
+# display hidden files
+set hidden true
+
 cmd quit-to-cwd ${{
   echo "$PWD" > /tmp/.lf-cwd
   lf -remote "send quit"
