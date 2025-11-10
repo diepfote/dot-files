@@ -81,7 +81,7 @@ export PASSWORD_STORE_ENABLE_EXTENSIONS=true
 
 source ~/Repos/scripts/source-me/posix-compliant-shells.sh
 
-source ~/Repos/scripts/private/source-me/posix-compliant-shells.sh
+source ~/Repos/scripts/private/source-me/posix-compliant-shells.sh  || true
 
 if [ "$system" = Darwin ]; then
 
@@ -205,8 +205,6 @@ elif [ "$system" = Linux ]; then
     source "$name"
   done
   unset name
-
-  source ~/Repos/scripts/private/source-me/linux/posix-compliant-shells.sh
 fi
 
 
