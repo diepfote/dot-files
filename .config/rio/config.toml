@@ -1,0 +1,156 @@
+# Rio Terminal Configuration
+# Converted from Alacritty configuration
+
+# theme="belafonte-day"
+theme="alacritty"
+
+# Font configuration
+# [fonts]
+# size = 16
+
+# Window dimensions
+[window]
+width = 90
+height = 40
+
+# # Colors configuration
+# [colors]
+# background = '#ffffff'
+# foreground = '#000000'
+# black = '#000000'
+# red = '#d54e53'
+# green = '#55a806'
+# yellow = '#b28000'
+# blue = '#7aa6ff'
+# magenta = '#e00ec0'
+# cyan = '#06989A'
+# white = '#eaeaea'
+# light-black = '#666666'
+# light-red = '#ff3334'
+# light-green = '#8ae234'
+# light-yellow = '#687b83'
+# light-blue = '#7aa6da'
+# light-magenta = '#b77ee0'
+# light-cyan = '#34E2E2'
+# light-white = '#ffffff'
+
+# Selection
+[selection]
+semantic-escape-chars = ",│`|:\"' ()[]{}<>"
+
+# # Keybindings
+# [bindings]
+# keys = [
+#   { key = "paste", action = "Paste" },
+#   { key = "copy", action = "Copy" },
+#   { key = "l", with = "control", action = "ClearLogNotice" },
+#   { key = "l", with = "control", bytes = [12] },
+#   { key = "home", with = "alt", bytes = [27, 91, 49, 59, 51, 72] },
+#   { key = "home", mode = "appcursor", bytes = [27, 79, 72] },
+#   { key = "home", mode = "~appcursor", bytes = [27, 91, 72] },
+#   { key = "end", with = "alt", bytes = [27, 91, 49, 59, 51, 70] },
+#   { key = "end", mode = "appcursor", bytes = [27, 79, 70] },
+#   { key = "end", mode = "~appcursor", bytes = [27, 91, 70] },
+#   { key = "pageup", with = "shift", mode = "~alt", action = "ScrollPageUp" },
+#   { key = "pageup", with = "shift", mode = "alt", bytes = [27, 91, 53, 59, 50, 126] },
+#   { key = "pageup", with = "control", bytes = [27, 91, 53, 59, 53, 126] },
+#   { key = "pageup", with = "alt", bytes = [27, 91, 53, 59, 51, 126] },
+#   { key = "pageup", bytes = [27, 91, 53, 126] },
+#   { key = "pagedown", with = "shift", mode = "~alt", action = "ScrollPageDown" },
+#   { key = "pagedown", with = "shift", mode = "alt", bytes = [27, 91, 54, 59, 50, 126] },
+#   { key = "pagedown", with = "control", bytes = [27, 91, 54, 59, 53, 126] },
+#   { key = "pagedown", with = "alt", bytes = [27, 91, 54, 59, 51, 126] },
+#   { key = "pagedown", bytes = [27, 91, 54, 126] },
+#   { key = "tab", with = "shift", bytes = [27, 91, 90] },
+#   { key = "back", bytes = [127] },
+#   { key = "back", with = "alt", bytes = [27, 127] },
+#   { key = "insert", bytes = [27, 91, 50, 126] },
+#   { key = "delete", bytes = [27, 91, 51, 126] },
+#   { key = "left", with = "shift", bytes = [27, 91, 49, 59, 50, 68] },
+#   { key = "left", with = "control", bytes = [27, 91, 49, 59, 53, 68] },
+#   { key = "left", with = "alt", bytes = [27, 91, 49, 59, 51, 68] },
+#   { key = "left", mode = "~appcursor", bytes = [27, 91, 68] },
+#   { key = "left", mode = "appcursor", bytes = [27, 79, 68] },
+#   { key = "right", with = "shift", bytes = [27, 91, 49, 59, 50, 67] },
+#   { key = "right", with = "control", bytes = [27, 91, 49, 59, 53, 67] },
+#   { key = "right", with = "alt", bytes = [27, 91, 49, 59, 51, 67] },
+#   { key = "right", mode = "~appcursor", bytes = [27, 91, 67] },
+#   { key = "right", mode = "appcursor", bytes = [27, 79, 67] },
+#   { key = "up", with = "shift", bytes = [27, 91, 49, 59, 50, 65] },
+#   { key = "up", with = "control", bytes = [27, 91, 49, 59, 53, 65] },
+#   { key = "up", with = "alt", bytes = [27, 91, 49, 59, 51, 65] },
+#   { key = "up", mode = "~appcursor", bytes = [27, 91, 65] },
+#   { key = "up", mode = "appcursor", bytes = [27, 79, 65] },
+#   { key = "down", with = "shift", bytes = [27, 91, 49, 59, 50, 66] },
+#   { key = "down", with = "control", bytes = [27, 91, 49, 59, 53, 66] },
+#   { key = "down", with = "alt", bytes = [27, 91, 49, 59, 51, 66] },
+#   { key = "down", mode = "~appcursor", bytes = [27, 91, 66] },
+#   { key = "down", mode = "appcursor", bytes = [27, 79, 66] },
+#   { key = "f1", bytes = [27, 79, 80] },
+#   { key = "f2", bytes = [27, 79, 81] },
+#   { key = "f3", bytes = [27, 79, 82] },
+#   { key = "f4", bytes = [27, 79, 83] },
+#   { key = "f5", bytes = [27, 91, 49, 53, 126] },
+#   { key = "f6", bytes = [27, 91, 49, 55, 126] },
+#   { key = "f7", bytes = [27, 91, 49, 56, 126] },
+#   { key = "f8", bytes = [27, 91, 49, 57, 126] },
+#   { key = "f9", bytes = [27, 91, 50, 48, 126] },
+#   { key = "f10", bytes = [27, 91, 50, 49, 126] },
+#   { key = "f11", bytes = [27, 91, 50, 51, 126] },
+#   { key = "f12", bytes = [27, 91, 50, 52, 126] },
+#   { key = "f1", with = "shift", bytes = [27, 91, 49, 59, 50, 80] },
+#   { key = "f2", with = "shift", bytes = [27, 91, 49, 59, 50, 81] },
+#   { key = "f3", with = "shift", bytes = [27, 91, 49, 59, 50, 82] },
+#   { key = "f4", with = "shift", bytes = [27, 91, 49, 59, 50, 83] },
+#   { key = "f5", with = "shift", bytes = [27, 91, 49, 53, 59, 50, 126] },
+#   { key = "f6", with = "shift", bytes = [27, 91, 49, 55, 59, 50, 126] },
+#   { key = "f7", with = "shift", bytes = [27, 91, 49, 56, 59, 50, 126] },
+#   { key = "f8", with = "shift", bytes = [27, 91, 49, 57, 59, 50, 126] },
+#   { key = "f9", with = "shift", bytes = [27, 91, 50, 48, 59, 50, 126] },
+#   { key = "f10", with = "shift", bytes = [27, 91, 50, 49, 59, 50, 126] },
+#   { key = "f11", with = "shift", bytes = [27, 91, 50, 51, 59, 50, 126] },
+#   { key = "f12", with = "shift", bytes = [27, 91, 50, 52, 59, 50, 126] },
+#   { key = "f1", with = "control", bytes = [27, 91, 49, 59, 53, 80] },
+#   { key = "f2", with = "control", bytes = [27, 91, 49, 59, 53, 81] },
+#   { key = "f3", with = "control", bytes = [27, 91, 49, 59, 53, 82] },
+#   { key = "f4", with = "control", bytes = [27, 91, 49, 59, 53, 83] },
+#   { key = "f5", with = "control", bytes = [27, 91, 49, 53, 59, 53, 126] },
+#   { key = "f6", with = "control", bytes = [27, 91, 49, 55, 59, 53, 126] },
+#   { key = "f7", with = "control", bytes = [27, 91, 49, 56, 59, 53, 126] },
+#   { key = "f8", with = "control", bytes = [27, 91, 49, 57, 59, 53, 126] },
+#   { key = "f9", with = "control", bytes = [27, 91, 50, 48, 59, 53, 126] },
+#   { key = "f10", with = "control", bytes = [27, 91, 50, 49, 59, 53, 126] },
+#   { key = "f11", with = "control", bytes = [27, 91, 50, 51, 59, 53, 126] },
+#   { key = "f12", with = "control", bytes = [27, 91, 50, 52, 59, 53, 126] },
+#   { key = "f1", with = "alt", bytes = [27, 91, 49, 59, 54, 80] },
+#   { key = "f2", with = "alt", bytes = [27, 91, 49, 59, 54, 81] },
+#   { key = "f3", with = "alt", bytes = [27, 91, 49, 59, 54, 82] },
+#   { key = "f4", with = "alt", bytes = [27, 91, 49, 59, 54, 83] },
+#   { key = "f5", with = "alt", bytes = [27, 91, 49, 53, 59, 54, 126] },
+#   { key = "f6", with = "alt", bytes = [27, 91, 49, 55, 59, 54, 126] },
+#   { key = "f7", with = "alt", bytes = [27, 91, 49, 56, 59, 54, 126] },
+#   { key = "f8", with = "alt", bytes = [27, 91, 49, 57, 59, 54, 126] },
+#   { key = "f9", with = "alt", bytes = [27, 91, 50, 48, 59, 54, 126] },
+#   { key = "f10", with = "alt", bytes = [27, 91, 50, 49, 59, 54, 126] },
+#   { key = "f11", with = "alt", bytes = [27, 91, 50, 51, 59, 54, 126] },
+#   { key = "f12", with = "alt", bytes = [27, 91, 50, 52, 59, 54, 126] },
+#   { key = "f1", with = "super", bytes = [27, 91, 49, 59, 51, 80] },
+#   { key = "f2", with = "super", bytes = [27, 91, 49, 59, 51, 81] },
+#   { key = "f3", with = "super", bytes = [27, 91, 49, 59, 51, 82] },
+#   { key = "f4", with = "super", bytes = [27, 91, 49, 59, 51, 83] },
+#   { key = "f5", with = "super", bytes = [27, 91, 49, 53, 59, 51, 126] },
+#   { key = "f6", with = "super", bytes = [27, 91, 49, 55, 59, 51, 126] },
+#   { key = "f7", with = "super", bytes = [27, 91, 49, 56, 59, 51, 126] },
+#   { key = "f8", with = "super", bytes = [27, 91, 49, 57, 59, 51, 126] },
+#   { key = "f9", with = "super", bytes = [27, 91, 50, 48, 59, 51, 126] },
+#   { key = "f10", with = "super", bytes = [27, 91, 50, 49, 59, 51, 126] },
+#   { key = "f11", with = "super", bytes = [27, 91, 50, 51, 59, 51, 126] },
+#   { key = "f12", with = "super", bytes = [27, 91, 50, 52, 59, 51, 126] },
+#   { key = "numpadenter", bytes = [13] },
+#   { key = "left", with = "alt", bytes = [27, 98] },
+#   { key = "right", with = "alt", bytes = [27, 102] },
+#   { key = "left", with = "super", mode = "appcursor", bytes = [27, 79, 72] },
+#   { key = "right", with = "super", mode = "appcursor", bytes = [27, 79, 70] },
+#   { key = "space", with = "alt", bytes = [32] },
+# ]
+
