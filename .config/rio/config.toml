@@ -8,6 +8,10 @@ theme="alacritty"
 # [fonts]
 # size = 16
 
+[bell]
+audio = false
+visual = false
+
 # Window dimensions
 [window]
 width = 90
