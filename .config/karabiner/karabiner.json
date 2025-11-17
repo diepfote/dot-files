@@ -75,12 +75,25 @@
                         ]
                     },
                     {
-                        "description": "open alacritty",
+                        "description": "open rio",
                         "manipulators": [
                             {
                                 "from": {
                                     "key_code": "return_or_enter",
                                     "modifiers": { "mandatory": ["control"] }
+                                },
+                                "to": [{ "shell_command": "/Applications/rio.app/Contents/MacOS/rio &" }],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "open alacritty",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "return_or_enter",
+                                    "modifiers": { "mandatory": ["control", "command"] }
                                 },
                                 "to": [{ "shell_command": "/Applications/Alacritty.app/Contents/MacOS/alacritty -qq &" }],
                                 "type": "basic"
