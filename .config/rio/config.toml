@@ -2,11 +2,11 @@
 # Converted from Alacritty configuration
 
 # theme="belafonte-day"
-theme="alacritty"
+# theme="alacritty"
 
-# Font configuration
-# [fonts]
-# size = 16
+[fonts]
+size = 16
+use-drawable-chars = false
 
 [bell]
 audio = false
@@ -14,29 +14,29 @@ visual = false
 
 # Window dimensions
 [window]
-width = 90
-height = 40
+width = 900
+height = 700
 
-# # Colors configuration
-# [colors]
-# background = '#ffffff'
-# foreground = '#000000'
-# black = '#000000'
-# red = '#d54e53'
-# green = '#55a806'
-# yellow = '#b28000'
-# blue = '#7aa6ff'
-# magenta = '#e00ec0'
-# cyan = '#06989A'
-# white = '#eaeaea'
-# light-black = '#666666'
-# light-red = '#ff3334'
-# light-green = '#8ae234'
-# light-yellow = '#687b83'
-# light-blue = '#7aa6da'
-# light-magenta = '#b77ee0'
-# light-cyan = '#34E2E2'
-# light-white = '#ffffff'
+# Colors configuration
+[colors]
+background = '#ffffff'
+foreground = '#000000'
+black = '#000000'
+red = '#d54e53'
+green = '#55a806'
+yellow = '#b28000'
+blue = '#7aa6ff'
+magenta = '#e00ec0'
+cyan = '#06989A'
+white = '#eaeaea'
+light-black = '#666666'
+light-red = '#ff3334'
+light-green = '#8ae234'
+light-yellow = '#687b83'
+light-blue = '#7aa6da'
+light-magenta = '#b77ee0'
+light-cyan = '#34E2E2'
+light-white = '#ffffff'
 
 # Selection
 [selection]
