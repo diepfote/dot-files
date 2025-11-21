@@ -8,5 +8,14 @@ theme = Apple System Colors Light
 # theme = Builtin Light
 # theme = Terminal Basic
 
-# font-family = Cascadia Mono
+# Fix for <super-+> not working on German keyboards.
+# ] is where + would be on US keyboards
+# thanks for the hint https://github.com/ghostty-org/ghostty/discussions/8149#discussioncomment-14029491
+# and remember to use `Terminal Inspector` in ghostty (found in the View dropdown menu)
+keybind = super+right_bracket=increase_font_size:1
+#
+keybind=ctrl+super+r=reload_config
+# rememebr that you can call `ghostty +show-actions --docs`
+# https://ghostty.org/docs/config#offline-reference-documentation
+keybind=ctrl+super+i=inspector:toggle
 

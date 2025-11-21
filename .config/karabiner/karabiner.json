@@ -75,14 +75,14 @@
                         ]
                     },
                     {
-                        "description": "open rio",
+                        "description": "open ghostty",
                         "manipulators": [
                             {
                                 "from": {
                                     "key_code": "return_or_enter",
                                     "modifiers": { "mandatory": ["control"] }
                                 },
-                                "to": [{ "shell_command": "/Applications/rio.app/Contents/MacOS/rio &" }],
+                                "to": [{ "shell_command": "/Applications/Ghostty.app/Contents/MacOS/ghostty &" }],
                                 "type": "basic"
                             }
                         ]

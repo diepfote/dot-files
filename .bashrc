@@ -5,7 +5,6 @@
 system="$(uname)"
 export system
 if [ "$system" = Darwin ]; then
-  export TERM=screen-256color
 
   # Fix /opt/homebrew/bin is set at the veryeend of PATH
   # this messes with every `bin/` folder I have set up
