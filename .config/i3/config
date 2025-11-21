@@ -64,15 +64,22 @@ bindsym XF86AudioPrev exec playerctl previous
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec 'rio'
-bindsym $mod+KP_Enter exec 'rio'
+# Mod1    ... Alt
+# Control ... Ctrl
+# $mod    ... Super
+bindsym Control+Mod1+Return exec 'ghostty'
+bindsym Control+Mod1+KP_Enter exec 'ghostty'
+# bindsym $mod+Mod1+Return exec 'ghostty'
+# bindsym $mod+Mod1+KP_Enter exec 'ghostty'
+# bindsym +Control+Return exec 'ghostty'
+# bindsym $mod+Control+KP_Enter exec 'ghostty'
+#
 # we use i3-sensible-terminal here to start either of:
 # - alacritty
 # - xterm
 # i3-sensible-terminal decides based on what is installed
-bindsym $mod+n exec 'i3-sensible-terminal'
-bindsym $mod+numbersign exec 'i3-sensible-terminal'
-bindsym $mod+KP_Add exec 'i3-sensible-terminal'
+bindsym $mod+Return exec 'i3-sensible-terminal'
+bindsym $mod+KP_Enter exec 'i3-sensible-terminal'
 # numpad key codes
 # KP_0
 # KP_1
