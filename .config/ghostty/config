@@ -11,7 +11,15 @@ font-size = 18
 # theme = Terminal Basic
 
 # Primary colors
+#
+# slight yellow
+# be sure to apply this to `actual_white` for color off in vim too
+#
+# background = #fbfcf2
+#
+# white
 background = #ffffff
+#
 foreground = #000000
 
 # Standard 16 colors (palette 0-15)
