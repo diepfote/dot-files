@@ -1,0 +1,25 @@
+# What protocol to use when performing git operations. Supported values: ssh, https
+git_protocol: https
+# What editor gh should run when creating issues, pull requests, etc. If blank, will refer to environment.
+editor:
+# When to interactively prompt. This is a global config that cannot be overridden by hostname. Supported values: enabled, disabled
+prompt: enabled
+# A pager program to send command output to, e.g. "less". Set the value to "cat" to disable the pager.
+pager:
+# Aliases allow you to create nicknames for gh commands
+aliases:
+    c: pr checkout
+    checks: pr checks
+    ls: pr list
+    view: pr view
+    merge: pr edit --add-label merge
+    unmerge: pr edit --remove-label merge
+    wip: pr edit --add-label wip
+    unwip: pr edit --remove-label wip
+    wait-before-merge: pr edit --add-label wait-before-merge
+    unwait-before-merge: pr edit --remove-label wait-before-merge
+# The path to a unix socket through which send HTTP connections. If blank, HTTP traffic will be handled by net/http.DefaultTransport.
+http_unix_socket:
+# What web browser gh should use when opening URLs. If blank, will refer to environment.
+browser:
+version: "1"
