@@ -1,3 +1,8 @@
+# gtk specific version of `window-decoration`
+# https://ghostty.org/docs/config/reference#window-decoration
+gtk-titlebar = false
+gtk-tabs-location = hidden
+
 font-size = 18
 # if you want to reset the list instead of appending a fallback
 # https://ghostty.org/docs/config/reference#font-family
