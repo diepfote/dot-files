@@ -72,6 +72,29 @@
           ]
         }
       ]
+    },
+
+    {
+      "description": "Disable unicode Space 0xA0",
+      "manipulators": [
+        {
+          "type": "basic",
+          "description": "",
+          "from": {
+            "key_code": "spacebar",
+            "modifiers": {
+              "mandatory": [
+                "left_option"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "spacebar"
+            }
+          ]
+        }
+      ]
     }
 
   ]

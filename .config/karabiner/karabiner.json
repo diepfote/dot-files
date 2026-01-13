@@ -5,6 +5,20 @@
             "complex_modifications": {
                 "rules": [
                     {
+                        "description": "Disable unicode Space 0xA0",
+                        "manipulators": [
+                            {
+                                "description": "",
+                                "from": {
+                                    "key_code": "spacebar",
+                                    "modifiers": { "mandatory": ["left_option"] }
+                                },
+                                "to": [{ "key_code": "spacebar" }],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
                         "description": "right opt + cmd to right cmd",
                         "manipulators": [
                             {
