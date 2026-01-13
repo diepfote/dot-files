@@ -18,6 +18,10 @@ aliases:
     unwip: pr edit --remove-label wip
     wait-before-merge: pr edit --add-label wait-before-merge
     unwait-before-merge: pr edit --remove-label wait-before-merge
+    retest: pr comment --body 'retest'
+    regate: pr comment --body 'regate'
+    repost: pr comment --body 'repost'
+    recheck: pr comment --body 'recheck'
 # The path to a unix socket through which send HTTP connections. If blank, HTTP traffic will be handled by net/http.DefaultTransport.
 http_unix_socket:
 # What web browser gh should use when opening URLs. If blank, will refer to environment.
