@@ -9,6 +9,7 @@ pager:
 # Aliases allow you to create nicknames for gh commands
 aliases:
     c: pr checkout
+    approve: pr review --approve
     checks: pr checks
     ls: pr list
     view: pr view
