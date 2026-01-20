@@ -7,4 +7,4 @@
 # <xbar.desc>Show the current time of a different timezone.</xbar.desc>
 
 Time_Zone="Europe/Vienna"
-TZ=":$Time_Zone" /opt/homebrew/opt/coreutils/libexec/gnubin/date -d '4 minutes' '+%a %m/%d %H:%M%:::z'
+TZ=":$Time_Zone" /opt/homebrew/opt/coreutils/libexec/gnubin/date -d '4 minutes' '+%a %m/%d %H:%M %Z'
