@@ -40,10 +40,6 @@ _ensure_dir_exists () {
 
 }
 
-_copy-file-to-dot-files () {
-  cp ~/"$1" "$1"
-}
-
 # ensure directories
 DOT_FILES_DIR="$(realpath "$(git rev-parse --show-toplevel)")"
 
@@ -79,17 +75,26 @@ while read -r line; do
       else
         set -x
         # in case the file exists copy it to the dot-files repo -> to commit changes
-        _copy-file-to-dot-files "$line"
+        cp ~/"$line" "$line"
         set +x
       fi
     fi
-
 
     # do not override custom behavior with a symlink
     # and ignore on Linux
     continue
   fi
 
+  if [[ "$line" =~ .*\.config/pueue/pueue\.yml ]]; then
+    if [ "$system" = Linux ]; then
+        set -x
+        cp "$line" ~/"$line"
+        sed -i "s#HOME_PLACEHOLDER#$HOME#" ~/"$line"
+        set +x
+    fi
+
+    continue
+  fi
 
   echo "$line"
   current_dir="$HOME/$(dirname "$line")"
