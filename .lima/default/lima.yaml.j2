@@ -14,9 +14,9 @@ arch: "x86_64"
 # Default: none (must be specified)
 images:
 # Try to use yyyyMMdd.REV image if available. Note that yyyyMMdd.REV will be removed after several months.
-- location: "https://geo.mirror.pkgbuild.com/images/v20260215.491172/Arch-Linux-x86_64-cloudimg-20260215.491172.qcow2"
+- location: "https://geo.mirror.pkgbuild.com/images/v20260301.495047/Arch-Linux-x86_64-cloudimg-20260301.495047.qcow2"
   arch: "x86_64"
-  digest: "sha256:ec353989f8c05ddabb2299176d88f019b20c1080369d803dd3e78bd1be257090"
+  digest: "sha256:583f2cb945793aa347375a1f179e86b2b5917d680e8c75bea09e48f6e47fa710"
 
 # CPUs: if you see performance issues, try limiting cpus to 1.
 # Default: 4
@@ -41,9 +41,7 @@ mounts:
     writable: true
   - location: "~/Desktop"
     writable: true
-  - location: "~/Movies"
-    writable: true
-  - location: "~/Music"
+  - location: "~/Downloads"
     writable: true
   - location: "~/.not_host_env"
     writable: true
