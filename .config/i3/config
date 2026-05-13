@@ -152,7 +152,7 @@ workspace_layout stacking
 
 
 # screenshots
-bindsym $mod+P exec flameshot gui
+bindsym Control+Mod1+P exec flameshot gui
 
 
 # toggle tiling / floating
