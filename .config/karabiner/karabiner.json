@@ -94,7 +94,7 @@
                             {
                                 "from": {
                                     "key_code": "return_or_enter",
-                                    "modifiers": { "mandatory": ["control"] }
+                                    "modifiers": { "mandatory": ["control", "command"] }
                                 },
                                 "to": [{ "shell_command": "/Applications/Ghostty.app/Contents/MacOS/ghostty &" }],
                                 "type": "basic"
@@ -107,7 +107,7 @@
                             {
                                 "from": {
                                     "key_code": "return_or_enter",
-                                    "modifiers": { "mandatory": ["control", "command"] }
+                                    "modifiers": { "mandatory": ["control"] }
                                 },
                                 "to": [{ "shell_command": "/Applications/Alacritty.app/Contents/MacOS/alacritty -qq &" }],
                                 "type": "basic"
