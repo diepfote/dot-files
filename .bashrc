@@ -224,8 +224,6 @@ shopt -s nocaseglob  # case-insensitive-globbing in pathname expansion
 # --------------------------
 
 
-echo 0 > $pacman_bandwidth_limit_file
-
 # Lima BEGIN
 # Make sure iptables and mount.fuse3 are available
 PATH="$PATH:/usr/sbin:/sbin"
