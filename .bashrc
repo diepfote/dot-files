@@ -74,6 +74,7 @@ fi
 export ZSH=''
 
 
+source ~/.bashrc_host_specific
 source ~/Repos/scripts/source-me/bash-nnn.sh
 source ~/Repos/scripts/source-me/bash-lf.sh
 source ~/Repos/scripts/source-me/bash-fzf-reverse-search.sh
