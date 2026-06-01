@@ -74,7 +74,6 @@ fi
 export ZSH=''
 
 
-source ~/.bashrc_host_specific
 source ~/Repos/scripts/source-me/bash-nnn.sh
 source ~/Repos/scripts/source-me/bash-lf.sh
 source ~/Repos/scripts/source-me/bash-fzf-reverse-search.sh
@@ -201,7 +200,7 @@ elif [ "$system" = Linux ]; then
   # rate KB/s
   #
   # check `pacman` wrapper to see why this is neccessary
-  pacman_bandwidth_limit_file=/tmp/pacman-bandwidth-limit
+  export pacman_bandwidth_limit_file=/tmp/pacman-bandwidth-limit
   if [ ! -f "$pacman_bandwidth_limit_file" ]; then
     echo -n 500 > "$pacman_bandwidth_limit_file"
   fi
@@ -224,6 +223,7 @@ shopt -s cdspell  # autocorrect spelling errors for cd
 shopt -s nocaseglob  # case-insensitive-globbing in pathname expansion
 # --------------------------
 
+source ~/.bashrc-host-specific
 
 # Lima BEGIN
 # Make sure iptables and mount.fuse3 are available
