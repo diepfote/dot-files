@@ -17,7 +17,6 @@ font-family = ""
 # https://ghostty.org/docs/config/reference#font-family
 font-feature = ""
 # disable contextual alternatives for !=, =>, ->
-# https://www.perplexity.ai/search/how-do-i-add-fonts-for-ghostty-tHnZr2RpR5SmE1CXdmCUWw#3
 font-feature = -calt
 
 # theme = Atom One Light

@@ -45,7 +45,7 @@ stty werase undef
 
 # set '-', '/' etc. as word delmiters
 # NOTE: we cannot add arbitrary chars like '_'
-# https://www.perplexity.ai/search/how-do-i-fix-readline-inputrc-zQZ9_hlMTUmI_6Vu0qIX1Q:
+#
 #  Readline provides multiple word-manipulation commands with slightly different behaviors:
 #  backward-kill-word (Meta-Backspace or Meta-DEL): Deletes the word before the cursor, treating punctuation as word boundaries
 #  unix-word-rubout (Control-W): Deletes the word before the cursor using whitespace as the word delimiter
