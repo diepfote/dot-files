@@ -287,3 +287,5 @@
 	# $ git config --global url.https://.insteadOf git://
 	insteadOf = git://
 
+[rerere]
+	enabled = true
