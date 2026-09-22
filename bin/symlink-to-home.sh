@@ -64,6 +64,23 @@ while read -r line; do
     continue
   fi
 
+  if [[ "$line" =~ .*\.config/opencode/AGENTS\.md ]]; then
+      # do not symlink as opencode will stop reading the file
+
+    if [ ! -f ~/"$line" ]; then
+      echo "$line"
+      cp "$line" ~/"$line"
+    else
+      set -x
+      # in case the file exists copy it to the dot-files repo -> to commit changes
+      cp ~/"$line" "$line"
+      set +x
+    fi
+
+    # do not override custom behavior with a symlink
+    continue
+  fi
+
   if [[ "$line" =~ .*\.config/karabiner/karabiner\.json ]]; then
       # do not symlink as this breaks keybindings
       # and do not link if this is linux -> so both continue
