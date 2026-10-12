@@ -151,9 +151,23 @@ bindsym $mod+a layout toggle split
 workspace_layout stacking
 
 
-# screenshots
-bindsym Control+Mod1+P exec flameshot gui
+# screenshots | rustshot config
+# PrintScreen → drag region → save (auto-path) + clipboard
+# dbus-send (~40KB, always cache-hot) talks to the daemon directly.
+# Bypasses a cold rustshot binary spawn that `rustshot gui -c` would
+# otherwise do on every keypress. Same work, same code path as a tray click.
+#
+# Arg order for *Flags methods: path, delay_ms, clipboard, no_save, id.
+# captureScreenFlags prepends int32 screen_index (-1 = cursor's screen).
+bindsym $mod+Shift+P exec --no-startup-id dbus-send --session \
+    --dest=org.rustshot.RustShot --type=method_call / \
+    org.rustshot.RustShot.graphicCaptureFlags \
+    string:"" uint32:0 boolean:false boolean:true string:""
 
+bindsym $mod+Ctrl+Shift+P exec --no-startup-id dbus-send --session \
+    --dest=org.rustshot.RustShot --type=method_call / \
+    org.rustshot.RustShot.graphicCaptureFlags \
+    string:"" uint32:0 boolean:true boolean:false string:""
 
 # toggle tiling / floating
 # bindsym $mod+Shift+space floating toggle
@@ -253,7 +267,7 @@ bindsym XF86MonBrightnessDown exec --no-startup-id sudo xbacklight -dec 5  # Nex
 bindsym $mod+KP_Next exec --no-startup-id sudo xbacklight -dec 5  # Next ... page-down
 bindsym Scroll_Lock exec --no-startup-id sudo xbacklight -dec 5  # Next ... page-down
 
-bindsym $mod+e exec caja  # gui file manager
+bindsym $mod+e exec WINIT_X11_SCALE_FACTOR=1.8 ~/.cargo/bin/guth --window-backend x11  # gui file manager
 
 
 # ---------------------------

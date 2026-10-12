@@ -1,0 +1,13 @@
+[Desktop Entry]
+Type=Application
+Name=Guth
+GenericName=File Manager
+Comment=Fast native file manager for local desktop workflows
+Exec=WINIT_X11_SCALE_FACTOR=1.8  /home/flo/.cargo/bin/guth --window-backend x11 %f
+Icon=io.github.tknott95.Guth
+Terminal=false
+Categories=System;FileTools;FileManager;
+MimeType=inode/directory;
+StartupNotify=true
+StartupWMClass=io.github.tknott95.Guth
+Keywords=files;folders;filesystem;manager;explorer;
