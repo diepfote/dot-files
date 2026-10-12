@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Lap
+Comment=Local-first photo manager
+Exec=GDK_DPI_SCALE=1.2 /home/flo/.bin/Lap_0.3.2_amd64.AppImage
+Terminal=false
+Type=Application
+Categories=Graphics;Photography;
