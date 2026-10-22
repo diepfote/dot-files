@@ -1,0 +1,359 @@
+# You can use the --awconf flag to override the config being loaded.
+# This config file is optional, the options specified here are the defaults.
+
+# The colour used for the background.
+# This is any string understood by GDK, such as "black", "magenta", or "#55667788"
+# Transparency is allowed but depends on the display server for support.
+# When set will override all backgrounds.
+#
+# Leave empty to use your default GTK theme.
+# background_colour = '#000000be'
+
+# Default resolution for some dialogs and the file chooser
+#
+# Affects the help dialog and file chooser mode.
+# Falls back to 800, 600 if not set or too small
+dialog_resolution = [1280, 960]
+
+# How many concurrent thumbnail processes to allow.
+# There are tradeoffs between how fast thumbnails are generated and how responsive the UI remains.
+# Thumbnailing is done in separate threads but GTK still limits performance.
+#
+# The slower the thumbnail process, the less choppy this is even at higher values. Too high and
+# directories with many cheap thumbnails cause the process to slow down. Too low and expensive
+# thumbnails take forever.
+#
+# Experimentally, 8 is a bit past the acceptable limit in pathologically bad cases like many tiny
+# images, while in directories with many videos up to 16 is beneficial.
+#
+# Max 255 (bad idea), 0 entirely disables thumbnail loading.
+# Recommended: 2-8
+max_thumbnailers = 6
+
+# How many thumbnailers to run in the background.
+# This is used for files that aren't currently visible/near-visible.
+#
+# Max 255
+# A value of -1 will still generate low priority thumbnails in the background, but will not keep
+# them loaded.
+# -2 or lower will cause thumbnails to be unloaded without actively generating them.
+#
+# Use 0 to disable all handling of background thumbnails (loading, unloading, generating).
+# Not recommended.
+#
+# No effect if larger than max_thumbnailers.
+# Recommended: -1, 1, or -2
+background_thumbnailers = -1
+
+# Whether to limit aw-fm to a single window or not.
+#
+# If true, only one aw-fm window can be open at a time. Running "aw-fm directory" with an
+# open window will open "directory" in a new tab in the existing window instead of a new window.
+single_window = false
+
+# Whether seeking (tab/shift-tab) wraps around.
+#
+# This can be useful when trying to find the last matching file, but also disorientating.
+seek_wraparound = true
+
+# Whether completion in the location bar can be triggered by tab/shift-tab.
+#
+# It can always be triggered by ctrl+space and ctrl+shift+space.
+tab_completion = true
+
+# Shortcuts
+#
+# All shortcuts must have a key and an action, and optionally one or more modifiers.
+# See the readme or the example scripts for details on the commands and environment variables.
+# Valid modifiers are Control, Shift, Alt, Super, and Command.
+# See https://gitlab.gnome.org/GNOME/gtk/blob/master/gdk/gdkkeysyms.h for names of keys.
+#
+# "Activate" probably should not be bound, but you can if you want.
+# Some keybinds will be bound by the existing GTK components and will not work.
+#
+# Binding letters without modifiers is not recommended either.
+#
+# These shortcuts run against the active tab, even if the mouse is hovering over a
+# different tab.
+#
+# Shortcuts are processed top to bottom, with later shortcuts
+# replacing earlier ones if they overlap.
+#
+# Use uppercase letters.
+# Defaults and Examples:
+shortcuts = [
+  {key = "question", modifiers = "Shift", action = "Help"},
+
+  {key = "C", modifiers = "Control", action = "Copy"},
+  {key = "X", modifiers = "Control", action = "Cut"},
+  {key = "V", modifiers = "Control", action = "Paste"},
+
+  {key = "N", modifiers = "Control,Shift", action = "NewFolder"},
+  {key = "N", modifiers = "Control", action = "NewFile"},
+
+  {key = "H", modifiers = "Control", action = "Home" },
+  {key = "T", modifiers = "Control", action = "NewTab"},
+  {key = "T", modifiers = "Alt", action = "NewBackgroundTab"},
+  {key = "T", modifiers = "Control,Shift", action = "ReopenTab"},
+
+  {key = "W", modifiers = "Control", action = "CloseTab"},
+  {key = "W", modifiers = "Control, Shift", action = "ClosePane"},
+  {key = "W", modifiers = "Control, Alt", action = "CloseTabNoReplacement"},
+  {key = "W", modifiers = "Alt", action = "HidePanes"},
+
+  {key = "V", modifiers = "Alt", action = "Split vertical"},
+  {key = "H", modifiers = "Alt", action = "Split horizontal"},
+
+  {key = "F", modifiers = "Control", action = "Search"},
+
+  {key = "R", modifiers = "Control", action = "Rename"},
+
+  {key = "L", modifiers = "Control", action = "FocusLocation"},
+
+  {key = "U", modifiers = "Control", action = "Unselect"},
+
+  {key = "Up", modifiers = "Alt", action = "Parent"},
+  {key = "Down", modifiers = "Alt", action = "Child"},
+  {key = "Right", modifiers = "Alt", action = "Forward"},
+  {key = "Left", modifiers = "Alt", action = "Back"},
+  # {key = "Left", modifiers = "Alt", action = "BackOrParent"},
+
+  {key = "1", modifiers = "Control", action = "Display icons"},
+  {key = "2", modifiers = "Control", action = "Display columns"},
+
+  {key = "1", modifiers = "Alt", action = "SortBy name"},
+  {key = "2", modifiers = "Alt", action = "SortBy mtime"},
+  {key = "3", modifiers = "Alt", action = "SortBy size"},
+  {key = "Page_Up", modifiers = "Alt", action = "SortDir ascending"},
+  {key = "Page_Down", modifiers = "Alt", action = "SortDir descending"},
+
+  {key = "F5", action = "Refresh"},
+  {key = "F5", modifiers = "Shift", action = "RefreshAll"},
+  {key = "R", modifiers = "Control,Shift", action = "ReloadActions"},
+
+  {key = "Delete", action = "Trash"},
+  {key = "Delete", modifiers = "Shift", action = "Delete"},
+
+  {key = "Escape", action = "Cancel"},
+  {key = "Z", modifiers = "Control", action = "Undo"},
+
+  # Relative paths are not allowed.
+  # Change these to correct paths if you actually use them.
+  # {key= "F6", action = "Execute /path/to/examples/dump-env.sh"},
+  # {key= "H", modifiers = "Control, Shift", action = "Script /path/to/examples/rofi-jump-home.sh"},
+  # {key= "P", modifiers = "Alt", action = "Script /path/to/examples/rofi-open-subdirs.sh"},
+
+  {key = "F1", action = "LoadSession one"},
+  {key = "F1", modifiers="Control", action = "SaveSession one"},
+  {key = "F1", modifiers="Alt", action = "DeleteSession one"},
+  {key = "F2", action = "LoadSession two"},
+  {key = "F2", modifiers="Control", action = "SaveSession two"},
+  {key = "F2", modifiers="Alt", action = "DeleteSession two"},
+  {key = "F3", action = "LoadSession three"},
+  {key = "F3", modifiers="Control", action = "SaveSession three"},
+  {key = "F3", modifiers="Alt", action = "DeleteSession three"},
+
+  {key = "Q", modifiers="Control", action = "Quit"},
+]
+
+# An alternate set of shortcuts for file picker mode.
+#
+# This will be processed after `shortcuts`, replacing any identical shortcuts.
+chooser_shortcuts = [
+  # Quitting the file chooser will cancel the action
+  {key = "Escape", action = "Quit"},
+]
+
+# Bookmarks
+# These show up on the left, as buttons above the list of tabs, and are always visible.
+#
+# Ask yourself if you really want these, or if a keyboard shortcut and a
+# rofi script wouldn't be a better option.
+#
+# Defined as { name = "Name", action = "Command" },
+bookmarks = [
+  {name = "Home", action = "Home"},
+  {name = "Downloads", action = "Navigate /home/flo/Downloads"},
+  {name = "Backups", action = "Navigate /home/flo/Backups"},
+  {name = "Pictures", action = "Navigate /home/flo/Pictures"},
+  {name = "Videos", action = "Navigate /home/flo/Videos"},
+  {name = "tmp", action = "Navigate /tmp"},
+  {name = "/", action = "Navigate /"},
+  {name = "Repos", action = "Navigate /home/flo/Repos"},
+  {name = "experiments", action = "Navigate /home/flo/experiments"},
+]
+
+
+# An alternate set of bookmarks for the file picker.
+#
+# This list will entirely _replace_ the choices in bookmarks if present.
+# Comment out (not leave empty) to use the regular bookmarks.
+chooser_bookmarks = [
+  {name = "Home", action = "Home"},
+  {name = "Downloads", action = "Navigate /home/flo/Downloads"},
+]
+
+# Context Menu
+# All context menu items need a name and an action.
+# Context menu entries are placed in the context menu in order.
+# The set of allowable actions is the same as those for shortcuts.
+#
+# Sub-menus and sections can be specified by name.
+# All commands sharing the same named sub-menu or section will be grouped together in order.
+#
+# For selection the allowed options are:
+## 'any' will impose no requirements, and is the default.
+## 'exactly_n' will require exactly n items selected (example: exactly_5 is exactly 5)
+## 'at_least_n' will require at most n items (count >= n)
+## 'at_most_n' will require at most n items, including zero (count <= n)
+## 'n_to_m' will require at least n items and at most m (n <= count <= m)
+#
+# For more control over when actions appear, use custom action scripts which allow for
+# fine-grained filtering on mimetypes or paths.
+#
+# Example:
+# {name = "Do Something", action = "Execute /path/to/do-something.sh"},
+# {name = "Sample Script", action = "Script /path/to/sample-script.sh", selection="2_to_3"},
+context_menu = [
+  {name = "Open", action = "OpenDefault", selection = "at_least_1"},
+  {name = "Open With", action = "OpenWith", selection = "at_least_1"},
+
+  {name = "Cut", action = "Cut", selection = "at_least_1" },
+  {name = "Copy", action = "Copy", selection = "at_least_1" },
+  # Paste has special handling, if selection is not present it is enabled
+  # based on the contents of the clipboard.
+  {name = "Paste", action = "Paste" },
+  {name = "Rename", action = "Rename", selection = "exactly_1" },
+
+  {name = "Icons", submenu = "Display", action = "Display icons"},
+  {name = "Columns", submenu = "Display", action = "Display columns"},
+
+  {name = "Name", submenu = "Sort", action = "SortBy name"},
+  {name = "Date modified", submenu = "Sort", action = "SortBy mtime"},
+  {name = "Size", submenu = "Sort", action = "SortBy size"},
+
+  {name = "Ascending", submenu = "Sort", action = "SortDir ascending"},
+  {name = "Descending", submenu = "Sort", action = "SortDir descending"},
+
+  {name = "Properties", action = "Properties", selection = "at_least_1"},
+]
+
+# Additional actions for mouse buttons in the file list
+#
+# The specific numbers used are somewhat non-standard across mice, so experimentation might be
+# necessary. This doesn't affect mouse buttons for the tabs list.
+#
+# Unlike "shortcuts", these run against the tab the mouse is hovering over, even if a different tab
+# is active.
+#
+# Configurations for buttons 1, 2, and 3 are discouraged and might break normal behaviour.
+#
+# CAUTION: middle-clicking on a single file is currently hardcoded and not configurable here.
+#
+# Example:
+# {button = 8, action = "Back"},
+# {button = 4, modifiers = "Shift", action = "Paste"},
+mouse_buttons = [
+  {button = 8, action = "Back"},
+  {button = 8, modifiers = "Shift", action = "BackOrParent"},
+  {button = 8, modifiers = "Alt", action = "Parent"},
+
+  {button = 9, action = "Forward"},
+  {button = 9, modifiers = "Alt", action = "Child"},
+]
+
+# How to handle directory collisions during file operations.
+#
+# Allowed values are ask, merge, and skip.
+directory_collisions = "ask"
+
+# How to handle file collisions when moving files.
+#
+# Allowed values are ask, overwrite, skip, newer, and rename.
+#
+# newer will overwrite if the destination is strictly older and skip otherwise.
+# rename will keep the existing destination file as-is but add a suffix to the file name.
+# rename is assumed when copying a file on top of itself.
+file_collisions = "ask"
+
+# Custom actions directory.
+# All executable contents with proper headers (see examples/sample-action.sh) are added as context
+# menu entries.
+#
+# Defaults to ${XDG_CONFIG_HOME}/aw-fm/actions/ or ${HOME}/.config/aw-fm/actions/
+actions_directory = ""
+
+# Normalize file names for seek/search
+# Whether or not to apply unicode normalization (form NFKC) to file names for searching/seeking.
+# Setting it to true means that "𝙁𝘼𝙐𝙉𝘼" can by found by typing "fauna".
+#
+# Does not affect sorting.
+normalize_names = true
+
+# The maximum number of minutes after which operations can't be undone.
+# This is to prevent accidentally undoing something and not realizing what has happened.
+#
+# Set to 0 or comment out to disable.
+max_undo_minutes = 360
+
+# ------------------------------------------------------------------------------------------------
+# More advanced configuration options below. They probably do not need to be changed.
+# ------------------------------------------------------------------------------------------------
+
+# The location of the database to use for persistent data storage.
+# Currently only per-directory sort and display settings.
+# Defaults to $XDG_DATA_HOME/aw-fm/settings.db or $HOME/.local/share/aw-fm/settings.db
+# database = ''
+
+# Whether to use polling for NFS directories or not.
+#
+# aw-fm defaults to inotify on Linux, which does not work in all cases on remote file systems.
+# Polling is slower and more resource intensive but will work for all changes, even changes
+# originating from other computers.
+#
+# This does not affect updates for child directories in searches.
+#
+# Valid settings are "off", "on", or "both" to enable both inotify and polling together for NFS.
+# Changing this is not recommended.
+nfs_polling = "off"
+
+# How deeply to recurse for searches.
+#
+# Set to 0 to only search the current directory. Max 255.
+# Comment out to allow for unlimited depth. Not recommended.
+search_max_depth = 8
+
+# Whether to show all files in search or not.
+#
+# The default behaviour is to respect .gitignore files and ignore hidden files and directories for
+# recursive searching, but to show everything within the current directory unconditionally.
+search_show_all = false
+
+# Whether to allow pasting files into a search tab.
+#
+# This might cause confusing or surprising file operations.
+paste_into_search = false
+
+# The timeout, in seconds, for when we unload tabs due to idleness.
+# Tabs that aren't visible can be unloaded, this can greatly reduce memory usage
+# Comment out or set to 0 to disable.
+#
+# Setting background_thumbnailers to negative is the recommended way to lower memory usage.
+# This is not recommended if background_thumbnailers is negative
+unload_timeout = 0
+# unload_timeout = 21600 # 6 hours is an appropriate timeout
+
+# Whether or not to force the use of normal 128px thumbnails even at high DPIs.
+#
+# When false, aw-fm will generate and use 256px thumbnails when the DPI scaling is above 1.
+# Setting this to true can save memory and storage space at the cost of blurrier thumbnails.
+#
+# No effect if you do not have any high DPI monitors or don't otherwise trigger UI scaling.
+force_small_thumbnails = false
+
+# Disable the FileManager dbus service.
+#
+# This is used by other programs, such as "Show in Folder" from a browser.
+#
+# Not recommended unless you have a different file manager you want to use with it.
+disable_filemanager_dbus = false
