@@ -87,14 +87,17 @@
 	reflog-list-all-files-ever-tracked = "!f() { git log --pretty=format: --name-only | sed '/^$/d' | sort | uniq; }; f"
 	reflog-ls-all-files-ever-tracked = "!f() { git reflog --pretty=format: --name-only | sed '/^$/d' | sort | uniq; }; f"
 
-	# switches to master, pulls latest changes, switches back to previous branch;
-	# if it cannot switch to master, it will only fetch master;
+	# switches to master/main, pulls latest changes, switches back to previous branch;
+	# if it cannot switch to master/main, it will only fetch master/main;
 	# then run `git gc` if certain thresholds are met
 	update = "!f() { \
 		if [ $# -gt 0 ]; then \
 			branch=\"$1\"; \
 		else \
-			branch=master; \
+			branch=main; \
+			if grep master \"${GIT_PREFIX:-.}\"/.git/config &>/dev/null; then \
+				branch=master; \
+			fi; \
 		fi; \
 		set -x; \
 		fetch_or_pull () { \
@@ -152,18 +155,28 @@
 		if [ $# -gt 1 ]; then \
 			branch=\"$2\"; \
 		else \
-			branch=master; \
+			branch=main; \
+			if grep master \"${GIT_PREFIX:-.}\"/.git/config &>/dev/null; then \
+				branch=master; \
+			fi; \
 		fi; \
 		git staash; \
 		git checkout \"$branch\"; \
 		git pull -p; git checkout -b \"$1\"; \
 	git stash apply }; f"
 
+	# update the master/main or whatever you pass in,
+	# then rebase the current branch onto that branch
 	get-upstream = "!f() { \
+		set -x; \
 		if [ $# -gt 0 ]; then \
 			branch=\"$1\"; \
 		else \
-			branch=master; \
+			branch=main; \
+			if grep master \"${GIT_PREFIX:-.}\"/.git/config &>/dev/null; then \
+				branch=master; \
+			fi; \
+		set +x; \
 		fi; \
 		git update \"$branch\"; set -x; git rebase origin/\"$branch\"; set +x; \
 	}; f"
