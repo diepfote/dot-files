@@ -14,6 +14,8 @@
 
 [alias]
 	get-branch = rev-parse --abbrev-ref HEAD
+	reword = history reword
+	fixup = history fixup
 
 	get-org-and-repo = "!f() { git remote get-url origin | sed 's#.git$##'| tr ':' '/' | python -c '_stdin=input(); split=_stdin.rsplit(\"/\",2); print(\"/\".join(split[1:]))'  ; }; f"
 
@@ -168,7 +170,6 @@
 	# update the master/main or whatever you pass in,
 	# then rebase the current branch onto that branch
 	get-upstream = "!f() { \
-		set -x; \
 		if [ $# -gt 0 ]; then \
 			branch=\"$1\"; \
 		else \
@@ -176,7 +177,6 @@
 			if grep master \"${GIT_PREFIX:-.}\"/.git/config &>/dev/null; then \
 				branch=master; \
 			fi; \
-		set +x; \
 		fi; \
 		git update \"$branch\"; set -x; git rebase origin/\"$branch\"; set +x; \
 	}; f"
