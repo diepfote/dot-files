@@ -1,7 +1,9 @@
 [Desktop Entry]
 Name=Lap
 Comment=Local-first photo manager
-Exec=GDK_DPI_SCALE=1.2 /home/flo/.bin/Lap_0.3.2_amd64.AppImage
+# https://github.com/julyx10/lap/releases
+# $ ver=0.x.x; curl -L https://github.com/julyx10/lap/releases/download/v0.3.3/Lap_"$ver"_amd64.AppImage -o ~/.bin/Lap_"$ver"_amd64.AppImage
+Exec=GDK_DPI_SCALE=1.2 /home/flo/.bin/Lap_amd64.AppImage
 Terminal=false
 Type=Application
 Categories=Graphics;Photography;
