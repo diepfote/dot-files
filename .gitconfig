@@ -250,6 +250,8 @@
 
 	co = commit
 
+	r = reset
+
 	br = list-branches-by-last-touch
 	b  = br
 
